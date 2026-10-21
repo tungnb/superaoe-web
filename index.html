@@ -8,6 +8,8 @@
 <meta property="og:title" content="SuperAoE – Đế Chế online, xem & lưu replay">
 <meta property="og:description" content="Chơi AoE online 8 người, 3 ghế khán giả xem trực tiếp, lưu replay xem lại. Windows & macOS.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://superaoe.com/">
+<link rel="canonical" href="https://superaoe.com/">
 <meta name="theme-color" content="#140f0a">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -446,9 +448,9 @@ footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wr
 </footer>
 
 <script>
-// Download links: change here when the address moves (e.g. to https://superaoe.com/download).
+// Download links (served by the relay Worker from R2).
 // An empty MAC_URL keeps the Mac button pointing at the Mac guide and marks it "sắp phát hành".
-const WIN_URL = "https://xtv-relay.tungnb0517.workers.dev/download";
+const WIN_URL = "https://superaoe.com/download";
 const MAC_URL = "";
 
 document.querySelectorAll('[data-dl="win"]').forEach(a => { a.href = WIN_URL; a.setAttribute("download", ""); });
