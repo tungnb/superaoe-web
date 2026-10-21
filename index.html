@@ -9,6 +9,7 @@
 <meta property="og:description" content="Chơi AoE online 8 người, 3 ghế khán giả xem trực tiếp, lưu replay xem lại. Windows & macOS.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://superaoe.com/">
+<meta property="og:image" content="https://superaoe.com/img/spectator.jpg">
 <link rel="canonical" href="https://superaoe.com/">
 <meta name="theme-color" content="#140f0a">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -65,15 +66,17 @@ h1 .g { color: var(--gold); }
 .meta { margin-top: 18px; font-size: 13px; color: var(--dim); }
 
 /* Hero visual: spectator screen mock */
-.screen { position: relative; border: 1px solid var(--gold2); border-radius: 14px; background: #0e0b07; box-shadow: 0 30px 80px rgba(0,0,0,.6), 0 0 0 6px rgba(58,45,30,.5); overflow: hidden; }
-.screen .bar { display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; background: linear-gradient(#352817, #241b10); border-bottom: 1px solid var(--line); font-size: 12px; color: var(--dim); }
-.screen .bar b { color: var(--gold); }
-.live { color: #fff; background: #c23a2f; border-radius: 4px; padding: 1px 7px; font-weight: 700; font-size: 11px; letter-spacing: .5px; }
-.screen svg { display: block; width: 100%; height: auto; }
-.screen .hud { display: flex; gap: 6px; padding: 8px 10px; background: #1a130c; border-top: 1px solid var(--line); flex-wrap: wrap; }
-.chip { font-size: 11px; padding: 3px 8px; border-radius: 5px; background: var(--panel2); color: var(--text); display: inline-flex; gap: 5px; align-items: center; }
-.chip i { width: 9px; height: 9px; border-radius: 2px; display: inline-block; }
-.chip.on { outline: 1px solid var(--gold); }
+.screen { margin: 0; border: 1px solid var(--gold2); border-radius: 14px; background: #0e0b07; box-shadow: 0 30px 80px rgba(0,0,0,.6), 0 0 0 6px rgba(58,45,30,.5); overflow: hidden; }
+.screen img, .shot img { display: block; width: 100%; height: auto; }
+.screen figcaption { display: flex; gap: 10px; align-items: center; padding: 10px 12px; background: linear-gradient(#352817, #241b10); border-top: 1px solid var(--line); font-size: 13px; color: var(--dim); }
+.live { flex: none; color: #fff; background: #c23a2f; border-radius: 4px; padding: 1px 7px; font-weight: 700; font-size: 11px; letter-spacing: .5px; }
+
+/* Screenshot gallery */
+.shots { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.shot { margin: 0; border: 1px solid rgba(184,144,47,.45); border-radius: 14px; overflow: hidden; background: var(--panel); }
+.shot.big { grid-column: 1 / -1; }
+.shot figcaption { padding: 12px 14px; font-size: 14px; color: var(--dim); border-top: 1px solid var(--line); }
+.shot figcaption b { color: var(--text); display: block; font-size: 15px; margin-bottom: 2px; }
 
 /* Sections */
 section { padding: 84px 0; scroll-margin-top: 60px; }
@@ -159,7 +162,8 @@ footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wr
 
 @media (max-width: 900px) {
   .hero { padding: 56px 0 50px; }
-  .hero .wrap, .split, .lobby, .mac, .dl { grid-template-columns: 1fr; gap: 32px; }
+  .hero .wrap, .split, .lobby, .mac, .dl, .shots { grid-template-columns: 1fr; gap: 32px; }
+  .shot.big { grid-column: auto; }
   .grid3 { grid-template-columns: 1fr 1fr; }
   .nav a:not(.cta) { display: none; }
   section { padding: 60px 0; }
@@ -212,48 +216,10 @@ footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wr
       <p class="meta">Miễn phí · Không cần VPN hay mở cổng · Máy chủ chạy trên Cloudflare</p>
     </div>
 
-    <div class="screen" aria-label="Minh họa màn hình khán giả">
-      <div class="bar"><span><span class="live">TRỰC TIẾP</span> &nbsp;Phòng <b>K7QMZ2</b> · Trận 3</span><span>👁 Vua · trễ 2:00</span></div>
-      <svg viewBox="0 0 520 300" role="img" aria-label="Bản đồ trận đấu minh họa">
-        <defs>
-          <pattern id="grass" width="26" height="26" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-            <rect width="26" height="26" fill="#4a5a23"/><rect width="13" height="13" fill="#52632a"/>
-          </pattern>
-          <radialGradient id="vig" cx="50%" cy="50%" r="70%"><stop offset="60%" stop-color="#000" stop-opacity="0"/><stop offset="100%" stop-color="#000" stop-opacity=".55"/></radialGradient>
-        </defs>
-        <rect width="520" height="300" fill="url(#grass)"/>
-        <path d="M0 230 C90 210 140 260 230 250 S380 200 520 225 V300 H0z" fill="#2f5b7a"/>
-        <path d="M0 238 C90 218 140 268 230 258 S380 208 520 233" stroke="#c8b27a" stroke-width="5" fill="none" opacity=".7"/>
-        <g fill="#2d4a1a"><circle cx="40" cy="40" r="16"/><circle cx="62" cy="30" r="14"/><circle cx="30" cy="70" r="14"/><circle cx="470" cy="50" r="17"/><circle cx="492" cy="78" r="14"/><circle cx="450" cy="28" r="12"/></g>
-        <g fill="#25401a"><circle cx="52" cy="54" r="10"/><circle cx="478" cy="64" r="10"/></g>
-        <!-- blue town -->
-        <g transform="translate(120 110)">
-          <polygon points="0,20 30,5 60,20 30,35" fill="#8a6b3e"/><polygon points="0,20 30,35 30,55 0,40" fill="#6d532f"/><polygon points="60,20 30,35 30,55 60,40" fill="#5a4426"/>
-          <rect x="22" y="-6" width="16" height="18" fill="#3b6ec2"/>
-        </g>
-        <!-- red town -->
-        <g transform="translate(340 70)">
-          <polygon points="0,20 30,5 60,20 30,35" fill="#8a6b3e"/><polygon points="0,20 30,35 30,55 0,40" fill="#6d532f"/><polygon points="60,20 30,35 30,55 60,40" fill="#5a4426"/>
-          <rect x="22" y="-6" width="16" height="18" fill="#c23a2f"/>
-        </g>
-        <g fill="#d8c27b"><circle cx="250" cy="120" r="5"/><circle cx="262" cy="128" r="5"/><circle cx="244" cy="133" r="5"/></g>
-        <g id="army-b" fill="#3b6ec2" stroke="#0b1a33" stroke-width="1"><circle cx="205" cy="168" r="4.5"/><circle cx="215" cy="160" r="4.5"/><circle cx="198" cy="178" r="4.5"/><circle cx="222" cy="172" r="4.5"/><circle cx="210" cy="182" r="4.5"/></g>
-        <g id="army-r" fill="#c23a2f" stroke="#3a0b08" stroke-width="1"><circle cx="300" cy="150" r="4.5"/><circle cx="310" cy="142" r="4.5"/><circle cx="292" cy="160" r="4.5"/><circle cx="316" cy="156" r="4.5"/></g>
-        <rect width="520" height="300" fill="url(#vig)"/>
-        <!-- minimap -->
-        <g transform="translate(418 198)">
-          <polygon points="46,0 92,46 46,92 0,46" fill="#18130c" stroke="#b8902f" stroke-width="1.5" transform="scale(1 .9)"/>
-          <circle cx="32" cy="46" r="4" fill="#3b6ec2"/><circle cx="64" cy="30" r="4" fill="#c23a2f"/><circle cx="46" cy="62" r="3" fill="#4f9a5a"/><circle cx="58" cy="58" r="3" fill="#d6a63a"/>
-        </g>
-      </svg>
-      <div class="hud">
-        <span class="chip on"><i style="background:#3b6ec2"></i>1 · Quan Nhất phẩm</span>
-        <span class="chip"><i style="background:#c23a2f"></i>2</span>
-        <span class="chip"><i style="background:#d6a63a"></i>3</span>
-        <span class="chip"><i style="background:#4f9a5a"></i>4</span>
-        <span class="chip">… phím 1–8 đổi góc nhìn</span>
-      </div>
-    </div>
+    <figure class="screen">
+      <a href="img/spectator.jpg" target="_blank" rel="noopener"><img src="img/spectator.jpg" width="1366" height="768" alt="Ảnh chụp thật: khán giả SuperAoE xem lại trận 1v1, thấy nhà chính, dân làng và bản đồ nhỏ"></a>
+      <figcaption><span class="live">ẢNH THẬT</span> Góc nhìn khán giả khi xem lại một trận 1v1, đồ họa gốc của game</figcaption>
+    </figure>
   </div>
 </section>
 
@@ -297,7 +263,29 @@ footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wr
   </div>
 </section>
 
-<section id="replay" class="alt">
+<section id="anh" class="alt">
+  <div class="wrap">
+    <div class="kicker">Ảnh trong game</div>
+    <h2>Đúng Đế Chế bạn đã chơi</h2>
+    <p class="sub">Các ảnh dưới đây được chụp trực tiếp từ game khi SuperAoE phát lại một trận đã ghi, không qua chỉnh sửa.</p>
+    <div class="shots">
+      <figure class="shot big">
+        <a href="img/spectator.jpg" target="_blank" rel="noopener"><img src="img/spectator.jpg" width="1366" height="768" loading="lazy" alt="Góc nhìn khán giả trong trận: nhà chính, dân làng, rừng và đàn voi"></a>
+        <figcaption><b>Ghế khán giả</b>Xem toàn bản đồ, bấm 1–8 để theo từng người chơi. Góc phải dưới là bộ đếm đồng bộ của khán giả với người chơi.</figcaption>
+      </figure>
+      <figure class="shot">
+        <a href="img/menu.jpg" target="_blank" rel="noopener"><img src="img/menu.jpg" width="960" height="540" loading="lazy" alt="Menu chính Age of Empires: The Rise of Rome"></a>
+        <figcaption><b>Game gốc Rise of Rome</b>SuperAoE mở chính bản game quen thuộc, không vẽ lại.</figcaption>
+      </figure>
+      <figure class="shot">
+        <a href="img/summary.jpg" target="_blank" rel="noopener"><img src="img/summary.jpg" width="960" height="540" loading="lazy" alt="Bảng tổng kết thành tích sau khi xem hết trận"></a>
+        <figcaption><b>Xem đến tận bảng tổng kết</b>Replay chạy hết trận, ra đúng bảng thành tích như người chơi thật.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="replay">
   <div class="wrap split">
     <div>
       <div class="kicker">Replay</div>
@@ -324,7 +312,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wr
   </div>
 </section>
 
-<section id="sanh">
+<section id="sanh" class="alt">
   <div class="wrap lobby">
     <div class="u">
       <svg viewBox="0 0 440 330" role="img" aria-label="Sơ đồ sảnh chờ chữ U">
@@ -356,7 +344,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wr
   </div>
 </section>
 
-<section id="tai-ve" class="alt">
+<section id="tai-ve">
   <div class="wrap">
     <div class="kicker">Tải về</div>
     <h2>Chọn bản cho máy của bạn</h2>
@@ -396,7 +384,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wr
   </div>
 </section>
 
-<section id="macbook">
+<section id="macbook" class="alt">
   <div class="wrap mac">
     <div>
       <div class="kicker">MacBook</div>
@@ -423,7 +411,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wr
   </div>
 </section>
 
-<section id="hoi-dap" class="alt">
+<section id="hoi-dap">
   <div class="wrap">
     <div class="kicker">Hỏi đáp</div>
     <h2>Câu hỏi thường gặp</h2>
