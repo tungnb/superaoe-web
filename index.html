@@ -60,7 +60,7 @@
  "description": "Launcher chơi Đế Chế (Age of Empires 1 Rise of Rome) online cho Windows 10/11 và MacBook chip Apple: tài khoản, danh sách phòng, phòng chờ 8 người chơi + 3 khán giả xem trực tiếp, mọi trận tự lưu replay để xem lại, không cần VPN hay mở cổng.",
  "url": "https://superaoe.com/",
  "downloadUrl": ["https://superaoe.com/download", "https://superaoe.com/download/mac"],
- "softwareVersion": "0.2.6",
+ "softwareVersion": "0.2.8",
  "featureList": [
   "Chơi Đế Chế online tới 8 người, không cần VPN hay mở cổng",
   "3 ghế khán giả xem trực tiếp bằng đồ họa gốc",
@@ -365,6 +365,46 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
     </figure>
   </div>
 </section>
+<section id="mat-mang">
+  <div class="wrap split">
+    <div>
+      <div class="kicker">Mất mạng không mất trận</div>
+      <h2>Một người rớt mạng, cả đội chờ tới 30 phút</h2>
+      <p class="sub" style="margin-bottom:28px">Trước đây chơi Đế Chế qua mạng, chỉ cần một người rớt là cả trận coi như bỏ. SuperAoE giữ trận lại cho tới khi người đó quay về.</p>
+      <ol class="steps">
+        <li><span class="n">1</span><div><h3>Trận tự tạm dừng</h3><p>Mọi người trong trận thấy thông báo ai mất kết nối và còn bao lâu để người đó vào lại.</p></div></li>
+        <li><span class="n">2</span><div><h3>Mạng có lại là đánh tiếp</h3><p>Mạng chập chờn rồi có lại, game tự kết nối, trận chạy tiếp như chưa có gì.</p></div></li>
+        <li><span class="n">3</span><div><h3>Lỡ tắt game? Bấm "Vào lại trận"</h3><p>Mở launcher, bấm "↻ Vào lại trận": game tua nhanh tới đúng lúc bạn rời rồi cho bạn chơi tiếp quân của mình.</p></div></li>
+        <li><span class="n">4</span><div><h3>Tối đa 30 phút mỗi người</h3><p>Mỗi người được chờ tổng cộng 30 phút mỗi trận. Hết giờ mà chưa về thì người đó bị loại, những người còn lại đánh tiếp.</p></div></li>
+      </ol>
+      <p class="meta">Vào lại trận tối đa 5 lần mỗi trận, mỗi lần cách nhau ít nhất 30 giây. Có từ bản 0.2.8 cho Windows và Mac (launcher tự cập nhật).</p>
+    </div>
+    <figure class="shot">
+      <a href="img/cho-ket-noi.jpg" target="_blank" rel="noopener"><img src="img/cho-ket-noi.jpg" width="700" height="420" loading="lazy" alt="Ảnh chụp thật trong game: thông báo một người chơi mất kết nối, trận tạm dừng chờ người này vào lại, còn 29 phút 20 giây"></a>
+      <figcaption><b><span class="live">ẢNH THẬT</span> Thông báo chờ kết nối</b>Người còn lại thấy ai mất kết nối và thời gian chờ còn lại. Ảnh chụp từ một lần chạy thử, tên người chơi là tài khoản thử.</figcaption>
+    </figure>
+  </div>
+</section>
+<section id="replay" class="alt">
+  <div class="wrap split">
+    <div>
+      <div class="kicker">Replay · Xem lại trận</div>
+      <h2>Lưu và xem lại trận đấu cũ. Rút kinh nghiệm, học hỏi đối thủ.</h2>
+      <p class="sub" style="margin-bottom:28px">Đánh xong là có replay: SuperAoE tự lưu mọi trận online trên máy chủ, bạn không phải bấm ghi hay nhớ lưu file. Replay chạy bằng chính game gốc (mô phỏng lại đúng từng lệnh, không phải video), nên bạn thấy toàn bản đồ như một khán giả.</p>
+      <ol class="steps">
+        <li><span class="n">1</span><div><h3>Mở "Lịch sử trận / Xem lại"</h3><p>Trong menu launcher có danh sách các trận bạn đã đánh.</p></div></li>
+        <li><span class="n">2</span><div><h3>Bấm vào trận để xem</h3><p>Game tự mở ở chế độ xem lại. Có file <code>.aoerep</code> bạn bè gửi? Chọn "Mở file replay".</p></div></li>
+        <li><span class="n">3</span><div><h3>Tua, dừng, tăng tốc</h3><p>Thanh điều khiển: về đầu, lùi 30/10 giây, dừng/chạy, tới 10/30 giây, tốc độ x0.5 đến x8, bấm thanh tiến trình để nhảy tới thời điểm bất kỳ.</p></div></li>
+        <li><span class="n">4</span><div><h3>Rút kinh nghiệm, học hỏi đối thủ</h3><p>Xem lại mình thua ở đâu, đối thủ mở đầu thế nào, đi quân hướng nào, đánh lúc nào. Miễn phí.</p></div></li>
+      </ol>
+      <p style="margin-top:22px"><a href="/xem-lai-tran-aoe-replay/">Hướng dẫn xem lại trận AoE bằng replay →</a></p>
+    </div>
+    <figure class="shot wide">
+      <a href="img/replay-tua.jpg" target="_blank" rel="noopener"><img src="img/replay-tua.jpg" width="1366" height="400" loading="lazy" alt="Ảnh chụp thật thanh công cụ xem lại trận của SuperAoE: về đầu, lùi 30 và 10 giây, dừng, tới 10 và 30 giây, tốc độ x0.5 đến x8, thời gian 1:48 / 2:43 và thanh tiến trình"></a>
+      <figcaption><b><span class="live">ẢNH THẬT</span> Thanh công cụ xem lại trận</b>Về đầu, lùi 30/10 giây, dừng/chạy, tới 10/30 giây, tốc độ x0.5 đến x8, bấm thanh tiến trình để nhảy tới thời điểm bất kỳ. Phím tắt: Space/K dừng-chạy · J/L lùi-tới · −/+ tốc độ · Home về đầu · H ẩn/hiện thanh.</figcaption>
+    </figure>
+  </div>
+</section>
 
 <section id="tinh-nang">
   <div class="wrap">
@@ -406,28 +446,8 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
   </div>
 </section>
 
-<section id="mat-mang" class="alt">
-  <div class="wrap split">
-    <div>
-      <div class="kicker">Mất mạng không mất trận</div>
-      <h2>Một người rớt mạng, cả đội chờ tới 30 phút</h2>
-      <p class="sub" style="margin-bottom:28px">Trước đây chơi Đế Chế qua mạng, chỉ cần một người rớt là cả trận coi như bỏ. SuperAoE giữ trận lại cho tới khi người đó quay về.</p>
-      <ol class="steps">
-        <li><span class="n">1</span><div><h3>Trận tự tạm dừng</h3><p>Mọi người trong trận thấy thông báo ai mất kết nối và còn bao lâu để người đó vào lại.</p></div></li>
-        <li><span class="n">2</span><div><h3>Mạng có lại là đánh tiếp</h3><p>Mạng chập chờn rồi có lại, game tự kết nối, trận chạy tiếp như chưa có gì.</p></div></li>
-        <li><span class="n">3</span><div><h3>Lỡ tắt game? Bấm "Vào lại trận"</h3><p>Mở launcher, bấm "↻ Vào lại trận": game tua nhanh tới đúng lúc bạn rời rồi cho bạn chơi tiếp quân của mình.</p></div></li>
-        <li><span class="n">4</span><div><h3>Tối đa 30 phút mỗi người</h3><p>Mỗi người được chờ tổng cộng 30 phút mỗi trận. Hết giờ mà chưa về thì người đó bị loại, những người còn lại đánh tiếp.</p></div></li>
-      </ol>
-      <p class="meta">Vào lại trận tối đa 5 lần mỗi trận, mỗi lần cách nhau ít nhất 30 giây. Có từ bản 0.2.8 cho Windows và Mac (launcher tự cập nhật).</p>
-    </div>
-    <figure class="shot">
-      <a href="img/cho-ket-noi.jpg" target="_blank" rel="noopener"><img src="img/cho-ket-noi.jpg" width="700" height="420" loading="lazy" alt="Ảnh chụp thật trong game: thông báo một người chơi mất kết nối, trận tạm dừng chờ người này vào lại, còn 29 phút 20 giây"></a>
-      <figcaption><b><span class="live">ẢNH THẬT</span> Thông báo chờ kết nối</b>Người còn lại thấy ai mất kết nối và thời gian chờ còn lại. Ảnh chụp từ một lần chạy thử, tên người chơi là tài khoản thử.</figcaption>
-    </figure>
-  </div>
-</section>
 
-<section id="anh">
+<section id="anh" class="alt">
   <div class="wrap">
     <div class="kicker">Ảnh trong game</div>
     <h2>Đúng Đế Chế bạn đã chơi</h2>
@@ -449,7 +469,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
   </div>
 </section>
 
-<section id="khan-gia" class="alt">
+<section id="khan-gia">
   <div class="wrap split">
     <div>
       <div class="kicker">Khán giả</div>
@@ -470,26 +490,6 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
   </div>
 </section>
 
-<section id="replay">
-  <div class="wrap split">
-    <div>
-      <div class="kicker">Replay · Xem lại trận</div>
-      <h2>Lưu và xem lại trận đấu cũ. Rút kinh nghiệm, học hỏi đối thủ.</h2>
-      <p class="sub" style="margin-bottom:28px">Đánh xong là có replay: SuperAoE tự lưu mọi trận online trên máy chủ, bạn không phải bấm ghi hay nhớ lưu file. Replay chạy bằng chính game gốc (mô phỏng lại đúng từng lệnh, không phải video), nên bạn thấy toàn bản đồ như một khán giả.</p>
-      <ol class="steps">
-        <li><span class="n">1</span><div><h3>Mở "Lịch sử trận / Xem lại"</h3><p>Trong menu launcher có danh sách các trận bạn đã đánh.</p></div></li>
-        <li><span class="n">2</span><div><h3>Bấm vào trận để xem</h3><p>Game tự mở ở chế độ xem lại. Có file <code>.aoerep</code> bạn bè gửi? Chọn "Mở file replay".</p></div></li>
-        <li><span class="n">3</span><div><h3>Tua, dừng, tăng tốc</h3><p>Thanh điều khiển: về đầu, lùi 30/10 giây, dừng/chạy, tới 10/30 giây, tốc độ x0.5 đến x8, bấm thanh tiến trình để nhảy tới thời điểm bất kỳ.</p></div></li>
-        <li><span class="n">4</span><div><h3>Rút kinh nghiệm, học hỏi đối thủ</h3><p>Xem lại mình thua ở đâu, đối thủ mở đầu thế nào, đi quân hướng nào, đánh lúc nào. Miễn phí.</p></div></li>
-      </ol>
-      <p style="margin-top:22px"><a href="/xem-lai-tran-aoe-replay/">Hướng dẫn xem lại trận AoE bằng replay →</a></p>
-    </div>
-    <figure class="shot wide">
-      <a href="img/replay-tua.jpg" target="_blank" rel="noopener"><img src="img/replay-tua.jpg" width="1366" height="400" loading="lazy" alt="Ảnh chụp thật thanh công cụ xem lại trận của SuperAoE: về đầu, lùi 30 và 10 giây, dừng, tới 10 và 30 giây, tốc độ x0.5 đến x8, thời gian 1:48 / 2:43 và thanh tiến trình"></a>
-      <figcaption><b><span class="live">ẢNH THẬT</span> Thanh công cụ xem lại trận</b>Về đầu, lùi 30/10 giây, dừng/chạy, tới 10/30 giây, tốc độ x0.5 đến x8, bấm thanh tiến trình để nhảy tới thời điểm bất kỳ. Phím tắt: Space/K dừng-chạy · J/L lùi-tới · −/+ tốc độ · Home về đầu · H ẩn/hiện thanh.</figcaption>
-    </figure>
-  </div>
-</section>
 
 <section id="sanh" class="alt">
   <div class="wrap lobby">
