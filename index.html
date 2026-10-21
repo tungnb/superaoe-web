@@ -186,16 +186,22 @@ img, svg { max-width: 100%; }
 .nav .cta:hover { color: var(--ink); filter: brightness(1.08); }
 
 /* Hero */
-.hero { position: relative; padding: 90px 0 70px; background:
+.hero { position: relative; padding: 56px 0 64px; background:
   radial-gradient(ellipse 80% 60% at 50% 0%, rgba(232,195,90,.16), transparent 70%),
   radial-gradient(ellipse at bottom, #2a2015, var(--bg) 70%); overflow: hidden; }
 .hero .wrap { display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; align-items: center; }
 .eyebrow { display: inline-flex; gap: 8px; align-items: center; font-size: 13px; font-weight: 600; color: var(--gold); border: 1px solid rgba(232,195,90,.4); padding: 5px 12px; border-radius: 999px; background: rgba(232,195,90,.07); }
 .dot { width: 8px; height: 8px; border-radius: 50%; background: #e0493c; box-shadow: 0 0 0 0 rgba(224,73,60,.6); animation: pulse 1.8s infinite; }
 @keyframes pulse { 70% { box-shadow: 0 0 0 9px rgba(224,73,60,0); } 100% { box-shadow: 0 0 0 0 rgba(224,73,60,0); } }
-h1 { font-family: var(--serif); font-size: clamp(38px, 5.6vw, 64px); line-height: 1.08; margin: 18px 0 18px; font-weight: 800; }
+h1 { font-family: var(--serif); font-size: clamp(36px, 5vw, 58px); line-height: 1.08; margin: 16px 0 16px; font-weight: 800; }
 h1 .g { color: var(--gold); }
-.lead { font-size: 18px; color: var(--dim); max-width: 560px; margin: 0 0 30px; }
+.lead { font-size: 18px; color: var(--dim); max-width: 560px; margin: 0 0 22px; }
+.feats { list-style: none; margin: 0 0 28px; padding: 0; display: grid; gap: 8px; max-width: 560px; }
+.feats a { display: flex; gap: 12px; align-items: center; padding: 10px 14px; border-radius: 12px; border: 1px solid rgba(184,144,47,.35); background: rgba(44,34,24,.65); color: var(--dim); text-decoration: none; font-size: 13px; line-height: 1.45; transition: border-color .15s, background .15s; }
+.feats a:hover { border-color: var(--gold2); background: rgba(58,45,30,.8); }
+.feats b { display: block; color: var(--text); font-size: 15px; margin-bottom: 2px; }
+.feats .fi { flex: none; width: 34px; height: 34px; border-radius: 9px; display: grid; place-items: center; background: rgba(232,195,90,.13); color: var(--gold); }
+.feats .fi svg { width: 19px; height: 19px; }
 .btns { display: flex; flex-wrap: wrap; gap: 12px; }
 .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 20px; border-radius: 10px; font-weight: 700; font-size: 15px; text-decoration: none; transition: transform .15s, filter .15s; }
 .btn:hover { transform: translateY(-1px); }
@@ -327,7 +333,13 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
     <div>
       <span class="eyebrow"><span class="dot"></span> Đế Chế online · Xem trực tiếp · Xem lại replay · Windows &amp; Mac</span>
       <h1>Chơi Đế Chế online.<br><span class="g">Xem trực tiếp, xem lại replay.</span></h1>
-      <p class="lead">SuperAoE đưa Age of Empires: Rise of Rome lên mạng: 8 người chơi, 3 ghế khán giả xem trực tiếp bằng đồ họa gốc của game, không cần VPN hay mở cổng router. Mọi trận được lưu lại để bạn xem lại trận đấu cũ, rút kinh nghiệm và học hỏi từ đối thủ. Miễn phí cho Windows 10/11, chạy mượt trên MacBook M1, M2, M3, M4.</p>
+      <p class="lead">SuperAoE đưa Age of Empires: Rise of Rome lên mạng bằng đồ họa gốc của game, không cần VPN hay mở cổng router.</p>
+      <ul class="feats">
+        <li><a href="/choi-aoe-online-mien-phi/"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg></span><span><b>Chơi online miễn phí</b>Tạo phòng tới 8 người, gửi mã cho bạn bè là vào</span></a></li>
+        <li><a href="/choi-aoe-co-khan-gia/"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span><span><b>Mời khách xem trận</b>Khách mời xem 8 người đang thi đấu ở chế độ khán giả</span></a></li>
+        <li><a href="/xem-lai-tran-aoe-replay/"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 109-9 9.7 9.7 0 00-6.7 2.8L3 8"/><path d="M3 3v5h5M12 7v5l3 2"/></svg></span><span><b>Xem lại toàn bộ trận cũ</b>Rút kinh nghiệm và học hỏi cách đánh của đối thủ</span></a></li>
+        <li><a href="/choi-aoe-tren-macbook/"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M2 20h20"/></svg></span><span><b>Có ứng dụng cho MacBook</b>Chạy trên MacBook chip Apple M1, M2, M3, M4</span></a></li>
+      </ul>
       <div class="btns">
         <a class="btn primary" data-dl="win" href="#tai-ve">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.5l7.5-1v7H3zm8.5-1.2L21 3v8.5h-9.5zM3 12.5h7.5v7L3 18.5zm8.5 0H21V21l-9.5-1.3z"/></svg>
