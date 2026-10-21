@@ -18,3 +18,8 @@
 
 ## Từ khóa agent phát hiện thêm
 
+| Ưu tiên | Từ khóa | Cụm / trang đích / nguồn |
+|---|---|---|
+| 2 | egoplay / gplay / gametv plus aoe (so sánh) | trang so sánh (sau) — nguồn: WebSearch 2026-10-21, top kết quả "chơi aoe online miễn phí" |
+| 3 | download aoe / cách tải đế chế online | / hoặc trang tải — nguồn: WebSearch 2026-10-21 (hoanghamobile, fptshop) |
+| 3 | chơi đế chế bằng radmin / hamachi (thay thế) | /choi-aoe-online-mien-phi/ — nguồn: WebSearch 2026-10-21 |
