@@ -1,8 +1,8 @@
 ﻿# SuperAoE website
 
-Trang giới thiệu SuperAoE: chơi Đế Chế (AoE1 Rise of Rome) online, xem trực tiếp, lưu và xem lại replay, bản Windows và MacBook.
+Trang giới thiệu SuperAoE: chơi Đế Chế (AoE1 Rise of Rome) online, khán giả xem trực tiếp; bản Windows (bản MacBook đang thử nghiệm).
 
-Trang tĩnh một file (`index.html`), không cần build.
+Trang tĩnh (`index.html` + các trang đích dạng thư mục), không cần build. Agent SEO: `.claude/agents/seo-agent.md`, dữ liệu trong `seo/`.
 
 ## Xem trên máy
 Mở `index.html` bằng trình duyệt, hoặc:

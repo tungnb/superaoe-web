@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SuperAoE – Chơi Đế Chế (AoE) online miễn phí</title>
-<meta name="description" content="SuperAoE: chơi Đế Chế (Age of Empires 1 Rise of Rome) online 8 người, xem trận trực tiếp bằng đồ họa gốc, lưu và xem lại replay. Có bản cho Windows và MacBook.">
-<meta property="og:title" content="SuperAoE – Đế Chế online, xem & lưu replay">
-<meta property="og:description" content="Chơi AoE online 8 người, 3 ghế khán giả xem trực tiếp, lưu replay xem lại. Windows & macOS.">
+<meta name="description" content="SuperAoE: chơi Đế Chế (Age of Empires 1 Rise of Rome) online miễn phí, 8 người chơi + 3 khán giả xem trực tiếp. Không cần VPN. Windows 10/11.">
+<meta property="og:title" content="SuperAoE – Chơi Đế Chế online, có khán giả xem trực tiếp">
+<meta property="og:description" content="Chơi AoE online 8 người, 3 ghế khán giả xem trực tiếp, không cần VPN hay mở cổng. Miễn phí cho Windows.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://superaoe.com/">
 <meta property="og:image" content="https://superaoe.com/img/spectator.jpg">
@@ -62,6 +62,70 @@
   "@id": "https://superaoe.com/#org"
  },
  "screenshot": "https://superaoe.com/img/spectator.jpg"
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "SuperAoE có mất phí không?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Không. Tải về, đăng ký tài khoản và chơi miễn phí."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Khán giả có thấy được sương mù của người chơi không?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Khán giả thấy toàn bản đồ và có thể chuyển sang góc nhìn của từng người chơi bằng phím 1–8. Trận được phát trễ một khoảng để tránh lộ thông tin cho người đang chơi."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Có cần VPN, Hamachi hay mở cổng không?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Không. Dữ liệu game đi qua máy chủ của SuperAoE trên Cloudflare, chỉ cần có Internet là vào phòng được."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Có cần cài Age of Empires trước không?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Không. Gói SuperAoE.zip đã có sẵn Age of Empires 1 Rise of Rome, giải nén là chạy."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "SuperAoE có bản cho MacBook chưa?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Chưa. Bản cho Mac chip Apple (M1 trở lên) đang thử nghiệm và chưa phát hành. Mac chip Intel chưa nằm trong kế hoạch hỗ trợ."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Một phòng chơi được bao nhiêu người?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Tối đa 8 người chơi và 3 khán giả. Mỗi phòng nhận tối đa 15 thành viên."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Mất mạng giữa trận thì sao?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Phòng giữ chỗ cho bạn 60 giây và tự nối lại khi game vẫn đang mở. Nếu tắt hẳn game giữa ván thì người chơi không vào lại được trận đó, còn khán giả thì vào lại được."
+   }
+  }
+ ]
 }
 </script>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -144,32 +208,13 @@ h2 { font-family: var(--serif); font-size: clamp(28px, 3.6vw, 40px); line-height
 .card h3 { margin: 0 0 6px; font-size: 18px; }
 .card p { margin: 0; color: var(--dim); font-size: 15px; }
 
-/* Replay feature split */
+/* Feature split */
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
 .steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; }
 .steps li { display: grid; grid-template-columns: 40px 1fr; gap: 14px; }
 .steps .n { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--gold2); color: var(--gold); display: grid; place-items: center; font-weight: 700; font-family: var(--serif); }
-.steps h4 { margin: 2px 0 2px; font-size: 16px; }
+.steps h3, .steps h4 { margin: 2px 0 2px; font-size: 16px; }
 .steps p { margin: 0; color: var(--dim); font-size: 15px; }
-.player { border: 1px solid var(--gold2); border-radius: 14px; background: var(--panel); overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,.45); }
-.player .head { padding: 14px 16px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 10px; }
-.player .head b { font-size: 15px; }
-.player .head span { font-size: 12px; color: var(--dim); }
-.rlist { list-style: none; margin: 0; padding: 6px; }
-.rlist li { display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: center; padding: 10px; border-radius: 8px; font-size: 14px; }
-.rlist li:hover { background: var(--panel2); }
-.rlist .t { font-weight: 600; }
-.rlist .d { color: var(--dim); font-size: 12px; }
-.rlist .s { color: var(--dim); font-size: 12px; font-variant-numeric: tabular-nums; }
-.play { width: 32px; height: 32px; border-radius: 50%; border: 0; background: linear-gradient(#e8c35a, #b8902f); color: var(--ink); display: grid; place-items: center; cursor: pointer; }
-.play svg { width: 14px; height: 14px; }
-.timeline { padding: 14px 16px 16px; border-top: 1px solid var(--line); }
-.track { height: 6px; background: #1d160e; border-radius: 3px; position: relative; }
-.track .fill { position: absolute; inset: 0 auto 0 0; width: 0; background: linear-gradient(90deg, var(--gold2), var(--gold)); border-radius: 3px; transition: width .25s linear; }
-.tl-row { display: flex; justify-content: space-between; margin-top: 8px; font-size: 12px; color: var(--dim); font-variant-numeric: tabular-nums; }
-.speeds { display: flex; gap: 6px; }
-.speeds button { font: inherit; font-size: 11px; background: var(--panel2); color: var(--dim); border: 1px solid var(--line); border-radius: 5px; padding: 2px 7px; cursor: pointer; }
-.speeds button.on { color: var(--ink); background: var(--gold); border-color: var(--gold); }
 
 /* U lobby */
 .lobby { display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; align-items: center; }
@@ -238,9 +283,9 @@ footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wr
       <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2l11 4v9c0 7.2-4.6 12.6-11 15-6.4-2.4-11-7.8-11-15V6z" fill="#3a2d1e" stroke="#e8c35a" stroke-width="1.6"/><path d="M10 20l2-8 4 4 4-4 2 8z" fill="#e8c35a"/></svg>
       SuperAoE
     </a>
-    <nav class="nav">
+    <nav class="nav" aria-label="Menu chính">
       <a href="#tinh-nang">Tính năng</a>
-      <a href="#replay">Replay</a>
+      <a href="#khan-gia">Khán giả</a>
       <a href="#macbook">MacBook</a>
       <a href="#hoi-dap">Hỏi đáp</a>
       <a class="cta" href="#tai-ve">Tải về</a>
@@ -252,25 +297,25 @@ footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wr
 <section class="hero">
   <div class="wrap">
     <div>
-      <span class="eyebrow"><span class="dot"></span> Đế Chế online · Xem trực tiếp · Lưu replay</span>
-      <h1>Chơi Đế Chế online.<br><span class="g">Xem lại mọi trận đấu.</span></h1>
-      <p class="lead">SuperAoE đưa Age of Empires: Rise of Rome lên mạng: 8 người chơi, 3 ghế khán giả xem trực tiếp bằng đồ họa gốc của game, và mỗi trận được lưu thành replay để xem lại bất cứ lúc nào. Chạy trên Windows và cả MacBook.</p>
+      <span class="eyebrow"><span class="dot"></span> Đế Chế online · Xem trực tiếp · Không cần VPN</span>
+      <h1>Chơi Đế Chế online.<br><span class="g">Có khán giả xem trực tiếp.</span></h1>
+      <p class="lead">SuperAoE đưa Age of Empires: Rise of Rome lên mạng: 8 người chơi, 3 ghế khán giả xem trực tiếp bằng đồ họa gốc của game, không cần VPN hay mở cổng router. Miễn phí cho Windows 10/11, bản MacBook đang thử nghiệm.</p>
       <div class="btns">
         <a class="btn primary" data-dl="win" href="#tai-ve">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.5l7.5-1v7H3zm8.5-1.2L21 3v8.5h-9.5zM3 12.5h7.5v7L3 18.5zm8.5 0H21V21l-9.5-1.3z"/></svg>
           <span>Tải cho Windows<small>SuperAoE.zip · có sẵn game</small></span>
         </a>
-        <a class="btn ghost" href="#macbook">
+        <a class="btn ghost" href="/choi-aoe-tren-macbook/">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8s1.9.8 3.2.8c1.3 0 2.1-1.2 2.9-2.4.9-1.4 1.3-2.7 1.3-2.8-.1 0-2.4-.9-2.4-4zM14 5.4c.7-.8 1.1-1.9 1-3-1 0-2.1.6-2.8 1.4-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.5 2.8-1.3z"/></svg>
-          <span>Bản cho MacBook<small>Apple Silicon M1–M4</small></span>
+          <span>Bản cho MacBook<small>Đang thử nghiệm · sắp phát hành</small></span>
         </a>
       </div>
       <p class="meta">Miễn phí · Không cần VPN hay mở cổng · Máy chủ chạy trên Cloudflare</p>
     </div>
 
     <figure class="screen">
-      <a href="img/spectator.jpg" target="_blank" rel="noopener"><img src="img/spectator.jpg" width="1366" height="768" alt="Ảnh chụp thật: khán giả SuperAoE xem lại trận 1v1, thấy nhà chính, dân làng và bản đồ nhỏ"></a>
-      <figcaption><span class="live">ẢNH THẬT</span> Góc nhìn khán giả khi xem lại một trận 1v1, đồ họa gốc của game</figcaption>
+      <a href="img/spectator.jpg" target="_blank" rel="noopener"><img src="img/spectator.jpg" width="1366" height="768" fetchpriority="high" alt="Ảnh chụp thật: góc nhìn khán giả SuperAoE trong trận Đế Chế 1v1, thấy nhà chính, dân làng và bản đồ nhỏ"></a>
+      <figcaption><span class="live">ẢNH THẬT</span> Góc nhìn khán giả trong một trận 1v1, đồ họa gốc của game</figcaption>
     </figure>
   </div>
 </section>
@@ -279,7 +324,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wr
   <div class="wrap">
     <div class="kicker">Tính năng</div>
     <h2>Mọi thứ để chơi và xem Đế Chế cùng nhau</h2>
-    <p class="sub">Dùng chính game gốc, không vẽ lại, không giả lập đồ họa. SuperAoE chỉ lo phần mạng, phòng chờ, khán giả và replay.</p>
+    <p class="sub">Dùng chính game gốc, không vẽ lại, không giả lập đồ họa. SuperAoE chỉ lo phần mạng, phòng chờ và khán giả.</p>
     <div class="grid3">
       <div class="card">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg></div>
@@ -293,13 +338,13 @@ footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wr
       </div>
       <div class="card">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 109-9 9.7 9.7 0 00-6.7 2.8L3 8"/><path d="M3 3v5h5M12 7v5l3 2"/></svg></div>
-        <h3>Lưu & xem lại replay</h3>
-        <p>Mỗi trận được ghi thành một file replay nhỏ. Xem lại bằng chính game, tua nhanh, đổi góc nhìn, gửi cho bạn bè phân tích.</p>
+        <h3>Rớt mạng không mất chỗ</h3>
+        <p>Mất kết nối giữa trận, phòng giữ chỗ cho bạn 60 giây và tự nối lại khi game vẫn đang mở. Khán giả vào lại trận đang đánh bất cứ lúc nào.</p>
       </div>
       <div class="card">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M2 20h20"/></svg></div>
-        <h3>Có bản cho MacBook</h3>
-        <p>SuperAoE.app cho Mac chip Apple (M1–M4), kèm sẵn Wine và game. Mở là chơi, không cần cài Windows hay Boot Camp.</p>
+        <h3>Bản MacBook sắp phát hành</h3>
+        <p>Đang thử nghiệm bản cho Mac chip Apple (M1 trở lên), đóng gói sẵn Wine và game. Chưa phát hành, hiện SuperAoE chạy trên Windows.</p>
       </div>
       <div class="card">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M20 20V10M4 10c0-3 3.6-6 8-6s8 3 8 6"/><circle cx="12" cy="8" r="1.5"/></svg></div>
@@ -319,7 +364,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wr
   <div class="wrap">
     <div class="kicker">Ảnh trong game</div>
     <h2>Đúng Đế Chế bạn đã chơi</h2>
-    <p class="sub">Các ảnh dưới đây được chụp trực tiếp từ game khi SuperAoE phát lại một trận đã ghi, không qua chỉnh sửa.</p>
+    <p class="sub">Các ảnh dưới đây được chụp trực tiếp từ game ở chế độ khán giả của SuperAoE, không qua chỉnh sửa.</p>
     <div class="shots">
       <figure class="shot big">
         <a href="img/spectator.jpg" target="_blank" rel="noopener"><img src="img/spectator.jpg" width="1366" height="768" loading="lazy" alt="Góc nhìn khán giả trong trận: nhà chính, dân làng, rừng và đàn voi"></a>
@@ -330,37 +375,31 @@ footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wr
         <figcaption><b>Game gốc Rise of Rome</b>SuperAoE mở chính bản game quen thuộc, không vẽ lại.</figcaption>
       </figure>
       <figure class="shot">
-        <a href="img/summary.jpg" target="_blank" rel="noopener"><img src="img/summary.jpg" width="960" height="540" loading="lazy" alt="Bảng tổng kết thành tích sau khi xem hết trận"></a>
-        <figcaption><b>Xem đến tận bảng tổng kết</b>Replay chạy hết trận, ra đúng bảng thành tích như người chơi thật.</figcaption>
+        <a href="img/summary.jpg" target="_blank" rel="noopener"><img src="img/summary.jpg" width="960" height="540" loading="lazy" alt="Bảng tổng kết thành tích Đế Chế sau khi khán giả xem hết trận"></a>
+        <figcaption><b>Xem đến tận bảng tổng kết</b>Khán giả theo trận tới lúc kết thúc, ra đúng bảng thành tích như người chơi.</figcaption>
       </figure>
     </div>
   </div>
 </section>
 
-<section id="replay">
+<section id="khan-gia">
   <div class="wrap split">
     <div>
-      <div class="kicker">Replay</div>
-      <h2>Trận nào cũng xem lại được</h2>
-      <p class="sub" style="margin-bottom:28px">Đế Chế bản gốc không có tính năng ghi trận. SuperAoE ghi lại toàn bộ lệnh của người chơi, rồi cho game chạy lại y hệt, nên replay giống trận thật đến từng bước.</p>
+      <div class="kicker">Khán giả</div>
+      <h2>Xem trực tiếp như ngồi cạnh người chơi</h2>
+      <p class="sub" style="margin-bottom:28px">Đế Chế bản gốc không có chế độ khán giả. SuperAoE cho game chạy theo đúng dòng lệnh của người chơi, nên khán giả thấy trận y hệt bằng chính đồ họa gốc.</p>
       <ol class="steps">
-        <li><span class="n">1</span><div><h4>Chơi hoặc xem như bình thường</h4><p>Máy chủ ghi lại dòng lệnh của cả 8 người chơi trong lúc trận diễn ra.</p></div></li>
-        <li><span class="n">2</span><div><h4>Replay được lưu tự động</h4><p>Hết trận, file <code>.aoerep</code> chỉ vài trăm KB nằm trong mục Replay của launcher.</p></div></li>
-        <li><span class="n">3</span><div><h4>Xem lại bằng game gốc</h4><p>Bấm Xem: game mở ở chế độ khán giả, thấy cả bản đồ, đổi góc nhìn 1–8, tua nhanh.</p></div></li>
-        <li><span class="n">4</span><div><h4>Chia sẻ cho bạn bè</h4><p>Gửi file replay qua Zalo, Messenger hay Discord. Ai có SuperAoE đều mở được.</p></div></li>
+        <li><span class="n">1</span><div><h3>Ngồi ghế khán giả</h3><p>Ghế Vua ở giữa hoặc hai ghế Thái giám hai bên, đầu phòng chữ U.</p></div></li>
+        <li><span class="n">2</span><div><h3>Chủ phòng bấm Bắt đầu</h3><p>Game của khán giả tự mở ở chế độ chỉ xem, không ra lệnh được cho quân.</p></div></li>
+        <li><span class="n">3</span><div><h3>Xem toàn bản đồ</h3><p>Bấm phím 1–8 để theo góc nhìn từng người chơi, thấy cả hướng họ trỏ quân.</p></div></li>
+        <li><span class="n">4</span><div><h3>Vào lại bất cứ lúc nào</h3><p>Trận được phát trễ để không lộ thông tin cho người đang chơi. Khán giả rời đi vẫn vào lại trận đang diễn ra được.</p></div></li>
       </ol>
+      <p style="margin-top:22px"><a href="/choi-aoe-co-khan-gia/">Hướng dẫn chơi AoE có khán giả chi tiết →</a></p>
     </div>
-
-    <div class="player" aria-label="Minh họa danh sách replay">
-      <div class="head"><b>Replay đã lưu</b><span>4 trận · 1,3 MB</span></div>
-      <ul class="rlist" id="rlist"></ul>
-      <div class="timeline">
-        <div class="track"><div class="fill" id="fill"></div></div>
-        <div class="tl-row"><span id="tnow">0:00 / 34:12</span>
-          <span class="speeds" id="speeds"><button>1×</button><button class="on">2×</button><button>4×</button><button>8×</button></span>
-        </div>
-      </div>
-    </div>
+    <figure class="shot">
+      <a href="img/summary.jpg" target="_blank" rel="noopener"><img src="img/summary.jpg" width="960" height="540" loading="lazy" alt="Màn hình bảng tổng kết Age of Empires Rise of Rome mà khán giả thấy khi trận kết thúc"></a>
+      <figcaption><b>Đúng màn hình của game gốc</b>Khán giả không xem video hay luồng phát hình, mà chạy chính game Rise of Rome.</figcaption>
+    </figure>
   </div>
 </section>
 
@@ -420,16 +459,16 @@ footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wr
       <div class="os">
         <div class="osh">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8s1.9.8 3.2.8c1.3 0 2.1-1.2 2.9-2.4.9-1.4 1.3-2.7 1.3-2.8-.1 0-2.4-.9-2.4-4zM14 5.4c.7-.8 1.1-1.9 1-3-1 0-2.1.6-2.8 1.4-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.5 2.8-1.3z"/></svg>
-          <div><h3>MacBook <span class="badge new" id="macBadge">MỚI</span></h3><p class="req">macOS 13 trở lên · chip Apple M1, M2, M3, M4</p></div>
+          <div><h3>MacBook <span class="badge" id="macBadge">SẮP CÓ</span></h3><p class="req">Đang thử nghiệm · chip Apple M1 trở lên</p></div>
         </div>
         <ul>
-          <li>Đã kèm Wine và game, không cần cài thêm gì</li>
-          <li>Lần mở đầu tiên chuẩn bị môi trường khoảng 1–2 phút</li>
-          <li>Xem hướng dẫn mở app ở mục bên dưới</li>
+          <li>Đóng gói sẵn Wine và game, không cần cài Windows</li>
+          <li>Chưa thử trên máy Mac thật, sẽ phát hành khi ổn định</li>
+          <li>Xem tình trạng mới nhất ở trang hướng dẫn MacBook</li>
         </ul>
-        <a class="btn primary" data-dl="mac" href="#macbook">
+        <a class="btn ghost" data-dl="mac" href="/choi-aoe-tren-macbook/">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg>
-          <span data-mac-label>Tải SuperAoE cho Mac</span>
+          <span data-mac-label>Bản Mac sắp phát hành</span>
         </a>
       </div>
     </div>
@@ -440,24 +479,18 @@ footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wr
   <div class="wrap mac">
     <div>
       <div class="kicker">MacBook</div>
-      <h2>Đế Chế trên MacBook, đơn giản như trên Windows</h2>
-      <p class="sub" style="margin-bottom:20px">Game gốc là phần mềm Windows. SuperAoE cho Mac đóng gói sẵn Wine, chạy qua Rosetta 2 trên chip Apple, vẽ hình bằng OpenGL nên mượt cả khi cắm màn hình ngoài.</p>
+      <h2>Đế Chế trên MacBook: đang thử nghiệm</h2>
+      <p class="sub" style="margin-bottom:20px">Game gốc là phần mềm Windows. Bản SuperAoE cho Mac đang được thử nghiệm: đóng gói sẵn Wine và game, chạy trên chip Apple qua Rosetta 2. Bản này chưa phát hành.</p>
       <ul class="ticks">
-        <li><b>Chơi chung phòng với Windows:</b> cùng máy chủ, cùng tài khoản, cùng phòng.</li>
-        <li><b>Đủ cả khán giả và replay:</b> ngồi ghế Vua hay xem lại trận cũ đều được.</li>
-        <li><b>Không đụng vào hệ thống:</b> Wine và game nằm trong app, xóa app là sạch.</li>
+        <li><b>Thiết kế để chơi chung phòng với Windows:</b> cùng máy chủ, cùng tài khoản, cùng phòng.</li>
+        <li><b>Không đụng vào hệ thống:</b> Wine và game nằm gọn trong app.</li>
       </ul>
     </div>
     <div>
       <div class="card">
-        <h3 style="margin-bottom:12px">Mở app lần đầu</h3>
-        <ol class="steps" style="gap:12px">
-          <li><span class="n">1</span><div><p>Giải nén file tải về, kéo <b>SuperAoE.app</b> vào thư mục Applications.</p></div></li>
-          <li><span class="n">2</span><div><p>Chuột phải vào app → <b>Open</b> → <b>Open</b>. macOS chỉ hỏi lần đầu vì app chưa ký bởi Apple.</p></div></li>
-          <li><span class="n">3</span><div><p>Nếu macOS báo app “bị hỏng”, mở Terminal và chạy lệnh:</p></div></li>
-        </ol>
-        <div class="code" style="margin-top:12px">xattr -dr com.apple.quarantine /Applications/SuperAoE.app</div>
-        <div class="note">Máy chưa có Rosetta 2 sẽ được macOS hỏi cài ở lần mở đầu tiên. Bấm Install và chờ khoảng một phút.</div>
+        <h3 style="margin-bottom:12px">Trong lúc chờ bản Mac</h3>
+        <p>Trang hướng dẫn chơi Đế Chế trên MacBook ghi rõ tình trạng bản Mac và các cách khác người dùng Mac thường thử, kèm hạn chế của từng cách.</p>
+        <p style="margin-top:14px"><a href="/choi-aoe-tren-macbook/">Chơi AoE trên MacBook →</a></p>
       </div>
     </div>
   </div>
@@ -470,11 +503,11 @@ footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wr
     <div class="faq">
       <details open><summary>SuperAoE có mất phí không?</summary><p>Không. Tải về, đăng ký tài khoản và chơi miễn phí.</p></details>
       <details><summary>Khán giả có thấy được sương mù của người chơi không?</summary><p>Khán giả thấy toàn bản đồ và có thể chuyển sang góc nhìn của từng người chơi bằng phím 1–8. Trận được phát trễ một khoảng để tránh lộ thông tin cho người đang chơi.</p></details>
-      <details><summary>Replay được lưu ở đâu, có nặng không?</summary><p>Replay chỉ chứa lệnh của người chơi, không phải video, nên một trận dài cũng chỉ vài trăm KB. File nằm trong mục Replay của launcher và có thể gửi cho người khác.</p></details>
-      <details><summary>Xem replay có cần mạng không?</summary><p>Không. Replay đã lưu được xem hoàn toàn trên máy bằng game gốc.</p></details>
-      <details><summary>MacBook chip Intel có chạy được không?</summary><p>Bản Mac hiện được tối ưu cho chip Apple (M1 trở lên). Mac Intel chưa được hỗ trợ chính thức.</p></details>
-      <details><summary>Người chơi Mac và Windows có vào chung phòng được không?</summary><p>Được. Hai bản dùng chung máy chủ, tài khoản và phòng chờ.</p></details>
-      <details><summary>Mất mạng giữa trận thì sao?</summary><p>Phòng giữ chỗ cho bạn 60 giây để kết nối lại. Khán giả có thể vào lại trận đang diễn ra bất cứ lúc nào.</p></details>
+      <details><summary>Có cần VPN, Hamachi hay mở cổng không?</summary><p>Không. Dữ liệu game đi qua máy chủ của SuperAoE trên Cloudflare, chỉ cần có Internet là vào phòng được.</p></details>
+      <details><summary>Có cần cài Age of Empires trước không?</summary><p>Không. Gói SuperAoE.zip đã có sẵn Age of Empires 1 Rise of Rome, giải nén là chạy.</p></details>
+      <details><summary>SuperAoE có bản cho MacBook chưa?</summary><p>Chưa. Bản cho Mac chip Apple (M1 trở lên) đang thử nghiệm và chưa phát hành. Mac chip Intel chưa nằm trong kế hoạch hỗ trợ.</p></details>
+      <details><summary>Một phòng chơi được bao nhiêu người?</summary><p>Tối đa 8 người chơi và 3 khán giả. Mỗi phòng nhận tối đa 15 thành viên.</p></details>
+      <details><summary>Mất mạng giữa trận thì sao?</summary><p>Phòng giữ chỗ cho bạn 60 giây và tự nối lại khi game vẫn đang mở. Nếu tắt hẳn game giữa ván thì người chơi không vào lại được trận đó, còn khán giả thì vào lại được.</p></details>
     </div>
   </div>
 </section>
@@ -482,7 +515,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wr
 
 <footer>
   <div class="wrap">
-    <span>© <span id="yr">2026</span> SuperAoE · Dự án cộng đồng của người chơi Đế Chế Việt Nam · <a href="/choi-aoe-online-mien-phi/" style="color:inherit">Chơi AoE online miễn phí</a></span>
+    <span>© <span id="yr">2026</span> SuperAoE · Dự án cộng đồng của người chơi Đế Chế Việt Nam · <a href="/choi-aoe-online-mien-phi/" style="color:inherit">Chơi AoE online miễn phí</a> · <a href="/choi-aoe-co-khan-gia/" style="color:inherit">Chơi AoE có khán giả</a> · <a href="/choi-aoe-tren-macbook/" style="color:inherit">AoE trên MacBook</a></span>
     <span>Age of Empires là thương hiệu của Microsoft. SuperAoE không liên kết với Microsoft.</span>
   </div>
 </footer>
@@ -495,12 +528,12 @@ const MAC_URL = "";
 
 document.querySelectorAll('[data-dl="win"]').forEach(a => { a.href = WIN_URL; a.setAttribute("download", ""); });
 document.querySelectorAll('[data-dl="mac"]').forEach(a => {
-  if (MAC_URL) { a.href = MAC_URL; a.setAttribute("download", ""); return; }
-  a.href = "#macbook";
-  const label = a.querySelector("[data-mac-label]");
-  if (label) label.textContent = "Bản Mac sắp phát hành";
+  if (MAC_URL) { a.href = MAC_URL; a.setAttribute("download", ""); a.className = "btn primary"; }
 });
-if (!MAC_URL) { const b = document.getElementById("macBadge"); b.textContent = "SẮP CÓ"; b.className = "badge"; }
+if (MAC_URL) {
+  const b = document.getElementById("macBadge"); b.textContent = "MỚI"; b.className = "badge new";
+  document.querySelectorAll("[data-mac-label]").forEach(l => l.textContent = "Tải SuperAoE cho Mac");
+}
 document.getElementById("yr").textContent = new Date().getFullYear();
 
 // U lobby seats
@@ -516,32 +549,6 @@ function seat(group, x, y, i) {
 }
 for (let k = 0; k < 4; k++) { seat("seatsL", 4, 100 + k * 52, k * 2); seat("seatsR", 316, 100 + k * 52, k * 2 + 1); }
 
-// Replay list demo
-const reps = [
-  ["Quan Nhất vs Quan Nhị", "1v1 · Đồi núi · hôm nay", "34:12", 2052],
-  ["Đội Bắc vs Đội Nam", "4v4 · Ven biển · hôm qua", "51:40", 3100],
-  ["Giải cuối tuần · Bán kết", "2v2 · Lục địa · 19/10", "28:05", 1685],
-  ["Luyện công thủ", "1v1 · Sa mạc · 17/10", "19:47", 1187],
-];
-const fmt = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
-const list = document.getElementById("rlist"), fill = document.getElementById("fill"), tnow = document.getElementById("tnow");
-let cur = 0, pos = 0, speed = 2, timer = null;
-function show() { fill.style.width = (pos / reps[cur][3] * 100) + "%"; tnow.textContent = `${fmt(pos)} / ${reps[cur][2]}`; }
-reps.forEach(([t, d, len], i) => {
-  const li = document.createElement("li");
-  li.innerHTML = `<div><div class="t">${t}</div><div class="d">${d}</div></div><span class="s">${len}</span>
-    <button class="play" aria-label="Xem ${t}"><svg viewBox="0 0 14 14" fill="currentColor"><path d="M3 1.5v11l9-5.5z"/></svg></button>`;
-  li.querySelector("button").onclick = () => {
-    cur = i; pos = 0; show(); clearInterval(timer);
-    timer = setInterval(() => { pos = Math.min(reps[cur][3], pos + speed * 6); show(); if (pos >= reps[cur][3]) clearInterval(timer); }, 100);
-  };
-  list.appendChild(li);
-});
-document.querySelectorAll("#speeds button").forEach(b => b.onclick = () => {
-  document.querySelectorAll("#speeds button").forEach(x => x.classList.remove("on"));
-  b.classList.add("on"); speed = parseInt(b.textContent, 10);
-});
-show();
 </script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 
 > SuperAoE là nền tảng miễn phí để chơi Đế Chế (Age of Empires 1 Rise of Rome, AoE1) online trên Windows 10/11: tải một gói có sẵn game, đăng ký tài khoản, vào phòng bằng mã 6 ký tự. Không cần VPN, Hamachi hay mở cổng router. Mỗi phòng có 8 ghế người chơi và 3 ghế khán giả xem trực tiếp bằng đồ họa gốc của game. SuperAoE không liên kết với Microsoft.
 
-Thông tin chính (cập nhật 2026-10-21):
+Thông tin chính (cập nhật 2026-10-22):
 - Giá: miễn phí.
 - Tải: https://superaoe.com/download (SuperAoE.zip, khoảng 160 MB, đã kèm game).
 - Hệ điều hành: Windows 10, Windows 11. Bản MacBook (chip Apple) đang thử nghiệm, chưa phát hành.
@@ -16,10 +16,13 @@ Thông tin chính (cập nhật 2026-10-21):
 
 - [Trang chủ SuperAoE](https://superaoe.com/): giới thiệu, tính năng, phòng chờ chữ U, tải về.
 - [Chơi AoE online miễn phí](https://superaoe.com/choi-aoe-online-mien-phi/): hướng dẫn 5 bước, so sánh với LAN ảo, GameRanger, Voobly, XArena, hỏi đáp.
+- [Chơi AoE có khán giả](https://superaoe.com/choi-aoe-co-khan-gia/): chế độ khán giả cho AoE1, cách xem trực tiếp, so sánh với livestream.
+- [Chơi AoE trên MacBook](https://superaoe.com/choi-aoe-tren-macbook/): tình trạng bản Mac (đang thử nghiệm) và các cách khác cho Mac chip Apple.
 
 ## Trả lời nhanh
 
 - Chơi AoE / Đế Chế online miễn phí ở đâu? Tải SuperAoE tại https://superaoe.com/download, đăng ký tài khoản, tạo hoặc vào phòng. Miễn phí, có sẵn game.
 - Chơi Đế Chế online có cần VPN hay mở cổng không? Với SuperAoE thì không cần.
 - Chơi AoE có khán giả xem trực tiếp được không? Được, mỗi phòng SuperAoE có 3 ghế khán giả xem trực tiếp bằng đồ họa gốc.
-- Chơi AoE trên MacBook được không? Bản Mac của SuperAoE đang thử nghiệm, chưa phát hành.
+- Chơi AoE trên MacBook được không? Bản Mac của SuperAoE đang thử nghiệm, chưa phát hành; trong lúc chờ có thể dùng máy ảo Windows 11 ARM hoặc CrossOver (chưa được SuperAoE kiểm chứng). Chi tiết: https://superaoe.com/choi-aoe-tren-macbook/
+- AoE 1 có chế độ khán giả không? Bản gốc không có; SuperAoE thêm 3 ghế khán giả mỗi phòng. Chi tiết: https://superaoe.com/choi-aoe-co-khan-gia/
