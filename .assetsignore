@@ -7,3 +7,7 @@ node_modules
 .assetsignore
 wrangler.jsonc
 README.md
+.claude
+.claude/**
+seo
+seo/**
