@@ -1,6 +1,6 @@
 # Sự thật sản phẩm SuperAoE (nguồn cho mọi nội dung SEO)
 
-Cập nhật: 2026-10-22 (launcher 0.2.5, `MAC_URL` trong index.html = rỗng; nguồn: `C:\SuperAoE\HUONG DAN.txt`, xtv-cf/wrangler.toml DELAY_SECONDS="0").
+Cập nhật: 2026-10-22 (launcher 0.2.6, `MAC_URL` trong index.html = https://superaoe.com/download/mac; nguồn: `C:\SuperAoE\HUONG DAN.txt`, xtv-cf/wrangler.toml DELAY_SECONDS="0").
 
 Đã có thật:
 - Miễn phí; tải `SuperAoE.zip` cho Windows 10/11 tại https://superaoe.com/download (~158 MB, có sẵn game Age of Empires 1 Rise of Rome).
@@ -15,6 +15,9 @@ Cập nhật: 2026-10-22 (launcher 0.2.5, `MAC_URL` trong index.html = rỗng; n
 - Rớt mạng được giữ chỗ 60 giây (game còn mở thì tự nối lại; nếu game bị tắt giữa ván thì người chơi không vào lại được, khán giả thì được).
 - Launcher tự cập nhật.
 
-CHƯA phát hành / chưa kiểm chứng (hoặc chỉ là thử nghiệm):
-- Bản MacBook: CÓ bản thử nghiệm từ 22/10/2026 tại https://superaoe.com/download/mac (SuperAoE_Mac_M.zip ~80 MB, chip Apple M1+, Wine). Cài: chạy "CAI DAT SuperAoE.command" (lần đầu cần Internet, 10–15 phút). Chưa ký với Apple → macOS 15 cần chạy bằng Terminal hoặc Open Anyway. Luôn gọi là "bản thử nghiệm", có thể còn lỗi (nhất là âm thanh). Mac Intel: không hỗ trợ.
-- Tự lưu replay trong launcher: CHƯA có.
+- **Bản Mac (chính thức từ 22/10/2026, chủ dự án xác nhận chạy mượt trên MacBook M):** https://superaoe.com/download/mac (SuperAoE_Mac_M.zip ~80 MB), cho MacBook chip Apple M1, M2, M3, M4…; chạy game qua Wine đóng gói sẵn; cài: giải nén, chuột phải "CAI DAT SuperAoE.command" → Open (lần đầu cần Internet, 10–15 phút) → SuperAoE.app trong /Applications; app tự cập nhật trong app; chơi chung phòng với Windows. File cài chưa ký với Apple → macOS 15 có thể cần Terminal hoặc Open Anyway (hướng dẫn ở /choi-aoe-tren-macbook/#cai-dat). KHÔNG còn gọi là "thử nghiệm"/"beta". Mac chip Intel: KHÔNG hỗ trợ.
+- **Replay / xem lại trận (đã có, launcher 0.2.5+, thanh điều khiển 0.2.6):** mọi trận online tự lưu .aoerep trên máy chủ. Launcher: menu "Lịch sử trận / Xem lại" liệt kê trận của bạn, bấm để xem; "Mở file replay" mở file .aoerep. Xem bằng chính game gốc (mô phỏng đúng từng lệnh, không phải video), thấy toàn bản đồ như khán giả. Thanh điều khiển: về đầu, lùi 30/10 giây, dừng/chạy, tới 10/30 giây, tốc độ x0.5–x8, bấm thanh tiến trình để nhảy tới thời điểm bất kỳ; phím Space/K, J/L, -/+, Home, H. Miễn phí. Cách nói chủ dự án muốn: "lưu và xem lại trận đấu cũ để rút kinh nghiệm và học hỏi từ đối thủ". Trang đích: /xem-lai-tran-aoe-replay/.
+
+Chưa kiểm chứng (không viết là có):
+- Xem replay trên bản Mac: chưa được kiểm chứng riêng (gói Mac có thể chưa có thanh điều khiển mới). Không viết riêng "xem replay trên Mac".
+- Không có số liệu người chơi/trận công khai: không bịa.

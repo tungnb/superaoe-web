@@ -57,3 +57,9 @@
 - Ký số SuperAoE.exe (Windows) và notarize bản Mac nếu có điều kiện: bớt cảnh báo SmartScreen/Gatekeeper, đỡ mất người tải.
 - Backlink: đăng bài giới thiệu ở group Facebook Đế Chế, Voz, kênh YouTube Đế Chế (nháp trong `seo/outreach/`).
 - Khán giả hiện không bị phát trễ (DELAY_SECONDS="0"): nếu muốn chống "báo bài" trong trận nghiêm túc thì cân nhắc bật lại độ trễ; website đang ghi đúng là gần như không trễ.
+
+## 2026-10-22 (replay + Mac chính thức)
+- Chủ dự án xác nhận: đã có bản cài Mac chạy mượt trên MacBook M, và tính năng lưu + xem lại replay. Bỏ hết chữ "thử nghiệm" về Mac (trang chủ, /choi-aoe-tren-macbook/, /choi-aoe-online-mien-phi/, /tai-aoe-rise-of-rome/, /choi-de-che-qua-mang/, llms.txt); thêm mục Replay + nút tải Mac đầy đủ ở hero trang chủ; title/meta/OG/Twitter/JSON-LD (operatingSystem "Windows, macOS", featureList có replay).
+- Trang mới: https://superaoe.com/xem-lai-tran-aoe-replay/ (từ khóa replay aoe, xem lại trận đế chế, lưu replay đế chế; HowTo + FAQPage + BreadcrumbList). Liên kết từ trang chủ, mọi trang đích, footer, 404.
+- Cập nhật sitemap (7 URL), llms.txt, seo/facts.md, seo/keywords.md, Quy tắc sự thật trong seo-agent.md. IndexNow gửi các URL đã đổi.
+- Cần chủ dự án quyết định: chưa kiểm chứng riêng việc xem replay trên bản Mac (gói Mac có thể chưa có thanh điều khiển mới) — website không khẳng định điều này.

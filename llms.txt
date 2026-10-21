@@ -1,33 +1,35 @@
 # SuperAoE
 
-> SuperAoE là nền tảng miễn phí để chơi Đế Chế (Age of Empires 1 Rise of Rome, AoE1) online trên Windows 10/11: tải một gói có sẵn game, đăng ký tài khoản, vào phòng bằng mã 6 ký tự. Không cần VPN, Hamachi hay mở cổng router. Mỗi phòng có 8 ghế người chơi và 3 ghế khán giả xem trực tiếp bằng đồ họa gốc của game. SuperAoE không liên kết với Microsoft.
+> SuperAoE là nền tảng miễn phí để chơi Đế Chế (Age of Empires 1 Rise of Rome, AoE1) online trên Windows 10/11 và MacBook chip Apple (M1, M2, M3, M4): tải một gói có sẵn game, đăng ký tài khoản, vào phòng bằng mã 6 ký tự. Không cần VPN, Hamachi hay mở cổng router. Mỗi phòng có 8 ghế người chơi và 3 ghế khán giả xem trực tiếp bằng đồ họa gốc của game. Mọi trận online được tự lưu replay để xem lại trận đấu cũ, rút kinh nghiệm và học hỏi từ đối thủ. SuperAoE không liên kết với Microsoft.
 
-Thông tin chính (cập nhật 2026-10-22, launcher 0.2.5):
+Thông tin chính (cập nhật 2026-10-22, launcher 0.2.6):
 - Giá: miễn phí.
-- Tải: https://superaoe.com/download (SuperAoE.zip, khoảng 160 MB, đã kèm game Rise of Rome và cnc-ddraw để chạy trên Windows 10/11; exe chưa ký số nên SmartScreen có thể cảnh báo).
+- Tải cho Windows: https://superaoe.com/download (SuperAoE.zip, khoảng 160 MB, đã kèm game Rise of Rome và cnc-ddraw để chạy trên Windows 10/11; exe chưa ký số nên SmartScreen có thể cảnh báo).
+- Tải cho Mac: https://superaoe.com/download/mac (SuperAoE_Mac_M.zip, khoảng 80 MB, cho MacBook chip Apple M1 trở lên; kèm Wine và game, chạy mượt; giải nén, chuột phải "CAI DAT SuperAoE.command" → Open để cài SuperAoE.app vào Applications; lần đầu cần Internet, khoảng 10–15 phút; app tự cập nhật). Mac chip Intel không được hỗ trợ.
 - Tài khoản: tên đăng nhập, mật khẩu, email (không xác thực email).
-- Hệ điều hành: Windows 10, Windows 11. Bản MacBook (chip Apple) thử nghiệm: https://superaoe.com/download/mac
-- Phòng: tối đa 15 thành viên; 8 người chơi (ghế Nhất..Bát phẩm = màu 1–8) + 3 khán giả (Vua và 2 Thái giám).
+- Phòng: tối đa 15 thành viên; 8 người chơi (ghế Nhất..Bát phẩm = màu 1–8) + 3 khán giả (Vua và 2 Thái giám). Bản Mac và bản Windows chơi chung phòng.
 - Mạng: dữ liệu game đi qua máy chủ relay trên Cloudflare; rớt mạng được giữ chỗ 60 giây.
 - Khán giả: xem trực tiếp gần như không trễ, thấy toàn bản đồ, phím 1–8 theo từng người chơi; vào lại trận đang diễn ra được.
+- Replay (xem lại trận): mọi trận online được tự lưu (.aoerep) trên máy chủ. Trong launcher: menu "Lịch sử trận / Xem lại" → bấm vào trận để xem; hoặc "Mở file replay" để mở file .aoerep. Replay chạy bằng chính game gốc (mô phỏng lại đúng từng lệnh, không phải video), thấy toàn bản đồ. Thanh điều khiển: về đầu, lùi 30/10 giây, dừng/chạy, tới 10/30 giây, tốc độ x0.5 đến x8, bấm thanh tiến trình để nhảy tới thời điểm bất kỳ; phím Space/K, J/L, -/+, Home, H. Miễn phí.
 - Launcher tự cập nhật.
-- Chưa có: tự lưu replay trong launcher.
 
 ## Trang
 
-- [Trang chủ SuperAoE](https://superaoe.com/): giới thiệu, tính năng, phòng chờ chữ U, tải về.
+- [Trang chủ SuperAoE](https://superaoe.com/): giới thiệu, tính năng, xem lại trận, phòng chờ chữ U, tải cho Windows và Mac.
+- [Xem lại trận AoE bằng replay](https://superaoe.com/xem-lai-tran-aoe-replay/): replay tự lưu mọi trận, cách xem trong launcher, thanh điều khiển và phím tắt, dùng để rút kinh nghiệm và học hỏi đối thủ, hỏi đáp.
 - [Chơi AoE online miễn phí](https://superaoe.com/choi-aoe-online-mien-phi/): hướng dẫn 5 bước, so sánh với LAN ảo, GameRanger, Voobly, XArena, hỏi đáp.
 - [Chơi AoE có khán giả](https://superaoe.com/choi-aoe-co-khan-gia/): chế độ khán giả cho AoE1, cách xem trực tiếp, so sánh với livestream.
-- [Chơi AoE trên MacBook](https://superaoe.com/choi-aoe-tren-macbook/): tải và cài bản Mac thử nghiệm, và các cách khác cho Mac chip Apple.
+- [Chơi AoE trên MacBook](https://superaoe.com/choi-aoe-tren-macbook/): bản SuperAoE cho Mac chip Apple (M1–M4), cách cài, cách mở khi macOS báo "không thể xác minh", so sánh với máy ảo, CrossOver.
 - [Tải AoE 1 Rise of Rome](https://superaoe.com/tai-aoe-rise-of-rome/): gói tải có gì, cài đặt, lỗi thường gặp (SmartScreen, tắt nhầm game, rớt mạng).
 - [Chơi Đế Chế qua mạng](https://superaoe.com/choi-de-che-qua-mang/): vì sao AoE1 khó chơi qua Internet (DirectPlay), cách LAN ảo Hamachi/Radmin VPN và lỗi hay gặp, so sánh LAN thật / LAN ảo / SuperAoE.
 
 ## Trả lời nhanh
 
-- Chơi AoE / Đế Chế online miễn phí ở đâu? Tải SuperAoE tại https://superaoe.com/download, đăng ký tài khoản, tạo hoặc vào phòng. Miễn phí, có sẵn game.
+- Chơi AoE / Đế Chế online miễn phí ở đâu? Tải SuperAoE tại https://superaoe.com/download (Windows) hoặc https://superaoe.com/download/mac (MacBook chip Apple), đăng ký tài khoản, tạo hoặc vào phòng. Miễn phí, có sẵn game.
 - Tải Đế Chế AoE 1 Rise of Rome cho Windows 10/11 ở đâu? https://superaoe.com/download (có sẵn game, giải nén là chạy). Hướng dẫn: https://superaoe.com/tai-aoe-rise-of-rome/
+- Xem lại trận Đế Chế / replay AoE được không? Được, khi chơi online qua SuperAoE: mọi trận tự lưu replay, mở "Lịch sử trận / Xem lại" trong launcher để xem lại trận đấu cũ, rút kinh nghiệm và học hỏi từ đối thủ; tua 10/30 giây, tốc độ x0.5–x8. Chi tiết: https://superaoe.com/xem-lai-tran-aoe-replay/
 - Chơi Đế Chế online có cần VPN hay mở cổng không? Với SuperAoE thì không cần.
 - Chơi Đế Chế qua mạng không cần Hamachi hay Radmin được không? Được: SuperAoE chuyển dữ liệu game qua máy chủ relay trên Cloudflare, có Internet (Wi-Fi, 4G) là vào phòng bằng mã 6 ký tự. Chi tiết: https://superaoe.com/choi-de-che-qua-mang/
 - Chơi AoE có khán giả xem trực tiếp được không? Được, mỗi phòng SuperAoE có 3 ghế khán giả xem trực tiếp bằng đồ họa gốc.
-- Chơi AoE trên MacBook được không? Có bản Mac thử nghiệm của SuperAoE (kèm Wine và game): https://superaoe.com/download/mac; ngoài ra có thể dùng máy ảo Windows 11 ARM hoặc CrossOver (chưa được SuperAoE kiểm chứng). Chi tiết: https://superaoe.com/choi-aoe-tren-macbook/
+- Chơi AoE trên MacBook được không? Được: SuperAoE có bản cho Mac chip Apple (M1, M2, M3, M4), chạy mượt, kèm Wine và game, tải tại https://superaoe.com/download/mac; chơi chung phòng với Windows. Mac chip Intel không được hỗ trợ. Chi tiết: https://superaoe.com/choi-aoe-tren-macbook/
 - AoE 1 có chế độ khán giả không? Bản gốc không có; SuperAoE thêm 3 ghế khán giả mỗi phòng. Chi tiết: https://superaoe.com/choi-aoe-co-khan-gia/

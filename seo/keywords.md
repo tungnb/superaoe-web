@@ -8,6 +8,11 @@
 | 1 | chơi đế chế online miễn phí | /choi-aoe-online-mien-phi/ |
 | 1 | chơi aoe trên macbook | /choi-aoe-tren-macbook/ |
 | 1 | chơi đế chế trên macbook / mac m1 m2 | /choi-aoe-tren-macbook/ |
+| 1 | aoe trên mac / đế chế cho mac / age of empires mac m1 m2 m3 m4 | /choi-aoe-tren-macbook/ |
+| 1 | replay aoe / aoe rise of rome replay | /xem-lai-tran-aoe-replay/ |
+| 1 | xem lại trận aoe / xem lại trận đế chế | /xem-lai-tran-aoe-replay/ |
+| 2 | lưu replay đế chế / file replay aoe (.aoerep) | /xem-lai-tran-aoe-replay/ |
+| 2 | học hỏi đối thủ / rút kinh nghiệm đế chế (xem lại trận cũ) | /xem-lai-tran-aoe-replay/ |
 | 1 | chơi aoe có khán giả | /choi-aoe-co-khan-gia/ |
 | 1 | xem trực tiếp trận đế chế / aoe spectator | /choi-aoe-co-khan-gia/ |
 | 2 | tải aoe 1 rise of rome | / |
