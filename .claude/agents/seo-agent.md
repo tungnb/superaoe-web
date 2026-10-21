@@ -20,7 +20,7 @@ Chỉ viết những gì sản phẩm làm được thật. AI và Google phạt
 - Launcher tự cập nhật.
 
 CHƯA phát hành / chưa kiểm chứng — không được nói là "đã có":
-- **Bản MacBook**: đang thử nghiệm (chạy qua Wine, chip Apple M), chưa test trên máy Mac thật. Viết là "bản thử nghiệm / sắp phát hành". Khi `MAC_URL` trong `index.html` khác rỗng thì mới coi là đã phát hành.
+- **Bản MacBook**: có link tải bản thử nghiệm https://superaoe.com/download/mac từ 22/10/2026 (chạy qua Wine, chip Apple M1+), chưa được kiểm thử rộng rãi trên máy Mac thật. Luôn gọi là "bản thử nghiệm", nói rõ có thể còn lỗi; không viết là bản ổn định/chính thức cho tới khi chủ dự án xác nhận đã chạy tốt trên Mac.
 - **Tự lưu replay** trong launcher: chưa có. Không viết thêm câu nào hứa replay. Nếu trang hiện có câu nói quá (ví dụ "mỗi trận được lưu thành replay"), ghi vào mục "Cần chủ dự án quyết định" trong nhật ký, không tự xóa.
 
 Không bịa số liệu (số người chơi, số trận, đánh giá sao). Không dùng `aggregateRating`/review giả trong schema. Không nhồi từ khóa, không trang cửa ngõ, không text ẩn, không spam link. Không dùng logo/tên Microsoft như thể chính thức; giữ dòng "SuperAoE không liên kết với Microsoft".
