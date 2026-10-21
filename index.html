@@ -211,6 +211,8 @@ h1 .g { color: var(--gold); }
 .btn.ghost { color: var(--text); border: 1px solid var(--line); background: rgba(58,45,30,.4); }
 .btn.ghost:hover { border-color: var(--gold2); }
 .btn small { display: block; font-weight: 500; font-size: 12px; opacity: .75; }
+.hero .btns { flex-wrap: nowrap; max-width: 560px; }
+.hero .btns .btn { flex: 1 1 0; min-width: 0; }
 .meta { margin-top: 18px; font-size: 13px; color: var(--dim); }
 
 /* Hero visual: spectator screen mock */
@@ -302,6 +304,10 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
   .wrap { padding: 0 16px; }
   .grid3 { grid-template-columns: 1fr; }
   .btn { width: 100%; justify-content: center; }
+  .hero .btns { gap: 8px; }
+  .hero .btns .btn { width: auto; justify-content: center; padding: 13px 8px; gap: 7px; font-size: 14px; white-space: nowrap; }
+  .hero .btns .btn svg { width: 17px; height: 17px; }
+  .hero .btns .btn small { display: none; }
   .os .btn { align-self: stretch; }
   .lead { font-size: 16px; }
 }
@@ -347,7 +353,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
         </a>
         <a class="btn ghost" data-dl="mac" href="https://superaoe.com/download/mac" download>
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8s1.9.8 3.2.8c1.3 0 2.1-1.2 2.9-2.4.9-1.4 1.3-2.7 1.3-2.8-.1 0-2.4-.9-2.4-4zM14 5.4c.7-.8 1.1-1.9 1-3-1 0-2.1.6-2.8 1.4-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.5 2.8-1.3z"/></svg>
-          <span>Tải cho Mac<small>Chạy mượt trên MacBook M1, M2, M3, M4</small></span>
+          <span>Tải cho Mac<small>MacBook M1, M2, M3, M4</small></span>
         </a>
       </div>
       <p class="meta">Miễn phí · Không cần VPN hay mở cổng · <a href="/xem-lai-tran-aoe-replay/">Xem lại trận bằng replay</a> · <a href="/choi-aoe-tren-macbook/">Cài trên Mac</a></p>
