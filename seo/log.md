@@ -63,3 +63,8 @@
 - Trang mới: https://superaoe.com/xem-lai-tran-aoe-replay/ (từ khóa replay aoe, xem lại trận đế chế, lưu replay đế chế; HowTo + FAQPage + BreadcrumbList). Liên kết từ trang chủ, mọi trang đích, footer, 404.
 - Cập nhật sitemap (7 URL), llms.txt, seo/facts.md, seo/keywords.md, Quy tắc sự thật trong seo-agent.md. IndexNow gửi các URL đã đổi.
 - Cần chủ dự án quyết định: chưa kiểm chứng riêng việc xem replay trên bản Mac (gói Mac có thể chưa có thanh điều khiển mới) — website không khẳng định điều này.
+
+## 2026-10-22 (vòng SEO 5 — cập nhật rớt mạng / vào lại trận theo launcher 0.2.8)
+- Theo yêu cầu phiên website (đã kiểm chứng: `xtv-cf/src/room.js` RECONNECT_WAIT_SECONDS mặc định 1800, launcher 0.2.8 nút "↻ Vào lại trận"/"↻ Mở lại game"): bỏ mọi câu "giữ chỗ 60 giây" / "tắt hẳn game thì không vào lại được" ở /choi-aoe-online-mien-phi/ (FAQ + JSON-LD + tick), /choi-de-che-qua-mang/ (FAQ + JSON-LD + tick, thêm ảnh thật /img/cho-ket-noi.jpg), /tai-aoe-rise-of-rome/ (2 dòng bảng lỗi), llms.txt; trang chủ softwareVersion 0.2.6 → 0.2.8.
+- seo-agent.md "Quy tắc sự thật" + seo/facts.md: thay luật rớt mạng cũ bằng luật 30 phút / Vào lại trận; luật cài Mac thêm cách mở trên macOS 15 (chuột phải → Open không còn được).
+- Kiểm tra: html-validate sạch, JSON-LD hợp lệ, không link/anchor hỏng; deploy d34cb5be, live == local; IndexNow.

@@ -8,7 +8,7 @@ Thông tin chính (cập nhật 2026-10-22, launcher 0.2.6):
 - Tải cho Mac: https://superaoe.com/download/mac (SuperAoE_Mac_M.zip, khoảng 80 MB, cho MacBook chip Apple M1 trở lên; kèm Wine và game, chạy mượt; giải nén, chuột phải "CAI DAT SuperAoE.command" → Open để cài SuperAoE.app vào Applications; lần đầu cần Internet, khoảng 10–15 phút; app tự cập nhật). Mac chip Intel không được hỗ trợ.
 - Tài khoản: tên đăng nhập, mật khẩu, email (không xác thực email).
 - Phòng: tối đa 15 thành viên; 8 người chơi (ghế Nhất..Bát phẩm = màu 1–8) + 3 khán giả (Vua và 2 Thái giám). Bản Mac và bản Windows chơi chung phòng.
-- Mạng: dữ liệu game đi qua máy chủ relay trên Cloudflare; rớt mạng được giữ chỗ 60 giây.
+- Mạng: dữ liệu game đi qua máy chủ relay trên Cloudflare; rớt mạng giữa trận thì trận tạm dừng, cả phòng chờ người đó tối đa 30 phút mỗi trận; lỡ tắt game thì bấm “Vào lại trận” trong launcher, game tua nhanh rồi chơi tiếp (tối đa 5 lần/trận); hết 30 phút thì người đó bị loại (từ launcher 0.2.8).
 - Khán giả: xem trực tiếp gần như không trễ, thấy toàn bản đồ, phím 1–8 theo từng người chơi; vào lại trận đang diễn ra được.
 - Replay (xem lại trận): mọi trận online được tự lưu (.aoerep) trên máy chủ. Trong launcher: menu "Lịch sử trận / Xem lại" → bấm vào trận để xem; hoặc "Mở file replay" để mở file .aoerep. Replay chạy bằng chính game gốc (mô phỏng lại đúng từng lệnh, không phải video), thấy toàn bản đồ. Thanh điều khiển: về đầu, lùi 30/10 giây, dừng/chạy, tới 10/30 giây, tốc độ x0.5 đến x8, bấm thanh tiến trình để nhảy tới thời điểm bất kỳ; phím Space/K, J/L, -/+, Home, H. Miễn phí.
 - Launcher tự cập nhật.

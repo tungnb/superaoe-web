@@ -14,11 +14,11 @@ Chỉ viết những gì sản phẩm làm được thật. AI và Google phạt
 
 Đã có thật (tính đến 2026-10-22):
 - Miễn phí; tải `SuperAoE.zip` cho Windows 10/11 tại https://superaoe.com/download (có sẵn game, ~160 MB).
-- **Bản Mac chính thức** cho MacBook chip Apple (M1, M2, M3, M4…) tại https://superaoe.com/download/mac (~80 MB, Wine đóng gói sẵn, chủ dự án xác nhận chạy mượt): giải nén, chuột phải "CAI DAT SuperAoE.command" → Open, cài SuperAoE.app vào /Applications, app tự cập nhật, chơi chung phòng với Windows. KHÔNG gọi là "thử nghiệm"/"beta". KHÔNG nói hỗ trợ Mac chip Intel.
+- **Bản Mac chính thức** cho MacBook chip Apple (M1, M2, M3, M4…) tại https://superaoe.com/download/mac (~80 MB, Wine đóng gói sẵn, chủ dự án xác nhận chạy mượt): giải nén, chạy "CAI DAT SuperAoE.command" (macOS 14 trở xuống: chuột phải → Open; macOS 15 Sequoia chặn cách đó → mở Terminal gõ `bash ` rồi kéo file vào, hoặc System Settings → Privacy & Security → Open Anyway; xem /choi-aoe-tren-macbook/#cai-dat), cài SuperAoE.app vào /Applications, app tự cập nhật, chơi chung phòng với Windows. KHÔNG gọi là "thử nghiệm"/"beta". KHÔNG nói hỗ trợ Mac chip Intel.
 - **Replay / xem lại trận**: mọi trận online tự lưu replay (.aoerep) trên máy chủ; launcher có "Lịch sử trận / Xem lại" (bấm để xem) và "Mở file replay"; xem bằng game gốc (mô phỏng đúng, không phải video), thấy toàn bản đồ; tua lùi/tới 10/30 giây, tốc độ x0.5–x8, bấm thanh tiến trình để nhảy; phím Space/K, J/L, -/+, Home, H. Miễn phí. Thông điệp chính: "lưu và xem lại trận đấu cũ để rút kinh nghiệm và học hỏi từ đối thủ". Trang đích: /xem-lai-tran-aoe-replay/. Hãy chủ động quảng bá replay và bản Mac (liên kết nội bộ, FAQ, llms.txt).
 - Tài khoản, danh sách phòng, phòng chờ chữ U: 8 ghế người chơi (Nhất..Bát phẩm = màu 1–8) + 3 ghế khán giả (vua ở giữa, 2 thái giám hai bên). Tối đa 15 người/phòng.
 - Khán giả xem trực tiếp bằng đồ họa gốc của game, vào lại trận đang diễn ra được.
-- Không cần VPN, không cần mở cổng (máy chủ relay trên Cloudflare). Rớt mạng được giữ chỗ 60 giây.
+- Không cần VPN, không cần mở cổng (máy chủ relay trên Cloudflare). Rớt mạng giữa trận: trận tạm dừng, cả phòng chờ người đó tổng cộng tối đa 30 phút mỗi người mỗi trận (màn hình hiện ai mất kết nối + thời gian còn lại); mạng có lại thì game tự nối; lỡ tắt game thì launcher có nút "↻ Vào lại trận" (game tua nhanh rồi chơi tiếp, tối đa 5 lần/trận, cách nhau ≥ 30 giây); hết 30 phút thì người đó bị loại, người khác chơi tiếp (launcher 0.2.8 bắt buộc, Windows + Mac). Khán giả lỡ tắt game thì bấm "↻ Mở lại game". KHÔNG viết "giữ chỗ 60 giây" hay "tắt game thì không vào lại được" nữa.
 - Launcher tự cập nhật.
 
 Chưa kiểm chứng — không được nói là "đã có":

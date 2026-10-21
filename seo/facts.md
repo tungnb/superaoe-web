@@ -12,7 +12,7 @@ Cập nhật: 2026-10-22 (launcher 0.2.6, `MAC_URL` trong index.html = https://s
 - Chủ phòng kéo-thả người giữa các ghế; "Kết thúc ván"; trong ván người mới chỉ ngồi ghế khán giả trống.
 - Gói tải là thư mục `C:\SuperAoE`: `SuperAoE.exe`, `game\`, `HUONG DAN.txt`. Gửi cho bạn bè: nén cả thư mục.
 - Không cần VPN, không cần mở cổng: kết nối đi qua máy chủ relay trên Cloudflare.
-- Rớt mạng được giữ chỗ 60 giây (game còn mở thì tự nối lại; nếu game bị tắt giữa ván thì người chơi không vào lại được, khán giả thì được).
+- Rớt mạng (launcher 0.2.8 bắt buộc, 2026-10-22): trận tạm dừng, cả phòng chờ người rớt tổng cộng tối đa 30 phút/người/trận (cộng dồn), màn hình hiện ai mất kết nối và thời gian còn lại; mạng có lại thì game tự nối; lỡ tắt game thì bấm "↻ Vào lại trận" (tua nhanh rồi chơi tiếp, tối đa 5 lần/trận, cách nhau ≥ 30 giây); hết 30 phút thì bị loại. Khán giả: "↻ Mở lại game", luôn vào lại được. Ảnh thật: /img/cho-ket-noi.jpg.
 - Launcher tự cập nhật.
 
 - **Bản Mac (chính thức từ 22/10/2026, chủ dự án xác nhận chạy mượt trên MacBook M):** https://superaoe.com/download/mac (SuperAoE_Mac_M.zip ~80 MB), cho MacBook chip Apple M1, M2, M3, M4…; chạy game qua Wine đóng gói sẵn; cài: giải nén, chuột phải "CAI DAT SuperAoE.command" → Open (lần đầu cần Internet, 10–15 phút) → SuperAoE.app trong /Applications; app tự cập nhật trong app; chơi chung phòng với Windows. File cài chưa ký với Apple → macOS 15 có thể cần Terminal hoặc Open Anyway (hướng dẫn ở /choi-aoe-tren-macbook/#cai-dat). KHÔNG còn gọi là "thử nghiệm"/"beta". Mac chip Intel: KHÔNG hỗ trợ.
