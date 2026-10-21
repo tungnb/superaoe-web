@@ -1,4 +1,4 @@
-# SuperAoE website
+﻿# SuperAoE website
 
 Trang giới thiệu SuperAoE: chơi Đế Chế (AoE1 Rise of Rome) online, xem trực tiếp, lưu và xem lại replay, bản Windows và MacBook.
 
@@ -15,7 +15,8 @@ Sửa ở đầu thẻ `<script>` cuối `index.html`:
 - `WIN_URL`: link SuperAoE.zip cho Windows.
 - `MAC_URL`: link bản Mac. Để trống thì nút Mac hiện "Bản Mac sắp phát hành".
 
-## Deploy (Cloudflare Pages)
+## Deploy (Cloudflare, static assets)
 ```
-npx wrangler pages deploy . --project-name superaoe-web --branch main
+npx wrangler deploy
 ```
+Các file không public (.git, .wrangler, README...) được liệt kê trong `.assetsignore`.
