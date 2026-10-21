@@ -11,6 +11,10 @@
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://superaoe.com/choi-aoe-co-khan-gia/">
 <meta property="og:image" content="https://superaoe.com/img/spectator.jpg">
+<meta property="og:image:width" content="1366">
+<meta property="og:image:height" content="768">
+<meta property="og:image:alt" content="Góc nhìn khán giả SuperAoE trong một trận Đế Chế">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <meta property="og:locale" content="vi_VN">
 <meta property="og:site_name" content="SuperAoE">
 <meta name="twitter:card" content="summary_large_image">
@@ -73,7 +77,7 @@
    "name": "Khán giả có nhắc bài cho người chơi được không?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Trận được phát cho khán giả trễ một khoảng so với thực tế, nên thông tin khán giả thấy đã cũ so với người đang chơi."
+    "text": "Về kỹ thuật thì có thể, vì khán giả xem gần như cùng lúc và thấy toàn bản đồ. Với trận đấu nghiêm túc, chủ phòng nên chỉ mời khán giả mình tin tưởng."
    }
   },
   {
@@ -129,7 +133,7 @@
    "@type": "HowToStep",
    "position": 5,
    "name": "Theo dõi trận",
-   "text": "Bấm phím 1–8 để chuyển sang góc nhìn của từng người chơi, thấy cả hướng họ trỏ quân. Lỡ thoát ra thì vào lại phòng để xem tiếp trận đang diễn ra."
+   "text": "Bấm phím 1–8 để chuyển sang góc nhìn của từng người chơi, thấy cả hướng họ trỏ quân. Lỡ tắt game thì bấm “Mở lại game” trong launcher để xem tiếp trận đang diễn ra."
   }
  ]
 }
@@ -335,8 +339,22 @@ footer a { color: var(--dim); }
       <li><span class="n">2</span><div><h3>Vào phòng của người chơi</h3><p>Chọn phòng trong danh sách hoặc nhập mã phòng 6 ký tự mà người chơi gửi cho bạn.</p></div></li>
       <li><span class="n">3</span><div><h3>Ngồi ghế khán giả</h3><p>Ba ghế ở đầu phòng chữ U: ghế Vua ở giữa, hai ghế Thái giám hai bên. Tám ghế hai cánh là ghế người chơi.</p></div></li>
       <li><span class="n">4</span><div><h3>Chờ chủ phòng bấm Bắt đầu</h3><p>Game của bạn tự mở ở chế độ chỉ xem. Khán giả không ra lệnh được cho quân và không làm ảnh hưởng trận đấu.</p></div></li>
-      <li><span class="n">5</span><div><h3>Theo dõi trận</h3><p>Bấm phím 1–8 để chuyển sang góc nhìn của từng người chơi, thấy cả hướng họ trỏ quân. Lỡ thoát ra thì vào lại phòng để xem tiếp trận đang diễn ra.</p></div></li>
+      <li><span class="n">5</span><div><h3>Theo dõi trận</h3><p>Bấm phím 1–8 để chuyển sang góc nhìn của từng người chơi, thấy cả hướng họ trỏ quân. Lỡ tắt game thì bấm “Mở lại game” trong launcher để xem tiếp trận đang diễn ra.</p></div></li>
     </ol>
+    <h3 id="phim-tat" style="margin-top:32px">Phím tắt khi xem trận</h3>
+    <div class="tbl">
+      <table>
+        <thead><tr><th scope="col">Phím</th><th scope="col">Tác dụng</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">1 – 8</th><td>Chuyển sang xem từng người chơi (camera bám theo người đó)</td></tr>
+          <tr><th scope="row">F</th><td>Bật/tắt camera tự do</td></tr>
+          <tr><th scope="row">0</th><td>Bật/tắt "sáng": hiện cả bản đồ</td></tr>
+          <tr><th scope="row">9</th><td>Bật/tắt sương mù</td></tr>
+          <tr><th scope="row">F4</th><td>Bảng điểm người chơi (tự bật khi vào xem)</td></tr>
+          <tr><th scope="row">F11</th><td>Đồng hồ và dân số (tự bật khi vào xem)</td></tr>
+        </tbody>
+      </table>
+    </div>
     <p class="note">Đang đánh trận mà phòng đã đủ người? Trong lúc trận diễn ra vẫn ngồi được vào ghế khán giả còn trống.</p>
   </div>
 </section>
@@ -347,7 +365,7 @@ footer a { color: var(--dim); }
     <h2>Vì sao khán giả thấy trận y hệt người chơi</h2>
     <p>Age of Empires 1 là game "lockstep": mọi máy chạy cùng một mô phỏng và chỉ gửi cho nhau lệnh của người chơi. Máy chủ SuperAoE chuyển những lệnh đó tới game của khán giả, nên game của khán giả tự tính ra đúng trận đang diễn ra, với chính đồ họa gốc của Rise of Rome. Vì không phải phát video, khán giả xem rõ nét mà tốn rất ít băng thông.</p>
     <ul class="ticks">
-      <li><b>Phát trễ để công bằng:</b> trận được phát cho khán giả trễ một khoảng, người đang chơi không thể nhờ khán giả "báo bài".</li>
+      <li><b>Gần như không trễ:</b> khán giả thấy trận gần như cùng lúc với người chơi. Vì khán giả thấy toàn bản đồ, trận đấu nghiêm túc nên chỉ mời khán giả tin cậy.</li>
       <li><b>Không lộ thông tin cho người chơi:</b> khán giả chỉ xem, không gửi lệnh vào trận.</li>
       <li><b>Tối đa 3 khán giả mỗi phòng</b>, cùng 8 người chơi; mỗi phòng nhận tối đa 15 thành viên.</li>
     </ul>
@@ -381,7 +399,7 @@ footer a { color: var(--dim); }
       <details open><summary>AoE 1 có chế độ khán giả không?</summary><p>Bản gốc Age of Empires 1 Rise of Rome không có. SuperAoE thêm 3 ghế khán giả cho mỗi phòng, xem trực tiếp bằng chính game gốc.</p></details>
       <details><summary>Một trận có bao nhiêu khán giả được xem?</summary><p>Tối đa 3 khán giả mỗi phòng: ghế Vua và hai ghế Thái giám. Phòng có thêm 8 ghế người chơi.</p></details>
       <details><summary>Khán giả có làm người chơi bị lag không?</summary><p>Khán giả chỉ nhận lệnh từ máy chủ, không gửi lệnh vào trận, nên không làm chậm game của người chơi.</p></details>
-      <details><summary>Khán giả có nhắc bài cho người chơi được không?</summary><p>Trận được phát cho khán giả trễ một khoảng so với thực tế, nên thông tin khán giả thấy đã cũ so với người đang chơi.</p></details>
+      <details><summary>Khán giả có nhắc bài cho người chơi được không?</summary><p>Về kỹ thuật thì có thể, vì khán giả xem gần như cùng lúc và thấy toàn bản đồ. Với trận đấu nghiêm túc, chủ phòng nên chỉ mời khán giả mình tin tưởng.</p></details>
       <details><summary>Vào xem giữa chừng có được không?</summary><p>Được. Trong lúc trận diễn ra vẫn ngồi được vào ghế khán giả còn trống, và khán giả thoát ra có thể vào lại trận đang đánh.</p></details>
       <details><summary>Xem khán giả có cần cài game không?</summary><p>Không. Gói SuperAoE.zip đã có sẵn game. Chỉ cần máy Windows 10/11 và tài khoản SuperAoE miễn phí.</p></details>
     </div>
@@ -392,7 +410,7 @@ footer a { color: var(--dim); }
 
 <footer>
   <div class="wrap">
-    <span>© 2026 SuperAoE · <a href="/">Trang chủ</a> · <a href="/choi-aoe-online-mien-phi/">Chơi AoE online miễn phí</a> · <a href="/choi-aoe-tren-macbook/">AoE trên MacBook</a></span>
+    <span>© 2026 SuperAoE · <a href="/">Trang chủ</a> · <a href="/choi-aoe-online-mien-phi/">Chơi AoE online miễn phí</a> · <a href="/choi-aoe-tren-macbook/">AoE trên MacBook</a> · <a href="/tai-aoe-rise-of-rome/">Tải AoE 1 Rise of Rome</a></span>
     <span>Age of Empires là thương hiệu của Microsoft. SuperAoE không liên kết với Microsoft.</span>
   </div>
 </footer>

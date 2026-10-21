@@ -10,6 +10,10 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://superaoe.com/">
 <meta property="og:image" content="https://superaoe.com/img/spectator.jpg">
+<meta property="og:image:width" content="1366">
+<meta property="og:image:height" content="768">
+<meta property="og:image:alt" content="Góc nhìn khán giả SuperAoE trong một trận Đế Chế">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://superaoe.com/">
 <meta property="og:locale" content="vi_VN">
 <meta property="og:site_name" content="SuperAoE">
@@ -52,6 +56,7 @@
  "url": "https://superaoe.com/",
  "downloadUrl": "https://superaoe.com/download",
  "fileSize": "158MB",
+ "softwareVersion": "0.2.5",
  "inLanguage": "vi",
  "offers": {
   "@type": "Offer",
@@ -82,7 +87,7 @@
    "name": "Khán giả có thấy được sương mù của người chơi không?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Khán giả thấy toàn bản đồ và có thể chuyển sang góc nhìn của từng người chơi bằng phím 1–8. Trận được phát trễ một khoảng để tránh lộ thông tin cho người đang chơi."
+    "text": "Khán giả thấy toàn bản đồ và có thể chuyển sang góc nhìn của từng người chơi bằng phím 1–8. Khán giả xem gần như cùng lúc với người chơi, nên chủ phòng nên mời khán giả mình tin tưởng."
    }
   },
   {
@@ -256,6 +261,7 @@ details p { margin: 0 0 16px; color: var(--dim); }
 
 footer { padding: 36px 0 44px; border-top: 1px solid rgba(90,71,40,.6); color: var(--dim); font-size: 13px; }
 footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; background: #0e0b07; border: 1px solid var(--line); border-radius: 5px; padding: 1px 6px; color: #e9d8b0; }
 
 @media (max-width: 900px) {
   .hero { padding: 56px 0 50px; }
@@ -392,7 +398,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wr
         <li><span class="n">1</span><div><h3>Ngồi ghế khán giả</h3><p>Ghế Vua ở giữa hoặc hai ghế Thái giám hai bên, đầu phòng chữ U.</p></div></li>
         <li><span class="n">2</span><div><h3>Chủ phòng bấm Bắt đầu</h3><p>Game của khán giả tự mở ở chế độ chỉ xem, không ra lệnh được cho quân.</p></div></li>
         <li><span class="n">3</span><div><h3>Xem toàn bản đồ</h3><p>Bấm phím 1–8 để theo góc nhìn từng người chơi, thấy cả hướng họ trỏ quân.</p></div></li>
-        <li><span class="n">4</span><div><h3>Vào lại bất cứ lúc nào</h3><p>Trận được phát trễ để không lộ thông tin cho người đang chơi. Khán giả rời đi vẫn vào lại trận đang diễn ra được.</p></div></li>
+        <li><span class="n">4</span><div><h3>Vào lại bất cứ lúc nào</h3><p>Khán giả xem gần như cùng lúc với người chơi. Lỡ thoát ra vẫn vào lại trận đang diễn ra được.</p></div></li>
       </ol>
       <p style="margin-top:22px"><a href="/choi-aoe-co-khan-gia/">Hướng dẫn chơi AoE có khán giả chi tiết →</a></p>
     </div>
@@ -439,7 +445,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wr
   <div class="wrap">
     <div class="kicker">Tải về</div>
     <h2>Chọn bản cho máy của bạn</h2>
-    <p class="sub">Một gói duy nhất, đã kèm game. Giải nén là chạy, không cần cài đặt. Xem <a href="/choi-aoe-online-mien-phi/">hướng dẫn chơi AoE online miễn phí từng bước</a>.</p>
+    <p class="sub">Một gói duy nhất, đã kèm game. Giải nén là chạy, không cần cài đặt. Xem <a href="/tai-aoe-rise-of-rome/">cách cài và sửa lỗi khi tải Đế Chế</a> và <a href="/choi-aoe-online-mien-phi/">hướng dẫn chơi AoE online miễn phí từng bước</a>.</p>
     <div class="dl">
       <div class="os">
         <div class="osh">
@@ -464,7 +470,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wr
         <ul>
           <li>Đóng gói sẵn Wine và game, không cần cài Windows</li>
           <li>Bản thử nghiệm đầu tiên, có thể còn lỗi</li>
-          <li>Giải nén, chuột phải "CAI DAT SuperAoE.command" → Open (lần đầu cần Internet, ~15 phút)</li>
+          <li>Giải nén, chạy "CAI DAT SuperAoE.command" (lần đầu cần Internet, ~15 phút). macOS 15 báo "Apple không thể xác minh"? Xem <a href="/choi-aoe-tren-macbook/#cai-dat">cách mở</a></li>
         </ul>
         <a class="btn primary" data-dl="mac" href="https://superaoe.com/download/mac" download>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg>
@@ -489,7 +495,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wr
     <div>
       <div class="card">
         <h3 style="margin-bottom:12px">Cài trên Mac</h3>
-        <p>Tải <a href="https://superaoe.com/download/mac">SuperAoE_Mac_M.zip</a>, bấm đúp để giải nén, rồi chuột phải vào <b>CAI DAT SuperAoE.command</b> → Open. Lần đầu cần Internet và khoảng 10–15 phút: script tự cài Rosetta 2 nếu thiếu, tải Wine, đóng gói SuperAoE.app vào thư mục Applications rồi mở app.</p>
+        <p>Tải <a href="https://superaoe.com/download/mac">SuperAoE_Mac_M.zip</a>, bấm đúp để giải nén, rồi chạy <b>CAI DAT SuperAoE.command</b>. Vì file chưa ký với Apple, macOS sẽ cảnh báo: cách nhanh nhất là mở Terminal, gõ <code>bash</code> và một dấu cách, kéo file vào cửa sổ Terminal rồi bấm Enter (macOS 14 trở xuống: chuột phải → Open). Lần đầu cần Internet và khoảng 10–15 phút: script tự cài Rosetta 2 nếu thiếu, tải Wine, đóng gói SuperAoE.app vào thư mục Applications rồi mở app.</p>
         <p style="margin-top:14px"><a href="/choi-aoe-tren-macbook/">Chơi AoE trên MacBook →</a></p>
       </div>
     </div>
@@ -502,7 +508,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wr
     <h2>Câu hỏi thường gặp</h2>
     <div class="faq">
       <details open><summary>SuperAoE có mất phí không?</summary><p>Không. Tải về, đăng ký tài khoản và chơi miễn phí.</p></details>
-      <details><summary>Khán giả có thấy được sương mù của người chơi không?</summary><p>Khán giả thấy toàn bản đồ và có thể chuyển sang góc nhìn của từng người chơi bằng phím 1–8. Trận được phát trễ một khoảng để tránh lộ thông tin cho người đang chơi.</p></details>
+      <details><summary>Khán giả có thấy được sương mù của người chơi không?</summary><p>Khán giả thấy toàn bản đồ và có thể chuyển sang góc nhìn của từng người chơi bằng phím 1–8. Khán giả xem gần như cùng lúc với người chơi, nên chủ phòng nên mời khán giả mình tin tưởng.</p></details>
       <details><summary>Có cần VPN, Hamachi hay mở cổng không?</summary><p>Không. Dữ liệu game đi qua máy chủ của SuperAoE trên Cloudflare, chỉ cần có Internet là vào phòng được.</p></details>
       <details><summary>Có cần cài Age of Empires trước không?</summary><p>Không. Gói SuperAoE.zip đã có sẵn Age of Empires 1 Rise of Rome, giải nén là chạy.</p></details>
       <details><summary>SuperAoE có bản cho MacBook chưa?</summary><p>Có bản thử nghiệm cho Mac chip Apple (M1 trở lên): tải tại <a href="https://superaoe.com/download/mac">superaoe.com/download/mac</a>. Bản này mới phát hành nên có thể còn lỗi. Mac chip Intel chưa nằm trong kế hoạch hỗ trợ.</p></details>
@@ -515,7 +521,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wr
 
 <footer>
   <div class="wrap">
-    <span>© <span id="yr">2026</span> SuperAoE · Dự án cộng đồng của người chơi Đế Chế Việt Nam · <a href="/choi-aoe-online-mien-phi/" style="color:inherit">Chơi AoE online miễn phí</a> · <a href="/choi-aoe-co-khan-gia/" style="color:inherit">Chơi AoE có khán giả</a> · <a href="/choi-aoe-tren-macbook/" style="color:inherit">AoE trên MacBook</a></span>
+    <span>© <span id="yr">2026</span> SuperAoE · Dự án cộng đồng của người chơi Đế Chế Việt Nam · <a href="/choi-aoe-online-mien-phi/" style="color:inherit">Chơi AoE online miễn phí</a> · <a href="/choi-aoe-co-khan-gia/" style="color:inherit">Chơi AoE có khán giả</a> · <a href="/choi-aoe-tren-macbook/" style="color:inherit">AoE trên MacBook</a> · <a href="/tai-aoe-rise-of-rome/" style="color:inherit">Tải AoE 1 Rise of Rome</a></span>
     <span>Age of Empires là thương hiệu của Microsoft. SuperAoE không liên kết với Microsoft.</span>
   </div>
 </footer>

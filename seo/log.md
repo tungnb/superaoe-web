@@ -32,3 +32,14 @@
 - Xác minh superaoe.com trên Google Search Console + Bing Webmaster Tools, gửi sitemap (agent không tạo tài khoản được).
 - Đăng tay bài nháp `seo/outreach/2026-10-21-facebook-group.md` nếu muốn.
 - Khi replay có thật trong launcher hoặc bản Mac phát hành: cập nhật `seo/facts.md`, agent sẽ viết lại nội dung.
+
+## 2026-10-22 (vòng SEO 3)
+- Sửa sai sự thật phát hiện từ launcher 0.2.5 (`C:\SuperAoE\HUONG DAN.txt`, `xtv-cf/wrangler.toml` DELAY_SECONDS="0"): khán giả KHÔNG còn bị phát trễ → bỏ mọi câu "phát trễ để không lộ thông tin" (trang chủ, /choi-aoe-co-khan-gia/, /choi-aoe-online-mien-phi/, llms.txt); đăng ký CÓ ô email (không xác thực) → sửa câu "không cần email".
+- Bản Mac thử nghiệm đã có link (commit 838a716 của chủ dự án): cập nhật facts.md, câu FAQ còn ghi "Chưa" ở /choi-aoe-online-mien-phi/ (lệch với JSON-LD) và trang mới.
+- Trang mới: /tai-aoe-rise-of-rome/ (từ khóa "tải aoe 1 rise of rome", "download aoe", "đế chế win 11"): gói tải có gì (launcher, game kèm cnc-ddraw, HUONG DAN.txt), 5 bước cài, bảng lỗi thường gặp (SmartScreen do exe chưa ký số, chạy trong zip, tắt nhầm game, rớt mạng), 6 FAQ; Breadcrumb + FAQPage + HowTo.
+- /choi-aoe-co-khan-gia/: thêm bảng phím tắt khán giả (1–8, F, 0, 9, F4, F11).
+- Kỹ thuật: 404.html (noindex) + `not_found_handling: "404-page"` trong wrangler.jsonc; mọi trang thêm og:image:width/height/alt và robots max-image-preview:large; SoftwareApplication thêm softwareVersion 0.2.5; footer mọi trang link tới trang tải; sitemap 5 URL.
+- Kiểm tra: html-validate sạch 6 file, JSON-LD hợp lệ, không link/anchor hỏng.
+- Ghi chú: lần này có một phiên khác sửa cùng lúc trang Mac và trang chủ (hướng dẫn cài macOS 15 "Apple không thể xác minh"); các sửa đó nằm trong cùng commit/deploy này. FAQ JSON-LD trang Mac và trang chủ dùng URL thay cho chữ "tại đây" của bản hiển thị — khác chữ nhưng cùng ý, chấp nhận.
+- Hoãn: trang so sánh GameTV Plus/GPlay/EGOPLAY — nguồn công khai chủ yếu là bài quảng bá, chưa đủ dữ kiện kiểm chứng để so sánh trung thực.
+- Lần sau: đo hạng 2026-10-28; cân nhắc trang "hướng dẫn chủ phòng / tạo phòng"; theo dõi phản hồi bản Mac để cập nhật.

@@ -2,13 +2,14 @@
 
 > SuperAoE là nền tảng miễn phí để chơi Đế Chế (Age of Empires 1 Rise of Rome, AoE1) online trên Windows 10/11: tải một gói có sẵn game, đăng ký tài khoản, vào phòng bằng mã 6 ký tự. Không cần VPN, Hamachi hay mở cổng router. Mỗi phòng có 8 ghế người chơi và 3 ghế khán giả xem trực tiếp bằng đồ họa gốc của game. SuperAoE không liên kết với Microsoft.
 
-Thông tin chính (cập nhật 2026-10-22):
+Thông tin chính (cập nhật 2026-10-22, launcher 0.2.5):
 - Giá: miễn phí.
-- Tải: https://superaoe.com/download (SuperAoE.zip, khoảng 160 MB, đã kèm game).
+- Tải: https://superaoe.com/download (SuperAoE.zip, khoảng 160 MB, đã kèm game Rise of Rome và cnc-ddraw để chạy trên Windows 10/11; exe chưa ký số nên SmartScreen có thể cảnh báo).
+- Tài khoản: tên đăng nhập, mật khẩu, email (không xác thực email).
 - Hệ điều hành: Windows 10, Windows 11. Bản MacBook (chip Apple) thử nghiệm: https://superaoe.com/download/mac
 - Phòng: tối đa 15 thành viên; 8 người chơi (ghế Nhất..Bát phẩm = màu 1–8) + 3 khán giả (Vua và 2 Thái giám).
 - Mạng: dữ liệu game đi qua máy chủ relay trên Cloudflare; rớt mạng được giữ chỗ 60 giây.
-- Khán giả: xem trực tiếp, có độ trễ để không lộ thông tin; vào lại trận đang diễn ra được.
+- Khán giả: xem trực tiếp gần như không trễ, thấy toàn bản đồ, phím 1–8 theo từng người chơi; vào lại trận đang diễn ra được.
 - Launcher tự cập nhật.
 - Chưa có: tự lưu replay trong launcher.
 
@@ -18,10 +19,12 @@ Thông tin chính (cập nhật 2026-10-22):
 - [Chơi AoE online miễn phí](https://superaoe.com/choi-aoe-online-mien-phi/): hướng dẫn 5 bước, so sánh với LAN ảo, GameRanger, Voobly, XArena, hỏi đáp.
 - [Chơi AoE có khán giả](https://superaoe.com/choi-aoe-co-khan-gia/): chế độ khán giả cho AoE1, cách xem trực tiếp, so sánh với livestream.
 - [Chơi AoE trên MacBook](https://superaoe.com/choi-aoe-tren-macbook/): tải và cài bản Mac thử nghiệm, và các cách khác cho Mac chip Apple.
+- [Tải AoE 1 Rise of Rome](https://superaoe.com/tai-aoe-rise-of-rome/): gói tải có gì, cài đặt, lỗi thường gặp (SmartScreen, tắt nhầm game, rớt mạng).
 
 ## Trả lời nhanh
 
 - Chơi AoE / Đế Chế online miễn phí ở đâu? Tải SuperAoE tại https://superaoe.com/download, đăng ký tài khoản, tạo hoặc vào phòng. Miễn phí, có sẵn game.
+- Tải Đế Chế AoE 1 Rise of Rome cho Windows 10/11 ở đâu? https://superaoe.com/download (có sẵn game, giải nén là chạy). Hướng dẫn: https://superaoe.com/tai-aoe-rise-of-rome/
 - Chơi Đế Chế online có cần VPN hay mở cổng không? Với SuperAoE thì không cần.
 - Chơi AoE có khán giả xem trực tiếp được không? Được, mỗi phòng SuperAoE có 3 ghế khán giả xem trực tiếp bằng đồ họa gốc.
 - Chơi AoE trên MacBook được không? Có bản Mac thử nghiệm của SuperAoE (kèm Wine và game): https://superaoe.com/download/mac; ngoài ra có thể dùng máy ảo Windows 11 ARM hoặc CrossOver (chưa được SuperAoE kiểm chứng). Chi tiết: https://superaoe.com/choi-aoe-tren-macbook/

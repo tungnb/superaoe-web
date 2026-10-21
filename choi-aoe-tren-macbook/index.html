@@ -11,6 +11,10 @@
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://superaoe.com/choi-aoe-tren-macbook/">
 <meta property="og:image" content="https://superaoe.com/img/spectator.jpg">
+<meta property="og:image:width" content="1366">
+<meta property="og:image:height" content="768">
+<meta property="og:image:alt" content="Góc nhìn khán giả SuperAoE trong một trận Đế Chế">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <meta property="og:locale" content="vi_VN">
 <meta property="og:site_name" content="SuperAoE">
 <meta name="twitter:card" content="summary_large_image">
@@ -66,6 +70,14 @@
    "acceptedAnswer": {
     "@type": "Answer",
     "text": "Có. Bản SuperAoE thử nghiệm cho Mac chip Apple đóng gói sẵn Wine và game (tải tại superaoe.com/download/mac). Ngoài ra có thể dùng máy ảo Windows 11 ARM hoặc CrossOver."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Mac báo “Apple không thể xác minh” khi mở file cài thì làm sao?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "File cài chưa ký với Apple nên macOS cảnh báo, không phải virus. Mở Terminal, gõ bash và một dấu cách, kéo file CAI DAT SuperAoE.command vào cửa sổ Terminal rồi bấm Enter. Hoặc bấm Done, vào System Settings → Privacy & Security → Open Anyway. Trên macOS 14 trở xuống, chuột phải → Open vẫn được."
    }
   },
   {
@@ -245,6 +257,7 @@ td { color: var(--dim); }
 tbody tr:first-child { background: rgba(232,195,90,.07); }
 .small { font-size: 14px; }
 footer a { color: var(--dim); }
+code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; background: #0e0b07; border: 1px solid var(--line); border-radius: 5px; padding: 1px 6px; color: #e9d8b0; }
 </style>
 </head>
 <body>
@@ -282,8 +295,8 @@ footer a { color: var(--dim); }
     <ul class="ticks">
       <li><b>Cách làm:</b> một ứng dụng SuperAoE.app chứa sẵn Wine và game Rise of Rome, chạy trên chip Apple qua Rosetta 2. Không cần cài Windows.</li>
       <li><b>Tải về:</b> <a href="https://superaoe.com/download/mac">SuperAoE_Mac_M.zip</a> (khoảng 80 MB).</li>
-      <li><b>Cài đặt:</b> Bấm đúp để giải nén, rồi chuột phải vào <b>CAI DAT SuperAoE.command</b> → Open. Lần đầu cần Internet và khoảng 10–15 phút: script tự cài Rosetta 2 nếu thiếu, tải Wine, đóng gói SuperAoE.app vào thư mục Applications rồi mở app.</li>
-      <li><b>Lưu ý:</b> đây là bản thử nghiệm đầu tiên, chưa được kiểm thử rộng rãi nên có thể còn lỗi (nhất là âm thanh). App chưa ký với Apple nên lần đầu phải mở bằng chuột phải → Open.</li>
+      <li><b>Cài đặt:</b> bấm đúp để giải nén rồi chạy <b>CAI DAT SuperAoE.command</b> (xem <a href="#cai-dat">các bước bên dưới</a>). Lần đầu cần Internet và khoảng 10–15 phút: script tự cài Rosetta 2 nếu thiếu, tải Wine, đóng gói SuperAoE.app vào thư mục Applications rồi mở app.</li>
+      <li><b>Lưu ý:</b> đây là bản thử nghiệm đầu tiên, chưa được kiểm thử rộng rãi nên có thể còn lỗi (nhất là âm thanh). File cài chưa ký với Apple nên macOS sẽ hiện cảnh báo lần đầu.</li>
       <li><b>Chơi chung:</b> bản Mac dùng chung máy chủ, tài khoản và phòng với bản Windows.</li>
       <li><b>Mac chip Intel:</b> chưa nằm trong kế hoạch hỗ trợ.</li>
     </ul>
@@ -292,7 +305,21 @@ footer a { color: var(--dim); }
   </div>
 </section>
 
-<section id="cach-khac" class="alt">
+<section id="cai-dat" class="alt">
+  <div class="wrap narrow">
+    <div class="kicker">Cài đặt</div>
+    <h2>Mac báo "Apple không thể xác minh CAI DAT SuperAoE.command"?</h2>
+    <p>Cảnh báo này xuất hiện vì file cài chưa được ký với Apple, không phải vì có virus. Từ macOS 15 Sequoia, cách cũ "chuột phải → Open" không còn bỏ qua được cảnh báo này. Chọn một trong hai cách:</p>
+    <ol class="steps">
+      <li><span class="n">1</span><div><h3>Cách nhanh nhất: chạy bằng Terminal</h3><p>Mở <b>Terminal</b>, gõ <code>bash</code> và một dấu cách, kéo file <b>CAI DAT SuperAoE.command</b> vào cửa sổ Terminal rồi bấm Enter.</p></div></li>
+      <li><span class="n">2</span><div><h3>Hoặc cho phép trong System Settings</h3><p>Bấm <b>Done</b> ở cảnh báo → mở <b>System Settings</b> → <b>Privacy &amp; Security</b> → kéo xuống cuối, bấm <b>Open Anyway</b> và nhập mật khẩu máy. Mở file lần nữa rồi bấm <b>Open Anyway</b>.</p></div></li>
+      <li><span class="n">3</span><div><h3>macOS 14 Sonoma trở xuống</h3><p>Chuột phải vào <b>CAI DAT SuperAoE.command</b> → <b>Open</b> vẫn dùng được.</p></div></li>
+    </ol>
+    <p class="note">Hướng dẫn này cũng có trong file <b>HUONG DAN MAC.txt</b> đi kèm gói tải.</p>
+  </div>
+</section>
+
+<section id="cach-khac">
   <div class="wrap narrow">
     <div class="kicker">Cách khác</div>
     <h2>Các cách người dùng Mac thường thử để chơi Đế Chế</h2>
@@ -312,7 +339,7 @@ footer a { color: var(--dim); }
   </div>
 </section>
 
-<section id="hoi-dap">
+<section id="hoi-dap" class="alt">
   <div class="wrap narrow">
     <div class="kicker">Hỏi đáp</div>
     <h2>Câu hỏi thường gặp về Đế Chế trên Mac</h2>
@@ -320,6 +347,7 @@ footer a { color: var(--dim); }
       <details open><summary>Age of Empires 1 có bản cho Mac không?</summary><p>Không có bản chính thức cho macOS. Game chỉ chạy trên Windows, nên trên Mac phải dùng Wine hoặc máy ảo Windows.</p></details>
       <details><summary>SuperAoE có bản cho MacBook chưa?</summary><p>Có bản thử nghiệm cho Mac chip Apple (M1 trở lên): <a href="https://superaoe.com/download/mac">tải tại đây</a>. Bản này mới phát hành nên có thể còn lỗi.</p></details>
       <details><summary>MacBook M1, M2, M3, M4 có chơi Đế Chế được không?</summary><p>Có. Bản SuperAoE thử nghiệm cho Mac chip Apple đóng gói sẵn Wine và game (<a href="https://superaoe.com/download/mac">tải tại đây</a>). Ngoài ra có thể dùng máy ảo Windows 11 ARM hoặc CrossOver.</p></details>
+      <details><summary>Mac báo “Apple không thể xác minh” khi mở file cài thì làm sao?</summary><p>File cài chưa ký với Apple nên macOS cảnh báo, không phải virus. Mở Terminal, gõ <code>bash</code> và một dấu cách, kéo file CAI DAT SuperAoE.command vào cửa sổ Terminal rồi bấm Enter. Hoặc bấm Done, vào System Settings → Privacy &amp; Security → Open Anyway. Trên macOS 14 trở xuống, chuột phải → Open vẫn được.</p></details>
       <details><summary>Có dùng Boot Camp để chơi Đế Chế được không?</summary><p>Chỉ trên Mac chip Intel đời cũ. Mac chip Apple (M1 trở lên) không hỗ trợ Boot Camp.</p></details>
       <details><summary>Mac chip Intel có dùng được SuperAoE không?</summary><p>Bản SuperAoE cho Mac nhắm tới chip Apple. Mac chip Intel chưa nằm trong kế hoạch hỗ trợ; nếu máy đã cài Windows qua Boot Camp thì dùng bản Windows của SuperAoE.</p></details>
     </div>
@@ -330,7 +358,7 @@ footer a { color: var(--dim); }
 
 <footer>
   <div class="wrap">
-    <span>© 2026 SuperAoE · <a href="/">Trang chủ</a> · <a href="/choi-aoe-online-mien-phi/">Chơi AoE online miễn phí</a> · <a href="/choi-aoe-co-khan-gia/">Chơi AoE có khán giả</a></span>
+    <span>© 2026 SuperAoE · <a href="/">Trang chủ</a> · <a href="/choi-aoe-online-mien-phi/">Chơi AoE online miễn phí</a> · <a href="/choi-aoe-co-khan-gia/">Chơi AoE có khán giả</a> · <a href="/tai-aoe-rise-of-rome/">Tải AoE 1 Rise of Rome</a></span>
     <span>Age of Empires là thương hiệu của Microsoft. SuperAoE không liên kết với Microsoft.</span>
   </div>
 </footer>
