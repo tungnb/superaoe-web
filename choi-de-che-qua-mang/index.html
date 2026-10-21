@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chơi Đế Chế qua mạng không cần Hamachi, Radmin – SuperAoE</title>
+<meta name="description" content="Chơi Đế Chế (AoE1) qua mạng với bạn bè ở xa: so sánh LAN thật, LAN ảo (Hamachi, Radmin VPN) và SuperAoE không cần VPN, không mở cổng, lỗi hay gặp.">
+<link rel="canonical" href="https://superaoe.com/choi-de-che-qua-mang/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="alternate" hreflang="vi" href="https://superaoe.com/choi-de-che-qua-mang/">
+<link rel="alternate" hreflang="x-default" href="https://superaoe.com/choi-de-che-qua-mang/">
+<meta property="og:title" content="Chơi Đế Chế qua mạng không cần Hamachi, Radmin VPN">
+<meta property="og:description" content="AoE1 cần LAN hoặc LAN ảo để chơi mạng. SuperAoE chuyển dữ liệu game qua Cloudflare: có Internet là vào phòng, không mở cổng.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://superaoe.com/choi-de-che-qua-mang/">
+<meta property="og:image" content="https://superaoe.com/img/spectator.jpg">
+<meta property="og:image:width" content="1366">
+<meta property="og:image:height" content="768">
+<meta property="og:image:alt" content="Một trận Đế Chế 1v1 chơi qua mạng bằng SuperAoE, góc nhìn khán giả">
+<meta property="og:locale" content="vi_VN">
+<meta property="og:site_name" content="SuperAoE">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#140f0a">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "SuperAoE",
+   "item": "https://superaoe.com/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Chơi Đế Chế qua mạng",
+   "item": "https://superaoe.com/choi-de-che-qua-mang/"
+  }
+ ]
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Không có Hamachi hay Radmin thì chơi Đế Chế qua Internet được không?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Được. Với SuperAoE, dữ liệu game đi qua máy chủ relay trên Cloudflare nên chỉ cần có Internet, không cần LAN ảo, VPN hay mở cổng router."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Vì sao dùng Hamachi, Radmin VPN mà không thấy phòng Đế Chế?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Nguyên nhân hay gặp: tường lửa Windows chặn game, máy có nhiều card mạng nên game chọn nhầm mạng thật thay vì mạng ảo, hoặc chưa bật DirectPlay trên Windows 10/11. Với SuperAoE không gặp các bước này vì không dùng LAN ảo."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Chơi Đế Chế qua mạng cần những gì?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Với SuperAoE: máy Windows 10/11 có Internet, gói SuperAoE.zip (đã kèm game) và tài khoản miễn phí. Người tạo phòng gửi mã phòng 6 ký tự, người khác nhập mã để vào."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Chơi qua Wi-Fi hoặc 4G được không?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Được. SuperAoE không cần IP tĩnh hay mở cổng nên mạng Wi-Fi, cáp quang hay 4G phát từ điện thoại đều vào phòng được. Đường truyền càng ổn định thì trận càng mượt."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Ngồi cùng một nhà thì có chơi chung phòng SuperAoE được không?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Được. Mỗi máy đăng nhập tài khoản riêng rồi vào cùng một mã phòng, giống như chơi với người ở xa. Mỗi máy cần có Internet."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Một phòng chơi qua mạng được bao nhiêu người?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Tối đa 8 người chơi và 3 khán giả xem trực tiếp, mỗi phòng nhận tối đa 15 thành viên."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Rớt mạng giữa trận có bị mất trận không?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Nếu game vẫn đang mở, SuperAoE giữ chỗ 60 giây và tự nối lại. Nếu tắt hẳn game giữa ván thì người chơi không vào lại được trận đó (giới hạn của AoE1), còn khán giả thì vào lại được."
+   }
+  }
+ ]
+}
+</script>
+<style>
+:root {
+  --gold: #e8c35a; --gold2: #b8902f; --ink: #221a12;
+  --bg: #140f0a; --bg2: #1c150e; --panel: #2c2218; --panel2: #3a2d1e;
+  --line: #5a4728; --text: #f2e6cf; --dim: #b7a583; --red: #a33a32; --green: #4f9a5a;
+  --serif: "Playfair Display", Georgia, serif;
+  --sans: "Be Vietnam Pro", "Segoe UI", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+a { color: var(--gold); }
+img, svg { max-width: 100%; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+.wrap > * { min-width: 0; }
+
+/* Header */
+.top { position: sticky; top: 0; z-index: 10; background: rgba(20,15,10,.88); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(184,144,47,.35); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-weight: 800; font-size: 22px; color: var(--gold); text-decoration: none; letter-spacing: .3px; }
+.brand svg { width: 30px; height: 30px; }
+.nav { display: flex; gap: 22px; }
+.nav a { color: var(--dim); text-decoration: none; font-size: 14px; font-weight: 500; }
+.nav a:hover { color: var(--text); }
+.nav .cta { color: var(--ink); background: linear-gradient(#e8c35a, #b8902f); padding: 7px 14px; border-radius: 8px; font-weight: 700; }
+.nav .cta:hover { color: var(--ink); filter: brightness(1.08); }
+
+/* Hero */
+.hero { position: relative; padding: 90px 0 70px; background:
+  radial-gradient(ellipse 80% 60% at 50% 0%, rgba(232,195,90,.16), transparent 70%),
+  radial-gradient(ellipse at bottom, #2a2015, var(--bg) 70%); overflow: hidden; }
+h1 { font-family: var(--serif); font-size: clamp(36px, 5.2vw, 58px); line-height: 1.1; margin: 18px 0 18px; font-weight: 800; }
+h1 .g { color: var(--gold); }
+.lead { font-size: 18px; color: var(--dim); max-width: 560px; margin: 0 0 30px; }
+.btns { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 20px; border-radius: 10px; font-weight: 700; font-size: 15px; text-decoration: none; transition: transform .15s, filter .15s; }
+.btn:hover { transform: translateY(-1px); }
+.btn svg { width: 20px; height: 20px; flex: none; }
+.btn.primary { background: linear-gradient(#e8c35a, #b8902f); color: var(--ink); box-shadow: 0 8px 24px rgba(184,144,47,.25); }
+.btn.primary:hover { filter: brightness(1.08); }
+.btn.ghost { color: var(--text); border: 1px solid var(--line); background: rgba(58,45,30,.4); }
+.btn.ghost:hover { border-color: var(--gold2); }
+.btn small { display: block; font-weight: 500; font-size: 12px; opacity: .75; }
+.meta { margin-top: 18px; font-size: 13px; color: var(--dim); }
+
+/* Sections */
+section { padding: 84px 0; scroll-margin-top: 60px; }
+.alt { background: var(--bg2); border-top: 1px solid rgba(90,71,40,.5); border-bottom: 1px solid rgba(90,71,40,.5); }
+.kicker { color: var(--gold); font-weight: 700; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; }
+h2 { font-family: var(--serif); font-size: clamp(28px, 3.6vw, 40px); line-height: 1.2; margin: 8px 0 14px; }
+.steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; }
+.steps li { display: grid; grid-template-columns: 40px 1fr; gap: 14px; }
+.steps .n { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--gold2); color: var(--gold); display: grid; place-items: center; font-weight: 700; font-family: var(--serif); }
+.steps h3 { margin: 2px 0 2px; font-size: 16px; }
+.steps p { margin: 0; color: var(--dim); font-size: 15px; }
+.ticks { list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 10px; }
+.ticks li { padding-left: 28px; position: relative; color: var(--dim); }
+.ticks li::before { content: ""; position: absolute; left: 0; top: 5px; width: 16px; height: 16px; border-radius: 50%; background: rgba(79,154,90,.2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5' fill='none' stroke='%236fc27b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat; }
+.ticks b { color: var(--text); font-weight: 600; }
+.note { border-left: 3px solid var(--gold2); background: rgba(232,195,90,.06); padding: 12px 16px; border-radius: 0 8px 8px 0; color: var(--dim); font-size: 14px; margin-top: 16px; }
+.shot { margin: 24px 0 0; border: 1px solid rgba(184,144,47,.45); border-radius: 14px; overflow: hidden; background: var(--panel); }
+.shot img { display: block; width: 100%; height: auto; }
+.shot figcaption { padding: 12px 14px; font-size: 14px; color: var(--dim); border-top: 1px solid var(--line); }
+.code { background: #0e0b07; border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 13px; color: #e9d8b0; overflow-x: auto; white-space: pre; }
+
+/* FAQ */
+.faq { max-width: 820px; display: grid; gap: 10px; }
+details { background: var(--panel); border: 1px solid rgba(90,71,40,.9); border-radius: 12px; padding: 0 18px; }
+details[open] { border-color: var(--gold2); }
+summary { cursor: pointer; list-style: none; padding: 16px 0; font-weight: 600; display: flex; justify-content: space-between; gap: 12px; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; color: var(--gold); font-size: 20px; line-height: 1; }
+details[open] summary::after { content: "–"; }
+details p { margin: 0 0 16px; color: var(--dim); }
+
+footer { padding: 36px 0 44px; border-top: 1px solid rgba(90,71,40,.6); color: var(--dim); font-size: 13px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+footer a { color: var(--dim); }
+
+.page { padding: 64px 0 48px; }
+.narrow { max-width: 860px; }
+.crumbs { font-size: 13px; color: var(--dim); margin-bottom: 8px; }
+.crumbs a { color: var(--dim); }
+.answer { max-width: none; color: var(--text); }
+section p { color: var(--dim); }
+.tbl { overflow-x: auto; border: 1px solid rgba(184,144,47,.4); border-radius: 12px; margin: 20px 0 12px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 620px; }
+th, td { text-align: left; padding: 11px 14px; border-bottom: 1px solid rgba(90,71,40,.6); vertical-align: top; }
+thead th { background: var(--panel2); color: var(--gold); font-weight: 700; }
+tbody th { color: var(--text); font-weight: 600; }
+td { color: var(--dim); }
+tbody tr:first-child { background: rgba(232,195,90,.07); }
+.small { font-size: 14px; }
+code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; background: #0e0b07; border: 1px solid var(--line); border-radius: 5px; padding: 1px 6px; color: #e9d8b0; }
+
+@media (max-width: 900px) {
+  .hero { padding: 56px 0 50px; }
+  .nav a:not(.cta) { display: none; }
+  section { padding: 60px 0; }
+}
+@media (max-width: 560px) {
+  .wrap { padding: 0 16px; }
+  .btn { width: 100%; justify-content: center; }
+  .lead { font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2l11 4v9c0 7.2-4.6 12.6-11 15-6.4-2.4-11-7.8-11-15V6z" fill="#3a2d1e" stroke="#e8c35a" stroke-width="1.6"/><path d="M10 20l2-8 4 4 4-4 2 8z" fill="#e8c35a"/></svg>
+      SuperAoE
+    </a>
+    <nav class="nav" aria-label="Menu chính">
+      <a href="#lan-ao">LAN ảo</a>
+      <a href="#superaoe">Không cần VPN</a>
+      <a href="#so-sanh">So sánh</a>
+      <a href="#hoi-dap">Hỏi đáp</a>
+      <a class="cta" href="https://superaoe.com/download">Tải về</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero page">
+  <div class="wrap narrow">
+    <nav class="crumbs" aria-label="Đường dẫn"><a href="/">SuperAoE</a> › <span>Chơi Đế Chế qua mạng</span></nav>
+    <h1>Chơi Đế Chế qua mạng <span class="g">không cần Hamachi, Radmin</span></h1>
+    <p class="lead answer">Đế Chế (Age of Empires 1 Rise of Rome) được làm để chơi mạng LAN, nên muốn chơi với bạn ở xa thì trước đây phải dựng mạng LAN ảo bằng Hamachi, Radmin VPN hoặc mở cổng router. SuperAoE bỏ bước đó: dữ liệu game đi qua máy chủ relay trên Cloudflare, mọi người chỉ cần có Internet, tải gói có sẵn game và vào cùng một mã phòng 6 ký tự.</p>
+    <div class="btns">
+      <a class="btn primary" href="https://superaoe.com/download" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg>
+        <span>Tải SuperAoE cho Windows<small>SuperAoE.zip · khoảng 160 MB · có sẵn game</small></span>
+      </a>
+    </div>
+    <p class="meta">Cập nhật lần cuối: <time datetime="2026-10-22">22/10/2026</time> · Miễn phí · Windows 10 / 11</p>
+  </div>
+</section>
+
+<section id="vi-sao">
+  <div class="wrap narrow">
+    <div class="kicker">Nguyên nhân</div>
+    <h2>Vì sao Đế Chế khó chơi qua Internet</h2>
+    <p>Phần chơi mạng của AoE1 dùng DirectPlay, công nghệ của Microsoft từ cuối những năm 1990. Trong mạng LAN (cùng một quán net, cùng router), các máy tự thấy phòng của nhau. Qua Internet thì các máy nằm sau router và nhà mạng khác nhau, không "nhìn thấy" nhau, nên người chơi Việt Nam thường phải:</p>
+    <ul class="ticks">
+      <li><b>Dựng LAN ảo</b> bằng Hamachi, Radmin VPN hoặc phần mềm tương tự, để mọi máy giả như đang cùng một mạng LAN.</li>
+      <li><b>Hoặc mở cổng router</b> cho máy làm chủ phòng, rồi người khác nhập IP của máy đó. Nhiều mạng gia đình, mạng 4G không mở cổng được.</li>
+      <li><b>Hoặc dùng một nền tảng chơi game</b> có phần mềm kết nối riêng.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="lan-ao" class="alt">
+  <div class="wrap narrow">
+    <div class="kicker">Cách truyền thống</div>
+    <h2>Chơi Đế Chế bằng LAN ảo (Hamachi, Radmin VPN)</h2>
+    <p>Đây là cách chung nhiều người vẫn dùng. SuperAoE không phát triển hay hỗ trợ các phần mềm này; các bước dưới chỉ mang tính tham khảo.</p>
+    <ol class="steps">
+      <li><span class="n">1</span><div><h3>Mọi người cài cùng một phần mềm LAN ảo</h3><p>Ví dụ Radmin VPN hoặc Hamachi, rồi cùng vào một mạng (network) do một người tạo.</p></div></li>
+      <li><span class="n">2</span><div><h3>Mọi người cài cùng một bản Đế Chế</h3><p>Phải cùng phiên bản game, nếu khác bản thường không vào được phòng hoặc lệch đồng bộ giữa trận.</p></div></li>
+      <li><span class="n">3</span><div><h3>Bật DirectPlay trên Windows 10/11 nếu được hỏi</h3><p>Windows mới không bật sẵn DirectPlay; khi game cần, Windows sẽ đề nghị cài thêm thành phần này.</p></div></li>
+      <li><span class="n">4</span><div><h3>Một người tạo phòng, người khác tìm phòng qua TCP/IP</h3><p>Nếu không thấy phòng, thường phải nhập IP mạng ảo của chủ phòng, cho game qua tường lửa, hoặc tắt bớt card mạng để game chọn đúng mạng ảo.</p></div></li>
+    </ol>
+    <p class="note">Lỗi hay gặp với LAN ảo: không thấy phòng, vào phòng rồi bị văng, giật lag vì đường đi của dữ liệu phụ thuộc phần mềm LAN ảo, và mỗi lần chơi đều phải nhờ cả nhóm bật đúng mạng.</p>
+  </div>
+</section>
+
+<section id="superaoe">
+  <div class="wrap narrow">
+    <div class="kicker">Không cần VPN</div>
+    <h2>Chơi Đế Chế qua mạng bằng SuperAoE</h2>
+    <p>SuperAoE thay phần kết nối DirectPlay của game bằng một máy chủ relay chạy trên Cloudflare. Game vẫn là bản gốc Rise of Rome, chỉ có đường đi của dữ liệu là khác: thay vì các máy phải nhìn thấy nhau, tất cả cùng nối tới máy chủ.</p>
+    <ol class="steps">
+      <li><span class="n">1</span><div><h3>Tải SuperAoE.zip và giải nén</h3><p>Gói đã kèm game, không cần cài đặt. Chi tiết ở trang <a href="/tai-aoe-rise-of-rome/">tải Đế Chế 1 cho Windows 10/11</a>.</p></div></li>
+      <li><span class="n">2</span><div><h3>Mở SuperAoE.exe, đăng ký tài khoản</h3><p>Tài khoản miễn phí: tên đăng nhập, mật khẩu, email (không cần xác thực email).</p></div></li>
+      <li><span class="n">3</span><div><h3>Tạo phòng, gửi mã 6 ký tự</h3><p>Đặt mật khẩu phòng nếu muốn chơi riêng. Bạn bè nhập mã phòng hoặc chọn phòng trong danh sách.</p></div></li>
+      <li><span class="n">4</span><div><h3>Chủ phòng bấm Bắt đầu</h3><p>Game tự mở đúng vai cho từng người, không gõ IP, không chọn kiểu kết nối. Hết ván vẫn ở lại phòng để đánh ván sau.</p></div></li>
+    </ol>
+    <ul class="ticks">
+      <li><b>Không mở cổng, không IP tĩnh:</b> Wi-Fi, cáp quang hay 4G đều vào phòng được.</li>
+      <li><b>Rớt mạng không mất chỗ:</b> game còn mở thì phòng giữ chỗ 60 giây và tự nối lại.</li>
+      <li><b>Có khán giả:</b> mỗi phòng có 3 ghế xem trực tiếp bằng đồ họa gốc. Xem <a href="/choi-aoe-co-khan-gia/">chơi AoE có khán giả</a>.</li>
+    </ul>
+    <figure class="shot">
+      <img src="/img/spectator.jpg" width="1366" height="768" loading="lazy" alt="Trận Đế Chế 1v1 chơi qua mạng bằng SuperAoE, ảnh chụp từ ghế khán giả">
+      <figcaption>Ảnh chụp thật: một trận 1v1 qua SuperAoE, nhìn từ ghế khán giả.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="so-sanh" class="alt">
+  <div class="wrap narrow">
+    <div class="kicker">So sánh</div>
+    <h2>LAN thật, LAN ảo hay SuperAoE?</h2>
+    <p>Mỗi cách hợp với một hoàn cảnh. Thông tin về phần mềm khác có thể thay đổi, hãy kiểm tra trên trang chính thức của họ.</p>
+    <div class="tbl">
+      <table>
+        <thead><tr><th scope="col">Cách</th><th scope="col">Chơi với người ở xa</th><th scope="col">Phải cài thêm</th><th scope="col">Mở cổng / cùng mạng ảo</th><th scope="col">Ghế khán giả</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">SuperAoE</th><td>Có, qua Internet</td><td>Không, gói đã kèm game</td><td>Không</td><td>3 ghế, xem trực tiếp</td></tr>
+          <tr><th scope="row">LAN thật (cùng router, quán net)</th><td>Không</td><td>Tự cài game</td><td>Phải cùng một mạng</td><td>Không</td></tr>
+          <tr><th scope="row">LAN ảo (Hamachi, Radmin VPN)</th><td>Có</td><td>Phần mềm LAN ảo + tự cài game</td><td>Cả nhóm vào cùng mạng ảo</td><td>Không</td></tr>
+          <tr><th scope="row">Mở cổng router, nhập IP</th><td>Có</td><td>Tự cài game</td><td>Chủ phòng phải mở cổng</td><td>Không</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small">So sánh với GameRanger, Voobly, XArena, GameTV Plus: xem <a href="/choi-aoe-online-mien-phi/#so-sanh">bảng so sánh các cách chơi AoE1 online</a>.</p>
+  </div>
+</section>
+
+<section id="hoi-dap">
+  <div class="wrap narrow">
+    <div class="kicker">Hỏi đáp</div>
+    <h2>Câu hỏi thường gặp khi chơi Đế Chế qua mạng</h2>
+    <div class="faq">
+      <details open><summary>Không có Hamachi hay Radmin thì chơi Đế Chế qua Internet được không?</summary><p>Được. Với SuperAoE, dữ liệu game đi qua máy chủ relay trên Cloudflare nên chỉ cần có Internet, không cần LAN ảo, VPN hay mở cổng router.</p></details>
+      <details><summary>Vì sao dùng Hamachi, Radmin VPN mà không thấy phòng Đế Chế?</summary><p>Nguyên nhân hay gặp: tường lửa Windows chặn game, máy có nhiều card mạng nên game chọn nhầm mạng thật thay vì mạng ảo, hoặc chưa bật DirectPlay trên Windows 10/11. Với SuperAoE không gặp các bước này vì không dùng LAN ảo.</p></details>
+      <details><summary>Chơi Đế Chế qua mạng cần những gì?</summary><p>Với SuperAoE: máy Windows 10/11 có Internet, gói SuperAoE.zip (đã kèm game) và tài khoản miễn phí. Người tạo phòng gửi mã phòng 6 ký tự, người khác nhập mã để vào.</p></details>
+      <details><summary>Chơi qua Wi-Fi hoặc 4G được không?</summary><p>Được. SuperAoE không cần IP tĩnh hay mở cổng nên mạng Wi-Fi, cáp quang hay 4G phát từ điện thoại đều vào phòng được. Đường truyền càng ổn định thì trận càng mượt.</p></details>
+      <details><summary>Ngồi cùng một nhà thì có chơi chung phòng SuperAoE được không?</summary><p>Được. Mỗi máy đăng nhập tài khoản riêng rồi vào cùng một mã phòng, giống như chơi với người ở xa. Mỗi máy cần có Internet.</p></details>
+      <details><summary>Một phòng chơi qua mạng được bao nhiêu người?</summary><p>Tối đa 8 người chơi và 3 khán giả xem trực tiếp, mỗi phòng nhận tối đa 15 thành viên.</p></details>
+      <details><summary>Rớt mạng giữa trận có bị mất trận không?</summary><p>Nếu game vẫn đang mở, SuperAoE giữ chỗ 60 giây và tự nối lại. Nếu tắt hẳn game giữa ván thì người chơi không vào lại được trận đó (giới hạn của AoE1), còn khán giả thì vào lại được.</p></details>
+    </div>
+    <p style="margin-top:24px">Xem thêm: <a href="/choi-aoe-online-mien-phi/">chơi AoE online miễn phí</a> · <a href="/choi-aoe-tren-macbook/">chơi AoE trên MacBook</a> (bản thử nghiệm).</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 SuperAoE · <a href="/">Trang chủ</a> · <a href="/tai-aoe-rise-of-rome/">Tải AoE 1 Rise of Rome</a> · <a href="/choi-aoe-online-mien-phi/">Chơi AoE online miễn phí</a> · <a href="/choi-aoe-co-khan-gia/">Chơi AoE có khán giả</a> · <a href="/choi-aoe-tren-macbook/">AoE trên MacBook</a></span>
+    <span>Age of Empires là thương hiệu của Microsoft. SuperAoE không liên kết với Microsoft.</span>
+  </div>
+</footer>
+</body>
+</html>

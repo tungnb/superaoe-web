@@ -43,3 +43,17 @@
 - Ghi chú: lần này có một phiên khác sửa cùng lúc trang Mac và trang chủ (hướng dẫn cài macOS 15 "Apple không thể xác minh"); các sửa đó nằm trong cùng commit/deploy này. FAQ JSON-LD trang Mac và trang chủ dùng URL thay cho chữ "tại đây" của bản hiển thị — khác chữ nhưng cùng ý, chấp nhận.
 - Hoãn: trang so sánh GameTV Plus/GPlay/EGOPLAY — nguồn công khai chủ yếu là bài quảng bá, chưa đủ dữ kiện kiểm chứng để so sánh trung thực.
 - Lần sau: đo hạng 2026-10-28; cân nhắc trang "hướng dẫn chủ phòng / tạo phòng"; theo dõi phản hồi bản Mac để cập nhật.
+
+## 2026-10-22 (vòng SEO 4 — phiên riêng, chạy song song vòng 3)
+- Sửa hướng dẫn cài bản Mac theo yêu cầu phiên chính: macOS 15 Sequoia không còn bỏ qua cảnh báo "Apple không thể xác minh…" bằng chuột phải → Open. Trang /choi-aoe-tren-macbook/ thêm mục #cai-dat (Terminal `bash ` + kéo file; hoặc Privacy & Security → Open Anyway; macOS 14 trở xuống vẫn chuột phải → Open) + 1 FAQ/JSON-LD; trang chủ sửa 2 chỗ. (Đã deploy chung trong b7ce44e.)
+- Trang mới: /choi-de-che-qua-mang/ (từ khóa "chơi đế chế qua mạng", "chơi đế chế bằng radmin / hamachi", "chơi aoe lan qua internet"): vì sao AoE1 khó chơi qua Internet (DirectPlay), cách LAN ảo truyền thống + lỗi hay gặp (ghi rõ SuperAoE không hỗ trợ các phần mềm đó), 4 bước với SuperAoE, bảng LAN thật / LAN ảo / mở cổng / SuperAoE, 7 FAQ. Breadcrumb + FAQPage.
+- Bỏ trang trùng: đã viết /tai-de-che-aoe-1/ nhưng vòng 3 vừa đăng /tai-aoe-rise-of-rome/ cùng ý định tìm kiếm → xóa trang của mình (không deploy), trỏ link về /tai-aoe-rise-of-rome/.
+- Kỹ thuật: hreflang vi + x-default trên mọi trang; footer mọi trang + 1 link trong bài (/choi-aoe-online-mien-phi/ mục "Vì sao không cần VPN") tới trang mới; meta description trang Mac rút còn 153 ký tự (nhắc macOS 15); sitemap 6 URL; llms.txt thêm trang + câu trả lời nhanh.
+- Kiểm tra: html-validate sạch (bỏ qua inline-style/doctype-style), JSON-LD parse được, FAQ JSON-LD khớp FAQ hiển thị, không link/anchor nội bộ hỏng; live == local cho 6 trang + llms + sitemap; URL lạ trả 404 trang tùy biến; IndexNow 200.
+- Lần sau: nén thêm ảnh (tạo bản WebP/nhỏ hơn cho img/spectator.jpg 280 KB với srcset — máy chưa có sharp/cwebp); trang "hướng dẫn chủ phòng / tạo phòng" (vòng 3 đã đề xuất); đo hạng 2026-10-28, thêm cột cho "chơi đế chế qua mạng".
+
+### Cần chủ dự án quyết định / làm
+- Google Search Console + Bing Webmaster Tools: xác minh superaoe.com, gửi sitemap, yêu cầu lập chỉ mục 6 URL (agent không đăng nhập được).
+- Ký số SuperAoE.exe (Windows) và notarize bản Mac nếu có điều kiện: bớt cảnh báo SmartScreen/Gatekeeper, đỡ mất người tải.
+- Backlink: đăng bài giới thiệu ở group Facebook Đế Chế, Voz, kênh YouTube Đế Chế (nháp trong `seo/outreach/`).
+- Khán giả hiện không bị phát trễ (DELAY_SECONDS="0"): nếu muốn chống "báo bài" trong trận nghiêm túc thì cân nhắc bật lại độ trễ; website đang ghi đúng là gần như không trễ.
