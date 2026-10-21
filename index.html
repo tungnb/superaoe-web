@@ -148,7 +148,7 @@
    "name": "Mất mạng giữa trận thì sao?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Phòng giữ chỗ cho bạn 60 giây và tự nối lại khi game vẫn đang mở. Nếu tắt hẳn game giữa ván thì người chơi không vào lại được trận đó, còn khán giả thì vào lại được."
+    "text": "Trận tạm dừng và cả phòng chờ bạn kết nối lại, tổng cộng tối đa 30 phút mỗi trận. Mạng có lại thì game tự nối; lỡ tắt game thì mở launcher bấm \"Vào lại trận\" (tối đa 5 lần mỗi trận). Quá 30 phút thì bạn bị loại, những người khác chơi tiếp. Khán giả vào lại trận lúc nào cũng được."
    }
   }
  ]
@@ -224,7 +224,7 @@ h1 .g { color: var(--gold); }
 /* Screenshot gallery */
 .shots { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .shot { margin: 0; border: 1px solid rgba(184,144,47,.45); border-radius: 14px; overflow: hidden; background: var(--panel); }
-.shot.big { grid-column: 1 / -1; }
+.shot.big, .split > .shot.wide { grid-column: 1 / -1; }
 .shot figcaption { padding: 12px 14px; font-size: 14px; color: var(--dim); border-top: 1px solid var(--line); }
 .shot figcaption b { color: var(--text); display: block; font-size: 15px; margin-bottom: 2px; }
 
@@ -341,7 +341,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
       <h1>Chơi Đế Chế online.<br><span class="g">Xem trực tiếp, xem lại replay.</span></h1>
       <p class="lead">SuperAoE đưa Age of Empires: Rise of Rome lên mạng bằng đồ họa gốc của game, không cần VPN hay mở cổng router.</p>
       <ul class="feats">
-        <li><a href="/choi-aoe-online-mien-phi/"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg></span><span><b>Chơi online miễn phí</b>Tạo phòng tới 8 người, gửi mã cho bạn bè là vào</span></a></li>
+        <li><a href="/choi-aoe-online-mien-phi/"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg></span><span><b>Chơi online miễn phí</b>Tạo phòng tới 8 người. Một người mất mạng, cả đội chờ tới 30 phút để người đó vào lại</span></a></li>
         <li><a href="/choi-aoe-co-khan-gia/"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span><span><b>Mời khách xem trận</b>Khách mời xem 8 người đang thi đấu ở chế độ khán giả</span></a></li>
         <li><a href="/xem-lai-tran-aoe-replay/"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 109-9 9.7 9.7 0 00-6.7 2.8L3 8"/><path d="M3 3v5h5M12 7v5l3 2"/></svg></span><span><b>Xem lại toàn bộ trận cũ</b>Rút kinh nghiệm và học hỏi cách đánh của đối thủ</span></a></li>
         <li><a href="/choi-aoe-tren-macbook/"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M2 20h20"/></svg></span><span><b>Có ứng dụng cho MacBook</b>Chạy trên MacBook chip Apple M1, M2, M3, M4</span></a></li>
@@ -384,8 +384,8 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
       </div>
       <div class="card">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 109-9 9.7 9.7 0 00-6.7 2.8L3 8"/><path d="M3 3v5h5M12 7v5l3 2"/></svg></div>
-        <h3>Rớt mạng không mất chỗ</h3>
-        <p>Mất kết nối giữa trận, phòng giữ chỗ cho bạn 60 giây và tự nối lại khi game vẫn đang mở. Khán giả vào lại trận đang đánh bất cứ lúc nào.</p>
+        <h3>Mất mạng, cả đội chờ 30 phút</h3>
+        <p>Một người rớt mạng giữa trận, trận tạm dừng và cả phòng chờ người đó vào lại, tối đa 30 phút. Lỡ tắt game thì bấm "Vào lại trận" để đánh tiếp. Không lo rớt mạng là mất cả trận như trước. <a href="#mat-mang">Xem ảnh thật</a></p>
       </div>
       <div class="card">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M2 20h20"/></svg></div>
@@ -406,7 +406,28 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
   </div>
 </section>
 
-<section id="anh" class="alt">
+<section id="mat-mang" class="alt">
+  <div class="wrap split">
+    <div>
+      <div class="kicker">Mất mạng không mất trận</div>
+      <h2>Một người rớt mạng, cả đội chờ tới 30 phút</h2>
+      <p class="sub" style="margin-bottom:28px">Trước đây chơi Đế Chế qua mạng, chỉ cần một người rớt là cả trận coi như bỏ. SuperAoE giữ trận lại cho tới khi người đó quay về.</p>
+      <ol class="steps">
+        <li><span class="n">1</span><div><h3>Trận tự tạm dừng</h3><p>Mọi người trong trận thấy thông báo ai mất kết nối và còn bao lâu để người đó vào lại.</p></div></li>
+        <li><span class="n">2</span><div><h3>Mạng có lại là đánh tiếp</h3><p>Mạng chập chờn rồi có lại, game tự kết nối, trận chạy tiếp như chưa có gì.</p></div></li>
+        <li><span class="n">3</span><div><h3>Lỡ tắt game? Bấm "Vào lại trận"</h3><p>Mở launcher, bấm "↻ Vào lại trận": game tua nhanh tới đúng lúc bạn rời rồi cho bạn chơi tiếp quân của mình.</p></div></li>
+        <li><span class="n">4</span><div><h3>Tối đa 30 phút mỗi người</h3><p>Mỗi người được chờ tổng cộng 30 phút mỗi trận. Hết giờ mà chưa về thì người đó bị loại, những người còn lại đánh tiếp.</p></div></li>
+      </ol>
+      <p class="meta">Vào lại trận tối đa 5 lần mỗi trận, mỗi lần cách nhau ít nhất 30 giây. Có từ bản 0.2.8 cho Windows và Mac (launcher tự cập nhật).</p>
+    </div>
+    <figure class="shot">
+      <a href="img/cho-ket-noi.jpg" target="_blank" rel="noopener"><img src="img/cho-ket-noi.jpg" width="700" height="420" loading="lazy" alt="Ảnh chụp thật trong game: thông báo một người chơi mất kết nối, trận tạm dừng chờ người này vào lại, còn 29 phút 20 giây"></a>
+      <figcaption><b><span class="live">ẢNH THẬT</span> Thông báo chờ kết nối</b>Người còn lại thấy ai mất kết nối và thời gian chờ còn lại. Ảnh chụp từ một lần chạy thử, tên người chơi là tài khoản thử.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="anh">
   <div class="wrap">
     <div class="kicker">Ảnh trong game</div>
     <h2>Đúng Đế Chế bạn đã chơi</h2>
@@ -428,7 +449,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
   </div>
 </section>
 
-<section id="khan-gia">
+<section id="khan-gia" class="alt">
   <div class="wrap split">
     <div>
       <div class="kicker">Khán giả</div>
@@ -449,7 +470,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
   </div>
 </section>
 
-<section id="replay" class="alt">
+<section id="replay">
   <div class="wrap split">
     <div>
       <div class="kicker">Replay · Xem lại trận</div>
@@ -463,36 +484,14 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
       </ol>
       <p style="margin-top:22px"><a href="/xem-lai-tran-aoe-replay/">Hướng dẫn xem lại trận AoE bằng replay →</a></p>
     </div>
-    <figure class="shot">
-      <svg viewBox="0 0 640 380" role="img" aria-label="Minh họa thanh điều khiển replay của SuperAoE: về đầu, lùi 30 và 10 giây, dừng, tới 10 và 30 giây, tốc độ x2, thanh tiến trình">
-        <defs><linearGradient id="rpBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3b4a24"/><stop offset=".55" stop-color="#4a5a2a"/><stop offset="1" stop-color="#2d3a1d"/></linearGradient></defs>
-        <rect width="640" height="380" fill="url(#rpBg)"/>
-        <path d="M0 70 Q120 40 220 90 T430 70 T640 110 V0 H0z" fill="#2a4a6a" opacity=".85"/>
-        <g fill="#2a3a18" opacity=".9"><circle cx="90" cy="200" r="26"/><circle cx="118" cy="188" r="20"/><circle cx="520" cy="170" r="28"/><circle cx="548" cy="195" r="22"/><circle cx="470" cy="240" r="18"/></g>
-        <g fill="#c9a86a" stroke="#6b5532"><rect x="260" y="160" width="54" height="40" rx="3"/><rect x="360" y="210" width="36" height="28" rx="3"/></g>
-        <g fill="#3b6ec2"><circle cx="232" cy="222" r="5"/><circle cx="246" cy="230" r="5"/><circle cx="330" cy="240" r="5"/></g>
-        <g fill="#c23a2f"><circle cx="440" cy="130" r="5"/><circle cx="452" cy="140" r="5"/></g>
-        <rect x="0" y="300" width="640" height="80" fill="#140f0a" opacity=".92"/>
-        <rect x="20" y="312" width="600" height="6" rx="3" fill="#3a2d1e"/>
-        <rect x="20" y="312" width="260" height="6" rx="3" fill="#e8c35a"/>
-        <circle cx="280" cy="315" r="8" fill="#e8c35a"/>
-        <g fill="#f2e6cf" font-family="Be Vietnam Pro, sans-serif" font-size="13" font-weight="600">
-          <path d="M28 337h3v18h-3zM46 337v18l-13-9z"/>
-          <text x="66" y="351">«30</text>
-          <text x="106" y="351">«10</text>
-          <g transform="translate(150 334)"><rect width="30" height="26" rx="6" fill="#e8c35a"/><rect x="10" y="7" width="4" height="12" fill="#221a12"/><rect x="17" y="7" width="4" height="12" fill="#221a12"/></g>
-          <text x="194" y="351">10»</text>
-          <text x="234" y="351">30»</text>
-          <g transform="translate(280 334)"><rect width="38" height="26" rx="6" fill="none" stroke="#b8902f"/><text x="19" y="17.5" text-anchor="middle" fill="#e8c35a">x2</text></g>
-          <text x="620" y="351" text-anchor="end" fill="#b7a583" font-weight="500">12:34 / 28:50</text>
-        </g>
-      </svg>
-      <figcaption><b>Thanh điều khiển replay (minh họa)</b>Phím tắt: Space/K dừng-chạy · J/L lùi-tới · −/+ tốc độ · Home về đầu · H ẩn/hiện thanh.</figcaption>
+    <figure class="shot wide">
+      <a href="img/replay-tua.jpg" target="_blank" rel="noopener"><img src="img/replay-tua.jpg" width="1366" height="400" loading="lazy" alt="Ảnh chụp thật thanh công cụ xem lại trận của SuperAoE: về đầu, lùi 30 và 10 giây, dừng, tới 10 và 30 giây, tốc độ x0.5 đến x8, thời gian 1:48 / 2:43 và thanh tiến trình"></a>
+      <figcaption><b><span class="live">ẢNH THẬT</span> Thanh công cụ xem lại trận</b>Về đầu, lùi 30/10 giây, dừng/chạy, tới 10/30 giây, tốc độ x0.5 đến x8, bấm thanh tiến trình để nhảy tới thời điểm bất kỳ. Phím tắt: Space/K dừng-chạy · J/L lùi-tới · −/+ tốc độ · Home về đầu · H ẩn/hiện thanh.</figcaption>
     </figure>
   </div>
 </section>
 
-<section id="sanh">
+<section id="sanh" class="alt">
   <div class="wrap lobby">
     <div class="u">
       <svg viewBox="0 0 440 330" role="img" aria-label="Sơ đồ sảnh chờ chữ U">
@@ -518,14 +517,14 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
         <li><b>Danh sách phòng trực tiếp:</b> thấy các phòng đang mở, tìm theo mã, đặt mật khẩu nếu muốn chơi riêng.</li>
         <li><b>Một nút bắt đầu:</b> chủ phòng bấm, mọi người tự vào game đúng vai, không phải gõ IP.</li>
         <li><b>Đánh nhiều trận liền:</b> hết trận vẫn ở lại sảnh, chủ phòng mở trận tiếp theo.</li>
-        <li><b>Rớt mạng không mất phòng:</b> có 60 giây để kết nối lại, khán giả vào lại trận đang đánh được.</li>
+        <li><b>Rớt mạng không mất trận:</b> trận tạm dừng, cả phòng chờ người rớt tối đa 30 phút; lỡ tắt game thì bấm "Vào lại trận". Khán giả vào lại trận đang đánh được.</li>
         <li><b>Tài khoản &amp; bảo mật:</b> mật khẩu được băm an toàn; gói tin trong phòng được lọc chặt theo loại, kích thước và người gửi.</li>
       </ul>
     </div>
   </div>
 </section>
 
-<section id="tai-ve" class="alt">
+<section id="tai-ve">
   <div class="wrap">
     <div class="kicker">Tải về</div>
     <h2>Chọn bản cho máy của bạn</h2>
@@ -566,7 +565,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
   </div>
 </section>
 
-<section id="macbook">
+<section id="macbook" class="alt">
   <div class="wrap mac">
     <div>
       <div class="kicker">MacBook</div>
@@ -595,7 +594,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
   </div>
 </section>
 
-<section id="hoi-dap" class="alt">
+<section id="hoi-dap">
   <div class="wrap">
     <div class="kicker">Hỏi đáp</div>
     <h2>Câu hỏi thường gặp</h2>
@@ -607,7 +606,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
       <details><summary>SuperAoE có bản cho MacBook chưa?</summary><p>Có. SuperAoE có bản cài riêng, chạy mượt trên MacBook chip Apple (M1, M2, M3, M4…), tải tại <a href="https://superaoe.com/download/mac">superaoe.com/download/mac</a>. Gói đã kèm Wine và game, cài thành ứng dụng SuperAoE trong thư mục Applications và tự cập nhật trong app. Bản Mac chơi chung phòng với bản Windows. Mac chip Intel không được hỗ trợ.</p></details>
       <details><summary>SuperAoE có lưu replay để xem lại trận không?</summary><p>Có. Mọi trận online trên SuperAoE được tự động lưu replay (.aoerep) trên máy chủ, để bạn xem lại trận đấu cũ, rút kinh nghiệm và học hỏi từ đối thủ. Trong launcher, vào menu Lịch sử trận / Xem lại, bấm vào trận để xem lại bằng chính game gốc, tua lùi/tới 10 hoặc 30 giây, chỉnh tốc độ x0.5 đến x8. Miễn phí. <a href="/xem-lai-tran-aoe-replay/">Xem hướng dẫn replay</a>.</p></details>
       <details><summary>Một phòng chơi được bao nhiêu người?</summary><p>Tối đa 8 người chơi và 3 khán giả. Mỗi phòng nhận tối đa 15 thành viên.</p></details>
-      <details><summary>Mất mạng giữa trận thì sao?</summary><p>Phòng giữ chỗ cho bạn 60 giây và tự nối lại khi game vẫn đang mở. Nếu tắt hẳn game giữa ván thì người chơi không vào lại được trận đó, còn khán giả thì vào lại được.</p></details>
+      <details><summary>Mất mạng giữa trận thì sao?</summary><p>Trận tạm dừng và cả phòng chờ bạn kết nối lại, tổng cộng tối đa 30 phút mỗi trận. Mạng có lại thì game tự nối; lỡ tắt game thì mở launcher bấm "Vào lại trận" (tối đa 5 lần mỗi trận). Quá 30 phút thì bạn bị loại, những người khác chơi tiếp. Khán giả vào lại trận lúc nào cũng được.</p></details>
     </div>
   </div>
 </section>
