@@ -68,3 +68,16 @@
 - Theo yêu cầu phiên website (đã kiểm chứng: `xtv-cf/src/room.js` RECONNECT_WAIT_SECONDS mặc định 1800, launcher 0.2.8 nút "↻ Vào lại trận"/"↻ Mở lại game"): bỏ mọi câu "giữ chỗ 60 giây" / "tắt hẳn game thì không vào lại được" ở /choi-aoe-online-mien-phi/ (FAQ + JSON-LD + tick), /choi-de-che-qua-mang/ (FAQ + JSON-LD + tick, thêm ảnh thật /img/cho-ket-noi.jpg), /tai-aoe-rise-of-rome/ (2 dòng bảng lỗi), llms.txt; trang chủ softwareVersion 0.2.6 → 0.2.8.
 - seo-agent.md "Quy tắc sự thật" + seo/facts.md: thay luật rớt mạng cũ bằng luật 30 phút / Vào lại trận; luật cài Mac thêm cách mở trên macOS 15 (chuột phải → Open không còn được).
 - Kiểm tra: html-validate sạch, JSON-LD hợp lệ, không link/anchor hỏng; deploy d34cb5be, live == local; IndexNow.
+
+## 2026-10-22 (vòng SEO 6 — tự động, cập nhật theo launcher 0.3.0 P2P)
+- Sản phẩm đổi (launcher/package.json 0.3.0, NOTES.md §9k): trận chạy P2P qua WebRTC (máy người ngồi ghế đầu giữ trận), dự phòng qua máy chủ Cloudflare. Các câu "dữ liệu game đi qua máy chủ relay trên Cloudflare" không còn đúng → sửa ở trang chủ (FAQ + JSON-LD + thẻ tính năng), /choi-aoe-online-mien-phi/ (FAQ + JSON-LD + đoạn "Vì sao không cần VPN"), /choi-de-che-qua-mang/ (lead, mục cách hoạt động + đoạn "Lưu ý trung thực": máy ghế đầu tắt launcher/mất mạng hẳn thì ván dừng, IP lộ như mọi game P2P; FAQ + JSON-LD; og:description), llms.txt (mục Mạng + câu trả lời nhanh; thêm cách mở bản Mac trên macOS 15).
+- softwareVersion 0.2.8 → 0.3.0 (trang chủ), nhãn "Launcher 0.3.0" ở /tai-aoe-rise-of-rome/.
+- seo/facts.md + Quy tắc sự thật trong seo-agent.md: thêm luật P2P và giới hạn; không hứa "luôn nối thẳng".
+- Không đo hạng (lần trước 2026-10-21, lần tới 2026-10-28); không soạn outreach (tuần này đã có 2026-10-21).
+- Kiểm tra: html-validate sạch, JSON-LD parse được, FAQ JSON-LD khớp hiển thị (thay cùng chuỗi ở cả hai).
+- Lần sau: đo hạng 2026-10-28; trang "hướng dẫn chủ phòng / tạo phòng" (nhắc chủ phòng/ghế đầu nên dùng mạng ổn định vì trận P2P); nén ảnh spectator.jpg.
+
+### Cần chủ dự án quyết định / làm
+- Xác nhận cách nói về P2P: website giờ nói rõ "máy ghế đầu tắt/mất mạng hẳn thì ván dừng cho cả phòng". Nếu sau này có chuyển chủ trận hoặc TURN thì báo để sửa.
+- Câu "rớt mạng cả đội chờ 30 phút" vẫn giữ cho người chơi khác ghế đầu; nếu thực tế P2P khác (ví dụ ghế đầu chập chờn ngắn vẫn chờ được) hãy kiểm chứng rồi cập nhật seo/facts.md.
+- Vẫn tồn đọng: Google Search Console + Bing Webmaster Tools, ký số exe / notarize Mac, đăng bài outreach.

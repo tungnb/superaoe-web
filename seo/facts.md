@@ -1,6 +1,6 @@
 # Sự thật sản phẩm SuperAoE (nguồn cho mọi nội dung SEO)
 
-Cập nhật: 2026-10-22 (launcher 0.2.6, `MAC_URL` trong index.html = https://superaoe.com/download/mac; nguồn: `C:\SuperAoE\HUONG DAN.txt`, xtv-cf/wrangler.toml DELAY_SECONDS="0").
+Cập nhật: 2026-10-22 (launcher 0.3.0 bắt buộc — trận P2P, nguồn NOTES.md §9k; trước đó 0.2.6, `MAC_URL` trong index.html = https://superaoe.com/download/mac; nguồn: `C:\SuperAoE\HUONG DAN.txt`, xtv-cf/wrangler.toml DELAY_SECONDS="0").
 
 Đã có thật:
 - Miễn phí; tải `SuperAoE.zip` cho Windows 10/11 tại https://superaoe.com/download (~158 MB, có sẵn game Age of Empires 1 Rise of Rome).
@@ -11,7 +11,7 @@ Cập nhật: 2026-10-22 (launcher 0.2.6, `MAC_URL` trong index.html = https://s
 - Người chơi tắt game: vào lại được nếu trận chưa vào màn chơi; đã vào màn chơi thì chờ ván sau.
 - Chủ phòng kéo-thả người giữa các ghế; "Kết thúc ván"; trong ván người mới chỉ ngồi ghế khán giả trống.
 - Gói tải là thư mục `C:\SuperAoE`: `SuperAoE.exe`, `game\`, `HUONG DAN.txt`. Gửi cho bạn bè: nén cả thư mục.
-- Không cần VPN, không cần mở cổng: kết nối đi qua máy chủ relay trên Cloudflare.
+- Không cần VPN, không cần mở cổng. Từ launcher 0.3.0 (bắt buộc, Windows + Mac): trận chạy **P2P** — launcher người ngồi ghế đầu giữ trận (chạy chính code GameRoom), máy người khác nối thẳng tới đó bằng WebRTC (STUN); ai không nối được thì ván chạy qua máy chủ GameRoom trên Cloudflare (có hạn mức phút/ngày). Sảnh/danh sách phòng vẫn ở Cloudflare. Giới hạn phải nói thật: máy ghế đầu tắt launcher/mất mạng hẳn → ván dừng cho cả phòng (không chuyển chủ); IP máy giữ trận lộ cho người trong trận như mọi game P2P. P2P chưa được kiểm chứng rộng với nhiều loại NAT thật → không hứa "luôn nối thẳng", không nói "không bao giờ lag". Replay trận P2P vẫn được máy giữ trận tải lên máy chủ.
 - Rớt mạng (launcher 0.2.8 bắt buộc, 2026-10-22): trận tạm dừng, cả phòng chờ người rớt tổng cộng tối đa 30 phút/người/trận (cộng dồn), màn hình hiện ai mất kết nối và thời gian còn lại; mạng có lại thì game tự nối; lỡ tắt game thì bấm "↻ Vào lại trận" (tua nhanh rồi chơi tiếp, tối đa 5 lần/trận, cách nhau ≥ 30 giây); hết 30 phút thì bị loại. Khán giả: "↻ Mở lại game", luôn vào lại được. Ảnh thật: /img/cho-ket-noi.jpg.
 - Launcher tự cập nhật.
 

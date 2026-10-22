@@ -60,7 +60,7 @@
  "description": "Launcher chơi Đế Chế (Age of Empires 1 Rise of Rome) online cho Windows 10/11 và MacBook chip Apple: tài khoản, danh sách phòng, phòng chờ 8 người chơi + 3 khán giả xem trực tiếp, mọi trận tự lưu replay để xem lại, không cần VPN hay mở cổng.",
  "url": "https://superaoe.com/",
  "downloadUrl": ["https://superaoe.com/download", "https://superaoe.com/download/mac"],
- "softwareVersion": "0.2.8",
+ "softwareVersion": "0.3.0",
  "featureList": [
   "Chơi Đế Chế online tới 8 người, không cần VPN hay mở cổng",
   "3 ghế khán giả xem trực tiếp bằng đồ họa gốc",
@@ -108,7 +108,7 @@
    "name": "Có cần VPN, Hamachi hay mở cổng không?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Không. Dữ liệu game đi qua máy chủ của SuperAoE trên Cloudflare, chỉ cần có Internet là vào phòng được."
+    "text": "Không. Launcher tự nối các máy trong trận với nhau (P2P qua WebRTC), không nối thẳng được thì chạy qua máy chủ SuperAoE trên Cloudflare; chỉ cần có Internet là vào phòng được."
    }
   },
   {
@@ -415,7 +415,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
       <div class="card">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg></div>
         <h3>Chơi online tới 8 người</h3>
-        <p>Tạo phòng, gửi mã 6 ký tự cho bạn bè. Không cần VPN, Hamachi hay mở cổng router: kết nối đi qua máy chủ Cloudflare.</p>
+        <p>Tạo phòng, gửi mã 6 ký tự cho bạn bè. Không cần VPN, Hamachi hay mở cổng router: launcher tự nối máy các người chơi (P2P), dự phòng qua máy chủ Cloudflare.</p>
       </div>
       <div class="card">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div>
@@ -601,7 +601,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
     <div class="faq">
       <details open><summary>SuperAoE có mất phí không?</summary><p>Không. Tải về, đăng ký tài khoản và chơi miễn phí.</p></details>
       <details><summary>Khán giả có thấy được sương mù của người chơi không?</summary><p>Khán giả thấy toàn bản đồ và có thể chuyển sang góc nhìn của từng người chơi bằng phím 1–8. Khán giả xem gần như cùng lúc với người chơi, nên chủ phòng nên mời khán giả mình tin tưởng.</p></details>
-      <details><summary>Có cần VPN, Hamachi hay mở cổng không?</summary><p>Không. Dữ liệu game đi qua máy chủ của SuperAoE trên Cloudflare, chỉ cần có Internet là vào phòng được.</p></details>
+      <details><summary>Có cần VPN, Hamachi hay mở cổng không?</summary><p>Không. Launcher tự nối các máy trong trận với nhau (P2P qua WebRTC), không nối thẳng được thì chạy qua máy chủ SuperAoE trên Cloudflare; chỉ cần có Internet là vào phòng được.</p></details>
       <details><summary>Có cần cài Age of Empires trước không?</summary><p>Không. Gói SuperAoE.zip đã có sẵn Age of Empires 1 Rise of Rome, giải nén là chạy.</p></details>
       <details><summary>SuperAoE có bản cho MacBook chưa?</summary><p>Có. SuperAoE có bản cài riêng, chạy mượt trên MacBook chip Apple (M1, M2, M3, M4…), tải tại <a href="https://superaoe.com/download/mac">superaoe.com/download/mac</a>. Gói đã kèm Wine và game, cài thành ứng dụng SuperAoE trong thư mục Applications và tự cập nhật trong app. Bản Mac chơi chung phòng với bản Windows. Mac chip Intel không được hỗ trợ.</p></details>
       <details><summary>SuperAoE có lưu replay để xem lại trận không?</summary><p>Có. Mọi trận online trên SuperAoE được tự động lưu replay (.aoerep) trên máy chủ, để bạn xem lại trận đấu cũ, rút kinh nghiệm và học hỏi từ đối thủ. Trong launcher, vào menu Lịch sử trận / Xem lại, bấm vào trận để xem lại bằng chính game gốc, tua lùi/tới 10 hoặc 30 giây, chỉnh tốc độ x0.5 đến x8. Miễn phí. <a href="/xem-lai-tran-aoe-replay/">Xem hướng dẫn replay</a>.</p></details>

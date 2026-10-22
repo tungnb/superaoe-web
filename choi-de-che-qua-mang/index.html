@@ -10,7 +10,7 @@
 <link rel="alternate" hreflang="vi" href="https://superaoe.com/choi-de-che-qua-mang/">
 <link rel="alternate" hreflang="x-default" href="https://superaoe.com/choi-de-che-qua-mang/">
 <meta property="og:title" content="Chơi Đế Chế qua mạng không cần Hamachi, Radmin VPN">
-<meta property="og:description" content="AoE1 cần LAN hoặc LAN ảo để chơi mạng. SuperAoE chuyển dữ liệu game qua Cloudflare: có Internet là vào phòng, không mở cổng.">
+<meta property="og:description" content="AoE1 cần LAN hoặc LAN ảo để chơi mạng. SuperAoE tự nối máy các người chơi (P2P), dự phòng qua Cloudflare: có Internet là vào phòng.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://superaoe.com/choi-de-che-qua-mang/">
 <meta property="og:image" content="https://superaoe.com/img/spectator.jpg">
@@ -55,7 +55,7 @@
    "name": "Không có Hamachi hay Radmin thì chơi Đế Chế qua Internet được không?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Được. Với SuperAoE, dữ liệu game đi qua máy chủ relay trên Cloudflare nên chỉ cần có Internet, không cần LAN ảo, VPN hay mở cổng router."
+    "text": "Được. Với SuperAoE, launcher tự nối các máy trong trận với nhau (P2P qua WebRTC), không nối thẳng được thì chạy qua máy chủ Cloudflare, nên chỉ cần có Internet, không cần LAN ảo, VPN hay mở cổng router."
    }
   },
   {
@@ -240,7 +240,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
   <div class="wrap narrow">
     <nav class="crumbs" aria-label="Đường dẫn"><a href="/">SuperAoE</a> › <span>Chơi Đế Chế qua mạng</span></nav>
     <h1>Chơi Đế Chế qua mạng <span class="g">không cần Hamachi, Radmin</span></h1>
-    <p class="lead answer">Đế Chế (Age of Empires 1 Rise of Rome) được làm để chơi mạng LAN, nên muốn chơi với bạn ở xa thì trước đây phải dựng mạng LAN ảo bằng Hamachi, Radmin VPN hoặc mở cổng router. SuperAoE bỏ bước đó: dữ liệu game đi qua máy chủ relay trên Cloudflare, mọi người chỉ cần có Internet, tải gói có sẵn game và vào cùng một mã phòng 6 ký tự.</p>
+    <p class="lead answer">Đế Chế (Age of Empires 1 Rise of Rome) được làm để chơi mạng LAN, nên muốn chơi với bạn ở xa thì trước đây phải dựng mạng LAN ảo bằng Hamachi, Radmin VPN hoặc mở cổng router. SuperAoE bỏ bước đó: launcher tự nối các máy trong trận với nhau, không nối thẳng được thì chạy qua máy chủ Cloudflare; mọi người chỉ cần có Internet, tải gói có sẵn game và vào cùng một mã phòng 6 ký tự.</p>
     <div class="btns">
       <a class="btn primary" href="https://superaoe.com/download" download>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg>
@@ -283,7 +283,8 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
   <div class="wrap narrow">
     <div class="kicker">Không cần VPN</div>
     <h2>Chơi Đế Chế qua mạng bằng SuperAoE</h2>
-    <p>SuperAoE thay phần kết nối DirectPlay của game bằng một máy chủ relay chạy trên Cloudflare. Game vẫn là bản gốc Rise of Rome, chỉ có đường đi của dữ liệu là khác: thay vì các máy phải nhìn thấy nhau, tất cả cùng nối tới máy chủ.</p>
+    <p>SuperAoE thay phần kết nối DirectPlay của game bằng đường nối riêng của launcher. Game vẫn là bản gốc Rise of Rome, chỉ có đường đi của dữ liệu là khác. Từ launcher 0.3.0, khi bấm Bắt đầu, launcher của người ngồi ghế đầu giữ trận và máy những người khác nối thẳng tới đó bằng WebRTC (công nghệ trình duyệt dùng cho gọi video, tự vượt router nên không phải mở cổng). Máy nào không nối thẳng được thì ván đó chạy qua máy chủ SuperAoE trên Cloudflare như trước.</p>
+    <p>Lưu ý trung thực: khi trận chạy P2P, máy người ngồi ghế đầu đóng vai máy chủ của trận, nên nếu máy đó tắt launcher hoặc mất mạng hẳn thì ván dừng cho cả phòng. Người chơi ghế đầu nên dùng mạng ổn định nhất. Như mọi game P2P, các máy trong trận nhìn thấy địa chỉ IP của máy giữ trận.</p>
     <ol class="steps">
       <li><span class="n">1</span><div><h3>Tải SuperAoE.zip và giải nén</h3><p>Gói đã kèm game, không cần cài đặt. Chi tiết ở trang <a href="/tai-aoe-rise-of-rome/">tải Đế Chế 1 cho Windows 10/11</a>.</p></div></li>
       <li><span class="n">2</span><div><h3>Mở SuperAoE.exe, đăng ký tài khoản</h3><p>Tài khoản miễn phí: tên đăng nhập, mật khẩu, email (không cần xác thực email).</p></div></li>
@@ -332,7 +333,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
     <div class="kicker">Hỏi đáp</div>
     <h2>Câu hỏi thường gặp khi chơi Đế Chế qua mạng</h2>
     <div class="faq">
-      <details open><summary>Không có Hamachi hay Radmin thì chơi Đế Chế qua Internet được không?</summary><p>Được. Với SuperAoE, dữ liệu game đi qua máy chủ relay trên Cloudflare nên chỉ cần có Internet, không cần LAN ảo, VPN hay mở cổng router.</p></details>
+      <details open><summary>Không có Hamachi hay Radmin thì chơi Đế Chế qua Internet được không?</summary><p>Được. Với SuperAoE, launcher tự nối các máy trong trận với nhau (P2P qua WebRTC), không nối thẳng được thì chạy qua máy chủ Cloudflare, nên chỉ cần có Internet, không cần LAN ảo, VPN hay mở cổng router.</p></details>
       <details><summary>Vì sao dùng Hamachi, Radmin VPN mà không thấy phòng Đế Chế?</summary><p>Nguyên nhân hay gặp: tường lửa Windows chặn game, máy có nhiều card mạng nên game chọn nhầm mạng thật thay vì mạng ảo, hoặc chưa bật DirectPlay trên Windows 10/11. Với SuperAoE không gặp các bước này vì không dùng LAN ảo.</p></details>
       <details><summary>Chơi Đế Chế qua mạng cần những gì?</summary><p>Với SuperAoE: máy Windows 10/11 có Internet, gói SuperAoE.zip (đã kèm game) và tài khoản miễn phí. Người tạo phòng gửi mã phòng 6 ký tự, người khác nhập mã để vào.</p></details>
       <details><summary>Chơi qua Wi-Fi hoặc 4G được không?</summary><p>Được. SuperAoE không cần IP tĩnh hay mở cổng nên mạng Wi-Fi, cáp quang hay 4G phát từ điện thoại đều vào phòng được. Đường truyền càng ổn định thì trận càng mượt.</p></details>
