@@ -12,6 +12,7 @@ Thông tin chính (cập nhật 2026-10-22, launcher 0.2.6):
 - Khán giả: xem trực tiếp gần như không trễ, thấy toàn bản đồ, phím 1–8 theo từng người chơi; vào lại trận đang diễn ra được.
 - Replay (xem lại trận): mọi trận online được tự lưu (.aoerep) trên máy chủ. Trong launcher: menu "Lịch sử trận / Xem lại" → bấm vào trận để xem; hoặc "Mở file replay" để mở file .aoerep. Replay chạy bằng chính game gốc (mô phỏng lại đúng từng lệnh, không phải video), thấy toàn bản đồ. Thanh điều khiển: về đầu, lùi 30/10 giây, dừng/chạy, tới 10/30 giây, tốc độ x0.5 đến x8, bấm thanh tiến trình để nhảy tới thời điểm bất kỳ; phím Space/K, J/L, -/+, Home, H. Miễn phí.
 - Launcher tự cập nhật.
+- Cộng đồng: nhóm Facebook https://www.facebook.com/groups/1496567506003702 (tìm người chơi, hỏi cách cài, báo lỗi); trang Facebook https://www.facebook.com/profile.php?id=61595397195188 (tin bản cập nhật).
 
 ## Trang
 
