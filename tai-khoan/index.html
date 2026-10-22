@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tài khoản – SuperAoE</title>
+<meta name="description" content="Đăng nhập SuperAoE để xem lịch sử trận đấu, tải replay và đổi mật khẩu.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#140f0a">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+:root {
+  --gold: #e8c35a; --gold2: #b8902f; --ink: #221a12;
+  --bg: #140f0a; --bg2: #1c150e; --panel: #2c2218; --panel2: #3a2d1e;
+  --line: #5a4728; --text: #f2e6cf; --dim: #b7a583; --red: #a33a32; --green: #4f9a5a;
+  --serif: "Playfair Display", Georgia, serif;
+  --sans: "Be Vietnam Pro", "Segoe UI", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.6; }
+a { color: var(--gold); }
+.wrap { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+.top { position: sticky; top: 0; z-index: 10; background: rgba(20,15,10,.88); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(184,144,47,.35); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-weight: 800; font-size: 22px; color: var(--gold); text-decoration: none; }
+.brand img { width: 30px; height: 36px; }
+.who { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--dim); }
+.who b { color: var(--text); }
+h1 { font-family: var(--serif); font-size: clamp(28px, 4vw, 38px); margin: 36px 0 6px; }
+h2 { font-family: var(--serif); font-size: 24px; margin: 0 0 14px; }
+.sub { color: var(--dim); margin: 0 0 28px; }
+.panel { background: linear-gradient(180deg, var(--panel), #241b12); border: 1px solid rgba(184,144,47,.35); border-radius: 14px; padding: 24px; margin-bottom: 24px; }
+.login { max-width: 420px; margin: 48px auto; }
+label { display: block; font-size: 14px; color: var(--dim); margin: 12px 0 4px; }
+input { width: 100%; padding: 11px 12px; border-radius: 8px; border: 1px solid var(--line); background: #0e0b07; color: var(--text); font: inherit; }
+input:focus { outline: 2px solid var(--gold2); outline-offset: 0; border-color: var(--gold2); }
+button, .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 18px; border-radius: 9px; font: inherit; font-weight: 700; font-size: 15px; cursor: pointer; text-decoration: none; border: 0; }
+.primary { background: linear-gradient(#e8c35a, #b8902f); color: var(--ink); }
+.primary:hover { filter: brightness(1.08); }
+.primary:disabled { opacity: .6; cursor: default; }
+.ghost { color: var(--text); border: 1px solid var(--line); background: rgba(58,45,30,.4); }
+.ghost:hover { border-color: var(--gold2); }
+.small { padding: 6px 12px; font-size: 13px; }
+.form button { margin-top: 18px; width: 100%; }
+.msg { min-height: 22px; margin-top: 12px; font-size: 14px; }
+.msg.err { color: #f08a7e; }
+.msg.ok { color: #8fd69a; }
+.hint { font-size: 13px; color: var(--dim); margin-top: 16px; }
+.hidden { display: none !important; }
+.stats { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
+.stat { flex: 1 1 120px; background: rgba(14,11,7,.5); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; }
+.stat b { display: block; font-size: 22px; font-family: var(--serif); }
+.stat span { font-size: 13px; color: var(--dim); }
+.stat.age3 { text-align: center; }
+.stat.age3 .n { display: block; font-weight: 700; color: var(--text); font-size: 15px; }
+.stat.age3 b { color: var(--gold); }
+.matches { display: grid; gap: 10px; }
+.match { display: grid; grid-template-columns: 92px 1fr auto; gap: 16px; align-items: center; padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: rgba(14,11,7,.45); }
+.match.win { border-left: 4px solid var(--green); }
+.match.lose { border-left: 4px solid var(--red); }
+.res { font-weight: 800; font-size: 15px; text-align: center; }
+.res small { display: block; font-weight: 500; font-size: 12px; color: var(--dim); }
+.win .res { color: #8fd69a; }
+.lose .res { color: #f08a7e; }
+.unk .res { color: var(--dim); }
+.info { min-width: 0; }
+.teams { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-weight: 600; }
+.teams .vs { color: var(--dim); font-size: 12px; font-weight: 700; }
+.teams .me { color: var(--gold); }
+.teams .lost { text-decoration: line-through; text-decoration-color: rgba(240,138,126,.7); }
+.detail { font-size: 13px; color: var(--dim); margin-top: 3px; }
+.actions { display: flex; gap: 8px; }
+.empty { color: var(--dim); text-align: center; padding: 24px; }
+.more { margin-top: 14px; text-align: center; }
+.pw { max-width: 420px; }
+@media (max-width: 640px) {
+  .wrap { padding: 0 16px; }
+  .match { grid-template-columns: 70px 1fr; }
+  .actions { grid-column: 1 / -1; }
+  .who > span { display: none; }  /* the name is in the heading */
+  .actions .btn { flex: 1; }
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/favicon.svg" alt="" width="30" height="36">SuperAoE</a>
+    <div class="who hidden" id="who"><span>Xin chào, <b id="whoName"></b></span><button class="ghost small" id="btnLogout">Đăng xuất</button></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="loginView" class="hidden">
+    <div class="panel login">
+      <h2>Đăng nhập</h2>
+      <p class="sub" style="margin:0">Dùng tài khoản bạn đã đăng ký trong launcher SuperAoE.</p>
+      <form class="form" id="loginForm">
+        <label for="lu">Tên đăng nhập</label>
+        <input id="lu" name="username" autocomplete="username" required maxlength="24">
+        <label for="lp">Mật khẩu</label>
+        <input id="lp" name="password" type="password" autocomplete="current-password" required maxlength="128">
+        <button class="primary" type="submit">Đăng nhập</button>
+        <div class="msg err" id="loginMsg"></div>
+      </form>
+      <p class="hint">Chưa có tài khoản? <a href="/#tai-ve">Tải SuperAoE</a> và đăng ký ngay trong launcher. Đăng nhập trên web không làm launcher của bạn bị đăng xuất.</p>
+    </div>
+  </section>
+
+  <section id="accountView" class="hidden">
+    <h1>Tài khoản <span id="accName" style="color:var(--gold)"></span></h1>
+    <p class="sub" id="accSub"></p>
+
+    <div class="panel">
+      <h2>Lịch sử trận</h2>
+      <div class="stats" id="stats"></div>
+      <div class="matches" id="matches"></div>
+      <div class="more"><button class="ghost hidden" id="btnMore">Xem thêm</button></div>
+      <p class="hint">Bên thua là bên (cánh trái Nhất–Tứ phẩm, cánh phải Ngũ–Bát phẩm) có người đầu hàng hoặc thoát game trước. Nếu mọi người ngồi cùng một cánh thì mỗi người là một bên. Mở file .aoerep bằng launcher SuperAoE để xem lại.</p>
+    </div>
+
+    <div class="panel">
+      <h2>Đổi mật khẩu</h2>
+      <form class="form pw" id="pwForm">
+        <label for="pc">Mật khẩu hiện tại</label>
+        <input id="pc" type="password" autocomplete="current-password" required maxlength="128">
+        <label for="pn">Mật khẩu mới</label>
+        <input id="pn" type="password" autocomplete="new-password" required minlength="6" maxlength="128">
+        <label for="pn2">Nhập lại mật khẩu mới</label>
+        <input id="pn2" type="password" autocomplete="new-password" required minlength="6" maxlength="128">
+        <button class="primary" type="submit">Đổi mật khẩu</button>
+        <div class="msg" id="pwMsg"></div>
+      </form>
+      <p class="hint">Sau khi đổi, các trình duyệt khác và launcher sẽ phải đăng nhập lại (launcher đang trong trận thì giữ nguyên tới hết trận).</p>
+    </div>
+  </section>
+</main>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+let me = null, oldest = 0;
+const tally = { win: 0, lose: 0, all: 0 };
+
+async function api(path, body) {
+  const res = await fetch("/api/web/" + path, body === undefined ? { credentials: "same-origin" }
+    : { method: "POST", credentials: "same-origin", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw Object.assign(new Error(data.error || "Có lỗi, hãy thử lại."), { status: res.status });
+  return data;
+}
+
+function showLogin() {
+  me = null;
+  $("who").classList.add("hidden");
+  $("accountView").classList.add("hidden");
+  $("loginView").classList.remove("hidden");
+  $("lu").focus();
+}
+
+async function showAccount(info) {
+  me = info;
+  $("whoName").textContent = $("accName").textContent = info.username;
+  $("accSub").textContent = (info.email ? info.email + " · " : "") + "Tham gia từ " + new Date(info.created).toLocaleDateString("vi-VN");
+  $("who").classList.remove("hidden");
+  $("loginView").classList.add("hidden");
+  $("accountView").classList.remove("hidden");
+  $("matches").innerHTML = "";
+  oldest = 0;
+  Object.assign(tally, { win: 0, lose: 0, all: 0 });
+  await loadMatches();
+}
+
+const fmtDuration = (ms) => {
+  const m = Math.round((ms || 0) / 60000);
+  return m >= 60 ? `${Math.floor(m / 60)} giờ ${m % 60} phút` : `${m} phút`;
+};
+const fmtSize = (b) => b > 1048576 ? (b / 1048576).toFixed(1) + " MB" : Math.max(1, Math.round(b / 1024)) + " KB";
+
+function outcome(m) {
+  const r = m.result;
+  if (r && r.winners.includes(me.username)) return "win";
+  if (r && r.losers.includes(me.username)) return "lose";
+  return "unk";
+}
+
+function renderMatch(m) {
+  const o = outcome(m);
+  const r = m.result;
+  const name = (u) => `<span class="${u === me.username ? "me" : ""} ${r && r.losers.includes(u) ? "lost" : ""}">${esc(u)}</span>`;
+  const side = (arm) => m.players.filter((u) => (m.seats[u] || "")[0] === arm);
+  const L = side("L"), R = side("R");
+  const teams = L.length && R.length
+    ? `<span>${L.map(name).join(", ")}</span><span class="vs">VS</span><span>${R.map(name).join(", ")}</span>`
+    : m.players.map((u) => `<span>${name(u)}</span>`).join('<span class="vs">VS</span>');
+  const label = o === "win" ? "Thắng" : o === "lose" ? "Thua" : m.ended ? "Chưa rõ" : "Đang chơi";
+  const why = r ? `${esc(r.by)} ${r.how === "quit" ? "thoát game" : "đầu hàng"}` : "";
+  const when = new Date(m.started).toLocaleString("vi-VN", { dateStyle: "short", timeStyle: "short" });
+  const dur = m.durationMs || (m.ended ? m.ended - m.started : 0);
+  const el = document.createElement("div");
+  el.className = "match " + o;
+  el.innerHTML = `<div class="res">${label}${why ? `<small>${why}</small>` : ""}</div>
+    <div class="info"><div class="teams">${teams}</div>
+      <div class="detail">${when}${dur ? " · " + fmtDuration(dur) : ""}${m.roomName ? " · " + esc(m.roomName) : ""}${m.spectators.length ? " · " + m.spectators.length + " khán giả" : ""}</div></div>
+    <div class="actions">${m.hasReplay
+      ? `<a class="btn primary small" href="/api/replays/${m.id}.aoerep" download>Tải replay${m.replaySize ? " (" + fmtSize(m.replaySize) + ")" : ""}</a>`
+      : `<span class="detail">Không có replay</span>`}</div>`;
+  return el;
+}
+
+function renderStats() {
+  const rate = tally.win + tally.lose ? Math.round(100 * tally.win / (tally.win + tally.lose)) + "%" : "—";
+  $("stats").innerHTML = [["Trận", tally.all], ["Thắng", tally.win], ["Thua", tally.lose], ["Tỉ lệ thắng", rate]]
+    .map(([k, v]) => `<div class="stat"><b>${v}</b><span>${k}</span></div>`).join("") + age3Stat();
+}
+
+// Average game time the player starts the Bronze Age (Đời 3), from /api/web/me: name, then the time, centred.
+function age3Stat() {
+  const a = me.age3;
+  if (!a) return "";
+  const s = Math.floor(a.avgMs / 1000), t = `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
+  return `<div class="stat age3" title="Trung bình bắt đầu click lên Đời Đồng (đời 3), giờ game, ${a.matches} trận"><span class="n">${esc(me.username)}</span><b>${t}</b></div>`;
+}
+
+async function loadMatches() {
+  const btn = $("btnMore");
+  btn.disabled = true;
+  try {
+    const { matches } = await api("matches?limit=20" + (oldest ? "&before=" + oldest : ""));
+    for (const m of matches) {
+      $("matches").appendChild(renderMatch(m));
+      const o = outcome(m);
+      tally.all++;
+      if (o !== "unk") tally[o]++;
+      oldest = m.id;
+    }
+    if (!tally.all) $("matches").innerHTML = '<div class="empty">Bạn chưa chơi trận nào (trận dưới 5 phút không được lưu).</div>';
+    btn.classList.toggle("hidden", matches.length < 20);
+    renderStats();
+  } catch (e) {
+    if (e.status === 401) return showLogin();
+    $("matches").insertAdjacentHTML("beforeend", `<div class="empty">${esc(e.message)}</div>`);
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+$("btnMore").onclick = loadMatches;
+
+// Enter submits the form even while a Vietnamese input method is still composing a word: the browser
+// then only commits the word (key "Process", isComposing) and skips its own submit.
+for (const form of [$("loginForm"), $("pwForm")]) form.addEventListener("keydown", (e) => {
+  if (e.key !== "Enter" && e.code !== "Enter" && e.code !== "NumpadEnter") return;
+  if (e.target.tagName !== "INPUT") return;
+  e.preventDefault();
+  form.requestSubmit();
+});
+
+$("loginForm").onsubmit = async (e) => {
+  e.preventDefault();
+  const btn = e.target.querySelector("button");
+  btn.disabled = true;
+  $("loginMsg").textContent = "";
+  try {
+    await api("login", { username: $("lu").value.trim(), password: $("lp").value });
+    $("lp").value = "";
+    await showAccount(await api("me"));
+  } catch (err) {
+    $("loginMsg").textContent = err.message;
+  } finally {
+    btn.disabled = false;
+  }
+};
+
+$("btnLogout").onclick = async () => {
+  await api("logout", {}).catch(() => {});
+  showLogin();
+};
+
+$("pwForm").onsubmit = async (e) => {
+  e.preventDefault();
+  const msg = $("pwMsg");
+  msg.className = "msg err";
+  if ($("pn").value !== $("pn2").value) { msg.textContent = "Hai mật khẩu mới không giống nhau."; return; }
+  const btn = e.target.querySelector("button");
+  btn.disabled = true;
+  try {
+    await api("password", { current: $("pc").value, password: $("pn").value });
+    e.target.reset();
+    msg.className = "msg ok";
+    msg.textContent = "Đã đổi mật khẩu.";
+  } catch (err) {
+    if (err.status === 401) return showLogin();
+    msg.textContent = err.message;
+  } finally {
+    btn.disabled = false;
+  }
+};
+
+api("me").then(showAccount, showLogin);
+</script>
+</body>
+</html>
