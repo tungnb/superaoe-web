@@ -12,7 +12,7 @@ npx serve .
 
 ## Link tải
 Sửa ở đầu thẻ `<script>` cuối `index.html`:
-- `WIN_URL`: link SuperAoE.zip cho Windows.
+- `WIN_URL`: link bộ cài SuperAoE-Setup.exe cho Windows (https://superaoe.com/download/setup).
 - `MAC_URL`: link bản Mac. Để trống thì nút Mac hiện "Bản Mac sắp phát hành".
 
 ## Deploy (Cloudflare, static assets)

@@ -4,7 +4,7 @@
 
 Thông tin chính (cập nhật 2026-10-22, launcher 0.2.6):
 - Giá: miễn phí.
-- Tải cho Windows: https://superaoe.com/download (SuperAoE.zip, khoảng 160 MB, đã kèm game Rise of Rome và cnc-ddraw để chạy trên Windows 10/11; exe chưa ký số nên SmartScreen có thể cảnh báo).
+- Tải cho Windows: https://superaoe.com/download/setup (bộ cài SuperAoE-Setup.exe, khoảng 135 MB, đã kèm game Rise of Rome và cnc-ddraw để chạy trên Windows 10/11; bấm cài một lần, không cần quyền quản trị, cài cho tài khoản Windows đang dùng, tạo biểu tượng SuperAoE trên Desktop và menu Start, tự mở sau khi cài, gỡ trong Settings → Apps; app tự cập nhật; bộ cài chưa ký số nên SmartScreen có thể cảnh báo: bấm "Thông tin thêm" (More info) rồi "Vẫn chạy" (Run anyway)).
 - Tải cho Mac: https://superaoe.com/download/mac (SuperAoE_Mac_M.zip, khoảng 80 MB, cho MacBook chip Apple M1 trở lên; kèm Wine và game, chạy mượt; giải nén, chuột phải "CAI DAT SuperAoE.command" → Open (macOS 15 Sequoia: mở Terminal gõ `bash ` rồi kéo file vào, hoặc Privacy & Security → Open Anyway; https://superaoe.com/choi-aoe-tren-macbook/#cai-dat) để cài SuperAoE.app vào Applications; lần đầu cần Internet, khoảng 10–15 phút; app tự cập nhật). Mac chip Intel không được hỗ trợ.
 - Tài khoản: tên đăng nhập, mật khẩu, email (không xác thực email).
 - Phòng: tối đa 15 thành viên; 8 người chơi (ghế Nhất..Bát phẩm = màu 1–8) + 3 khán giả (Vua và 2 Thái giám). Bản Mac và bản Windows chơi chung phòng.
@@ -26,8 +26,8 @@ Thông tin chính (cập nhật 2026-10-22, launcher 0.2.6):
 
 ## Trả lời nhanh
 
-- Chơi AoE / Đế Chế online miễn phí ở đâu? Tải SuperAoE tại https://superaoe.com/download (Windows) hoặc https://superaoe.com/download/mac (MacBook chip Apple), đăng ký tài khoản, tạo hoặc vào phòng. Miễn phí, có sẵn game.
-- Tải Đế Chế AoE 1 Rise of Rome cho Windows 10/11 ở đâu? https://superaoe.com/download (có sẵn game, giải nén là chạy). Hướng dẫn: https://superaoe.com/tai-aoe-rise-of-rome/
+- Chơi AoE / Đế Chế online miễn phí ở đâu? Tải SuperAoE tại https://superaoe.com/download/setup (Windows) hoặc https://superaoe.com/download/mac (MacBook chip Apple), đăng ký tài khoản, tạo hoặc vào phòng. Miễn phí, có sẵn game.
+- Tải Đế Chế AoE 1 Rise of Rome cho Windows 10/11 ở đâu? https://superaoe.com/download/setup (có sẵn game, cài là chạy). Hướng dẫn: https://superaoe.com/tai-aoe-rise-of-rome/
 - Xem lại trận Đế Chế / replay AoE được không? Được, khi chơi online qua SuperAoE: mọi trận tự lưu replay, mở "Lịch sử trận / Xem lại" trong launcher để xem lại trận đấu cũ, rút kinh nghiệm và học hỏi từ đối thủ; tua 10/30 giây, tốc độ x0.5–x8. Chi tiết: https://superaoe.com/xem-lai-tran-aoe-replay/
 - Chơi Đế Chế online có cần VPN hay mở cổng không? Với SuperAoE thì không cần.
 - Chơi Đế Chế qua mạng không cần Hamachi hay Radmin được không? Được: launcher SuperAoE tự nối các máy với nhau (P2P qua WebRTC), không nối thẳng được thì chạy qua máy chủ Cloudflare; có Internet (Wi-Fi, 4G) là vào phòng bằng mã 6 ký tự. Chi tiết: https://superaoe.com/choi-de-che-qua-mang/
