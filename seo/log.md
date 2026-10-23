@@ -81,3 +81,16 @@
 - Xác nhận cách nói về P2P: website giờ nói rõ "máy ghế đầu tắt/mất mạng hẳn thì ván dừng cho cả phòng". Nếu sau này có chuyển chủ trận hoặc TURN thì báo để sửa.
 - Câu "rớt mạng cả đội chờ 30 phút" vẫn giữ cho người chơi khác ghế đầu; nếu thực tế P2P khác (ví dụ ghế đầu chập chờn ngắn vẫn chờ được) hãy kiểm chứng rồi cập nhật seo/facts.md.
 - Vẫn tồn đọng: Google Search Console + Bing Webmaster Tools, ký số exe / notarize Mac, đăng bài outreach.
+
+## 2026-10-23 (vòng SEO 7 — tự động)
+- Sản phẩm đổi nhiều từ vòng trước (launcher 0.3.11 bắt buộc; NOTES.md §9l–9o): thống kê trận, bạn bè + mời vào phòng, chuột phải xem lịch sử đấu, Cấu hình game, bản đồ theo số người, màu/đội theo ghế, nước Random, kết nối sẵn tới chủ trận. Cập nhật `seo/facts.md`; bỏ dòng cũ sai "tắt game chỉ vào lại được khi chưa vào màn chơi" và "ghế Nhất..Bát phẩm = màu 1–8" (màu giờ theo thứ tự ghế có người).
+- Trang mới: https://superaoe.com/tao-phong-choi-de-che/ (tạo phòng, mã 6 số, mời bạn, bảng ghế → màu/đội/bản đồ/nước, chờ kết nối tới chủ trận, sau trận thống kê + replay, Cấu hình game; HowTo + FAQPage 7 câu + BreadcrumbList). Liên kết từ footer mọi trang + 404, trong bài /choi-aoe-online-mien-phi/ bước 3 và trang chủ mục "Chơi online".
+- llms.txt: launcher 0.3.11, sửa luật màu, thêm bạn bè / cấu hình game / thống kê / tài khoản web, trang mới + 2 câu trả lời nhanh. Trang chủ softwareVersion 0.3.0 → 0.3.11. Sitemap 8 URL, lastmod 2026-10-23 (mọi trang đều đổi footer).
+- Không đo hạng (lần tới 2026-10-28); không soạn outreach (tuần này đã có 2026-10-21, tuần sau soạn).
+- Kiểm tra: html-validate sạch, JSON-LD parse được, FAQ JSON-LD khớp hiển thị, không link/anchor nội bộ hỏng, title ≤ 60, description ≤ 155.
+- Lần sau: đo hạng 2026-10-28 (thêm "tạo phòng chơi đế chế"); outreach tuần mới; cân nhắc cập nhật trang /xem-lai-tran-aoe-replay/ với thống kê trận (biểu đồ, giờ lên đời) — ảnh thật nếu chủ dự án gửi.
+
+### Cần chủ dự án quyết định / làm
+- Launcher: chữ gợi ý trong Cài đặt → Cấu hình game còn ghi quy tắc bản đồ cũ (2 người Tiny … 7-8 Huge) trong khi code `gamecfg.js mapSizeFor` là 1–3 Large, 4–6 Huge, 7–8 Gigantic. Website viết theo code; nên sửa chữ trong launcher (`renderer/index.html`).
+- Gửi 1–2 ảnh chụp thật phòng chờ (ghế chữ U, biển tên nhấp nháy) và màn thống kê trận để thêm vào trang tạo phòng / replay.
+- Vẫn tồn đọng: Google Search Console + Bing Webmaster Tools (gửi sitemap 8 URL), ký số exe / notarize Mac, đăng bài outreach.

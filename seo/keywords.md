@@ -28,3 +28,5 @@
 | 2 | egoplay / gplay / gametv plus aoe (so sánh) | trang so sánh (sau) — nguồn: WebSearch 2026-10-21, top kết quả "chơi aoe online miễn phí" |
 | 3 | download aoe / cách tải đế chế online | / hoặc trang tải — nguồn: WebSearch 2026-10-21 (hoanghamobile, fptshop) |
 | 2 | chơi đế chế qua mạng / chơi đế chế bằng radmin, hamachi / aoe lan qua internet | /choi-de-che-qua-mang/ (từ 2026-10-22) — nguồn: WebSearch 2026-10-21, 2026-10-22 |
+| 2 | tạo phòng chơi đế chế / cách tạo phòng aoe online / chia đội đế chế | /tao-phong-choi-de-che/ (từ 2026-10-23) — nguồn: WebSearch 2026-10-23, kết quả chỉ có bài GPlay/GameRanger chung chung, không ai hướng dẫn chia màu/đội → khoảng trống |
+| 3 | đế chế chế độ cửa sổ / đế chế full hd / độ phân giải đế chế win 10 | /tao-phong-choi-de-che/#cau-hinh — nguồn: suy từ tính năng Cấu hình game (launcher 0.3.5+), chưa đo |

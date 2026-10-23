@@ -2,15 +2,18 @@
 
 > SuperAoE là nền tảng miễn phí để chơi Đế Chế (Age of Empires 1 Rise of Rome, AoE1) online trên Windows 10/11 và MacBook chip Apple (M1, M2, M3, M4): tải một gói có sẵn game, đăng ký tài khoản, vào phòng bằng mã 6 ký tự. Không cần VPN, Hamachi hay mở cổng router. Mỗi phòng có 8 ghế người chơi và 3 ghế khán giả xem trực tiếp bằng đồ họa gốc của game. Mọi trận online được tự lưu replay để xem lại trận đấu cũ, rút kinh nghiệm và học hỏi từ đối thủ. SuperAoE không liên kết với Microsoft.
 
-Thông tin chính (cập nhật 2026-10-22, launcher 0.2.6):
+Thông tin chính (cập nhật 2026-10-23, launcher 0.3.11):
 - Giá: miễn phí.
 - Tải cho Windows: https://superaoe.com/download/setup (bộ cài SuperAoE-Setup.exe, khoảng 135 MB, đã kèm game Rise of Rome và cnc-ddraw để chạy trên Windows 10/11; bấm cài một lần, không cần quyền quản trị, cài cho tài khoản Windows đang dùng, tạo biểu tượng SuperAoE trên Desktop và menu Start, tự mở sau khi cài, gỡ trong Settings → Apps; app tự cập nhật; bộ cài chưa ký số nên SmartScreen có thể cảnh báo: bấm "Thông tin thêm" (More info) rồi "Vẫn chạy" (Run anyway)).
 - Tải cho Mac: https://superaoe.com/download/mac (SuperAoE_Mac_M.zip, khoảng 80 MB, cho MacBook chip Apple M1 trở lên; kèm Wine và game, chạy mượt; giải nén, chuột phải "CAI DAT SuperAoE.command" → Open (macOS 15 Sequoia: mở Terminal gõ `bash ` rồi kéo file vào, hoặc Privacy & Security → Open Anyway; https://superaoe.com/choi-aoe-tren-macbook/#cai-dat) để cài SuperAoE.app vào Applications; lần đầu cần Internet, khoảng 10–15 phút; app tự cập nhật). Mac chip Intel không được hỗ trợ.
 - Tài khoản: tên đăng nhập, mật khẩu, email (không xác thực email).
-- Phòng: tối đa 15 thành viên; 8 người chơi (ghế Nhất..Bát phẩm = màu 1–8) + 3 khán giả (Vua và 2 Thái giám). Bản Mac và bản Windows chơi chung phòng.
+- Phòng: tối đa 15 thành viên; 8 người chơi (ghế Nhất..Tứ phẩm cột trái, Ngũ..Bát phẩm cột phải) + 3 khán giả (Vua và 2 Thái giám). Bản Mac và bản Windows chơi chung phòng. Màu trong game = 1, 2, 3… theo thứ tự các ghế có người (bỏ ghế trống); cột trái là đội 1, cột phải là đội 2 (chỉ một cột có người thì không chia đội); nước mặc định Random; bản đồ tự chọn theo số người chơi: 1–3 Large, 4–6 Huge, 7–8 Gigantic; chủ phòng vẫn đổi được trong màn thiết lập của game. Từ launcher 0.3.11 mọi người trong phòng kết nối sẵn tới chủ trận; nút Bắt đầu chỉ mở khi mọi người ngồi ghế người chơi đã kết nối (biển tên nhấp nháy = đang kết nối).
+- Bạn bè: kết bạn, xem bạn đang ở phòng nào, mời bạn vào phòng (lời mời 10 phút, vào thẳng kể cả phòng có mật khẩu); chuột phải vào người trong phòng để xem lịch sử đấu hoặc kết bạn.
+- Cấu hình game (Cài đặt → Cấu hình game): độ phân giải 1366×768 / 1600×900 / 1920×1080 (Windows), Toàn màn hình / Toàn màn hình không viền / Cửa sổ, giữ tỉ lệ, VSync.
 - Mạng (launcher 0.3.0+): launcher tự nối các máy trong trận với nhau (P2P qua WebRTC, máy người ngồi ghế đầu giữ trận), không nối thẳng được thì ván chạy qua máy chủ SuperAoE trên Cloudflare; không cần VPN, không cần mở cổng. Trận P2P: nếu máy ghế đầu tắt launcher hoặc mất mạng hẳn thì ván dừng cho cả phòng. Người khác rớt mạng giữa trận thì trận tạm dừng, cả phòng chờ người đó tối đa 30 phút mỗi trận; lỡ tắt game thì bấm “Vào lại trận” trong launcher, game tua nhanh rồi chơi tiếp (tối đa 5 lần/trận); hết 30 phút thì người đó bị loại (từ launcher 0.2.8).
 - Khán giả: xem trực tiếp gần như không trễ, thấy toàn bản đồ, phím 1–8 theo từng người chơi; vào lại trận đang diễn ra được.
 - Replay (xem lại trận): mọi trận online được tự lưu (.aoerep) trên máy chủ. Trong launcher: menu "Lịch sử trận / Xem lại" → bấm vào trận để xem; hoặc "Mở file replay" để mở file .aoerep. Replay chạy bằng chính game gốc (mô phỏng lại đúng từng lệnh, không phải video), thấy toàn bản đồ. Thanh điều khiển: về đầu, lùi 30/10 giây, dừng/chạy, tới 10/30 giây, tốc độ x0.5 đến x8, bấm thanh tiến trình để nhảy tới thời điểm bất kỳ; phím Space/K, J/L, -/+, Home, H. Miễn phí.
+- Lịch sử trận: mỗi trận có thống kê (thắng/thua, lính giết, lính mất, giờ lên đời Công Cụ/Đồng/Sắt, biểu đồ dân số, quân đội) và nút Xem lại. Trang web https://superaoe.com/tai-khoan/ cho xem lịch sử trận và tải replay bằng tài khoản SuperAoE.
 - Launcher tự cập nhật.
 - Cộng đồng: nhóm Facebook https://www.facebook.com/groups/1496567506003702 (tìm người chơi, hỏi cách cài, báo lỗi); trang Facebook https://www.facebook.com/profile.php?id=61595397195188 (tin bản cập nhật).
 
@@ -22,6 +25,7 @@ Thông tin chính (cập nhật 2026-10-22, launcher 0.2.6):
 - [Chơi AoE có khán giả](https://superaoe.com/choi-aoe-co-khan-gia/): chế độ khán giả cho AoE1, cách xem trực tiếp, so sánh với livestream.
 - [Chơi AoE trên MacBook](https://superaoe.com/choi-aoe-tren-macbook/): bản SuperAoE cho Mac chip Apple (M1–M4), cách cài, cách mở khi macOS báo "không thể xác minh", so sánh với máy ảo, CrossOver.
 - [Tải AoE 1 Rise of Rome](https://superaoe.com/tai-aoe-rise-of-rome/): gói tải có gì, cài đặt, lỗi thường gặp (SmartScreen, tắt nhầm game, rớt mạng).
+- [Tạo phòng chơi Đế Chế](https://superaoe.com/tao-phong-choi-de-che/): cách tạo phòng, gửi mã 6 số, mời bạn bè, xếp ghế để chia màu và đội, kích thước bản đồ theo số người, chờ kết nối tới chủ trận, chỉnh độ phân giải / chế độ cửa sổ.
 - [Chơi Đế Chế qua mạng](https://superaoe.com/choi-de-che-qua-mang/): vì sao AoE1 khó chơi qua Internet (DirectPlay), cách LAN ảo Hamachi/Radmin VPN và lỗi hay gặp, so sánh LAN thật / LAN ảo / SuperAoE.
 
 ## Trả lời nhanh
@@ -34,3 +38,5 @@ Thông tin chính (cập nhật 2026-10-22, launcher 0.2.6):
 - Chơi AoE có khán giả xem trực tiếp được không? Được, mỗi phòng SuperAoE có 3 ghế khán giả xem trực tiếp bằng đồ họa gốc.
 - Chơi AoE trên MacBook được không? Được: SuperAoE có bản cho Mac chip Apple (M1, M2, M3, M4), chạy mượt, kèm Wine và game, tải tại https://superaoe.com/download/mac; chơi chung phòng với Windows. Mac chip Intel không được hỗ trợ. Chi tiết: https://superaoe.com/choi-aoe-tren-macbook/
 - AoE 1 có chế độ khán giả không? Bản gốc không có; SuperAoE thêm 3 ghế khán giả mỗi phòng. Chi tiết: https://superaoe.com/choi-aoe-co-khan-gia/
+- Tạo phòng chơi Đế Chế và chia đội thế nào? Trong SuperAoE bấm Tạo phòng, gửi mã 6 số hoặc Mời bạn; người ngồi cột trái là đội 1, cột phải là đội 2, màu theo thứ tự ghế có người; bản đồ tự chọn theo số người. Chi tiết: https://superaoe.com/tao-phong-choi-de-che/
+- Chơi Đế Chế ở chế độ cửa sổ hoặc Full HD được không? Được: SuperAoE → Cài đặt → Cấu hình game, chọn Cửa sổ / Toàn màn hình không viền và độ phân giải tới 1920×1080 (Windows).
