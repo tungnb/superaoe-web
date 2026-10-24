@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lịch sử thi đấu – SuperAoE</title>
+<meta name="description" content="Toàn bộ trận Đế Chế (AoE Rise of Rome) đã đấu trên SuperAoE, kèm replay tải về xem lại để học hỏi cách đánh. Thích và bình luận từng trận.">
+<link rel="canonical" href="https://superaoe.com/lich-su-tran/">
+<meta name="theme-color" content="#140f0a">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Lịch sử thi đấu – SuperAoE">
+<meta property="og:description" content="Xem mọi trận Đế Chế đã đấu trên SuperAoE, tải replay về xem lại để học hỏi.">
+<meta property="og:url" content="https://superaoe.com/lich-su-tran/">
+<meta property="og:image" content="https://superaoe.com/img/replay-tua.jpg">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #e8c35a; --gold2: #b8902f; --ink: #221a12;
+  --bg: #140f0a; --bg2: #1c150e; --panel: #2c2218; --panel2: #3a2d1e;
+  --line: #5a4728; --text: #f2e6cf; --dim: #b7a583; --red: #a33a32; --green: #4f9a5a;
+  --serif: "Playfair Display", Georgia, serif;
+  --sans: "Be Vietnam Pro", "Segoe UI", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.6; }
+a { color: var(--gold); }
+.wrap { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+.top { position: sticky; top: 0; z-index: 10; background: rgba(20,15,10,.88); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(184,144,47,.35); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-weight: 800; font-size: 22px; color: var(--gold); text-decoration: none; }
+.brand img { width: 30px; height: 36px; }
+.who { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--dim); }
+.who b { color: var(--text); }
+.who a { text-decoration: none; }
+h1 { font-family: var(--serif); font-size: clamp(28px, 4vw, 38px); margin: 36px 0 6px; }
+h2 { font-family: var(--serif); font-size: 24px; margin: 0 0 14px; }
+.sub { color: var(--dim); margin: 0 0 24px; max-width: 720px; }
+label { display: block; font-size: 14px; color: var(--dim); margin: 12px 0 4px; }
+input, textarea { width: 100%; padding: 11px 12px; border-radius: 8px; border: 1px solid var(--line); background: #0e0b07; color: var(--text); font: inherit; }
+textarea { resize: vertical; min-height: 44px; }
+input:focus, textarea:focus { outline: 2px solid var(--gold2); outline-offset: 0; border-color: var(--gold2); }
+button, .btn { display: inline-flex; align-items: center; justify-content: center; gap: 7px; padding: 10px 18px; border-radius: 9px; font: inherit; font-weight: 700; font-size: 15px; cursor: pointer; text-decoration: none; border: 0; }
+.primary { background: linear-gradient(#e8c35a, #b8902f); color: var(--ink); }
+.primary:hover { filter: brightness(1.08); }
+.primary:disabled { opacity: .6; cursor: default; }
+.ghost { color: var(--text); border: 1px solid var(--line); background: rgba(58,45,30,.4); }
+.ghost:hover { border-color: var(--gold2); }
+.small { padding: 6px 12px; font-size: 13px; }
+.msg { min-height: 22px; margin-top: 12px; font-size: 14px; color: #f08a7e; }
+.hint { font-size: 13px; color: var(--dim); margin-top: 16px; }
+.hidden { display: none !important; }
+svg.i { width: 17px; height: 17px; flex: none; }
+
+.matches { display: grid; gap: 12px; }
+.match { border: 1px solid var(--line); border-radius: 12px; background: linear-gradient(180deg, var(--panel), #241b12); overflow: hidden; }
+.match:target { border-color: var(--gold); }
+.mhead { display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center; padding: 14px 16px; }
+.teams { display: flex; align-items: center; gap: 8px 12px; flex-wrap: wrap; font-weight: 600; }
+.side { display: flex; flex-wrap: wrap; gap: 4px 10px; }
+.p { display: inline-flex; align-items: center; gap: 6px; }
+.p i { width: 10px; height: 10px; border-radius: 3px; flex: none; box-shadow: 0 0 0 1px rgba(0,0,0,.5); }
+.p.won { color: #8fd69a; }
+.p.lost { color: var(--dim); text-decoration: line-through; text-decoration-color: rgba(240,138,126,.7); }
+.vs { color: var(--dim); font-size: 12px; font-weight: 700; }
+.detail { font-size: 13px; color: var(--dim); margin-top: 4px; }
+.detail .res { color: #8fd69a; font-weight: 600; }
+.bar { display: flex; align-items: center; gap: 8px; padding: 0 16px 14px; flex-wrap: wrap; }
+.bar .grow { flex: 1; }
+.react { color: var(--text); background: rgba(14,11,7,.5); border: 1px solid var(--line); padding: 6px 12px; font-size: 14px; font-weight: 600; }
+.react:hover { border-color: var(--gold2); }
+.react.on { color: var(--gold); border-color: var(--gold2); background: rgba(232,195,90,.12); }
+.react.on svg { fill: currentColor; }
+.comments { border-top: 1px solid var(--line); background: rgba(14,11,7,.45); padding: 14px 16px; }
+.clist { display: grid; gap: 10px; margin-bottom: 12px; }
+.clist:empty { display: none; }
+.c { font-size: 14px; }
+.c b { color: var(--gold); }
+.c time { color: var(--dim); font-size: 12px; margin-left: 6px; }
+.c .del { background: none; border: 0; color: var(--dim); font-size: 12px; padding: 0 0 0 8px; font-weight: 500; }
+.c .del:hover { color: #f08a7e; }
+.c p { margin: 2px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.cempty { color: var(--dim); font-size: 14px; }
+.cform { display: flex; gap: 8px; align-items: flex-end; }
+.cform textarea { flex: 1; height: 44px; }
+.cmsg { font-size: 13px; color: #f08a7e; min-height: 0; margin-top: 6px; }
+.cmsg:empty { display: none; }
+.empty { color: var(--dim); text-align: center; padding: 28px; border: 1px dashed var(--line); border-radius: 12px; }
+.more { margin: 18px 0 8px; text-align: center; }
+.howto { margin: 32px 0 48px; padding: 20px 22px; border: 1px solid rgba(184,144,47,.35); border-radius: 14px; background: var(--bg2); }
+.howto h2 { font-size: 20px; margin-bottom: 8px; }
+.howto ol { margin: 0; padding-left: 20px; color: var(--dim); }
+.howto li { margin: 4px 0; }
+
+dialog { border: 1px solid rgba(184,144,47,.5); border-radius: 14px; padding: 24px; width: min(420px, calc(100vw - 32px));
+  background: linear-gradient(180deg, var(--panel), #241b12); color: var(--text); }
+dialog::backdrop { background: rgba(0,0,0,.65); }
+dialog .x { position: absolute; top: 10px; right: 10px; background: none; color: var(--dim); font-size: 22px; padding: 4px 10px; }
+dialog form button[type=submit] { margin-top: 18px; width: 100%; }
+dialog h2 { margin-bottom: 4px; }
+@media (max-width: 640px) {
+  .wrap { padding: 0 16px; }
+  .mhead { grid-template-columns: 1fr; gap: 10px; }
+  .mhead .btn { width: 100%; }
+  .who .name { display: none; }
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/favicon.svg" alt="" width="30" height="36">SuperAoE</a>
+    <div class="who">
+      <span class="hidden" id="who"><span class="name"><a href="/tai-khoan/"><b id="whoName"></b></a> · </span><button class="ghost small" id="btnLogout">Đăng xuất</button></span>
+      <button class="primary small hidden" id="btnLogin">Đăng nhập</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Lịch sử thi đấu</h1>
+  <p class="sub">Mọi trận Đế Chế đã đấu trên SuperAoE có replay. Tải replay về xem lại để học hỏi cách đánh của các cao thủ, thích trận hay và bình luận cùng mọi người.</p>
+
+  <div class="matches" id="matches"></div>
+  <div class="more"><button class="ghost hidden" id="btnMore">Xem thêm</button></div>
+
+  <section class="howto">
+    <h2>Cách xem lại một trận</h2>
+    <ol>
+      <li>Bấm <b>Tải replay</b> để lưu file <code>.aoerep</code> về máy.</li>
+      <li>Mở launcher SuperAoE, chọn <b>Lịch sử trận / Xem lại</b> → <b>Mở file replay</b> rồi chọn file vừa tải (trên Windows có thể bấm đúp vào file).</li>
+      <li>Thanh điều khiển ở dưới màn hình cho tua nhanh, lùi, tạm dừng, xem từ góc nhìn của từng người chơi.</li>
+    </ol>
+    <p class="hint" style="margin-bottom:0">Chưa có SuperAoE? <a href="/#tai-ve">Tải miễn phí cho Windows và MacBook</a>. Xem thêm về <a href="/xem-lai-tran-aoe-replay/">tính năng xem lại replay</a>.</p>
+  </section>
+</main>
+
+<dialog id="loginDlg" aria-labelledby="loginTitle">
+  <button class="x" type="button" id="dlgClose" aria-label="Đóng">×</button>
+  <h2 id="loginTitle">Đăng nhập</h2>
+  <p class="hint" style="margin:0" id="loginWhy">Đăng nhập bằng tài khoản SuperAoE để thích và bình luận.</p>
+  <form id="loginForm">
+    <label for="lu">Tên đăng nhập</label>
+    <input id="lu" autocomplete="username" required maxlength="24">
+    <label for="lp">Mật khẩu</label>
+    <input id="lp" type="password" autocomplete="current-password" required maxlength="128">
+    <button class="primary" type="submit">Đăng nhập</button>
+    <div class="msg" id="loginMsg"></div>
+  </form>
+  <p class="hint">Chưa có tài khoản? <a href="/#tai-ve">Tải SuperAoE</a> và đăng ký ngay trong launcher. Đăng nhập trên web không làm launcher của bạn bị đăng xuất.</p>
+</dialog>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+// In-game colours of the seats: L1-L4 = colour 1-4, R1-R4 = colour 5-8.
+const COLOURS = ["#2a4fd6", "#d42a2a", "#e5d62a", "#7a4a1e", "#f08a1e", "#2aa52a", "#9a9a9a", "#2ac8c8"];
+const seatColour = (seat) => seat ? COLOURS[(seat[0] === "R" ? 4 : 0) + Number(seat[1]) - 1] : null;
+const ICON = {
+  like: '<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 20.5s-8-4.6-8-10.6A4.4 4.4 0 0112 7.3a4.4 4.4 0 018 2.6c0 6-8 10.6-8 10.6z"/></svg>',
+  comment: '<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>',
+  download: '<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m-5-5 5 5 5-5M5 20h14"/></svg>',
+};
+let me = null, oldest = 0, pending = null;
+
+async function api(path, body) {
+  const res = await fetch("/api/web/" + path, body === undefined ? { credentials: "same-origin" }
+    : { method: "POST", credentials: "same-origin", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw Object.assign(new Error(data.error || "Có lỗi, hãy thử lại."), { status: res.status });
+  return data;
+}
+
+function setMe(info) {
+  me = info;
+  $("who").classList.toggle("hidden", !me);
+  $("btnLogin").classList.toggle("hidden", !!me);
+  if (me) $("whoName").textContent = me.username;
+  document.querySelectorAll(".c").forEach((c) => c.querySelector(".del")?.classList.toggle("hidden", !me || c.dataset.user.toLowerCase() !== me.username.toLowerCase()));
+}
+
+// Signed out (or the session ended): ask to sign in, then carry on with what was clicked.
+function askLogin(then, why) {
+  pending = then ?? null;
+  $("loginWhy").textContent = why ?? "Đăng nhập bằng tài khoản SuperAoE để thích và bình luận.";
+  $("loginMsg").textContent = "";
+  $("loginDlg").showModal();
+  $("lu").focus();
+}
+const needLogin = (e, then, why) => { if (e.status === 401) { setMe(null); askLogin(then, why); return true; } return false; };
+
+const fmtDuration = (ms) => {
+  const m = Math.round((ms || 0) / 60000);
+  return m >= 60 ? `${Math.floor(m / 60)} giờ ${m % 60} phút` : `${m} phút`;
+};
+const fmtSize = (b) => b > 1048576 ? (b / 1048576).toFixed(1) + " MB" : Math.max(1, Math.round(b / 1024)) + " KB";
+const fmtTime = (t) => new Date(t).toLocaleString("vi-VN", { dateStyle: "short", timeStyle: "short" });
+
+function renderMatch(m) {
+  const r = m.result;
+  const name = (u) => {
+    const c = seatColour(m.seats[u]);
+    const cls = r ? (r.winners.includes(u) ? "won" : r.losers.includes(u) ? "lost" : "") : "";
+    return `<span class="p ${cls}">${c ? `<i style="background:${c}"></i>` : ""}${esc(u)}</span>`;
+  };
+  const side = (arm) => m.players.filter((u) => (m.seats[u] || "")[0] === arm);
+  const L = side("L"), R = side("R");
+  const teams = L.length && R.length && L.length + R.length === m.players.length
+    ? `<span class="side">${L.map(name).join("")}</span><span class="vs">VS</span><span class="side">${R.map(name).join("")}</span>`
+    : m.players.map(name).join('<span class="vs">VS</span>');
+  const dur = m.durationMs || (m.ended ? m.ended - m.started : 0);
+  const res = r?.winners?.length ? `<span class="res">Thắng: ${r.winners.map(esc).join(", ")}</span> · ` : "";
+  const el = document.createElement("article");
+  el.className = "match";
+  el.id = "tran-" + m.id;
+  el.innerHTML = `<div class="mhead">
+      <div><div class="teams">${teams}</div>
+        <div class="detail">${res}${fmtTime(m.started)}${dur ? " · " + fmtDuration(dur) : ""}${m.roomName ? " · Phòng " + esc(m.roomName) : ""}${m.spectators.length ? " · " + m.spectators.length + " khán giả" : ""}</div></div>
+      <a class="btn primary small" href="/api/replays/${m.id}.aoerep" download>${ICON.download}Tải replay${m.replaySize ? " (" + fmtSize(m.replaySize) + ")" : ""}</a>
+    </div>
+    <div class="bar">
+      <button class="btn react like${m.liked ? " on" : ""}" aria-pressed="${m.liked}" title="Thích trận này">${ICON.like}<span>${m.likes}</span></button>
+      <button class="btn react ctoggle">${ICON.comment}<span>${m.comments}</span> bình luận</button>
+    </div>
+    <div class="comments">
+      <div class="clist"></div>
+      <div class="cform"><textarea maxlength="500" rows="1" placeholder="Viết bình luận..." aria-label="Viết bình luận"></textarea>
+        <button class="primary small csend">Gửi</button></div>
+      <div class="cmsg"></div>
+    </div>`;
+  const likeBtn = el.querySelector(".like"), toggle = el.querySelector(".ctoggle");
+  const ta = el.querySelector("textarea"), cmsg = el.querySelector(".cmsg");
+
+  // After signing in only like (the player may have liked it already).
+  const likeLater = () => { if (!likeBtn.classList.contains("on")) likeBtn.click(); };
+  likeBtn.onclick = async () => {
+    if (!me) return askLogin(likeLater, "Đăng nhập để thích trận này.");
+    const on = !likeBtn.classList.contains("on");
+    likeBtn.disabled = true;
+    try {
+      const out = await api("like", { id: m.id, on });
+      likeBtn.classList.toggle("on", out.liked);
+      likeBtn.setAttribute("aria-pressed", out.liked);
+      likeBtn.querySelector("span").textContent = out.likes;
+    } catch (e) {
+      if (!needLogin(e, likeLater, "Đăng nhập để thích trận này.")) alert(e.message);
+    } finally {
+      likeBtn.disabled = false;
+    }
+  };
+
+  const setCount = (d) => { const s = toggle.querySelector("span"); s.textContent = Number(s.textContent) + d; };
+  const addComment = (c, top) => {
+    const div = document.createElement("div");
+    div.className = "c";
+    div.dataset.user = c.username;
+    const mine = me && c.username.toLowerCase() === me.username.toLowerCase();
+    div.innerHTML = `<b>${esc(c.username)}</b><time>${fmtTime(c.t)}</time><button class="del${mine ? "" : " hidden"}" title="Xoá bình luận">Xoá</button><p>${esc(c.text)}</p>`;
+    div.querySelector(".del").onclick = async () => {
+      if (!confirm("Xoá bình luận này?")) return;
+      try {
+        await api("uncomment", { id: c.id });
+        div.remove();
+        setCount(-1);
+        if (!el.querySelector(".c")) showEmpty();
+      } catch (e) {
+        if (!needLogin(e)) alert(e.message);
+      }
+    };
+    const list = el.querySelector(".clist");
+    list.querySelector(".cempty")?.remove();
+    top ? list.prepend(div) : list.append(div);
+  };
+  const showEmpty = () => { el.querySelector(".clist").innerHTML = ""; };
+
+  async function loadComments() {
+    const list = el.querySelector(".clist");
+    list.innerHTML = '<div class="cempty">Đang tải...</div>';
+    try {
+      const { comments } = await api("comments?id=" + m.id);
+      list.innerHTML = "";
+      // Newest at the bottom, next to the box.
+      for (const c of comments.reverse()) addComment(c, false);
+      if (!comments.length) showEmpty();
+    } catch (e) {
+      list.innerHTML = `<div class="cempty">${esc(e.message)}</div>`;
+    }
+  }
+  // The box is always there; comments already written load with the match.
+  if (m.comments > 0) loadComments();
+  toggle.onclick = () => ta.focus();
+
+  // Signed out: the box is there, typing in it asks to sign in first.
+  ta.addEventListener("focus", () => {
+    if (me) return;
+    ta.blur();
+    askLogin(() => ta.focus(), "Đăng nhập để bình luận.");
+  });
+  async function send() {
+    if (!me) return askLogin(() => ta.focus(), "Đăng nhập để bình luận.");
+    const text = ta.value.trim();
+    if (!text) return ta.focus();
+    const btn = el.querySelector(".csend");
+    btn.disabled = true;
+    cmsg.textContent = "";
+    try {
+      const { comment } = await api("comment", { id: m.id, text });
+      ta.value = "";
+      addComment(comment, false);
+      setCount(1);
+    } catch (e) {
+      if (!needLogin(e, () => send(), "Đăng nhập để bình luận.")) cmsg.textContent = e.message;
+    } finally {
+      btn.disabled = false;
+    }
+  }
+  el.querySelector(".csend").onclick = send;
+  // Enter sends, Shift+Enter is a new line. Not while a Vietnamese input method is composing a word.
+  ta.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && !e.shiftKey && !e.isComposing) { e.preventDefault(); send(); }
+  });
+  return el;
+}
+
+async function loadMatches() {
+  const btn = $("btnMore");
+  btn.disabled = true;
+  try {
+    const { matches } = await api("replays?limit=20" + (oldest ? "&before=" + oldest : ""));
+    for (const m of matches) {
+      $("matches").appendChild(renderMatch(m));
+      oldest = m.id;
+    }
+    if (!$("matches").children.length) $("matches").innerHTML = '<div class="empty">Chưa có trận nào có replay.</div>';
+    btn.classList.toggle("hidden", matches.length < 20);
+    // A shared link to one match (#tran-123): scroll to it once it is on the page.
+    const target = location.hash && document.querySelector(location.hash.replace(/[^#\w-]/g, ""));
+    if (target && !loadMatches.scrolled) { loadMatches.scrolled = true; target.scrollIntoView({ block: "center" }); }
+  } catch (e) {
+    $("matches").insertAdjacentHTML("beforeend", `<div class="empty">${esc(e.message)}</div>`);
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+$("btnMore").onclick = loadMatches;
+$("btnLogin").onclick = () => askLogin();
+$("dlgClose").onclick = () => $("loginDlg").close();
+$("loginDlg").addEventListener("close", () => { if (!me) pending = null; });
+$("btnLogout").onclick = async () => {
+  await api("logout", {}).catch(() => {});
+  setMe(null);
+  document.querySelectorAll(".like.on").forEach((b) => { b.classList.remove("on"); b.setAttribute("aria-pressed", false); });
+};
+
+// Enter submits even while a Vietnamese input method is still composing a word (see /tai-khoan/).
+$("loginForm").addEventListener("keydown", (e) => {
+  if (e.key !== "Enter" && e.code !== "Enter" && e.code !== "NumpadEnter") return;
+  if (e.target.tagName !== "INPUT") return;
+  e.preventDefault();
+  $("loginForm").requestSubmit();
+});
+$("loginForm").onsubmit = async (e) => {
+  e.preventDefault();
+  const btn = e.target.querySelector("button");
+  btn.disabled = true;
+  $("loginMsg").textContent = "";
+  try {
+    await api("login", { username: $("lu").value.trim(), password: $("lp").value });
+    $("lp").value = "";
+    setMe(await api("me"));
+    const then = pending;
+    pending = null;
+    $("loginDlg").close();
+    // The list was loaded signed out: mark what this player already liked.
+    const { matches } = await api("replays?limit=50").catch(() => ({ matches: [] }));
+    for (const m of matches) {
+      const b = document.querySelector(`#tran-${m.id} .like`);
+      if (b) { b.classList.toggle("on", m.liked); b.setAttribute("aria-pressed", m.liked); b.querySelector("span").textContent = m.likes; }
+    }
+    then?.();
+  } catch (err) {
+    $("loginMsg").textContent = err.message;
+  } finally {
+    btn.disabled = false;
+  }
+};
+
+api("me").then(setMe, () => setMe(null)).finally(loadMatches);
+</script>
+</body>
+</html>
