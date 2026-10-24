@@ -191,12 +191,16 @@ img, svg { max-width: 100%; }
 .top .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
 .brand { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-weight: 800; font-size: 22px; color: var(--gold); text-decoration: none; letter-spacing: .3px; }
 .brand img { width: 30px; height: 36px; }
-.nav { display: flex; gap: 22px; }
+.nav { display: flex; align-items: center; gap: 22px; }
 .nav a { white-space: nowrap; color: var(--dim); text-decoration: none; font-size: 14px; font-weight: 500; }
 .nav a:hover { color: var(--text); }
-.nav .cta { color: var(--ink); background: linear-gradient(#e8c35a, #b8902f); padding: 7px 14px; border-radius: 8px; font-weight: 700; }
-.nav .hist { color: var(--gold); border: 1px solid var(--gold2); padding: 6px 12px; border-radius: 8px; font-weight: 600; white-space: nowrap; }
-.nav .hist:hover { color: var(--text); background: rgba(232,195,90,.1); }
+/* Right-hand action pair: Lịch sử trận + Tải về, same height, set off from the section links by a divider. */
+.nav .acts { display: flex; align-items: center; gap: 8px; padding-left: 20px; border-left: 1px solid rgba(184,144,47,.35); }
+.nav .hist, .nav .cta { display: inline-flex; align-items: center; gap: 7px; height: 36px; padding: 0 14px; border-radius: 9px; }
+.nav .hist { color: var(--text); background: rgba(232,195,90,.07); border: 1px solid rgba(184,144,47,.45); font-weight: 600; }
+.nav .hist svg { width: 16px; height: 16px; flex: none; color: var(--gold); }
+.nav .hist:hover { color: var(--text); background: rgba(232,195,90,.14); border-color: var(--gold2); }
+.nav .cta { color: var(--ink); background: linear-gradient(#e8c35a, #b8902f); border: 1px solid transparent; font-weight: 700; }
 .nav .cta:hover { color: var(--ink); filter: brightness(1.08); }
 
 /* Hero */
@@ -328,11 +332,17 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
   .shot.big { grid-column: auto; }
   .grid3 { grid-template-columns: 1fr 1fr; }
   .nav a:not(.cta):not(.hist) { display: none; }
-  .nav { gap: 10px; }
+  .nav .acts { padding-left: 0; border-left: 0; }
   section { padding: 60px 0; }
 }
 @media (max-width: 560px) {
-  .nav .hist, .nav .cta { padding: 6px 10px; font-size: 13px; }
+  .nav .hist, .nav .cta { height: 34px; padding: 0 10px; font-size: 13px; }
+  .nav .hist svg { width: 15px; height: 15px; }
+}
+@media (max-width: 380px) {
+  .brand { font-size: 19px; gap: 8px; }
+  .nav .acts { gap: 6px; }
+  .nav .hist svg { display: none; }
   .wrap { padding: 0 16px; }
   .grid3 { grid-template-columns: 1fr; }
   .btn { width: 100%; justify-content: center; }
@@ -358,10 +368,12 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
       <a href="#tinh-nang">Tính năng</a>
       <a href="#khan-gia">Khán giả</a>
       <a href="#replay">Replay</a>
-      <a class="hist" href="/lich-su-tran/">Lịch sử trận</a>
       <a href="#macbook">MacBook</a>
       <a href="#hoi-dap">Hỏi đáp</a>
-      <a class="cta" href="#tai-ve">Tải về</a>
+      <div class="acts">
+        <a class="hist" href="/lich-su-tran/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 109-9 9.7 9.7 0 00-6.7 2.8L3 8"/><path d="M3 3v5h5M12 7v5l3 2"/></svg>Lịch sử trận</a>
+        <a class="cta" href="#tai-ve">Tải về</a>
+      </div>
     </nav>
   </div>
 </header>
