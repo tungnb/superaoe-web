@@ -86,7 +86,7 @@ svg.i { width: 17px; height: 17px; flex: none; }
 .c p { margin: 2px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; }
 .cempty { color: var(--dim); font-size: 14px; }
 .cform { display: flex; gap: 8px; align-items: flex-end; }
-.cform textarea { flex: 1; height: 44px; }
+.cform textarea { flex: 1; height: 44px; overflow-y: hidden; }
 .cmsg { font-size: 13px; color: #f08a7e; min-height: 0; margin-top: 6px; }
 .cmsg:empty { display: none; }
 .empty { color: var(--dim); text-align: center; padding: 28px; border: 1px dashed var(--line); border-radius: 12px; }
@@ -116,6 +116,25 @@ svg.i { width: 17px; height: 17px; flex: none; }
 .events { margin: 0; padding: 0; list-style: none; font-size: 14px; display: grid; gap: 3px; }
 .events .clock { display: inline-block; min-width: 54px; color: var(--dim); font-variant-numeric: tabular-nums; }
 .react.statsbtn.on { color: var(--gold); border-color: var(--gold2); }
+.mtabs { margin-top: 0; }
+.mtable .pname small { color: var(--dim); }
+.scoretable td.num, .scoretable th { min-width: 64px; }
+.scoretable th { white-space: normal; vertical-align: bottom; }
+.scoretable td.total { color: var(--gold); font-weight: 700; }
+.scoretable td.best { color: #ffe28a; font-weight: 700; text-shadow: 0 0 6px rgba(232,195,90,.45); }
+.scoretable td.yes { color: #9bd3a3; }
+.tlbox { position: relative; background: #0d0a06; border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px 4px; }
+/* Phones: the timeline keeps a readable width and scrolls sideways */
+.tlscroll { overflow-x: auto; scrollbar-color: var(--line) transparent; }
+.tlinner { position: relative; min-width: 620px; }
+.tltitle { font-family: var(--serif); font-weight: 700; font-size: 14px; }
+.tlchart text { font-size: 11px; }
+.tlchart .tlname { font-size: 13px; font-weight: 700; }
+.tlchart .tlworld { fill: var(--text); font-weight: 700; font-size: 12px; }
+.tlchart .tlage line { stroke-width: 1; opacity: .75; }
+.tlchart .tlage text { font-weight: 600; }
+.tlchart .frame { fill: none; stroke: #fff; stroke-width: 1.5; }
+.tlchart .tick { stroke: var(--dim); }
 .more { margin: 18px 0 8px; text-align: center; }
 .howto { margin: 32px 0 48px; padding: 20px 22px; border: 1px solid rgba(184,144,47,.35); border-radius: 14px; background: var(--bg2); }
 .howto h2 { font-size: 20px; margin-bottom: 8px; }
@@ -377,7 +396,36 @@ const CHART_METRICS = [
   { key: "kills", label: "Lính giết" },
   { key: "res", label: "Tài nguyên đang có" },
   { key: "explored", label: "Khám phá %" },
+  { key: "score", label: "Điểm", v: 2 },
 ];
+// The game's own timeline colours (0x4FFAB0, COLORREF per colour index).
+const TIMELINE_COLORS = ["#0000c4", "#c80000", "#eaea00", "#8c5a21", "#ff8000", "#008000", "#808080", "#408080"];
+// player+0x109 -> name (string 10231.., via the game's string table).
+const CIV_NAMES = ["", "Ai Cập", "Hy Lạp", "Babylon", "Assyria", "Minoan", "Hittite", "Phoenicia", "Sumer", "Ba Tư",
+  "Thương", "Yamato", "Triều Tiên", "La Mã", "Carthage", "Palmyra", "Macedonia"];
+// The end-of-game achievements (timeline version 2: spec.dll records the score entries), tabs and
+// columns as on the game's screen. A column is a score entry id: "v" shows its value, "yes" a bonus
+// (points above 0), "pts" its points; "cat" the points of a category. Same as the launcher.
+const SCORE_TABS = [
+  { key: "summary", label: "Tổng kết", cols: [
+    { cat: 0, label: "Quân sự" }, { cat: 1, label: "Kinh tế" }, { cat: 2, label: "Tôn giáo" }, { cat: 3, label: "Công nghệ" },
+    { yes: 22, label: "Sống sót", tip: "Còn trụ tới cuối trận" }, { yes: 23, label: "Kỳ quan" }, { total: true, label: "Tổng điểm" }] },
+  { key: "military", label: "Quân sự", cols: [
+    { v: 0, label: "Giết", tip: "Số lính đối phương bị giết" }, { v: 1, label: "Phá nhà", tip: "Số nhà đối phương bị phá" },
+    { lost: true, label: "Mất", tip: "Số lính của mình bị mất" }, { v: 2, label: "Giết − Mất" },
+    { yes: 3, label: "Quân đông nhất" }, { cat: 0, label: "Tổng điểm" }] },
+  { key: "economy", label: "Kinh tế", cols: [
+    { v: 4, label: "Vàng thu được" }, { v: 5, label: "Dân cao nhất" }, { yes: 6, label: "Thưởng dân" },
+    { v: 7, label: "Khám phá", pct: true }, { yes: 8, label: "Khám phá nhiều nhất" }, { v: 9, label: "Cống nạp" },
+    { cat: 1, label: "Tổng điểm" }] },
+  { key: "religion", label: "Tôn giáo", cols: [
+    { v: 10, label: "Cải đạo" }, { yes: 11, label: "Cải đạo nhiều nhất" }, { v: 12, label: "Phế tích" }, { v: 13, label: "Cổ vật" },
+    { v: 14, label: "Đền" }, { pts: [15, 16], label: "Đủ cổ vật/phế tích" }, { cat: 2, label: "Tổng điểm" }] },
+  { key: "technology", label: "Công nghệ", cols: [
+    { v: 17, label: "Công nghệ" }, { yes: 18, label: "Nhiều công nghệ nhất" }, { yes: 19, label: "Lên Đồng đầu tiên" },
+    { yes: 20, label: "Lên Sắt đầu tiên" }, { cat: 3, label: "Tổng điểm" }] },
+];
+const OTHER_TABS = [{ key: "timeline", label: "Timeline" }, { key: "details", label: "Chi tiết & đời" }, { key: "charts", label: "Biểu đồ" }];
 
 async function loadStats(m, box) {
   box.innerHTML = '<div class="cempty">Đang tải...</div>';
@@ -402,54 +450,194 @@ function timelineStats(tl) {
     for (const [t, who, kind, value] of tl.events ?? []) if (who === p.p && kind === "age" && !(value in ages)) ages[value] = t;
     const ended = (tl.events ?? []).find((e) => e[1] === p.p && e[2] === "state" && e[3] === 2);
     return {
-      ...p, color: PLAYER_COLORS[p.color] ?? "#ccc", final: last[i + 1], ages, lostAt: ended?.[0] ?? null, f,
+      ...p, color: PLAYER_COLORS[p.color] ?? "#ccc", band: TIMELINE_COLORS[p.color] ?? "#ccc", civName: CIV_NAMES[p.civ] ?? "",
+      score: tl.scores?.[i] ?? null, final: last[i + 1], ages, lostAt: ended?.[0] ?? null, f,
       maxPop: Math.max(...series.map((v) => v[f.pop])), maxMil: Math.max(...series.map((v) => v[f.military])),
     };
   });
 }
 
+const pnameCell = (p) => `<td class="pname"><i style="background:${p.color}"></i>${esc(p.name)}${p.civName ? `<small> · ${esc(p.civName)}</small>` : ""}</td>`;
+const resultCell = (p) => `<td>${p.state === 1 ? '<span class="win">Thắng</span>'
+  : p.state === 2 ? `<span class="lose">Thua${p.lostAt != null ? " " + fmtClock(p.lostAt) : ""}</span>` : "—"}</td>`;
+
+// The match's statistics as tabs, like the launcher: the achievements tabs (matches recorded with
+// timeline version 2), the game's timeline, details & ages, charts.
 function renderStats(tl, box) {
   const ps = timelineStats(tl);
-  const result = (p) => p.state === 1 ? '<span class="win">Thắng</span>'
-    : p.state === 2 ? `<span class="lose">Thua${p.lostAt != null ? " " + fmtClock(p.lostAt) : ""}</span>` : "—";
+  const tabs = [...(tl.scores ? SCORE_TABS : []), ...OTHER_TABS];
+  box.innerHTML = `<div class="ctabs mtabs">${tabs.map((t, i) => `<button class="btn${i ? "" : " on"}" data-k="${t.key}">${t.label}</button>`).join("")}</div>
+    <div class="mpane"></div>
+    <p class="hint">Số liệu do game của ${esc(tl.by ?? "người chơi")} ghi lại${tl.agreed ? `, khớp với ${tl.agreed} người chơi khác` : ""}. Giờ là giờ trong game.${tl.scores ? "" : " Trận này ghi bằng launcher cũ nên chưa có bảng điểm như cuối game."}</p>`;
+  const pane = box.querySelector(".mpane");
+  const show = (key) => {
+    const scoreTab = SCORE_TABS.find((t) => t.key === key);
+    if (scoreTab) pane.innerHTML = scoreTable(scoreTab, ps);
+    else if (key === "timeline") drawTimeline(tl, ps, pane);
+    else if (key === "details") renderDetails(tl, ps, pane);
+    else renderCharts(tl, ps, pane);
+  };
+  box.querySelectorAll(".mtabs button").forEach((b) => b.onclick = () => {
+    box.querySelectorAll(".mtabs button").forEach((x) => x.classList.toggle("on", x === b));
+    show(b.dataset.k);
+  });
+  show(tabs[0].key);
+}
+
+// One table of the achievements screen; the best number of each column is highlighted.
+function scoreTable(tab, ps) {
+  const item = (p, id) => p.score?.items.find((x) => x[0] === id);
+  const points = (p, id) => item(p, id)?.[3] ?? 0;
+  const cell = (p, c) => {
+    if (c.total) return { n: p.score?.total ?? 0 };
+    if (c.cat != null) return { n: (p.score?.items ?? []).filter((x) => x[1] === c.cat).reduce((a, x) => a + x[3], 0) };
+    if (c.yes != null) return { yes: points(p, c.yes) > 0, pts: points(p, c.yes) };
+    if (c.lost) return { n: p.final[p.f.lost] };
+    if (c.pts) return { n: c.pts.reduce((a, id) => a + points(p, id), 0) };
+    return { n: item(p, c.v)?.[2] ?? 0, pts: points(p, c.v), pct: c.pct };
+  };
+  const cells = ps.map((p) => tab.cols.map((c) => cell(p, c)));
+  const best = tab.cols.map((c, k) => c.yes != null || c.lost || ps.length < 2 ? null : Math.max(...cells.map((r) => r[k].n)));
+  const rows = ps.map((p, i) => `<tr>${pnameCell(p)}${tab.key === "summary" ? resultCell(p) : ""}${cells[i].map((v, k) => {
+    const cls = `num${tab.cols[k].total || tab.cols[k].cat != null && tab.key !== "summary" ? " total" : ""}${best[k] != null && best[k] > 0 && v.n === best[k] ? " best" : ""}`;
+    const title = v.pts != null ? ` title="${v.pts} điểm"` : "";
+    return v.yes != null ? `<td class="num yes"${title}>${v.yes ? "✓ Có" : ""}</td>` : `<td class="${cls}"${title}>${v.n}${v.pct ? "%" : ""}</td>`;
+  }).join("")}</tr>`).join("");
+  return `<div class="twrap"><table class="mtable scoretable">
+      <thead><tr><th>Người chơi</th>${tab.key === "summary" ? "<th>Kết quả</th>" : ""}${tab.cols.map((c) => `<th${c.tip ? ` title="${esc(c.tip)}"` : ""}>${c.label}</th>`).join("")}</tr></thead>
+      <tbody>${rows}</tbody></table></div>`;
+}
+
+// Ages, peaks, the average Bronze Age click and the events.
+function renderDetails(tl, ps, pane) {
   const age = (p, a) => a in p.ages ? fmtClock(p.ages[a]) : "—";
   const click3 = (p) => 3 in p.ages ? fmtClock(Math.max(0, p.ages[3] - BRONZE_RESEARCH_MS)) : "—";
   const num = (v) => `<td class="num">${esc(v)}</td>`;
-  const rows = ps.map((p) => `<tr>
-      <td class="pname"><i style="background:${p.color}"></i>${esc(p.name)}</td>
-      <td>${result(p)}</td>${num(p.final[p.f.kills])}${num(p.final[p.f.lost])}${num(p.final[p.f.razed])}${num(p.final[p.f.conversions])}
+  const rows = ps.map((p) => `<tr>${pnameCell(p)}${resultCell(p)}${num(p.final[p.f.kills])}${num(p.final[p.f.lost])}${num(p.final[p.f.razed])}${num(p.final[p.f.conversions])}
       ${num(p.final[p.f.techs])}${num(p.maxPop)}${num(p.maxMil)}${num(p.final[p.f.explored] + "%")}
-      ${num(age(p, 2))}${num(click3(p))}${num(age(p, 3))}${num(age(p, 4))}
-    </tr>`).join("");
+      ${num(age(p, 2))}${num(click3(p))}${num(age(p, 3))}${num(age(p, 4))}</tr>`).join("");
   const events = (tl.events ?? []).filter((e) => e[2] !== "age" || e[3] > 1).map(([t, who, kind, value]) => {
     const p = ps.find((x) => x.p === who);
     const name = p ? `<b style="color:${p.color}">${esc(p.name)}</b>` : "?";
     const text = kind === "age" ? `lên Đời ${AGE_NAMES[value] ?? value}` : value === 1 ? "thắng trận" : value === 2 ? "bị loại / đầu hàng" : "trở lại";
     return `<li><span class="clock">${fmtClock(t)}</span>${name} ${text}</li>`;
   }).join("") || '<li class="cempty">Không có sự kiện lên đời / kết thúc.</li>';
-  box.innerHTML = `
-    <div class="twrap"><table class="mtable">
+  pane.innerHTML = `<div class="twrap"><table class="mtable">
       <thead><tr><th>Người chơi</th><th>Kết quả</th><th title="Số lính đối phương bị giết">Giết</th><th title="Số lính của mình bị mất">Mất</th>
         <th title="Số nhà đối phương bị phá">Phá nhà</th><th>Cải đạo</th><th title="Số công nghệ đã nghiên cứu">C.nghệ</th>
         <th title="Dân số cao nhất">Dân max</th><th title="Quân đội đông nhất">Quân max</th><th title="Bản đồ đã khám phá">K.phá</th>
         <th title="Giờ game lên Đời Công Cụ">Công Cụ</th><th title="Giờ game bắt đầu click lên Đời Đồng (đời 3) = lúc lên Đồng trừ 2:20 nghiên cứu">Click Đ3</th><th title="Giờ game lên Đời Đồng">Đồng</th><th title="Giờ game lên Đời Sắt">Sắt</th></tr></thead>
       <tbody>${rows}</tbody></table></div>
-    <div class="ctabs">${CHART_METRICS.map((c, i) => `<button class="btn${i ? "" : " on"}" data-k="${c.key}">${c.label}</button>`).join("")}</div>
-    <div class="cbox"></div>
     <div class="age3"></div>
-    <h3>Diễn biến</h3><ol class="events">${events}</ol>
-    <p class="hint">Số liệu do game của ${esc(tl.by ?? "người chơi")} ghi lại${tl.agreed ? `, khớp với ${tl.agreed} người chơi khác` : ""}. Giờ là giờ trong game.</p>`;
-  box.querySelectorAll(".ctabs button").forEach((b) => b.onclick = () => {
-    box.querySelectorAll(".ctabs button").forEach((x) => x.classList.toggle("on", x === b));
-    drawChart(tl, ps, b.dataset.k, box.querySelector(".cbox"));
-  });
-  drawChart(tl, ps, "pop", box.querySelector(".cbox"));
+    <h3>Diễn biến</h3><ol class="events">${events}</ol>`;
   // Average game time each player clicks the Bronze Age over all their matches.
   fetch("/api/players/age3?users=" + encodeURIComponent(ps.map((p) => p.name).join(","))).then((r) => r.json()).then(({ players }) => {
     const cards = (players ?? []).filter((a) => a.avgMs != null)
       .map((a) => `<span>${esc(a.username)} <b>${fmtClock(a.avgMs)}</b> <span class="detail">(${a.matches} trận)</span></span>`).join(" · ");
-    if (cards) box.querySelector(".age3").innerHTML = `<h3>Trung bình bắt đầu click Đời 3 (mọi trận)</h3><div>${cards}</div>`;
+    if (cards && pane.querySelector(".age3")) pane.querySelector(".age3").innerHTML = `<h3>Trung bình bắt đầu click Đời 3 (mọi trận)</h3><div>${cards}</div>`;
   }).catch(() => {});
+}
+
+function renderCharts(tl, ps, pane) {
+  const metrics = CHART_METRICS.filter((c) => !c.v || tl.v >= c.v);
+  pane.innerHTML = `<div class="ctabs">${metrics.map((c, i) => `<button class="btn${i ? "" : " on"}" data-k="${c.key}">${c.label}</button>`).join("")}</div>
+    <div class="cbox"></div>`;
+  pane.querySelectorAll(".ctabs button").forEach((b) => b.onclick = () => {
+    pane.querySelectorAll(".ctabs button").forEach((x) => x.classList.toggle("on", x === b));
+    drawChart(tl, ps, b.dataset.k, pane.querySelector(".cbox"));
+  });
+  drawChart(tl, ps, "pop", pane.querySelector(".cbox"));
+}
+
+// Shared by the charts: the tooltip and cursor line follow the mouse (or a tap on a phone).
+function chartPointer(el, tip, cursor, W, toT, toX, render) {
+  const hide = () => { tip.classList.add("hidden"); cursor.setAttribute("visibility", "hidden"); };
+  const show = (e) => {
+    const r = el.getBoundingClientRect();
+    const s = toT(e.clientX - r.left, r.width);
+    if (!s) return hide();
+    cursor.setAttribute("x1", toX(s[0]));
+    cursor.setAttribute("x2", toX(s[0]));
+    cursor.setAttribute("visibility", "visible");
+    tip.innerHTML = render(s);
+    tip.classList.remove("hidden");
+    const left = (toX(s[0]) / W) * r.width;
+    tip.style.left = (left > r.width / 2 ? left - tip.offsetWidth - 10 : left + 10) + "px";
+  };
+  el.onpointermove = show;
+  el.onpointerdown = show;
+  el.onpointerleave = hide;
+}
+
+// The game's timeline: every player's share of the world population over game time as stacked
+// bands filling the height (a living player keeps at least 3 px), "name - civ" in the band, a line
+// at each age-up, the world population along the top. Same drawing as the launcher.
+function drawTimeline(tl, ps, pane) {
+  const W = 960, TOP = 24, BOT = 22, n = ps.length;
+  const PH = Math.max(200, Math.min(420, 52 * n)), H = TOP + PH + BOT;
+  const f = ps[0].f, tMax = Math.max(tl.end, 1);
+  const x = (t) => (t / tMax) * W;
+  const world = (s) => ps.reduce((a, _, i) => a + s[i + 1][f.pop], 0);
+  const nearest = (t) => tl.samples.reduce((best, o) => Math.abs(o[0] - t) < Math.abs(best[0] - t) ? o : best);
+  // Band edges per sample: edges[k][i] = top of player i's band, edges[k][n] = bottom.
+  const edges = tl.samples.map((s) => {
+    const pops = ps.map((_, i) => s[i + 1][f.pop]), total = pops.reduce((a, v) => a + v, 0);
+    let h = pops.map((v) => total ? Math.max(v > 0 ? 3 : 0, (v / total) * PH) : PH / n);
+    const sum = h.reduce((a, v) => a + v, 0);
+    h = h.map((v) => (v * PH) / sum);
+    const e = [TOP];
+    for (const v of h) e.push(e[e.length - 1] + v);
+    return e;
+  });
+  const at = (t, i) => {  // band i's top / bottom at time t (between samples: linear)
+    const k = tl.samples.findIndex((s) => s[0] >= t);
+    if (k <= 0) return [edges[Math.max(k, 0)][i], edges[Math.max(k, 0)][i + 1]];
+    const a = tl.samples[k - 1][0], b = tl.samples[k][0], u = b > a ? (t - a) / (b - a) : 1;
+    const lerp = (j) => edges[k - 1][j] + (edges[k][j] - edges[k - 1][j]) * u;
+    return [lerp(i), lerp(i + 1)];
+  };
+  const light = (c) => { const v = parseInt(c.slice(1), 16); return ((v >> 16) * 299 + ((v >> 8) & 255) * 587 + (v & 255) * 114) / 1000 > 120; };
+  let svg = "";
+  ps.forEach((p, i) => {
+    const top = tl.samples.map((s, k) => `${x(s[0]).toFixed(1)},${edges[k][i].toFixed(1)}`);
+    const bottom = tl.samples.map((s, k) => `${x(s[0]).toFixed(1)},${edges[k][i + 1].toFixed(1)}`).reverse();
+    svg += `<polygon points="${[...top, ...bottom].join(" ")}" fill="${p.band}"/>`;
+  });
+  ps.forEach((p, i) => {
+    const ink = light(p.band) ? "#111" : "#fff";
+    for (const [a, t] of Object.entries(p.ages)) {
+      if (!(a >= 2 && a <= 4)) continue;
+      const [y0, y1] = at(t, i);
+      if (y1 - y0 < 2) continue;
+      svg += `<g class="tlage"><line x1="${x(t)}" x2="${x(t)}" y1="${y0}" y2="${y1}" style="stroke:${ink}"/>`;
+      if (y1 - y0 >= 13) svg += `<text x="${x(t) + 3}" y="${y1 - 3}" style="fill:${ink}"${x(t) > W - 90 ? ` text-anchor="end" dx="-6"` : ""}>Đời ${AGE_NAMES[a]}</text>`;
+      svg += `<title>${esc(p.name)} lên Đời ${AGE_NAMES[a]} lúc ${fmtClock(t)}</title></g>`;
+    }
+    const [y0, y1] = at(0, i);
+    if (y1 - y0 >= 13) svg += `<text class="tlname" x="6" y="${(y0 + y1) / 2 + 5}" style="fill:${ink}">${esc(p.name)}${p.civName ? " - " + esc(p.civName) : ""}</text>`;
+  });
+  const marks = Math.min(12, tl.samples.length);
+  for (let k = 0; k < marks; k++) {
+    const t = marks > 1 ? (tMax * (k + 0.5)) / marks : 0;
+    svg += `<text class="tlworld" x="${x(t)}" y="${TOP - 7}" text-anchor="middle">${world(nearest(t))}</text>`;
+  }
+  const minuteStep = [1, 2, 5, 10, 15, 20, 30, 60].find((st) => tMax / 60000 / st <= 10) ?? 120;
+  for (let t = minuteStep * 60000; t < tMax; t += minuteStep * 60000) {
+    svg += `<line x1="${x(t)}" x2="${x(t)}" y1="${TOP + PH}" y2="${TOP + PH + 5}" class="tick"/><text x="${x(t)}" y="${H - 4}" text-anchor="middle">${fmtClock(t)}</text>`;
+  }
+  svg += `<rect x="0.5" y="${TOP + 0.5}" width="${W - 1}" height="${PH - 1}" class="frame"/>`;
+  svg += `<line class="cursor" visibility="hidden" y1="${TOP}" y2="${TOP + PH}"/>`;
+  pane.innerHTML = `<div class="tlbox"><div class="tltitle">Dân số thế giới</div>
+      <div class="tlscroll"><div class="tlinner"><svg viewBox="0 0 ${W} ${H}" class="chart tlchart">${svg}</svg><div class="ctip hidden"></div></div></div></div>`;
+  chartPointer(pane.querySelector("svg"), pane.querySelector(".ctip"), pane.querySelector(".cursor"), W,
+    (px, w) => { const t = (px / w) * tMax; return t < 0 || t > tMax ? null : nearest(t); }, x,
+    (s) => {
+      const total = world(s);
+      return `<b>${fmtClock(s[0])} · ${total} dân</b>` + ps.map((p, i) => {
+        const v = s[i + 1][f.pop];
+        return `<div><i style="background:${p.band}"></i>${esc(p.name)}: ${v}${total ? ` (${Math.round((v * 100) / total)}%)` : ""}</div>`;
+      }).join("");
+    });
 }
 
 // One line per player over game time; age-ups are marked on the line (II Công Cụ, III Đồng, IV Sắt).
@@ -481,25 +669,9 @@ function drawChart(tl, ps, metric, box) {
   });
   svg += `<line class="cursor" visibility="hidden" y1="${T}" y2="${H - B}"/>`;
   box.innerHTML = `<svg viewBox="0 0 ${W} ${H}" class="chart">${svg}</svg><div class="ctip hidden"></div>`;
-  const el = box.querySelector("svg"), tip = box.querySelector(".ctip"), cursor = box.querySelector(".cursor");
-  const hide = () => { tip.classList.add("hidden"); cursor.setAttribute("visibility", "hidden"); };
-  // Mouse hover, or a tap on a phone: the values of every player at that game time.
-  const show = (e) => {
-    const r = el.getBoundingClientRect();
-    const t = (((e.clientX - r.left) / r.width) * W - L) / (W - L - R) * tMax;
-    if (t < 0 || t > tMax) return hide();
-    const s = nearest(t);
-    cursor.setAttribute("x1", x(s[0]));
-    cursor.setAttribute("x2", x(s[0]));
-    cursor.setAttribute("visibility", "visible");
-    tip.innerHTML = `<b>${fmtClock(s[0])}</b>` + ps.map((p, i) => `<div><i style="background:${p.color}"></i>${esc(p.name)}: ${value(s[i + 1])}</div>`).join("");
-    tip.classList.remove("hidden");
-    const left = (x(s[0]) / W) * r.width;
-    tip.style.left = (left > r.width / 2 ? left - tip.offsetWidth - 10 : left + 10) + "px";
-  };
-  el.onpointermove = show;
-  el.onpointerdown = show;
-  el.onpointerleave = hide;
+  chartPointer(box.querySelector("svg"), box.querySelector(".ctip"), box.querySelector(".cursor"), W,
+    (px, w) => { const t = ((px / w) * W - L) / (W - L - R) * tMax; return t < 0 || t > tMax ? null : nearest(t); }, x,
+    (s) => `<b>${fmtClock(s[0])}</b>` + ps.map((p, i) => `<div><i style="background:${p.color}"></i>${esc(p.name)}: ${value(s[i + 1])}</div>`).join(""));
 }
 // Top of the value axis: 4 grid steps of a round whole number (1, 2, 5, 10, 20, 50...).
 const niceMax = (v) => {
