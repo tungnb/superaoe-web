@@ -310,6 +310,10 @@ tbody tr:first-child { background: rgba(232,195,90,.07); }
 .small { font-size: 14px; }
 footer a { color: var(--dim); }
 code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; background: #0e0b07; border: 1px solid var(--line); border-radius: 5px; padding: 1px 6px; color: #e9d8b0; }
+/* SmartScreen hint under the Windows download buttons. */
+.win-note { display: flex; align-items: flex-start; gap: 8px; margin: 10px 0 0; font-size: 13px; line-height: 1.5; color: var(--dim); }
+.win-note svg { width: 15px; height: 15px; flex: none; margin-top: 2px; color: var(--gold); }
+.win-note b { color: var(--text); font-weight: 600; }
 </style>
 </head>
 <body>
@@ -347,6 +351,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
         <span>Tải cho Mac<small>Chạy mượt trên MacBook M1, M2, M3, M4</small></span>
       </a>
     </div>
+    <p class="win-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M12 8v4M12 16h.01"/></svg><span>Nếu Windows hiện “Windows protected your PC”, bấm <b>More info</b> → <b>Run anyway</b>.</span></p>
     <p class="meta">Cập nhật lần cuối: <time datetime="2026-10-24">24/10/2026</time> · Miễn phí</p>
   </div>
 </section>

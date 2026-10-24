@@ -217,6 +217,10 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
   .lead { font-size: 16px; }
 }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } html { scroll-behavior: auto; } }
+/* SmartScreen hint under the Windows download buttons. */
+.win-note { display: flex; align-items: flex-start; gap: 8px; margin: 10px 0 0; font-size: 13px; line-height: 1.5; color: var(--dim); }
+.win-note svg { width: 15px; height: 15px; flex: none; margin-top: 2px; color: var(--gold); }
+.win-note b { color: var(--text); font-weight: 600; }
 </style>
 </head>
 <body>
@@ -249,6 +253,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
         <span>Tải SuperAoE cho Windows<small>SuperAoE-Setup.exe · khoảng 135 MB · có sẵn game</small></span>
       </a>
     </div>
+    <p class="win-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M12 8v4M12 16h.01"/></svg><span>Nếu Windows hiện “Windows protected your PC”, bấm <b>More info</b> → <b>Run anyway</b>.</span></p>
     <p class="meta">Cập nhật lần cuối: <time datetime="2026-10-22">22/10/2026</time> · Miễn phí · Windows 10 / 11</p>
   </div>
 </section>
