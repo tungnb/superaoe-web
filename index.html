@@ -192,7 +192,7 @@ img, svg { max-width: 100%; }
 .brand { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-weight: 800; font-size: 22px; color: var(--gold); text-decoration: none; letter-spacing: .3px; }
 .brand img { width: 30px; height: 36px; }
 .nav { display: flex; gap: 22px; }
-.nav a { color: var(--dim); text-decoration: none; font-size: 14px; font-weight: 500; }
+.nav a { white-space: nowrap; color: var(--dim); text-decoration: none; font-size: 14px; font-weight: 500; }
 .nav a:hover { color: var(--text); }
 .nav .cta { color: var(--ink); background: linear-gradient(#e8c35a, #b8902f); padding: 7px 14px; border-radius: 8px; font-weight: 700; }
 .nav .hist { color: var(--gold); border: 1px solid var(--gold2); padding: 6px 12px; border-radius: 8px; font-weight: 600; white-space: nowrap; }
@@ -321,6 +321,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
   section { padding: 60px 0; }
 }
 @media (max-width: 560px) {
+  .nav .hist, .nav .cta { padding: 6px 10px; font-size: 13px; }
   .wrap { padding: 0 16px; }
   .grid3 { grid-template-columns: 1fr; }
   .btn { width: 100%; justify-content: center; }
