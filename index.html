@@ -302,6 +302,11 @@ details p { margin: 0 0 16px; color: var(--dim); }
 
 footer { padding: 36px 0 44px; border-top: 1px solid rgba(90,71,40,.6); color: var(--dim); font-size: 13px; }
 footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+.steps li { grid-template-columns: 40px minmax(0, 1fr); }
+.cmdline { display: flex; align-items: center; gap: 8px; background: #0e0b07; border: 1px solid var(--line); border-radius: 10px; padding: 8px 8px 8px 14px; margin: 10px 0; }
+.cmdline code { flex: 1; min-width: 0; white-space: normal; overflow-wrap: anywhere; border: 0; padding: 0; background: none; font-size: 13px; }
+.cmdline .copy { flex: none; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; border: 1px solid var(--gold2); background: var(--panel); color: var(--gold); border-radius: 7px; padding: 6px 12px; }
+.cmdline .copy:hover { background: var(--panel2); }
 code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; background: #0e0b07; border: 1px solid var(--line); border-radius: 5px; padding: 1px 6px; color: #e9d8b0; }
 
 @media (max-width: 900px) {
@@ -560,13 +565,13 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
       <div class="os">
         <div class="osh">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8s1.9.8 3.2.8c1.3 0 2.1-1.2 2.9-2.4.9-1.4 1.3-2.7 1.3-2.8-.1 0-2.4-.9-2.4-4zM14 5.4c.7-.8 1.1-1.9 1-3-1 0-2.1.6-2.8 1.4-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.5 2.8-1.3z"/></svg>
-          <div><h3>MacBook <span class="badge new">MỚI</span></h3><p class="req">macOS · chip Apple M1, M2, M3, M4… · khoảng 80 MB</p></div>
+          <div><h3>MacBook <span class="badge new">MỚI</span></h3><p class="req">macOS · chip Apple M1, M2, M3, M4… · khoảng 300 MB</p></div>
         </div>
         <ul>
           <li>Đóng gói sẵn Wine và game, không cần cài Windows</li>
-          <li>Giải nén, chuột phải <b>CAI DAT SuperAoE.command</b> → <b>Open</b>: SuperAoE.app được cài vào thư mục Applications (lần đầu cần Internet, khoảng 10–15 phút)</li>
+          <li><b>Cài nhanh nhất:</b> mở <b>Terminal</b> (Cmd + Space, gõ Terminal), dán lệnh này rồi bấm Enter. Lệnh tự tải, cài SuperAoE.app vào Applications và mở app, macOS không chặn:<div class="cmdline"><code>curl -fsSL https://superaoe.com/mac.sh | bash</code><button type="button" class="copy" data-copy="curl -fsSL https://superaoe.com/mac.sh | bash">Sao chép</button></div></li>
+          <li>Hoặc tải file zip bên dưới, giải nén rồi làm đúng như tên file <b>Mo Terminal - go bash - keo file nay vao - Enter.command</b></li>
           <li>App tự cập nhật; chơi chung phòng với bản Windows. Mac chip Intel không hỗ trợ</li>
-          <li>macOS 15 báo "Apple không thể xác minh"? Xem <a href="/choi-aoe-tren-macbook/#cai-dat">cách mở</a></li>
         </ul>
         <a class="btn primary" data-dl="mac" href="https://superaoe.com/download/mac" download>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg>
@@ -597,11 +602,12 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
       <div class="card">
         <h3 style="margin-bottom:12px">Cài trên Mac trong 3 bước</h3>
         <ol class="steps">
-          <li><span class="n">1</span><div><h4>Tải và giải nén</h4><p>Tải <a href="https://superaoe.com/download/mac">SuperAoE_Mac_M.zip</a>, bấm đúp để giải nén.</p></div></li>
-          <li><span class="n">2</span><div><h4>Chuột phải → Open</h4><p>Chuột phải vào <b>CAI DAT SuperAoE.command</b> → <b>Open</b>. macOS 15 chặn cách này? Dùng <a href="/choi-aoe-tren-macbook/#cai-dat">Terminal hoặc Open Anyway</a>.</p></div></li>
-          <li><span class="n">3</span><div><h4>Mở SuperAoE trong Applications</h4><p>Lần đầu cần Internet và khoảng 10–15 phút để cài SuperAoE.app vào thư mục Applications. Lần sau mở từ Launchpad.</p></div></li>
+          <li><span class="n">1</span><div><h4>Mở Terminal</h4><p>Bấm <b>Cmd + Space</b>, gõ <b>Terminal</b>, bấm Enter.</p></div></li>
+          <li><span class="n">2</span><div><h4>Dán lệnh cài, bấm Enter</h4><div class="cmdline"><code>curl -fsSL https://superaoe.com/mac.sh | bash</code><button type="button" class="copy" data-copy="curl -fsSL https://superaoe.com/mac.sh | bash">Sao chép</button></div><p>Lệnh tải gói khoảng 300 MB, cài SuperAoE.app vào Applications rồi tự mở app. Có thể hỏi mật khẩu Mac nếu máy chưa có Rosetta 2.</p></div></li>
+          <li><span class="n">3</span><div><h4>Lần sau mở từ Launchpad</h4><p>App tự cập nhật khi có bản mới, không phải chạy lại lệnh.</p></div></li>
         </ol>
-        <p style="margin-top:14px"><a href="/choi-aoe-tren-macbook/">Hướng dẫn chơi AoE trên MacBook →</a></p>
+        <p style="margin-top:14px">Đã tải file zip? Giải nén, mở Terminal, gõ <code>bash</code> và một dấu cách, kéo file <b>Mo Terminal - go bash - keo file nay vao - Enter.command</b> vào cửa sổ Terminal rồi bấm Enter.</p>
+        <p><a href="/choi-aoe-tren-macbook/">Hướng dẫn chơi AoE trên MacBook →</a></p>
       </div>
     </div>
   </div>
@@ -641,6 +647,12 @@ const MAC_URL = "https://superaoe.com/download/mac";
 
 document.querySelectorAll('[data-dl="win"]').forEach(a => { a.href = WIN_URL; a.setAttribute("download", ""); });
 document.querySelectorAll('[data-dl="mac"]').forEach(a => { a.href = MAC_URL; a.setAttribute("download", ""); });
+// Copy buttons for the Mac one-line install command.
+document.querySelectorAll("[data-copy]").forEach(b => b.addEventListener("click", async () => {
+  try { await navigator.clipboard.writeText(b.dataset.copy); }
+  catch { const r = document.createRange(); r.selectNodeContents(b.previousElementSibling); getSelection().removeAllRanges(); getSelection().addRange(r); document.execCommand("copy"); }
+  b.textContent = "Đã chép ✓"; setTimeout(() => { b.textContent = "Sao chép"; }, 2000);
+}));
 document.getElementById("yr").textContent = new Date().getFullYear();
 
 // U lobby seats
