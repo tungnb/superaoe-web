@@ -94,6 +94,14 @@
   },
   {
    "@type": "Question",
+   "name": "Khán giả có xem được người chơi đã nghiên cứu công nghệ gì không?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Được. Từ launcher 0.3.16, khay dưới cùng màn hình khán giả hiện công nghệ mỗi người chơi đã nghiên cứu bằng icon gốc của game, chia theo đội, mỗi người một dòng theo thứ tự nghiên cứu, chuỗi nâng cấp chỉ giữ cấp cao nhất. Phím P ẩn/hiện. Khi xem replay cũng có khay này."
+   }
+  },
+  {
+   "@type": "Question",
    "name": "Xem khán giả có cần cài game không?",
    "acceptedAnswer": {
     "@type": "Answer",
@@ -137,7 +145,7 @@
    "@type": "HowToStep",
    "position": 5,
    "name": "Theo dõi trận",
-   "text": "Bấm phím 1–8 để chuyển sang góc nhìn của từng người chơi, thấy cả hướng họ trỏ quân. Lỡ tắt game thì bấm “Mở lại game” trong launcher để xem tiếp trận đang diễn ra."
+   "text": "Bấm phím 1–8 để chuyển sang góc nhìn của từng người chơi, thấy cả hướng họ trỏ quân. Bảng điểm hiện đúng tên tài khoản của người chơi; ô dưới cùng màn hình hiện công nghệ mỗi người đã nghiên cứu (phím P ẩn/hiện). Lỡ tắt game thì bấm “Mở lại game” trong launcher để xem tiếp trận đang diễn ra."
   }
  ]
 }
@@ -330,7 +338,7 @@ footer a { color: var(--dim); }
       <a href="/img/spectator.jpg" target="_blank" rel="noopener"><img src="/img/spectator.jpg" width="1366" height="768" alt="Ảnh chụp thật màn hình khán giả SuperAoE trong một trận Đế Chế 1v1: nhà chính, dân làng, rừng và bản đồ nhỏ"></a>
       <figcaption><b>Ảnh chụp thật ở ghế khán giả</b>Đồ họa gốc của game, không phải video hay luồng phát hình.</figcaption>
     </figure>
-    <p class="meta">Cập nhật lần cuối: <time datetime="2026-10-22">22/10/2026</time></p>
+    <p class="meta">Cập nhật lần cuối: <time datetime="2026-10-24">24/10/2026</time></p>
   </div>
 </section>
 
@@ -343,7 +351,7 @@ footer a { color: var(--dim); }
       <li><span class="n">2</span><div><h3>Vào phòng của người chơi</h3><p>Chọn phòng trong danh sách hoặc nhập mã phòng 6 ký tự mà người chơi gửi cho bạn.</p></div></li>
       <li><span class="n">3</span><div><h3>Ngồi ghế khán giả</h3><p>Ba ghế ở đầu phòng chữ U: ghế Vua ở giữa, hai ghế Thái giám hai bên. Tám ghế hai cánh là ghế người chơi.</p></div></li>
       <li><span class="n">4</span><div><h3>Chờ chủ phòng bấm Bắt đầu</h3><p>Game của bạn tự mở ở chế độ chỉ xem. Khán giả không ra lệnh được cho quân và không làm ảnh hưởng trận đấu.</p></div></li>
-      <li><span class="n">5</span><div><h3>Theo dõi trận</h3><p>Bấm phím 1–8 để chuyển sang góc nhìn của từng người chơi, thấy cả hướng họ trỏ quân. Lỡ tắt game thì bấm “Mở lại game” trong launcher để xem tiếp trận đang diễn ra.</p></div></li>
+      <li><span class="n">5</span><div><h3>Theo dõi trận</h3><p>Bấm phím 1–8 để chuyển sang góc nhìn của từng người chơi, thấy cả hướng họ trỏ quân. Bảng điểm hiện đúng tên tài khoản của người chơi; ô dưới cùng màn hình hiện công nghệ mỗi người đã nghiên cứu (phím P ẩn/hiện). Lỡ tắt game thì bấm “Mở lại game” trong launcher để xem tiếp trận đang diễn ra.</p></div></li>
     </ol>
     <h3 id="phim-tat" style="margin-top:32px">Phím tắt khi xem trận</h3>
     <div class="tbl">
@@ -356,9 +364,19 @@ footer a { color: var(--dim); }
           <tr><th scope="row">9</th><td>Bật/tắt sương mù</td></tr>
           <tr><th scope="row">F4</th><td>Bảng điểm người chơi (tự bật khi vào xem)</td></tr>
           <tr><th scope="row">F11</th><td>Đồng hồ và dân số (tự bật khi vào xem)</td></tr>
+          <tr><th scope="row">P</th><td>Ẩn/hiện khay công nghệ đã nghiên cứu ở đáy màn hình</td></tr>
         </tbody>
       </table>
     </div>
+    <h3 id="o-cong-nghe" style="margin-top:32px">Khay công nghệ: biết ngay ai đã lên đời, ai nâng giáp</h3>
+    <p>Từ launcher 0.3.16, khi bạn ngồi ghế khán giả (hoặc xem replay) và không chọn đơn vị nào, khay ở đáy màn hình, chỗ người chơi thường thấy nút lệnh, hiện các công nghệ mỗi người đã nghiên cứu bằng đúng icon của game.</p>
+    <ul class="ticks">
+      <li><b>Chia đôi theo đội:</b> mỗi nửa khay là một đội, mỗi người chơi một dòng theo màu của họ, icon xếp theo thứ tự nghiên cứu.</li>
+      <li><b>Chỉ giữ cấp cao nhất:</b> chuỗi nâng cấp như Đời Công Cụ → Đồng → Sắt hay giáp da → vảy → xích chỉ hiện cấp mới nhất, nên khay gọn và đọc nhanh.</li>
+      <li><b>Trận đông người:</b> đội 3–4 người thì icon thu nhỏ cho vừa; dòng đầy thì bỏ icon cũ nhất.</li>
+      <li><b>Phím P</b> để ẩn/hiện khay khi muốn nhìn rộng hơn.</li>
+    </ul>
+    <p>Bảng điểm (F4) của khán giả hiện đúng tên tài khoản SuperAoE của từng người chơi, không còn "Player 1", "Player 2".</p>
     <p class="note">Đang đánh trận mà phòng đã đủ người? Trong lúc trận diễn ra vẫn ngồi được vào ghế khán giả còn trống.</p>
   </div>
 </section>
@@ -406,6 +424,7 @@ footer a { color: var(--dim); }
       <details><summary>Khán giả có làm người chơi bị lag không?</summary><p>Khán giả chỉ nhận lệnh từ máy chủ, không gửi lệnh vào trận, nên không làm chậm game của người chơi.</p></details>
       <details><summary>Khán giả có nhắc bài cho người chơi được không?</summary><p>Về kỹ thuật thì có thể, vì khán giả xem gần như cùng lúc và thấy toàn bản đồ. Với trận đấu nghiêm túc, chủ phòng nên chỉ mời khán giả mình tin tưởng.</p></details>
       <details><summary>Vào xem giữa chừng có được không?</summary><p>Được. Trong lúc trận diễn ra vẫn ngồi được vào ghế khán giả còn trống, và khán giả thoát ra có thể vào lại trận đang đánh.</p></details>
+      <details><summary>Khán giả có xem được người chơi đã nghiên cứu công nghệ gì không?</summary><p>Được. Từ launcher 0.3.16, khay dưới cùng màn hình khán giả hiện công nghệ mỗi người chơi đã nghiên cứu bằng icon gốc của game, chia theo đội, mỗi người một dòng theo thứ tự nghiên cứu, chuỗi nâng cấp chỉ giữ cấp cao nhất. Phím P ẩn/hiện. Khi xem replay cũng có khay này.</p></details>
       <details><summary>Xem khán giả có cần cài game không?</summary><p>Không cần cài game riêng. Bộ cài SuperAoE-Setup.exe đã có sẵn game. Chỉ cần máy Windows 10/11 và tài khoản SuperAoE miễn phí.</p></details>
     </div>
     <p style="margin-top:24px">Muốn chơi chứ không chỉ xem? Đọc <a href="/choi-aoe-online-mien-phi/">cách chơi AoE online miễn phí</a>.</p>

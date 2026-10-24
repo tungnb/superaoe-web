@@ -126,6 +126,14 @@
   },
   {
    "@type": "Question",
+   "name": "Replay có đi theo màn hình của từng người chơi không?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Có, với trận lưu từ ngày 24/10/2026 (launcher 0.3.15 trở lên): replay ghi lại chỗ mỗi người chơi nhìn trên bản đồ. Chọn người chơi bằng phím 1–8 thì camera đi đúng màn hình người đó trong trận; bấm F để chuyển sang xem tự do. Replay cũ hơn không có dữ liệu này nên chỉ xem tự do."
+   }
+  },
+  {
+   "@type": "Question",
    "name": "Có mở file replay .aoerep được không?",
    "acceptedAnswer": {
     "@type": "Answer",
@@ -338,7 +346,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
         <span>Tải cho Mac<small>Chạy mượt trên MacBook M1, M2, M3, M4</small></span>
       </a>
     </div>
-    <p class="meta">Cập nhật lần cuối: <time datetime="2026-10-22">22/10/2026</time> · Miễn phí</p>
+    <p class="meta">Cập nhật lần cuối: <time datetime="2026-10-24">24/10/2026</time> · Miễn phí</p>
   </div>
 </section>
 
@@ -391,9 +399,16 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
           <tr><th scope="row">Về đầu trận</th><td>Nút về đầu</td><td><code>Home</code></td></tr>
           <tr><th scope="row">Nhảy tới thời điểm bất kỳ</th><td>Bấm vào thanh tiến trình</td><td>—</td></tr>
           <tr><th scope="row">Ẩn / hiện thanh điều khiển</th><td>—</td><td><code>H</code></td></tr>
+          <tr><th scope="row">Chọn người chơi để xem</th><td>—</td><td><code>1</code> – <code>8</code></td></tr>
+          <tr><th scope="row">Khóa theo màn hình người chơi / xem tự do</th><td>Ô trạng thái phía trên thanh (“Đang khóa theo …” / “Đang xem tự do”)</td><td><code>F</code></td></tr>
+          <tr><th scope="row">Ẩn / hiện khay công nghệ</th><td>—</td><td><code>P</code></td></tr>
         </tbody>
       </table>
     </div>
+    <h3 id="man-hinh-nguoi-choi" style="margin-top:32px">Xem đúng màn hình của người chơi</h3>
+    <p>Từ launcher 0.3.15, replay của các trận lưu từ ngày 24/10/2026 có ghi lại chỗ mỗi người chơi nhìn trên bản đồ. Khi khóa theo một người, camera đi đúng màn hình người đó trong trận: họ để ý chỗ nào, lúc nào quay về nhà, lúc nào dồn mắt vào trận đánh. Bấm <code>F</code> (hoặc bấm vào ô trạng thái) để chuyển sang xem tự do. Replay cũ hơn chưa có dữ liệu màn hình nên chỉ xem tự do.</p>
+    <h3 id="cong-nghe" style="margin-top:32px">Khay công nghệ ở đáy màn hình</h3>
+    <p>Từ launcher 0.3.16, khay dưới cùng màn hình hiện công nghệ mỗi người đã nghiên cứu bằng icon gốc của game, chia theo đội, mỗi người một dòng theo thứ tự nghiên cứu, chuỗi nâng cấp chỉ giữ cấp cao nhất. Tua tới tua lui là thấy ai lên Đời Đồng trước, ai nâng giáp lúc nào. Phím <code>P</code> ẩn/hiện. Khay này cũng có khi <a href="/choi-aoe-co-khan-gia/#o-cong-nghe">ngồi ghế khán giả xem trực tiếp</a>.</p>
   </div>
 </section>
 
@@ -430,6 +445,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
       <details><summary>Có phải bấm ghi hay tự lưu file replay không?</summary><p>Không. SuperAoE tự lưu replay (.aoerep) của mọi trận online trên máy chủ. Bạn chỉ cần mở Lịch sử trận / Xem lại và bấm vào trận.</p></details>
       <details><summary>Xem replay có tua nhanh, tua lùi được không?</summary><p>Được. Thanh điều khiển có nút về đầu, lùi 30 và 10 giây, dừng/chạy, tới 10 và 30 giây, tốc độ x0.5 đến x8, và bấm vào thanh tiến trình để nhảy tới thời điểm bất kỳ. Phím tắt: Space hoặc K dừng/chạy, J/L lùi/tới, - và + đổi tốc độ, Home về đầu, H ẩn/hiện thanh.</p></details>
       <details><summary>Replay SuperAoE có phải là video quay lại không?</summary><p>Không. Replay được chạy lại bằng chính game Age of Empires Rise of Rome theo đúng từng lệnh của người chơi, nên hình ảnh là đồ họa gốc và bạn thấy toàn bản đồ như một khán giả, không phải đoạn video quay màn hình.</p></details>
+      <details><summary>Replay có đi theo màn hình của từng người chơi không?</summary><p>Có, với trận lưu từ ngày 24/10/2026 (launcher 0.3.15 trở lên): replay ghi lại chỗ mỗi người chơi nhìn trên bản đồ. Chọn người chơi bằng phím 1–8 thì camera đi đúng màn hình người đó trong trận; bấm F để chuyển sang xem tự do. Replay cũ hơn không có dữ liệu này nên chỉ xem tự do.</p></details>
       <details><summary>Có mở file replay .aoerep được không?</summary><p>Được. Trong launcher SuperAoE chọn Mở file replay rồi chọn file .aoerep.</p></details>
       <details><summary>Xem lại trận trên SuperAoE có mất phí không?</summary><p>Không. Lưu replay và xem lại trận đều miễn phí, giống như chơi online trên SuperAoE.</p></details>
     </div>

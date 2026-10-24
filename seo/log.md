@@ -94,3 +94,16 @@
 - Launcher: chữ gợi ý trong Cài đặt → Cấu hình game còn ghi quy tắc bản đồ cũ (2 người Tiny … 7-8 Huge) trong khi code `gamecfg.js mapSizeFor` là 1–3 Large, 4–6 Huge, 7–8 Gigantic. Website viết theo code; nên sửa chữ trong launcher (`renderer/index.html`).
 - Gửi 1–2 ảnh chụp thật phòng chờ (ghế chữ U, biển tên nhấp nháy) và màn thống kê trận để thêm vào trang tạo phòng / replay.
 - Vẫn tồn đọng: Google Search Console + Bing Webmaster Tools (gửi sitemap 8 URL), ký số exe / notarize Mac, đăng bài outreach.
+
+## 2026-10-24 (vòng SEO 8 — tự động)
+- Sản phẩm đổi từ vòng trước (launcher 0.3.16 bắt buộc Win + Mac): khán giả thấy đúng tên người chơi (0.3.14), replay khóa theo màn hình người chơi + phím F (0.3.15, trận lưu từ 24/10), khay công nghệ đã nghiên cứu cho khán giả/replay + phím P (0.3.16). Cập nhật `seo/facts.md`.
+- Cải thiện lớn (thay cho trang mới): /choi-aoe-co-khan-gia/ thêm mục #o-cong-nghe (khay công nghệ, tên người chơi), phím P trong bảng phím, bước 5 + HowTo, 1 FAQ + JSON-LD (7 câu); /xem-lai-tran-aoe-replay/ thêm 3 dòng bảng điều khiển (1–8, F khóa/tự do, P), mục #man-hinh-nguoi-choi và #cong-nghe, 1 FAQ + JSON-LD (7 câu). Ngày "Cập nhật lần cuối" 24/10/2026.
+- Trang chủ: softwareVersion 0.3.11 → 0.3.16, featureList thêm khay công nghệ + replay khóa theo màn hình. llms.txt: launcher 0.3.16, dòng Khán giả + Replay. Sitemap lastmod 2026-10-24 cho 3 URL.
+- Không đo hạng (lần tới 2026-10-28); không soạn outreach (tuần này đã có 2026-10-21; soạn tuần sau, nên nhắc khay công nghệ + replay theo màn hình làm điểm nhấn).
+- Kiểm tra: html-validate chỉ còn doctype-style/no-inline-style (bỏ qua như cũ), JSON-LD parse được, FAQ JSON-LD khớp FAQ hiển thị.
+- Lần sau: đo hạng 2026-10-28; outreach tuần mới; xin ảnh chụp thật khay công nghệ để thay chữ bằng hình trên trang khán giả/replay.
+
+### Cần chủ dự án quyết định / làm
+- Khay công nghệ mới thử trên replay, chưa thử khi xem trực tiếp qua relay; website nói khán giả trực tiếp cũng có (cùng đường code). Nếu xem trực tiếp không hiện khay, báo để sửa câu chữ.
+- Gửi 1 ảnh chụp thật khay công nghệ (replay hoặc trực tiếp) và ô "Đang khóa theo …" để đưa lên trang.
+- Vẫn tồn đọng: Google Search Console + Bing Webmaster Tools (gửi sitemap 8 URL), ký số exe / notarize Mac, đăng bài outreach; chữ gợi ý bản đồ cũ trong Cài đặt launcher.
