@@ -219,7 +219,7 @@ function renderMatch(m) {
   el.id = "tran-" + m.id;
   el.innerHTML = `<div class="mhead">
       <div><div class="teams">${teams}</div>
-        <div class="detail">${res}${fmtTime(m.started)}${dur ? " · " + fmtDuration(dur) : ""}${m.roomName ? " · Phòng " + esc(m.roomName) : ""}${m.spectators.length ? " · " + m.spectators.length + " khán giả" : ""}</div></div>
+        <div class="detail">${res}${fmtTime(m.started)}${dur ? " · " + fmtDuration(dur) : ""}${m.roomName ? " · " + (/^phòng/i.test(m.roomName) ? "" : "Phòng ") + esc(m.roomName) : ""}${m.spectators.length ? " · " + m.spectators.length + " khán giả" : ""}</div></div>
       <a class="btn primary small" href="/api/replays/${m.id}.aoerep" download>${ICON.download}Tải replay${m.replaySize ? " (" + fmtSize(m.replaySize) + ")" : ""}</a>
     </div>
     <div class="bar">
