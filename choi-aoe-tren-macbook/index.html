@@ -300,6 +300,26 @@ footer a { color: var(--dim); }
 .cmdline code { flex: 1; min-width: 0; white-space: normal; overflow-wrap: anywhere; border: 0; padding: 0; background: none; font-size: 13px; }
 .cmdline .copy { flex: none; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; border: 1px solid var(--gold2); background: var(--panel); color: var(--gold); border-radius: 7px; padding: 6px 12px; }
 .cmdline .copy:hover { background: var(--panel2); }
+.quick { margin-top: 24px; border: 1px solid rgba(184,144,47,.45); background: rgba(58,45,30,.35); border-radius: 14px; padding: 18px 20px; }
+.quick p { margin: 0; }
+.quick-h { color: var(--text); font-size: 17px; display: flex; align-items: center; gap: 10px; }
+.quick-h .tag { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--ink); background: linear-gradient(#e8c35a, #b8902f); border-radius: 999px; padding: 2px 9px; }
+.quick-s { font-size: 14px; margin-top: 6px !important; }
+.quick .cmdline { margin: 12px 0 0; padding: 10px 10px 10px 16px; }
+.quick .cmdline code { font-size: 15px; color: var(--text); }
+.quick .cmdline .copy { background: linear-gradient(#e8c35a, #b8902f); color: var(--ink); border-color: transparent; font-weight: 700; padding: 8px 16px; }
+.quick .cmdline .copy:hover { filter: brightness(1.08); }
+.quick-or { display: flex; align-items: center; gap: 12px; margin: 14px 0 12px; color: var(--dim); font-size: 13px; }
+.quick-or::before, .quick-or::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+.quick .btns { align-items: center; }
+.quick .btn { padding: 11px 16px; }
+.quick .more { font-size: 14px; color: var(--gold); }
+@media (max-width: 560px) {
+  .quick { padding: 16px; }
+  .quick .cmdline { flex-wrap: wrap; padding: 12px; }
+  .quick .cmdline code { flex-basis: 100%; font-size: 13px; overflow-wrap: break-word; }
+  .quick .cmdline .copy { width: 100%; padding: 10px; }
+}
 code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; background: #0e0b07; border: 1px solid var(--line); border-radius: 5px; padding: 1px 6px; color: #e9d8b0; }
 </style>
 </head>
@@ -328,7 +348,14 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
     <nav class="crumbs" aria-label="Đường dẫn"><a href="/">SuperAoE</a> › <span>Chơi AoE trên MacBook</span></nav>
     <h1>Chơi Đế Chế (AoE) trên Mac: <span class="g">bản SuperAoE cho MacBook M1, M2, M3, M4</span></h1>
     <p class="lead answer">Age of Empires 1 Rise of Rome là game Windows, không có bản chính thức cho macOS, và MacBook chip Apple (M1 trở lên) không cài được Windows bằng Boot Camp. Cách đơn giản nhất là <a href="https://superaoe.com/download/mac">tải SuperAoE cho Mac</a>, chạy mượt trên MacBook M1, M2, M3, M4: gói cài đã kèm Wine và game, cài thành ứng dụng SuperAoE trong thư mục Applications, tự cập nhật và chơi online chung phòng với người dùng Windows. Miễn phí.</p>
-    <div class="btns" style="margin-top:22px"><a class="btn primary" href="https://superaoe.com/download/mac" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg><span>Tải SuperAoE cho Mac<small>SuperAoE_Mac_M.zip · khoảng 300 MB · chip Apple</small></span></a><a class="btn ghost" href="#cai-dat"><span>Xem cách cài<small>1 lệnh trong Terminal, vài phút</small></span></a></div>
+    <div class="quick">
+      <p class="quick-h"><b>Cài bằng 1 lệnh</b> <span class="tag">Khuyên dùng</span></p>
+      <p class="quick-s">Bấm <b>Cmd + Space</b>, gõ <b>Terminal</b>, Enter. Dán lệnh này rồi bấm Enter:</p>
+      <div class="cmdline"><code>curl -fsSL https://superaoe.com/mac.sh | bash</code><button type="button" class="copy" data-copy="curl -fsSL https://superaoe.com/mac.sh | bash">Sao chép</button></div>
+      <p class="quick-s">Tự cài SuperAoE.app vào Applications rồi mở app, macOS không chặn. Gói khoảng 300 MB, vài phút.</p>
+      <div class="quick-or">hoặc</div>
+      <div class="btns"><a class="btn ghost" href="https://superaoe.com/download/mac" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg><span>Tải file zip về<small>SuperAoE_Mac_M.zip · khoảng 300 MB · chip Apple</small></span></a><a class="more" href="#cai-dat">Xem hướng dẫn chi tiết ↓</a></div>
+    </div>
     <p class="meta">Cập nhật lần cuối: <time datetime="2026-10-24">24/10/2026</time></p>
   </div>
 </section>
