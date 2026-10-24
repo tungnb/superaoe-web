@@ -90,6 +90,32 @@ svg.i { width: 17px; height: 17px; flex: none; }
 .cmsg { font-size: 13px; color: #f08a7e; min-height: 0; margin-top: 6px; }
 .cmsg:empty { display: none; }
 .empty { color: var(--dim); text-align: center; padding: 28px; border: 1px dashed var(--line); border-radius: 12px; }
+/* Statistics of a match (the timeline the players' games recorded), as in the launcher */
+.mstats { border-top: 1px solid var(--line); padding: 14px 16px; background: rgba(14,11,7,.3); }
+.mstats h3 { font-size: 15px; margin: 18px 0 8px; color: var(--gold); }
+.twrap { overflow-x: auto; scrollbar-color: var(--line) transparent; }
+.mtable { border-collapse: collapse; font-size: 13px; width: 100%; white-space: nowrap; }
+.mtable th { color: var(--dim); font-weight: 600; text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); cursor: help; }
+.mtable td { padding: 6px 8px; border-bottom: 1px solid rgba(90,71,40,.4); }
+.mtable td.num, .mtable th:nth-child(n+3) { text-align: right; }
+.mtable .pname i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; }
+.mtable .win { color: #8fd69a; font-weight: 700; }
+.mtable .lose { color: #f08a7e; }
+.ctabs { display: flex; gap: 6px; flex-wrap: wrap; margin: 16px 0 8px; }
+.ctabs button { padding: 5px 11px; font-size: 13px; font-weight: 600; color: var(--dim); background: rgba(14,11,7,.5); border: 1px solid var(--line); }
+.ctabs button.on { color: var(--ink); background: linear-gradient(#e8c35a, #b8902f); border-color: transparent; }
+.cbox { position: relative; }
+.chart { width: 100%; height: auto; display: block; touch-action: pan-y; }
+.chart text { fill: var(--dim); font-size: 10px; }
+.chart .grid { stroke: rgba(90,71,40,.55); stroke-width: 1; }
+.chart .cursor { stroke: var(--gold); stroke-dasharray: 3 3; }
+.chart .agemark text { fill: #fff; font-weight: 700; font-size: 8px; }
+.chart .agemark circle { stroke: rgba(0,0,0,.6); }
+.ctip { position: absolute; top: 6px; background: rgba(20,15,10,.95); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; font-size: 12px; pointer-events: none; white-space: nowrap; }
+.ctip i { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 6px; }
+.events { margin: 0; padding: 0; list-style: none; font-size: 14px; display: grid; gap: 3px; }
+.events .clock { display: inline-block; min-width: 54px; color: var(--dim); font-variant-numeric: tabular-nums; }
+.react.statsbtn.on { color: var(--gold); border-color: var(--gold2); }
 .more { margin: 18px 0 8px; text-align: center; }
 .howto { margin: 32px 0 48px; padding: 20px 22px; border: 1px solid rgba(184,144,47,.35); border-radius: 14px; background: var(--bg2); }
 .howto h2 { font-size: 20px; margin-bottom: 8px; }
@@ -163,6 +189,7 @@ const seatColour = (seat) => seat ? COLOURS[(seat[0] === "R" ? 4 : 0) + Number(s
 const ICON = {
   like: '<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 20.5s-8-4.6-8-10.6A4.4 4.4 0 0112 7.3a4.4 4.4 0 018 2.6c0 6-8 10.6-8 10.6z"/></svg>',
   comment: '<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>',
+  chart: '<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4M4 20h16M7 15l4-5 3 3 5-7"/></svg>',
   download: '<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m-5-5 5 5 5-5M5 20h14"/></svg>',
 };
 let me = null, oldest = 0, pending = null;
@@ -225,13 +252,22 @@ function renderMatch(m) {
     <div class="bar">
       <button class="btn react like${m.liked ? " on" : ""}" aria-pressed="${m.liked}" title="Thích trận này">${ICON.like}<span>${m.likes}</span></button>
       <button class="btn react ctoggle">${ICON.comment}<span>${m.comments}</span> bình luận</button>
+      ${m.hasTimeline ? `<button class="btn react statsbtn" aria-expanded="false">${ICON.chart}Biểu đồ &amp; thống kê</button>` : ""}
     </div>
+    <div class="mstats hidden"></div>
     <div class="comments">
       <div class="clist"></div>
       <div class="cform"><textarea maxlength="500" rows="1" placeholder="Viết bình luận..." aria-label="Viết bình luận"></textarea>
         <button class="primary small csend">Gửi</button></div>
       <div class="cmsg"></div>
     </div>`;
+  const statsBtn = el.querySelector(".statsbtn"), statsBox = el.querySelector(".mstats");
+  if (statsBtn) statsBtn.onclick = () => {
+    const open = statsBox.classList.toggle("hidden") === false;
+    statsBtn.classList.toggle("on", open);
+    statsBtn.setAttribute("aria-expanded", open);
+    if (open && !statsBox.dataset.loaded) loadStats(m, statsBox);
+  };
   const likeBtn = el.querySelector(".like"), toggle = el.querySelector(".ctoggle");
   const ta = el.querySelector("textarea"), cmsg = el.querySelector(".cmsg");
 
@@ -325,6 +361,151 @@ function renderMatch(m) {
   });
   return el;
 }
+
+// ---- Statistics the players' games recorded (GET /api/matches/<id>), as in the launcher's match screen:
+// scoreboard, one chart over game time, average Bronze Age click, events.
+const fmtClock = (ms) => {
+  const s = Math.floor(ms / 1000), h = Math.floor(s / 3600), m = Math.floor(s / 60) % 60, ss = String(s % 60).padStart(2, "0");
+  return h ? `${h}:${String(m).padStart(2, "0")}:${ss}` : `${m}:${ss}`;
+};
+const BRONZE_RESEARCH_MS = 140_000;  // the Bronze Age click = the age-up minus its research time
+const AGE_NAMES = { 1: "Đồ Đá", 2: "Công Cụ", 3: "Đồng", 4: "Sắt" };
+const PLAYER_COLORS = ["#2f5be0", "#d8281f", "#e6cf22", "#8a5527", "#f0821e", "#2f9e35", "#a3a3a3", "#22c3c3"];
+const CHART_METRICS = [
+  { key: "pop", label: "Dân số" },
+  { key: "military", label: "Quân đội" },
+  { key: "kills", label: "Lính giết" },
+  { key: "res", label: "Tài nguyên đang có" },
+  { key: "explored", label: "Khám phá %" },
+];
+
+async function loadStats(m, box) {
+  box.innerHTML = '<div class="cempty">Đang tải...</div>';
+  try {
+    const res = await fetch("/api/matches/" + m.id);
+    if (!res.ok) throw new Error("Không tải được thống kê.");
+    const { timeline } = await res.json();
+    if (!timeline) { box.innerHTML = '<div class="cempty">Trận này chưa có thống kê.</div>'; return; }
+    box.dataset.loaded = 1;
+    renderStats(timeline, box);
+  } catch (e) {
+    box.innerHTML = `<div class="cempty">${esc(e.message)}</div>`;
+  }
+}
+
+function timelineStats(tl) {
+  const f = Object.fromEntries(tl.fields.map((k, i) => [k, i]));
+  const last = tl.samples[tl.samples.length - 1];
+  return tl.players.map((p, i) => {
+    const series = tl.samples.map((s) => s[i + 1]);
+    const ages = {};
+    for (const [t, who, kind, value] of tl.events ?? []) if (who === p.p && kind === "age" && !(value in ages)) ages[value] = t;
+    const ended = (tl.events ?? []).find((e) => e[1] === p.p && e[2] === "state" && e[3] === 2);
+    return {
+      ...p, color: PLAYER_COLORS[p.color] ?? "#ccc", final: last[i + 1], ages, lostAt: ended?.[0] ?? null, f,
+      maxPop: Math.max(...series.map((v) => v[f.pop])), maxMil: Math.max(...series.map((v) => v[f.military])),
+    };
+  });
+}
+
+function renderStats(tl, box) {
+  const ps = timelineStats(tl);
+  const result = (p) => p.state === 1 ? '<span class="win">Thắng</span>'
+    : p.state === 2 ? `<span class="lose">Thua${p.lostAt != null ? " " + fmtClock(p.lostAt) : ""}</span>` : "—";
+  const age = (p, a) => a in p.ages ? fmtClock(p.ages[a]) : "—";
+  const click3 = (p) => 3 in p.ages ? fmtClock(Math.max(0, p.ages[3] - BRONZE_RESEARCH_MS)) : "—";
+  const num = (v) => `<td class="num">${esc(v)}</td>`;
+  const rows = ps.map((p) => `<tr>
+      <td class="pname"><i style="background:${p.color}"></i>${esc(p.name)}</td>
+      <td>${result(p)}</td>${num(p.final[p.f.kills])}${num(p.final[p.f.lost])}${num(p.final[p.f.razed])}${num(p.final[p.f.conversions])}
+      ${num(p.final[p.f.techs])}${num(p.maxPop)}${num(p.maxMil)}${num(p.final[p.f.explored] + "%")}
+      ${num(age(p, 2))}${num(click3(p))}${num(age(p, 3))}${num(age(p, 4))}
+    </tr>`).join("");
+  const events = (tl.events ?? []).filter((e) => e[2] !== "age" || e[3] > 1).map(([t, who, kind, value]) => {
+    const p = ps.find((x) => x.p === who);
+    const name = p ? `<b style="color:${p.color}">${esc(p.name)}</b>` : "?";
+    const text = kind === "age" ? `lên Đời ${AGE_NAMES[value] ?? value}` : value === 1 ? "thắng trận" : value === 2 ? "bị loại / đầu hàng" : "trở lại";
+    return `<li><span class="clock">${fmtClock(t)}</span>${name} ${text}</li>`;
+  }).join("") || '<li class="cempty">Không có sự kiện lên đời / kết thúc.</li>';
+  box.innerHTML = `
+    <div class="twrap"><table class="mtable">
+      <thead><tr><th>Người chơi</th><th>Kết quả</th><th title="Số lính đối phương bị giết">Giết</th><th title="Số lính của mình bị mất">Mất</th>
+        <th title="Số nhà đối phương bị phá">Phá nhà</th><th>Cải đạo</th><th title="Số công nghệ đã nghiên cứu">C.nghệ</th>
+        <th title="Dân số cao nhất">Dân max</th><th title="Quân đội đông nhất">Quân max</th><th title="Bản đồ đã khám phá">K.phá</th>
+        <th title="Giờ game lên Đời Công Cụ">Công Cụ</th><th title="Giờ game bắt đầu click lên Đời Đồng (đời 3) = lúc lên Đồng trừ 2:20 nghiên cứu">Click Đ3</th><th title="Giờ game lên Đời Đồng">Đồng</th><th title="Giờ game lên Đời Sắt">Sắt</th></tr></thead>
+      <tbody>${rows}</tbody></table></div>
+    <div class="ctabs">${CHART_METRICS.map((c, i) => `<button class="btn${i ? "" : " on"}" data-k="${c.key}">${c.label}</button>`).join("")}</div>
+    <div class="cbox"></div>
+    <div class="age3"></div>
+    <h3>Diễn biến</h3><ol class="events">${events}</ol>
+    <p class="hint">Số liệu do game của ${esc(tl.by ?? "người chơi")} ghi lại${tl.agreed ? `, khớp với ${tl.agreed} người chơi khác` : ""}. Giờ là giờ trong game.</p>`;
+  box.querySelectorAll(".ctabs button").forEach((b) => b.onclick = () => {
+    box.querySelectorAll(".ctabs button").forEach((x) => x.classList.toggle("on", x === b));
+    drawChart(tl, ps, b.dataset.k, box.querySelector(".cbox"));
+  });
+  drawChart(tl, ps, "pop", box.querySelector(".cbox"));
+  // Average game time each player clicks the Bronze Age over all their matches.
+  fetch("/api/players/age3?users=" + encodeURIComponent(ps.map((p) => p.name).join(","))).then((r) => r.json()).then(({ players }) => {
+    const cards = (players ?? []).filter((a) => a.avgMs != null)
+      .map((a) => `<span>${esc(a.username)} <b>${fmtClock(a.avgMs)}</b> <span class="detail">(${a.matches} trận)</span></span>`).join(" · ");
+    if (cards) box.querySelector(".age3").innerHTML = `<h3>Trung bình bắt đầu click Đời 3 (mọi trận)</h3><div>${cards}</div>`;
+  }).catch(() => {});
+}
+
+// One line per player over game time; age-ups are marked on the line (II Công Cụ, III Đồng, IV Sắt).
+function drawChart(tl, ps, metric, box) {
+  const W = 680, H = 230, L = 40, R = 10, T = 12, B = 24;
+  const f = ps[0].f;
+  const value = (v) => metric === "res" ? v[f.food] + v[f.wood] + v[f.stone] + v[f.gold] : v[f[metric]];
+  const tMax = Math.max(tl.end, 1);
+  let vMax = 1;
+  for (const s of tl.samples) for (let i = 1; i < s.length; i++) vMax = Math.max(vMax, value(s[i]));
+  vMax = niceMax(vMax);
+  const x = (t) => L + (t / tMax) * (W - L - R), y = (v) => T + (1 - v / vMax) * (H - T - B);
+  const nearest = (t) => tl.samples.reduce((best, s) => Math.abs(s[0] - t) < Math.abs(best[0] - t) ? s : best);
+  let svg = "";
+  for (let i = 0; i <= 4; i++) {
+    const v = (vMax * i) / 4;
+    svg += `<line x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}" class="grid"/><text x="${L - 5}" y="${y(v) + 4}" text-anchor="end">${Math.round(v)}</text>`;
+  }
+  const minuteStep = [1, 2, 5, 10, 15, 20, 30, 60].find((s) => tMax / 60000 / s <= 8) ?? 120;
+  for (let t = 0; t <= tMax; t += minuteStep * 60000) svg += `<text x="${x(t)}" y="${H - 6}" text-anchor="middle">${fmtClock(t)}</text>`;
+  ps.forEach((p, i) => {
+    const pts = tl.samples.map((s) => `${x(s[0]).toFixed(1)},${y(value(s[i + 1])).toFixed(1)}`).join(" ");
+    svg += `<polyline points="${pts}" fill="none" stroke="${p.color}" stroke-width="2"/>`;
+    for (const [a, t] of Object.entries(p.ages)) {
+      if (!(a >= 2 && a <= 4)) continue;
+      const cy = y(value(nearest(t)[i + 1]));
+      svg += `<g class="agemark"><circle cx="${x(t)}" cy="${cy}" r="8" fill="${p.color}"/><text x="${x(t)}" y="${cy + 3}" text-anchor="middle">${["", "", "II", "III", "IV"][a]}</text><title>${esc(p.name)} lên Đời ${AGE_NAMES[a]} lúc ${fmtClock(t)}</title></g>`;
+    }
+  });
+  svg += `<line class="cursor" visibility="hidden" y1="${T}" y2="${H - B}"/>`;
+  box.innerHTML = `<svg viewBox="0 0 ${W} ${H}" class="chart">${svg}</svg><div class="ctip hidden"></div>`;
+  const el = box.querySelector("svg"), tip = box.querySelector(".ctip"), cursor = box.querySelector(".cursor");
+  const hide = () => { tip.classList.add("hidden"); cursor.setAttribute("visibility", "hidden"); };
+  // Mouse hover, or a tap on a phone: the values of every player at that game time.
+  const show = (e) => {
+    const r = el.getBoundingClientRect();
+    const t = (((e.clientX - r.left) / r.width) * W - L) / (W - L - R) * tMax;
+    if (t < 0 || t > tMax) return hide();
+    const s = nearest(t);
+    cursor.setAttribute("x1", x(s[0]));
+    cursor.setAttribute("x2", x(s[0]));
+    cursor.setAttribute("visibility", "visible");
+    tip.innerHTML = `<b>${fmtClock(s[0])}</b>` + ps.map((p, i) => `<div><i style="background:${p.color}"></i>${esc(p.name)}: ${value(s[i + 1])}</div>`).join("");
+    tip.classList.remove("hidden");
+    const left = (x(s[0]) / W) * r.width;
+    tip.style.left = (left > r.width / 2 ? left - tip.offsetWidth - 10 : left + 10) + "px";
+  };
+  el.onpointermove = show;
+  el.onpointerdown = show;
+  el.onpointerleave = hide;
+}
+// Top of the value axis: 4 grid steps of a round whole number (1, 2, 5, 10, 20, 50...).
+const niceMax = (v) => {
+  const step = v / 4, p = 10 ** Math.floor(Math.log10(Math.max(step, 1)));
+  return 4 * Math.max(1, [1, 2, 5, 10].map((k) => k * p).find((n) => n >= step));
+};
 
 async function loadMatches() {
   const btn = $("btnMore");
