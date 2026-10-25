@@ -107,3 +107,17 @@
 - Khay công nghệ mới thử trên replay, chưa thử khi xem trực tiếp qua relay; website nói khán giả trực tiếp cũng có (cùng đường code). Nếu xem trực tiếp không hiện khay, báo để sửa câu chữ.
 - Gửi 1 ảnh chụp thật khay công nghệ (replay hoặc trực tiếp) và ô "Đang khóa theo …" để đưa lên trang.
 - Vẫn tồn đọng: Google Search Console + Bing Webmaster Tools (gửi sitemap 8 URL), ký số exe / notarize Mac, đăng bài outreach; chữ gợi ý bản đồ cũ trong Cài đặt launcher.
+
+## 2026-10-25 (vòng SEO 9 — tự động)
+- Sản phẩm đổi từ vòng trước: launcher 0.3.31 bắt buộc Win + Mac (xem thao tác chuột/khung chọn/nhà đang đặt/quân đang chọn cho khán giả + replay, tầm nhìn đồng minh, tên nước trong khay, F1 bảng phím, bảng điểm cuối trận, online + chat tổng, phút Đời 3 trong phòng); website có /lich-su-tran/ công khai, đăng ký trên web, /giai-dau/. Cập nhật `seo/facts.md`.
+- Cải thiện lớn: /xem-lai-tran-aoe-replay/ thêm mục #thao-tac (xem thao tác chuột, phím M), #tren-web (lịch sử trận + tải replay trên web, bảng điểm, giải đấu), 2 dòng bảng phím (M, F1), câu tên nước trong khay, bước 2 + HowTo nhắc trang web, dòng so sánh; 1 FAQ mới + JSON-LD (8 câu), FAQ .aoerep nhắc tải ở /lich-su-tran/; meta description mới; "Cập nhật lần cuối" 25/10/2026.
+- Trang chủ: softwareVersion 0.3.16 → 0.3.31, featureList +2 (xem thao tác; lịch sử trận web + giải đấu). llms.txt: launcher 0.3.31, Replay + Lịch sử trận, thêm 2 trang (/lich-su-tran/, /giai-dau/) vào mục Trang, 2 câu trả lời nhanh. /lich-su-tran/: title có từ khóa ("Lịch sử thi đấu Đế Chế, tải replay AoE"). /giai-dau/: title "Giải đấu Đế Chế (AoE) online", description 172 → 148 ký tự. Sitemap lastmod 2026-10-25 cho /, replay, lịch sử trận.
+- Không đo hạng (lần trước 2026-10-21, lần tới 2026-10-28); không soạn outreach (tuần này đã có 2026-10-21; soạn tuần sau — điểm nhấn: xem thao tác chuột trong replay/khán giả, lịch sử trận web, giải đấu).
+- Kiểm tra: html-validate trang replay chỉ còn doctype-style/no-inline-style (như trước), JSON-LD parse được, FAQ JSON-LD khớp FAQ hiển thị, không link/anchor nội bộ hỏng, title ≤ 60, description ≤ 155.
+- Lần sau: đo hạng 2026-10-28 (thêm "giải đấu đế chế", "replay aoe", "lịch sử trận đế chế"); outreach tuần mới; cân nhắc trang đích riêng cho "giải đấu Đế Chế online" (hướng dẫn tạo giải, chạm N) vì /giai-dau/ là trang ứng dụng, ít chữ; cập nhật /choi-aoe-co-khan-gia/ với xem thao tác + tầm nhìn đồng minh.
+
+### Cần chủ dự án quyết định / làm
+- Xem thao tác chuột mới thử bằng replay giả + tự kiểm, chưa có trận cloud 2 máy + khán giả relay thật (theo NOTES §9s); website nói khán giả trực tiếp cũng thấy. Nếu thực tế không thấy, báo để sửa.
+- Tầm nhìn đồng minh chưa nhắc trên website (chưa thử trận 2v2 thật). Thử xong thì báo để thêm vào trang tạo phòng.
+- Gửi 1 ảnh chụp thật replay có con trỏ/khung chọn của người chơi để thay chữ bằng hình.
+- Vẫn tồn đọng: Google Search Console + Bing Webmaster Tools (gửi sitemap 10 URL), ký số exe / notarize Mac, đăng bài outreach.
