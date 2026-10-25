@@ -147,6 +147,8 @@ dialog::backdrop { background: rgba(0,0,0,.65); }
 dialog .x { position: absolute; top: 10px; right: 10px; background: none; color: var(--dim); font-size: 22px; padding: 4px 10px; }
 dialog form button[type=submit] { margin-top: 18px; width: 100%; }
 dialog h2 { margin-bottom: 4px; }
+.swap { text-align: center; font-size: 14px; color: var(--dim); margin: 18px 0 0; }
+.swap + button { margin-top: 8px !important; width: 100%; }
 @media (max-width: 640px) {
   .wrap { padding: 0 16px; }
   .mhead { grid-template-columns: 1fr; gap: 10px; }
@@ -190,13 +192,19 @@ dialog h2 { margin-bottom: 4px; }
   <p class="hint" style="margin:0" id="loginWhy">Đăng nhập bằng tài khoản SuperAoE để thích và bình luận.</p>
   <form id="loginForm">
     <label for="lu">Tên đăng nhập</label>
-    <input id="lu" autocomplete="username" required maxlength="24">
+    <input id="lu" name="username" autocomplete="username" required maxlength="24">
+    <div class="reg hidden"><label for="le">Email</label>
+    <input id="le" name="email" type="email" autocomplete="email" required maxlength="120" disabled></div>
     <label for="lp">Mật khẩu</label>
-    <input id="lp" type="password" autocomplete="current-password" required maxlength="128">
-    <button class="primary" type="submit">Đăng nhập</button>
+    <input id="lp" name="password" type="password" autocomplete="current-password" required maxlength="128">
+    <div class="reg hidden"><label for="lp2">Nhập lại mật khẩu</label>
+    <input id="lp2" type="password" autocomplete="new-password" required minlength="6" maxlength="128" disabled></div>
+    <button class="primary" type="submit" id="loginBtn">Đăng nhập</button>
     <div class="msg" id="loginMsg"></div>
+    <p class="swap" id="swapWhy">Chưa có tài khoản?</p>
+    <button class="ghost" type="button" id="btnSwap">Tạo tài khoản mới</button>
   </form>
-  <p class="hint">Chưa có tài khoản? <a href="/#tai-ve">Tải SuperAoE</a> và đăng ký ngay trong launcher. Đăng nhập trên web không làm launcher của bạn bị đăng xuất.</p>
+  <p class="hint">Tài khoản dùng chung cho website và <a href="/#tai-ve">launcher SuperAoE</a>. Đăng nhập trên web không làm launcher của bạn bị đăng xuất.</p>
 </dialog>
 
 <script>
@@ -233,7 +241,7 @@ function setMe(info) {
 function askLogin(then, why) {
   pending = then ?? null;
   $("loginWhy").textContent = why ?? "Đăng nhập bằng tài khoản SuperAoE để thích và bình luận.";
-  $("loginMsg").textContent = "";
+  setRegister(false);
   $("loginDlg").showModal();
   $("lu").focus();
 }
@@ -717,14 +725,43 @@ $("loginForm").addEventListener("keydown", (e) => {
   e.preventDefault();
   $("loginForm").requestSubmit();
 });
+// The login form also creates an account (the same account works in the launcher).
+let registering = false;
+function setRegister(on) {
+  registering = on;
+  document.querySelectorAll(".reg").forEach((d) => {
+    d.classList.toggle("hidden", !on);
+    d.querySelector("input").disabled = !on;
+  });
+  $("loginTitle").textContent = on ? "Tạo tài khoản" : "Đăng nhập";
+  $("loginBtn").textContent = on ? "Tạo tài khoản" : "Đăng nhập";
+  $("lp").autocomplete = on ? "new-password" : "current-password";
+  $("lp").minLength = on ? 6 : 0;
+  $("swapWhy").textContent = on ? "Đã có tài khoản?" : "Chưa có tài khoản?";
+  $("btnSwap").textContent = on ? "Đăng nhập" : "Tạo tài khoản mới";
+  $("loginMsg").textContent = "";
+}
+$("btnSwap").onclick = () => { setRegister(!registering); (registering && $("lu").value ? $("le") : $("lu")).focus(); };
+// Signs in, or creates the account first (which also signs in); throws with the text to show.
+async function signIn() {
+  const username = $("lu").value.trim(), password = $("lp").value;
+  if (registering) {
+    if (password !== $("lp2").value) throw new Error("Hai mật khẩu không giống nhau.");
+    await api("register", { username, email: $("le").value.trim(), password });
+  } else {
+    await api("login", { username, password });
+  }
+  $("lp").value = $("lp2").value = "";
+  setRegister(false);
+}
+
 $("loginForm").onsubmit = async (e) => {
   e.preventDefault();
-  const btn = e.target.querySelector("button");
+  const btn = $("loginBtn");
   btn.disabled = true;
   $("loginMsg").textContent = "";
   try {
-    await api("login", { username: $("lu").value.trim(), password: $("lp").value });
-    $("lp").value = "";
+    await signIn();
     setMe(await api("me"));
     const then = pending;
     pending = null;
