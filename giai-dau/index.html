@@ -1,0 +1,654 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Giải đấu Đế Chế – SuperAoE</title>
+<meta name="description" content="Tạo và tham gia giải đấu Đế Chế (AoE Rise of Rome) online trên SuperAoE: 1-1, 2-2, 4-4, nhánh loại trực tiếp, chạm 2 / chạm 3. Kết quả tự động lấy từ trận đấu và công khai.">
+<link rel="canonical" href="https://superaoe.com/giai-dau/">
+<meta name="theme-color" content="#140f0a">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Giải đấu Đế Chế – SuperAoE">
+<meta property="og:description" content="Tổ chức giải Đế Chế online: chia nhánh, chạm 2, kết quả tự động và công khai.">
+<meta property="og:url" content="https://superaoe.com/giai-dau/">
+<meta property="og:image" content="https://superaoe.com/img/spectator.jpg">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #e8c35a; --gold2: #b8902f; --ink: #221a12;
+  --bg: #140f0a; --bg2: #1c150e; --panel: #2c2218; --panel2: #3a2d1e;
+  --line: #5a4728; --text: #f2e6cf; --dim: #b7a583; --red: #a33a32; --green: #4f9a5a;
+  --serif: "Playfair Display", Georgia, serif;
+  --sans: "Be Vietnam Pro", "Segoe UI", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.6; }
+a { color: var(--gold); }
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.top { position: sticky; top: 0; z-index: 10; background: rgba(20,15,10,.88); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(184,144,47,.35); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-weight: 800; font-size: 22px; color: var(--gold); text-decoration: none; }
+.brand img { width: 30px; height: 36px; }
+.who { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--dim); }
+.who b { color: var(--text); }
+.who a { text-decoration: none; }
+.links { display: flex; gap: 14px; font-size: 14px; }
+.links a { color: var(--dim); text-decoration: none; }
+.links a:hover, .links a.on { color: var(--gold); }
+h1 { font-family: var(--serif); font-size: clamp(28px, 4vw, 38px); margin: 36px 0 6px; overflow-wrap: anywhere; }
+h2 { font-family: var(--serif); font-size: 24px; margin: 0 0 14px; }
+h3 { font-size: 16px; margin: 0 0 8px; color: var(--gold); }
+.sub { color: var(--dim); margin: 0 0 24px; max-width: 760px; white-space: pre-wrap; overflow-wrap: anywhere; }
+label { display: block; font-size: 14px; color: var(--dim); margin: 12px 0 4px; }
+input, textarea, select { width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--line); background: #0e0b07; color: var(--text); font: inherit; }
+textarea { resize: vertical; min-height: 60px; }
+input:focus, textarea:focus, select:focus { outline: 2px solid var(--gold2); outline-offset: 0; border-color: var(--gold2); }
+button, .btn { display: inline-flex; align-items: center; justify-content: center; gap: 7px; padding: 10px 18px; border-radius: 9px; font: inherit; font-weight: 700; font-size: 15px; cursor: pointer; text-decoration: none; border: 0; }
+.primary { background: linear-gradient(#e8c35a, #b8902f); color: var(--ink); }
+.primary:hover { filter: brightness(1.08); }
+button:disabled { opacity: .6; cursor: default; }
+.ghost { color: var(--text); border: 1px solid var(--line); background: rgba(58,45,30,.4); }
+.ghost:hover { border-color: var(--gold2); }
+.danger { color: #f6c0b8; border: 1px solid rgba(240,138,126,.5); background: rgba(163,58,50,.18); }
+.danger:hover { border-color: #f08a7e; }
+.small { padding: 6px 12px; font-size: 13px; }
+.tiny { padding: 2px 8px; font-size: 12px; font-weight: 600; border-radius: 6px; }
+.msg { min-height: 0; margin-top: 10px; font-size: 14px; color: #f08a7e; }
+.msg:empty { display: none; }
+.hint { font-size: 13px; color: var(--dim); }
+.hidden { display: none !important; }
+.row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.grow { flex: 1; }
+.empty { color: var(--dim); text-align: center; padding: 24px; border: 1px dashed var(--line); border-radius: 12px; }
+.panel { border: 1px solid var(--line); border-radius: 12px; background: linear-gradient(180deg, var(--panel), #241b12); padding: 16px 18px; }
+.badge { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 99px; border: 1px solid var(--line); color: var(--dim); white-space: nowrap; }
+.badge.reg { color: #9fd3ff; border-color: rgba(120,180,240,.5); }
+.badge.run { color: #8fd69a; border-color: rgba(79,154,90,.7); }
+.badge.done { color: var(--gold); border-color: var(--gold2); }
+.badge.cancel { color: #f08a7e; border-color: rgba(240,138,126,.5); }
+
+/* list */
+.sect { margin: 28px 0 10px; font-size: 14px; letter-spacing: .06em; text-transform: uppercase; color: var(--dim); font-weight: 700; }
+.cards { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+.card { display: block; text-decoration: none; color: var(--text); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px;
+  background: linear-gradient(180deg, var(--panel), #241b12); }
+.card:hover { border-color: var(--gold2); }
+.card b { font-size: 17px; overflow-wrap: anywhere; }
+.card .meta { font-size: 13px; color: var(--dim); margin-top: 6px; }
+.card .champ { color: var(--gold); font-weight: 600; font-size: 14px; margin-top: 6px; }
+.invites { display: grid; gap: 8px; margin: 18px 0 0; }
+.invite { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; border: 1px solid var(--gold2); background: rgba(232,195,90,.08); border-radius: 10px; padding: 10px 14px; font-size: 14px; }
+
+/* detail */
+.info { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); margin: 8px 0 20px; }
+.info div { border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; background: var(--bg2); }
+.info small { display: block; color: var(--dim); font-size: 12px; }
+.info b { font-weight: 600; overflow-wrap: anywhere; }
+.plan { width: 100%; border-collapse: collapse; font-size: 14px; }
+.plan th { text-align: left; color: var(--dim); font-weight: 600; padding: 6px 8px; border-bottom: 1px solid var(--line); }
+.plan td { padding: 6px 8px; border-bottom: 1px solid rgba(90,71,40,.4); }
+.champion { margin: 0 0 20px; padding: 16px 18px; border-radius: 12px; border: 1px solid var(--gold); background: radial-gradient(ellipse at top, rgba(232,195,90,.2), rgba(232,195,90,.04));
+  font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--gold); text-align: center; overflow-wrap: anywhere; }
+.champion small { display: block; font-family: var(--sans); font-size: 14px; color: var(--dim); font-weight: 500; }
+.teams { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); margin-top: 12px; }
+.team { border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; background: var(--bg2); }
+.team.mine { border-color: var(--gold2); }
+.team .tname { font-weight: 700; display: flex; gap: 8px; align-items: center; overflow-wrap: anywhere; }
+.team ul { list-style: none; padding: 0; margin: 8px 0; font-size: 14px; display: grid; gap: 4px; }
+.team li { display: flex; gap: 6px; align-items: center; }
+.team li .grow { overflow-wrap: anywhere; }
+.team li.wait { color: var(--dim); font-style: italic; }
+.team li.free { color: var(--dim); }
+.x { background: none; border: 0; color: var(--dim); padding: 0 4px; font-size: 16px; line-height: 1; cursor: pointer; }
+.x:hover { color: #f08a7e; }
+.team form { display: flex; gap: 6px; margin-top: 6px; }
+.team form input { padding: 6px 9px; font-size: 14px; }
+.actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+
+/* bracket */
+.bscroll { overflow-x: auto; padding-bottom: 8px; scrollbar-color: var(--line) transparent; }
+.bracket { display: flex; gap: 22px; min-width: min-content; align-items: stretch; }
+.round { display: flex; flex-direction: column; width: 250px; flex: none; }
+.round .rh { text-align: center; margin-bottom: 10px; }
+.round .rh b { display: block; font-family: var(--serif); font-size: 17px; color: var(--gold); }
+.round .rh small { color: var(--dim); font-size: 12px; }
+.round .slots { display: flex; flex-direction: column; justify-content: space-around; flex: 1; gap: 12px; }
+.series { border: 1px solid var(--line); border-radius: 10px; background: linear-gradient(180deg, var(--panel), #241b12); overflow: hidden; cursor: pointer; }
+.series:hover, .series.open { border-color: var(--gold2); }
+.series.play { box-shadow: 0 0 0 1px rgba(79,154,90,.5); }
+.series .t { display: flex; align-items: center; gap: 8px; padding: 7px 10px; font-size: 14px; }
+.series .t + .t { border-top: 1px solid rgba(90,71,40,.6); }
+.series .t .n { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; }
+.series .t .n small { font-weight: 400; color: var(--dim); }
+.series .t.none .n { color: var(--dim); font-weight: 400; font-style: italic; }
+.series .t.win { background: rgba(79,154,90,.16); }
+.series .t.win .n { color: #a6e2b0; }
+.series .t.lose .n { color: var(--dim); text-decoration: line-through; text-decoration-color: rgba(240,138,126,.7); }
+.series .t .w { font-weight: 800; min-width: 18px; text-align: right; font-variant-numeric: tabular-nums; }
+.series .st { font-size: 12px; color: var(--dim); padding: 5px 10px; background: rgba(14,11,7,.5); border-top: 1px solid rgba(90,71,40,.6); }
+.series .st.live { color: #8fd69a; }
+.series .st.bad { color: #f08a7e; }
+.sdetail { margin-top: 18px; }
+.games { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; font-size: 14px; }
+.games li { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 8px 10px; border: 1px solid rgba(90,71,40,.6); border-radius: 8px; background: var(--bg2); }
+.games li.void { opacity: .7; }
+.games li.void .res { text-decoration: line-through; }
+.games .res { font-weight: 600; }
+.games .res b { color: #8fd69a; }
+.games .tag { font-size: 12px; color: var(--dim); }
+.games .tag.v { color: #f08a7e; }
+.rules { margin: 36px 0 48px; padding: 20px 22px; border: 1px solid rgba(184,144,47,.35); border-radius: 14px; background: var(--bg2); }
+.rules h2 { font-size: 20px; margin-bottom: 8px; }
+.rules ol, .rules ul { margin: 0; padding-left: 20px; color: var(--dim); }
+.rules li { margin: 4px 0; }
+.rules b { color: var(--text); }
+
+dialog { border: 1px solid rgba(184,144,47,.5); border-radius: 14px; padding: 24px; width: min(420px, calc(100vw - 32px)); max-height: calc(100vh - 32px);
+  background: linear-gradient(180deg, var(--panel), #241b12); color: var(--text); }
+dialog.wide { width: min(640px, calc(100vw - 32px)); }
+dialog::backdrop { background: rgba(0,0,0,.65); }
+dialog .close { position: absolute; top: 10px; right: 10px; background: none; color: var(--dim); font-size: 22px; padding: 4px 10px; }
+dialog form > button[type=submit] { margin-top: 18px; width: 100%; }
+dialog h2 { margin-bottom: 4px; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; }
+.choice { display: flex; gap: 6px; flex-wrap: wrap; }
+.choice label { margin: 0; }
+.choice input { display: none; }
+.choice span { display: inline-block; padding: 7px 13px; border: 1px solid var(--line); border-radius: 8px; color: var(--text); cursor: pointer; font-size: 14px; font-weight: 600; background: #0e0b07; }
+.choice input:checked + span { background: linear-gradient(#e8c35a, #b8902f); color: var(--ink); border-color: transparent; }
+.choice input:focus-visible + span { outline: 2px solid var(--gold2); }
+.plan select, .plan input { padding: 6px 8px; font-size: 14px; }
+.plan input { width: 90px; }
+@media (max-width: 640px) {
+  .wrap { padding: 0 16px; }
+  .who .name, .links { display: none; }
+  .two { grid-template-columns: 1fr; }
+  .round { width: 220px; }
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/favicon.svg" alt="" width="30" height="36">SuperAoE</a>
+    <nav class="links" aria-label="Trang"><a href="/giai-dau/" class="on">Giải đấu</a><a href="/lich-su-tran/">Lịch sử trận</a><a href="/tai-khoan/">Tài khoản</a></nav>
+    <div class="who">
+      <span class="hidden" id="who"><span class="name"><a href="/tai-khoan/"><b id="whoName"></b></a> · </span><button class="ghost small" id="btnLogout">Đăng xuất</button></span>
+      <button class="primary small hidden" id="btnLogin">Đăng nhập</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="main"></main>
+
+<dialog id="loginDlg" aria-labelledby="loginTitle">
+  <button class="close" type="button" data-close aria-label="Đóng">×</button>
+  <h2 id="loginTitle">Đăng nhập</h2>
+  <p class="hint" style="margin:0" id="loginWhy">Đăng nhập bằng tài khoản SuperAoE.</p>
+  <form id="loginForm">
+    <label for="lu">Tên đăng nhập</label>
+    <input id="lu" autocomplete="username" required maxlength="24">
+    <label for="lp">Mật khẩu</label>
+    <input id="lp" type="password" autocomplete="current-password" required maxlength="128">
+    <button class="primary" type="submit">Đăng nhập</button>
+    <div class="msg" id="loginMsg"></div>
+  </form>
+  <p class="hint">Chưa có tài khoản? <a href="/#tai-ve">Tải SuperAoE</a> và đăng ký ngay trong launcher. Đăng nhập trên web không làm launcher của bạn bị đăng xuất.</p>
+</dialog>
+
+<dialog id="createDlg" class="wide" aria-labelledby="createTitle">
+  <button class="close" type="button" data-close aria-label="Đóng">×</button>
+  <h2 id="createTitle">Tạo giải đấu</h2>
+  <form id="createForm">
+    <label for="cName">Tên giải</label>
+    <input id="cName" required minlength="3" maxlength="60" placeholder="Ví dụ: Giải Đế Chế mùa đông 2026">
+    <label for="cDesc">Giới thiệu, luật riêng, giải thưởng (không bắt buộc)</label>
+    <textarea id="cDesc" maxlength="1000" rows="3"></textarea>
+    <div class="two">
+      <div>
+        <label>Thành viên mỗi đội</label>
+        <div class="choice" id="cSize"></div>
+      </div>
+      <div>
+        <label>Tổng số đội</label>
+        <div class="choice" id="cCap"></div>
+      </div>
+    </div>
+    <label>Cách vào giải</label>
+    <div class="choice">
+      <label><input type="radio" name="mode" value="open" checked><span>Tự tham gia</span></label>
+      <label><input type="radio" name="mode" value="invite"><span>Chỉ người được mời</span></label>
+    </div>
+    <p class="hint" id="cModeHint" style="margin:6px 0 0"></p>
+    <label for="cStart">Giờ bắt đầu (hết hạn đăng ký, chia nhánh ngẫu nhiên)</label>
+    <input id="cStart" type="datetime-local" required>
+    <label>Lộ trình thi đấu</label>
+    <table class="plan"><thead><tr><th>Vòng</th><th>Số trận</th><th>Thời gian</th><th>Hạn chót</th></tr></thead><tbody id="cPlan"></tbody></table>
+    <p class="hint" style="margin:6px 0 0">Mỗi nhánh phải xong trong thời gian của vòng. Hết giờ mà chưa đủ số trận thắng thì <b>cả hai đội đều bị loại</b>.</p>
+    <button class="primary" type="submit">Tạo giải</button>
+    <div class="msg" id="createMsg"></div>
+  </form>
+</dialog>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+const H = 3600_000;
+let me = null, isAdmin = false, pending = null;
+const tourId = Number(new URLSearchParams(location.search).get("id")) || 0;
+
+async function api(path, body, prefix = "/api/web/") {
+  const res = await fetch(prefix + path, body === undefined ? { credentials: "same-origin" }
+    : { method: "POST", credentials: "same-origin", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw Object.assign(new Error(data.error || "Có lỗi, hãy thử lại."), { status: res.status });
+  return data;
+}
+
+function setMe(info) {
+  me = info;
+  $("who").classList.toggle("hidden", !me);
+  $("btnLogin").classList.toggle("hidden", !!me);
+  if (me) $("whoName").textContent = me.username;
+}
+function askLogin(then, why) {
+  pending = then ?? null;
+  $("loginWhy").textContent = why ?? "Đăng nhập bằng tài khoản SuperAoE.";
+  $("loginMsg").textContent = "";
+  $("loginDlg").showModal();
+  $("lu").focus();
+}
+const same = (a, b) => String(a ?? "").toLowerCase() === String(b ?? "").toLowerCase();
+
+const fmtTime = (t) => new Date(t).toLocaleString("vi-VN", { weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
+function fmtLeft(ms) {
+  if (ms <= 0) return "hết giờ";
+  const m = Math.ceil(ms / 60000);
+  if (m < 60) return `${m} phút`;
+  const h = Math.floor(m / 60);
+  return h < 48 ? `${h} giờ ${m % 60 ? (m % 60) + " phút" : ""}`.trim() : `${Math.floor(h / 24)} ngày ${h % 24} giờ`;
+}
+const fmtDur = (ms) => ms ? `${Math.round(ms / 60000)} phút` : "";
+const bo = (wins) => wins === 1 ? "1 trận (BO1)" : `Chạm ${wins} (BO${wins * 2 - 1})`;
+const roundName = (r, total) => ["Chung kết", "Bán kết", "Tứ kết", "Vòng 1/8"][total - 1 - r] ?? `Vòng ${r + 1}`;
+const fmtSize = (n) => `${n}-${n}`;
+const STATUS = { reg: "Đang nhận đăng ký", run: "Đang thi đấu", done: "Đã kết thúc", cancel: "Đã huỷ" };
+const badge = (s) => `<span class="badge ${s}">${STATUS[s] ?? s}</span>`;
+const MODE = { open: "Tự tham gia", invite: "Chỉ người được mời" };
+const flash = (el, text) => { el.textContent = text; };
+
+// ---------------- list
+async function showList() {
+  document.title = "Giải đấu Đế Chế – SuperAoE";
+  const main = $("main");
+  main.innerHTML = `
+    <div class="row" style="align-items:flex-end">
+      <div class="grow"><h1>Giải đấu</h1>
+      <p class="sub" style="margin-bottom:0">Tổ chức giải Đế Chế online cho bạn bè, hội nhóm: 1-1, 2-2, 3-3 hoặc 4-4, chia nhánh loại trực tiếp, chạm 2 hay chạm 3 tuỳ vòng. Kết quả hệ thống tự lấy từ trận đấu trên SuperAoE và công khai cho mọi người xem.</p></div>
+      <button class="primary" id="btnCreate">+ Tạo giải đấu</button>
+    </div>
+    <div class="invites" id="invites"></div>
+    <div id="lists"><p class="hint" style="margin-top:24px">Đang tải…</p></div>
+    ${rulesHtml()}`;
+  $("btnCreate").onclick = () => me ? openCreate() : askLogin(openCreate, "Đăng nhập để tạo giải đấu.");
+  try {
+    const { tours, invites } = await api("tours");
+    $("invites").innerHTML = invites.map((i) => `<div class="invite"><span class="grow">Bạn được mời vào đội <b>${esc(i.team)}</b> của giải <b>${esc(i.name)}</b></span>
+      <a class="btn primary small" href="?id=${i.tid}">Xem và trả lời</a></div>`).join("");
+    const groups = [["run", "Đang thi đấu"], ["reg", "Đang nhận đăng ký"], ["end", "Đã kết thúc"]];
+    const html = groups.map(([key, title]) => {
+      const items = tours.filter((t) => key === "end" ? ["done", "cancel"].includes(t.status) : t.status === key);
+      if (!items.length) return "";
+      return `<div class="sect">${title}</div><div class="cards">${items.map(card).join("")}</div>`;
+    }).join("");
+    $("lists").innerHTML = html || `<div class="empty" style="margin-top:24px">Chưa có giải đấu nào. Hãy là người đầu tiên tạo giải!</div>`;
+  } catch (e) {
+    $("lists").innerHTML = `<div class="empty" style="margin-top:24px">${esc(e.message)}</div>`;
+  }
+}
+function card(t) {
+  const plan = t.rounds ?? t.plan;
+  const wins = [...new Set(plan.map((r) => r.wins))];
+  const when = t.status === "reg" ? `Bắt đầu ${fmtTime(t.startAt)}` : t.status === "run" ? `Bắt đầu ${fmtTime(t.startedAt)}` : t.finishedAt ? `Kết thúc ${fmtTime(t.finishedAt)}` : "";
+  return `<a class="card" href="?id=${t.id}">
+    <div class="row"><b class="grow">${esc(t.name)}</b>${badge(t.status)}</div>
+    <div class="meta">${fmtSize(t.teamSize)} · ${t.teams}/${t.capacity} đội · ${wins.length === 1 ? bo(wins[0]) : "Chạm " + wins.join("/")} · ${MODE[t.mode]}</div>
+    <div class="meta">Tổ chức: ${esc(t.organizer)} · ${when}</div>
+    ${t.championName ? `<div class="champ">🏆 Vô địch: ${esc(t.championName)}</div>` : ""}
+  </a>`;
+}
+
+// ---------------- create
+function openCreate() {
+  const size = $("cSize"), cap = $("cCap");
+  if (!size.children.length) {
+    size.innerHTML = [1, 2, 3, 4].map((n) => `<label><input type="radio" name="size" value="${n}" ${n === 1 ? "checked" : ""}><span>${fmtSize(n)}</span></label>`).join("");
+    cap.innerHTML = [2, 4, 8, 16].map((n) => `<label><input type="radio" name="cap" value="${n}" ${n === 8 ? "checked" : ""}><span>${n} đội</span></label>`).join("");
+    const start = new Date(Date.now() + 24 * H);
+    start.setMinutes(0, 0, 0);
+    $("cStart").value = new Date(start - start.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
+    $("createForm").addEventListener("change", (e) => { if (e.target.name === "cap") buildPlan(); else planDeadlines(); modeHint(); });
+    $("createForm").addEventListener("input", planDeadlines);
+    buildPlan();
+    modeHint();
+  }
+  $("createMsg").textContent = "";
+  $("createDlg").showModal();
+}
+const formVal = (name) => $("createForm").querySelector(`input[name=${name}]:checked`)?.value;
+function modeHint() {
+  const size = Number(formVal("size"));
+  $("cModeHint").textContent = formVal("mode") === "invite"
+    ? (size === 1 ? "Bạn mời từng người chơi; mỗi người là một đội, họ bấm chấp nhận trên trang giải." : "Bạn tạo các đội và mời người vào từng đội; người được mời bấm chấp nhận trên trang giải.")
+    : (size === 1 ? "Ai có tài khoản SuperAoE cũng bấm Tham gia được, đến khi đủ số đội." : "Người chơi tự tạo đội (làm đội trưởng, mời đồng đội) hoặc vào đội còn chỗ, đến khi đủ số đội.");
+}
+function buildPlan() {
+  const rounds = Math.log2(Number(formVal("cap")));
+  $("cPlan").innerHTML = Array.from({ length: rounds }, (_, r) => `<tr>
+    <td>${roundName(r, rounds)}</td>
+    <td><select data-wins>${[1, 2, 3, 4, 5].map((w) => `<option value="${w}" ${w === (r === rounds - 1 ? 3 : 2) ? "selected" : ""}>${bo(w)}</option>`).join("")}</select></td>
+    <td><input data-hours type="number" min="1" max="720" value="${r === rounds - 1 ? 72 : 48}"> giờ</td>
+    <td class="hint" data-deadline></td></tr>`).join("");
+  planDeadlines();
+}
+function planDeadlines() {
+  let t = new Date($("cStart").value).getTime();
+  for (const tr of $("cPlan").children) {
+    t += (Number(tr.querySelector("[data-hours]").value) || 0) * H;
+    tr.querySelector("[data-deadline]").textContent = Number.isFinite(t) ? fmtTime(t) : "";
+  }
+}
+$("createForm").onsubmit = async (e) => {
+  e.preventDefault();
+  const btn = e.target.querySelector("button[type=submit]");
+  btn.disabled = true;
+  $("createMsg").textContent = "";
+  try {
+    const rounds = [...$("cPlan").children].map((tr) => ({ wins: Number(tr.querySelector("[data-wins]").value), hours: Number(tr.querySelector("[data-hours]").value) }));
+    const { id } = await api("tour/create", { name: $("cName").value, desc: $("cDesc").value, teamSize: Number(formVal("size")),
+      capacity: Number(formVal("cap")), mode: formVal("mode"), rounds, startAt: new Date($("cStart").value).getTime() });
+    location.href = "?id=" + id;
+  } catch (err) {
+    if (err.status === 401) { setMe(null); $("createDlg").close(); askLogin(openCreate, "Phiên đăng nhập đã hết, hãy đăng nhập lại."); }
+    else $("createMsg").textContent = err.message;
+  } finally {
+    btn.disabled = false;
+  }
+};
+
+// ---------------- detail
+let D = null, openSeries = null;
+async function showTour() {
+  try {
+    D = await api("tour?id=" + tourId);
+  } catch (e) {
+    $("main").innerHTML = `<h1>Giải đấu</h1><div class="empty">${esc(e.message)}</div><p><a href="/giai-dau/">← Tất cả giải đấu</a></p>`;
+    return;
+  }
+  renderTour();
+}
+async function act(op, body, msgEl) {
+  if (!me) return askLogin(() => act(op, body, msgEl), "Đăng nhập để tiếp tục.");
+  try {
+    await api("tour/" + op, { id: tourId, ...body });
+    await showTour();
+  } catch (e) {
+    if (e.status === 401) { setMe(null); askLogin(() => act(op, body, msgEl), "Phiên đăng nhập đã hết, hãy đăng nhập lại."); return; }
+    if (msgEl) flash(msgEl, e.message); else alert(e.message);
+  }
+}
+const teamName = (id) => D.teams.find((t) => t.id === id)?.name ?? "?";
+const membersOf = (id) => (D.teams.find((t) => t.id === id)?.members ?? []).filter((m) => m.state === "in").map((m) => m.username);
+
+function renderTour() {
+  const t = D.tour;
+  document.title = `${t.name} – Giải đấu SuperAoE`;
+  const rounds = t.rounds ?? t.plan;
+  const myMember = me && D.teams.flatMap((x) => x.members.map((m) => ({ ...m, team: x.id }))).find((m) => same(m.username, me.username));
+  const organizer = me && same(t.organizer, me.username);
+  let deadline = t.startedAt ?? t.startAt;
+  const planRows = rounds.map((r, i) => {
+    deadline += r.hours * H;
+    return `<tr><td>${roundName(i, rounds.length)}</td><td>${bo(r.wins)}</td><td>${r.hours} giờ</td><td>${t.status === "reg" ? "dự kiến " : ""}${fmtTime(deadline)}</td></tr>`;
+  }).join("");
+  const champ = t.status === "done" ? (t.champion
+    ? `<div class="champion">🏆 ${esc(teamName(t.champion))}<small>Vô địch${t.teamSize > 1 ? " · " + membersOf(t.champion).map(esc).join(", ") : ""}</small></div>`
+    : `<div class="champion" style="color:var(--dim)">Không có nhà vô địch<small>Trận chung kết không kết thúc đúng hạn: cả hai đội bị loại.</small></div>`) : "";
+  $("main").innerHTML = `
+    <p style="margin:20px 0 0"><a href="/giai-dau/">← Tất cả giải đấu</a></p>
+    <div class="row" style="align-items:baseline"><h1 class="grow">${esc(t.name)}</h1>${badge(t.status)}</div>
+    ${t.desc ? `<p class="sub">${esc(t.desc)}</p>` : ""}
+    ${t.status === "cancel" ? `<div class="empty" style="margin-bottom:20px">${esc(t.note ?? "Giải đã bị huỷ.")}</div>` : ""}
+    ${champ}
+    <div class="info">
+      <div><small>Thể thức</small><b>${fmtSize(t.teamSize)} · loại trực tiếp</b></div>
+      <div><small>Số đội</small><b>${D.teams.length} / ${t.capacity}</b></div>
+      <div><small>Cách vào giải</small><b>${MODE[t.mode]}</b></div>
+      <div><small>Người tổ chức</small><b>${esc(t.organizer)}</b></div>
+      <div><small>${t.startedAt ? "Đã bắt đầu" : "Bắt đầu"}</small><b>${fmtTime(t.startedAt ?? t.startAt)}</b>${t.status === "reg" ? `<small>còn ${fmtLeft(t.startAt - D.now)}</small>` : ""}</div>
+    </div>
+    <div class="panel"><h3>Lộ trình thi đấu</h3><div style="overflow-x:auto"><table class="plan"><thead><tr><th>Vòng</th><th>Số trận</th><th>Thời gian</th><th>Hạn chót</th></tr></thead><tbody>${planRows}</tbody></table></div>
+      <p class="hint" style="margin:8px 0 0">Nhánh chưa xong khi hết hạn chót: cả hai đội bị loại, đối thủ ở vòng sau được đi tiếp.${t.status === "reg" && t.capacity > 2 ? " Nếu khi bắt đầu chưa đủ đội, nhánh thu gọn lại và dùng các vòng cuối của lộ trình." : ""}</p></div>
+    <div id="body" style="margin-top:24px"></div>
+    ${rulesHtml(t)}`;
+  if (t.status === "reg") renderRegistration(myMember, organizer);
+  else if (D.bracket) renderBracket();
+}
+
+function renderRegistration(my, organizer) {
+  const t = D.tour;
+  const body = $("body");
+  const captainOf = (team) => me && same(team.captain, me.username);
+  const canInvite = (team) => organizer || (t.mode === "open" && captainOf(team));
+  const teamHtml = (x) => {
+    const free = t.teamSize - x.members.length;
+    const mine = my && my.team === x.id;
+    const kickable = (m) => organizer || (captainOf(x) && !same(m.username, me.username));
+    return `<div class="team ${mine ? "mine" : ""}">
+      <div class="tname"><span class="grow">${esc(x.name)}</span>${organizer && t.teamSize > 1 ? `<button class="x" title="Xoá đội" data-delteam="${x.id}">×</button>` : ""}</div>
+      ${t.teamSize > 1 || x.members.some((m) => m.state !== "in") ? `<ul>
+        ${x.members.map((m) => `<li class="${m.state === "in" ? "" : "wait"}"><span class="grow">${same(m.username, x.captain) ? "★ " : ""}${esc(m.username)}${m.state === "in" ? "" : " — đang chờ chấp nhận"}</span>
+          ${kickable(m) ? `<button class="x" title="Loại khỏi đội" data-kick="${esc(m.username)}">×</button>` : ""}</li>`).join("")}
+        ${Array.from({ length: free }, () => `<li class="free">— chỗ trống —</li>`).join("")}
+      </ul>` : ""}
+      ${free > 0 && t.teamSize > 1 && canInvite(x) ? `<form data-invite="${x.id}"><input placeholder="Tên người chơi" maxlength="24" required><button class="ghost small">Mời</button></form>` : ""}
+      ${free > 0 && t.teamSize > 1 && t.mode === "open" && !my ? `<button class="primary small" style="margin-top:6px" data-jointeam="${x.id}">Vào đội này</button>` : ""}
+      <div class="msg"></div>
+    </div>`;
+  };
+  const full = D.teams.length >= t.capacity;
+  const ready = D.teams.filter((x) => x.members.filter((m) => m.state === "in").length === t.teamSize).length;
+  body.innerHTML = `
+    ${my?.state === "invited" ? `<div class="invite" style="margin-bottom:16px"><span class="grow">Bạn được mời vào đội <b>${esc(teamName(my.team))}</b>.</span>
+      <button class="primary small" id="btnAccept">Chấp nhận</button><button class="ghost small" id="btnDecline">Từ chối</button></div>` : ""}
+    <div class="row"><h2 class="grow" style="margin:0">Các đội đăng ký</h2><span class="hint">${ready} đội đủ người · đội thiếu người khi bắt đầu sẽ không được xếp nhánh</span></div>
+    <div class="teams">${D.teams.map(teamHtml).join("") || `<div class="empty">Chưa có đội nào.</div>`}</div>
+    <div class="actions">
+      ${!my && t.mode === "open" && t.teamSize === 1 && !full ? `<button class="primary" id="btnJoin">Tham gia giải</button>` : ""}
+      ${!my && t.mode === "open" && t.teamSize > 1 && !full ? `<form class="row" id="newTeam"><input placeholder="Tên đội mới" maxlength="30" required style="width:220px"><button class="primary">Tạo đội (làm đội trưởng)</button></form>` : ""}
+      ${organizer && t.mode === "invite" && t.teamSize > 1 && !full ? `<form class="row" id="addTeam"><input placeholder="Tên đội" maxlength="30" required style="width:220px"><button class="ghost">+ Thêm đội</button></form>` : ""}
+      ${organizer && t.teamSize === 1 && t.mode === "invite" && !full ? `<form class="row" id="inviteSolo"><input placeholder="Tên người chơi" maxlength="24" required style="width:220px"><button class="ghost">Mời người chơi</button></form>` : ""}
+      ${my?.state === "in" ? `<button class="ghost" id="btnLeave">Rời giải</button>` : ""}
+      ${!me ? `<button class="primary" id="btnSignin">Đăng nhập để tham gia</button>` : ""}
+    </div>
+    ${t.mode === "invite" && !organizer && !my ? `<p class="hint">Giải này chỉ dành cho người được người tổ chức mời.</p>` : ""}
+    <div class="msg" id="regMsg"></div>
+    ${organizer ? `<div class="actions" style="border-top:1px solid var(--line);padding-top:16px">
+      <button class="primary" id="btnStart">Bắt đầu ngay (${ready} đội)</button>
+      <button class="danger" id="btnCancel">Huỷ giải</button>
+      <span class="hint" style="align-self:center">Nếu không bấm, giải tự bắt đầu lúc ${fmtTime(t.startAt)}.</span></div>` : ""}`;
+  const msg = $("regMsg");
+  const on = (id, fn) => { if ($(id)) $(id).onclick = fn; };
+  on("btnJoin", () => act("join", {}, msg));
+  on("btnLeave", () => confirm("Rời khỏi giải này?") && act("leave", {}, msg));
+  on("btnAccept", () => act("respond", { accept: true }, msg));
+  on("btnDecline", () => act("respond", { accept: false }, msg));
+  on("btnSignin", () => askLogin(showTour, "Đăng nhập để tham gia giải."));
+  on("btnStart", () => confirm("Bắt đầu giải ngay? Các đội đủ người sẽ được chia nhánh ngẫu nhiên, sau đó không đổi đội được nữa.") && act("start", {}, msg));
+  on("btnCancel", () => confirm("Huỷ giải này? Không thể hoàn tác.") && act("cancel", {}, msg));
+  const formSubmit = (id, fn) => { if ($(id)) $(id).onsubmit = (e) => { e.preventDefault(); fn(e.target.querySelector("input").value.trim()); }; };
+  formSubmit("newTeam", (name) => act("join", { name }, msg));
+  formSubmit("addTeam", (name) => act("addteam", { name }, msg));
+  formSubmit("inviteSolo", (other) => act("invite", { other }, msg));
+  body.querySelectorAll("[data-invite]").forEach((f) => f.onsubmit = (e) => {
+    e.preventDefault();
+    act("invite", { team: Number(f.dataset.invite), other: f.querySelector("input").value.trim() }, f.parentElement.querySelector(".msg"));
+  });
+  body.querySelectorAll("[data-jointeam]").forEach((b) => b.onclick = () => act("join", { team: Number(b.dataset.jointeam) }, b.parentElement.querySelector(".msg")));
+  body.querySelectorAll("[data-kick]").forEach((b) => b.onclick = () => confirm(`Loại ${b.dataset.kick} khỏi đội?`) && act("kick", { other: b.dataset.kick }, b.closest(".team").querySelector(".msg")));
+  body.querySelectorAll("[data-delteam]").forEach((b) => b.onclick = () => confirm("Xoá đội này?") && act("delteam", { team: Number(b.dataset.delteam) }, msg));
+}
+
+function seriesStatus(s) {
+  const left = s.deadline ? s.deadline - D.now : 0;
+  switch (s.status) {
+    case "wait": return ["Chờ đối thủ", ""];
+    case "play": return [`Đang đấu · ${s.wa}-${s.wb} · còn ${fmtLeft(left)}`, "live"];
+    case "late": return ["Hết giờ · chờ kết quả ván đang đấu", "bad"];
+    case "done": return [`${teamName(s.winner)} thắng ${Math.max(s.wa, s.wb)}-${Math.min(s.wa, s.wb)}`, ""];
+    case "bye": return [s.round === 0 ? "Đi tiếp (không có đối thủ)" : "Đi tiếp (đối thủ bị loại)", ""];
+    case "out": return ["Hết giờ: cả hai đội bị loại", "bad"];
+    default: return ["—", ""];
+  }
+}
+function renderBracket() {
+  const b = D.bracket, t = D.tour;
+  const total = b.rounds.length;
+  const side = (s, team, wins) => {
+    if (!team) return `<div class="t none"><span class="n">${s.status === "wait" ? "Chờ" : "—"}</span></div>`;
+    const cls = s.winner ? (s.winner === team ? "win" : "lose") : s.status === "out" ? "lose" : "";
+    const ms = t.teamSize > 1 ? ` <small>${membersOf(team).map(esc).join(", ")}</small>` : "";
+    return `<div class="t ${cls}"><span class="n" title="${esc(teamName(team))}">${esc(teamName(team))}${ms}</span>${s.readyAt ? `<span class="w">${wins}</span>` : ""}</div>`;
+  };
+  const playing = new Set(b.rounds[0].series.flatMap((s) => [s.a, s.b]).filter(Boolean));
+  const outside = D.teams.filter((x) => !playing.has(x.id));
+  $("body").innerHTML = `
+    <h2>Sơ đồ thi đấu</h2>
+    <p class="hint" style="margin-top:-8px">Bấm vào một nhánh để xem từng ván, replay và kết quả.</p>
+    <div class="bscroll"><div class="bracket">${b.rounds.map((r, i) => `<div class="round">
+      <div class="rh"><b>${roundName(i, total)}</b><small>${bo(r.wins)} · hạn ${fmtTime(r.deadline)}</small></div>
+      <div class="slots">${r.series.map((s) => {
+        const [text, cls] = seriesStatus(s);
+        return `<div class="series ${s.status} ${openSeries === `${s.round}-${s.idx}` ? "open" : ""}" tabindex="0" data-s="${s.round}-${s.idx}">
+          ${side(s, s.a, s.wa)}${side(s, s.b, s.wb)}<div class="st ${cls}">${esc(text)}</div></div>`;
+      }).join("")}</div></div>`).join("")}</div></div>
+    <div class="sdetail panel hidden" id="sdetail"></div>
+    ${outside.length ? `<p class="hint" style="margin-top:14px">Không được xếp nhánh (thiếu người khi bắt đầu): ${outside.map((x) => esc(x.name)).join(", ")}</p>` : ""}`;
+  document.querySelectorAll(".series").forEach((el) => {
+    const open = () => { openSeries = el.dataset.s; renderBracket(); $("sdetail").scrollIntoView({ block: "nearest", behavior: "smooth" }); };
+    el.onclick = open;
+    el.onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } };
+  });
+  if (openSeries) renderSeries(openSeries);
+}
+function renderSeries(key) {
+  const [r, i] = key.split("-").map(Number);
+  const s = D.bracket.rounds[r]?.series[i];
+  if (!s) return;
+  const box = $("sdetail");
+  box.classList.remove("hidden");
+  const total = D.bracket.rounds.length;
+  const [text] = seriesStatus(s);
+  const head = `<div class="row"><h3 class="grow" style="margin:0">${roundName(r, total)} · ${s.a ? esc(teamName(s.a)) : "?"} vs ${s.b ? esc(teamName(s.b)) : "?"}</h3>
+    <button class="x" id="sclose" aria-label="Đóng">×</button></div>
+    <p class="hint" style="margin:4px 0 12px">${esc(text)}${s.readyAt ? ` · mở từ ${fmtTime(s.readyAt)} · hạn chót ${fmtTime(s.deadline)}` : ""} · cần ${s.need} trận thắng</p>`;
+  let list = "";
+  if (s.readyAt && s.a && s.b) {
+    const howto = s.status === "play" || s.status === "late" ? `<p class="hint">Cách đấu: một người tạo phòng trong launcher SuperAoE. <b>${esc(teamName(s.a))}</b> ngồi bên trái (Quan Nhất–Tứ phẩm), <b>${esc(teamName(s.b))}</b> ngồi bên phải (Ngũ–Bát phẩm)${D.tour.teamSize > 1 ? ", đủ và đúng thành viên đã đăng ký" : ""}, không thêm người chơi khác (khán giả thì được). Trận dài từ 5 phút, đánh xong là kết quả tự hiện ở đây.</p>` : "";
+    list = s.games.length ? `<ul class="games">${s.games.map((g, n) => {
+      const m = D.matches[g.matchId] ?? {};
+      return `<li class="${g.voided ? "void" : ""}"><span class="tag">Ván ${n + 1} · ${fmtTime(g.started)}${m.durationMs ? " · " + fmtDur(m.durationMs) : ""}</span>
+        <span class="res grow"><b>${esc(teamName(g.win))}</b> thắng ${esc(teamName(g.lose))}</span>
+        ${g.voided ? `<span class="tag v">Admin đã xoá kết quả</span>` : g.disputed ? `<span class="tag v" title="Kết quả chỉ có từ máy một người chơi, chưa được máy đối thủ xác nhận">Chờ admin xác nhận</span>` : !g.counted ? `<span class="tag">không tính (nhánh đã có kết quả)</span>` : ""}
+        ${m.hasReplay ? `<a class="btn ghost tiny" href="/api/replays/${g.matchId}.aoerep">Tải replay</a><a class="btn ghost tiny" href="/lich-su-tran/#tran-${g.matchId}">Thống kê</a>` : ""}
+        ${isAdmin && g.disputed && !g.voided ? `<button class="primary tiny" data-confirm="${g.matchId}">Xác nhận</button>` : ""}
+        ${isAdmin ? `<button class="${g.voided ? "ghost" : "danger"} tiny" data-void="${g.matchId}" data-on="${g.voided ? 0 : 1}">${g.voided ? "Khôi phục" : "Xoá kết quả"}</button>` : ""}</li>`;
+    }).join("")}</ul>` : `<p class="hint">Chưa có ván nào.</p>`;
+    list = howto + list;
+  }
+  box.innerHTML = head + list;
+  $("sclose").onclick = () => { openSeries = null; renderBracket(); };
+  box.querySelectorAll("[data-confirm]").forEach((btn) => btn.onclick = async () => {
+    btn.disabled = true;
+    try {
+      await api("tour/confirm", { id: tourId, matchId: Number(btn.dataset.confirm) }, "/api/admin/");
+      await showTour();
+    } catch (e) { alert(e.message); btn.disabled = false; }
+  });
+  box.querySelectorAll("[data-void]").forEach((btn) => btn.onclick = async () => {
+    const on = btn.dataset.on === "1";
+    if (on && !confirm("Xoá kết quả ván này? Ván không còn được tính, hai đội phải đấu lại.")) return;
+    btn.disabled = true;
+    try {
+      await api("tour/void", { id: tourId, matchId: Number(btn.dataset.void), on }, "/api/admin/");
+      await showTour();
+    } catch (e) { alert(e.message); btn.disabled = false; }
+  });
+}
+
+function rulesHtml(t) {
+  return `<section class="rules">
+    <h2>Luật và cách hoạt động</h2>
+    <ul>
+      <li><b>Chạm N</b>: đội nào thắng N trận trước thì thắng nhánh. Chạm 2 = đánh tối đa 3 trận (BO3), chạm 3 = BO5.</li>
+      <li>Khi đến giờ bắt đầu, các đội đủ người được <b>chia nhánh ngẫu nhiên</b>; đội lẻ được đi thẳng vào vòng sau.</li>
+      <li>Hai đội tự hẹn giờ và vào một phòng trên launcher SuperAoE: một đội ngồi bên trái, đội kia bên phải, đúng thành viên đã đăng ký.</li>
+      <li><b>Kết quả lấy tự động</b> từ trận đấu (bên đầu hàng / bị diệt / thoát game trước là thua), công khai cùng replay. Trận ngắn dưới 5 phút không được tính. Kết quả mà máy đối thủ không xác nhận được sẽ chờ admin xác nhận.</li>
+      <li>Mỗi vòng có <b>hạn chót</b>. Nhánh chưa xong khi hết hạn: <b>cả hai đội bị loại</b>.</li>
+      <li>Không ai sửa được kết quả. Chỉ <b>admin</b> có quyền xoá kết quả một ván để hai đội đấu lại (ví dụ khi bị lỗi mạng).</li>
+    </ul>
+    ${t ? "" : `<p class="hint" style="margin:10px 0 0">Chưa có SuperAoE? <a href="/#tai-ve">Tải miễn phí cho Windows và MacBook</a>.</p>`}
+  </section>`;
+}
+
+// ---------------- common
+document.querySelectorAll("[data-close]").forEach((b) => b.onclick = () => b.closest("dialog").close());
+$("btnLogin").onclick = () => askLogin(() => tourId ? showTour() : showList());
+$("loginDlg").addEventListener("close", () => { if (!me) pending = null; });
+$("btnLogout").onclick = async () => {
+  await api("logout", {}).catch(() => {});
+  setMe(null);
+  tourId ? showTour() : showList();
+};
+// Enter submits even while a Vietnamese input method is still composing a word (see /tai-khoan/).
+$("loginForm").addEventListener("keydown", (e) => {
+  if (e.key !== "Enter" && e.code !== "Enter" && e.code !== "NumpadEnter") return;
+  if (e.target.tagName !== "INPUT") return;
+  e.preventDefault();
+  $("loginForm").requestSubmit();
+});
+$("loginForm").onsubmit = async (e) => {
+  e.preventDefault();
+  const btn = e.target.querySelector("button");
+  btn.disabled = true;
+  $("loginMsg").textContent = "";
+  try {
+    await api("login", { username: $("lu").value.trim(), password: $("lp").value });
+    $("lp").value = "";
+    setMe(await api("me"));
+    const then = pending;
+    pending = null;
+    $("loginDlg").close();
+    if (then) await then(); else tourId ? showTour() : showList();
+  } catch (err) {
+    $("loginMsg").textContent = err.message;
+  } finally {
+    btn.disabled = false;
+  }
+};
+
+(async () => {
+  // An admin signed in on /admin (same site) sees the buttons that void a game's result.
+  const [info] = await Promise.all([api("me").catch(() => null), fetch("/api/admin/me", { credentials: "same-origin" })
+    .then((r) => r.ok ? r.json() : null).then((a) => { isAdmin = !!a?.email; }).catch(() => {})]);
+  setMe(info);
+  tourId ? showTour() : showList();
+})();
+</script>
+</body>
+</html>
