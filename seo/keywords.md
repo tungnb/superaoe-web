@@ -30,3 +30,5 @@
 | 2 | chơi đế chế qua mạng / chơi đế chế bằng radmin, hamachi / aoe lan qua internet | /choi-de-che-qua-mang/ (từ 2026-10-22) — nguồn: WebSearch 2026-10-21, 2026-10-22 |
 | 2 | tạo phòng chơi đế chế / cách tạo phòng aoe online / chia đội đế chế | /tao-phong-choi-de-che/ (từ 2026-10-23) — nguồn: WebSearch 2026-10-23, kết quả chỉ có bài GPlay/GameRanger chung chung, không ai hướng dẫn chia màu/đội → khoảng trống |
 | 3 | đế chế chế độ cửa sổ / đế chế full hd / độ phân giải đế chế win 10 | /tao-phong-choi-de-che/#cau-hinh — nguồn: suy từ tính năng Cấu hình game (launcher 0.3.5+), chưa đo |
+| 3 | mirror random đế chế / chung tầm nhìn đồng minh đế chế (shared exploration) | /tao-phong-choi-de-che/#tuy-chon-phong — nguồn: WebSearch 2026-10-26, kết quả toàn tiếng Anh (forums.ageofempires.com, AoE2 DE), không có bài tiếng Việt → khoảng trống |
+| 3 | chơi đế chế 1024x768 win 10 / độ phân giải đế chế | /tao-phong-choi-de-che/#cau-hinh — nguồn: WebSearch 2026-10-26, top là tinhte (phần mềm HRC), fptshop |

@@ -121,3 +121,20 @@
 - Tầm nhìn đồng minh chưa nhắc trên website (chưa thử trận 2v2 thật). Thử xong thì báo để thêm vào trang tạo phòng.
 - Gửi 1 ảnh chụp thật replay có con trỏ/khung chọn của người chơi để thay chữ bằng hình.
 - Vẫn tồn đọng: Google Search Console + Bing Webmaster Tools (gửi sitemap 10 URL), ký số exe / notarize Mac, đăng bài outreach.
+
+## 2026-10-26 (vòng SEO 10 — tự động)
+- Sản phẩm đổi từ vòng trước: launcher 0.3.36 bắt buộc Win + Mac — dải “⚙ Tùy chọn” trong phòng (0.3.35), Mirror random (0.3.33 → làm lại 0.3.36), độ phân giải 1024×768 / 1280×1024 trên Windows (0.3.34). Cập nhật `seo/facts.md`.
+- Sửa sai sự thật: luật kích thước bản đồ trên website ghi 1–3 Large / 4–6 Huge, code `gamecfg.js mapSizeFor` là 1–4 Large / 5–6 Huge / 7–8 Gigantic → sửa ở /tao-phong-choi-de-che/ (bảng + FAQ + JSON-LD), llms.txt, facts.md.
+- Cải thiện lớn: /tao-phong-choi-de-che/ thêm mục #tuy-chon-phong (bảng 3 nút: tầm nhìn đồng minh, Mirror random, độ phân giải; phút Đời Đồng trung bình; ghi chú tính năng mới + mời báo lỗi), bảng độ phân giải thêm 1024×768/1280×1024 + nút trong phòng, 1 FAQ mới (8 câu, JSON-LD khớp), lead, meta description, "Cập nhật lần cuối" 26/10/2026, launcher 0.3.36.
+- Trang chủ: softwareVersion 0.3.31 → 0.3.36, featureList + tùy chọn phòng. llms.txt: launcher 0.3.36, tùy chọn phòng, độ phân giải, 2 câu trả lời nhanh (Mirror random / tầm nhìn đồng minh; 1024×768). Sitemap lastmod 2026-10-26 cho / và /tao-phong-choi-de-che/.
+- Từ khóa mới (WebSearch): "mirror random / tầm nhìn đồng minh đế chế" (kết quả chỉ tiếng Anh), "đế chế 1024x768 win 10" (tinhte/HRC).
+- Outreach tuần mới: seo/outreach/2026-10-26-facebook-group.md (Mirror random, tầm nhìn đồng minh, 1024×768).
+- Không đo hạng (lần trước 2026-10-21, lần tới 2026-10-28).
+- Kiểm tra: html-validate chỉ còn doctype-style/no-inline-style (như trước), JSON-LD parse được, FAQ JSON-LD trang tạo phòng khớp hiển thị, không link/anchor nội bộ hỏng, title 58, description 153.
+- Lần sau: đo hạng 2026-10-28 (thêm "giải đấu đế chế", "replay aoe", "mirror random đế chế"); cập nhật /choi-aoe-co-khan-gia/ (xem thao tác chuột; khán giả vào giữa trận tua nhanh — khi đã kiểm chứng); trang đích giải đấu.
+
+### Cần chủ dự án quyết định / làm
+- Mirror random và tầm nhìn đồng minh chưa thử trong trận thật; website nói rõ là tính năng mới và mời báo lỗi. Thử xong thì báo để bỏ câu đó.
+- Khán giả vào giữa trận tua nhanh bắt kịp (23d262f): chưa viết lên website vì chưa rõ Worker live đã có core.js mới và chưa thử thật. Xác nhận thì vòng sau thêm vào trang khán giả.
+- Gửi ảnh chụp thật phòng chờ có dải “⚙ Tùy chọn” để đưa lên trang tạo phòng và bài outreach.
+- Vẫn tồn đọng: Google Search Console + Bing Webmaster Tools (sitemap 10 URL), ký số exe / notarize Mac, đăng bài outreach.
