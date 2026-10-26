@@ -95,44 +95,78 @@ button:disabled { opacity: .6; cursor: default; }
 .champion { margin: 0 0 20px; padding: 16px 18px; border-radius: 12px; border: 1px solid var(--gold); background: radial-gradient(ellipse at top, rgba(232,195,90,.2), rgba(232,195,90,.04));
   font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--gold); text-align: center; overflow-wrap: anywhere; }
 .champion small { display: block; font-family: var(--sans); font-size: 14px; color: var(--dim); font-weight: 500; }
-.teams { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); margin-top: 12px; }
-.team { border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; background: var(--bg2); }
-.team.mine { border-color: var(--gold2); }
-.team .tname { font-weight: 700; display: flex; gap: 8px; align-items: center; overflow-wrap: anywhere; }
-.team ul { list-style: none; padding: 0; margin: 8px 0; font-size: 14px; display: grid; gap: 4px; }
-.team li { display: flex; gap: 6px; align-items: center; }
-.team li .grow { overflow-wrap: anywhere; }
-.team li.wait { color: var(--dim); font-style: italic; }
-.team li.free { color: var(--dim); }
 .x { background: none; border: 0; color: var(--dim); padding: 0 4px; font-size: 16px; line-height: 1; cursor: pointer; }
 .x:hover { color: #f08a7e; }
-.team form { display: flex; gap: 6px; margin-top: 6px; }
-.team form input { padding: 6px 9px; font-size: 14px; }
 .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
 
-/* bracket */
-.bscroll { overflow-x: auto; padding-bottom: 8px; scrollbar-color: var(--line) transparent; }
-.bracket { display: flex; gap: 22px; min-width: min-content; align-items: stretch; }
-.round { display: flex; flex-direction: column; width: 250px; flex: none; }
-.round .rh { text-align: center; margin-bottom: 10px; }
-.round .rh b { display: block; font-family: var(--serif); font-size: 17px; color: var(--gold); }
-.round .rh small { color: var(--dim); font-size: 12px; }
-.round .slots { display: flex; flex-direction: column; justify-content: space-around; flex: 1; gap: 12px; }
-.series { border: 1px solid var(--line); border-radius: 10px; background: linear-gradient(180deg, var(--panel), #241b12); overflow: hidden; cursor: pointer; }
-.series:hover, .series.open { border-color: var(--gold2); }
-.series.play { box-shadow: 0 0 0 1px rgba(79,154,90,.5); }
-.series .t { display: flex; align-items: center; gap: 8px; padding: 7px 10px; font-size: 14px; }
-.series .t + .t { border-top: 1px solid rgba(90,71,40,.6); }
-.series .t .n { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; }
-.series .t .n small { font-weight: 400; color: var(--dim); }
-.series .t.none .n { color: var(--dim); font-weight: 400; font-style: italic; }
-.series .t.win { background: rgba(79,154,90,.16); }
-.series .t.win .n { color: #a6e2b0; }
-.series .t.lose .n { color: var(--dim); text-decoration: line-through; text-decoration-color: rgba(240,138,126,.7); }
-.series .t .w { font-weight: 800; min-width: 18px; text-align: right; font-variant-numeric: tabular-nums; }
-.series .st { font-size: 12px; color: var(--dim); padding: 5px 10px; background: rgba(14,11,7,.5); border-top: 1px solid rgba(90,71,40,.6); }
+/* bracket: two halves meeting at the final in the middle (drawBracket) */
+.bscroll { overflow-x: auto; margin: 0 calc(50% - 50vw); padding: 0 20px 10px; scrollbar-color: var(--line) transparent; }
+.bracket { display: flex; gap: 32px; width: max-content; margin: 0 auto; align-items: stretch; }
+.bcol { display: flex; flex-direction: column; width: 230px; flex: none; }
+.bcol .rh { height: 64px; text-align: center; }
+.bcol .rh b { display: block; font-family: var(--serif); font-size: 17px; color: var(--gold); line-height: 1.3; }
+.bcol .rh small { display: block; color: var(--dim); font-size: 12px; line-height: 1.5; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bcol .ms { flex: 1; display: flex; flex-direction: column; }
+.bcol .m { flex: 1; display: flex; flex-direction: column; justify-content: center; position: relative; padding: 22px 0; }
+/* connectors: a pair of series joins halfway to the next round, the last series of a half runs into the final */
+.bcol.l .m::after, .bcol.r .m::after, .bcol.in .m::before { content: ""; position: absolute; width: 16px; border: 0 solid var(--gold2); }
+.bcol.l .m::after { right: -16px; border-right-width: 2px; }
+.bcol.r .m::after { left: -16px; border-left-width: 2px; }
+.bcol .m:nth-child(odd)::after { top: 50%; height: 50%; border-top-width: 2px; }
+.bcol .m:nth-child(even)::after { top: 0; height: 50%; border-bottom-width: 2px; }
+.bcol.l .m:only-child::after, .bcol.r .m:only-child::after { top: 50%; height: 0; width: 32px; border-width: 2px 0 0; }
+.bcol.l .m:only-child::after { right: -32px; }
+.bcol.r .m:only-child::after { left: -32px; }
+.bcol.in .m::before { top: 50%; border-top-width: 2px; }
+.bcol.l.in .m::before { left: -16px; }
+.bcol.r.in .m::before { right: -16px; }
+.fin .cup { height: 74px; margin-bottom: 14px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+  border: 1px solid var(--gold2); border-radius: 10px; background: radial-gradient(ellipse at top, rgba(232,195,90,.22), rgba(232,195,90,.04)); padding: 0 10px; }
+.fin .cup b { font-family: var(--serif); color: var(--gold); font-size: 17px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.fin .cup small { color: var(--dim); font-size: 12px; }
+.fin .sp { height: 88px; }
+.series { position: relative; display: grid; gap: 4px; border-radius: 6px; outline-offset: 4px; }
+.series[data-s] { cursor: pointer; }
+.series[data-s]:hover, .series.open { outline: 1px solid var(--gold2); }
+.series.play { outline: 1px solid rgba(79,154,90,.8); }
+.series .st { position: absolute; top: 100%; left: 0; right: 0; margin-top: 3px; font-size: 11px; color: var(--dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: center; }
 .series .st.live { color: #8fd69a; }
 .series .st.bad { color: #f08a7e; }
+/* a team: a gold bar (name, score or seats taken), its seats below while registering */
+.tb { display: flex; align-items: stretch; gap: 4px; height: 30px; font-size: 13px; font-weight: 700; }
+.bcol.r .tb { flex-direction: row-reverse; }
+.tb .n { flex: 1; min-width: 0; line-height: 30px; padding: 0 10px; border-radius: 3px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  text-transform: uppercase; color: var(--ink); background: linear-gradient(#f5e2a6, #d6b45e); }
+.tb .w { flex: none; min-width: 32px; padding: 0 4px; display: grid; place-items: center; border-radius: 3px; border: 1px solid var(--gold2); background: #0e0b07;
+  color: var(--gold); font-weight: 800; font-variant-numeric: tabular-nums; }
+.tb .w.ok { color: #8fd69a; border-color: rgba(79,154,90,.8); }
+.tb.win .w { background: var(--gold); color: var(--ink); }
+.tb.lose .n { background: linear-gradient(#8f7f58, #6f6142); color: #2b2217; }
+.tb.lose .w { color: var(--dim); border-color: var(--line); }
+.tb.none .n { background: rgba(14,11,7,.5); border: 1px dashed var(--line); color: var(--dim); font-weight: 500; font-style: italic; text-transform: none; line-height: 28px; }
+.tb.mine .n { box-shadow: 0 0 0 2px var(--gold); }
+.tb .x { flex: none; }
+.mem { font-size: 11px; color: var(--dim); margin: -2px 2px 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bcol.r .mem { text-align: right; }
+.table + .table { margin-top: 6px; }
+.table > .seat { height: 30px; font-size: 13px; }
+.seats { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-top: 4px; }
+.seat { display: flex; align-items: center; gap: 5px; height: 28px; min-width: 0; padding: 0 4px 0 5px; border-radius: 6px; font-size: 12px;
+  border: 1px solid rgba(90,71,40,.9); background: rgba(14,11,7,.6); }
+.seat .av { flex: none; width: 18px; height: 18px; border-radius: 50%; display: grid; place-items: center; font-size: 10px; font-weight: 800;
+  background: var(--panel2); color: var(--gold); }
+.seat .n { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.seat.wait { color: var(--dim); font-style: italic; }
+.seat.me { border-color: var(--gold); background: rgba(232,195,90,.1); }
+.seat.free { border-style: dashed; color: var(--dim); padding: 0; }
+.seat.free > span { display: flex; align-items: center; gap: 5px; padding: 0 5px; }
+.seat.free .av { background: none; border: 1px dashed currentColor; color: inherit; }
+.seat .sit { flex: 1; min-width: 0; height: 100%; display: flex; align-items: center; gap: 5px; padding: 0 5px; border: 0; border-radius: 5px; background: none;
+  color: var(--gold); font: inherit; font-size: 12px; font-weight: 600; justify-content: flex-start; cursor: pointer; }
+.seat .sit:hover { background: rgba(232,195,90,.12); }
+.seat .sit .av { border-style: solid; }
+.seat .inv { flex: none; height: 22px; margin-right: 3px; padding: 0 6px; border-radius: 5px; border: 1px solid var(--line); background: none; color: var(--dim); font: inherit; font-size: 11px; cursor: pointer; }
+.seat .inv:hover { color: var(--gold); border-color: var(--gold2); }
 .sdetail { margin-top: 18px; }
 .games { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; font-size: 14px; }
 .games li { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 8px 10px; border: 1px solid rgba(90,71,40,.6); border-radius: 8px; background: var(--bg2); }
@@ -168,7 +202,8 @@ dialog h2 { margin-bottom: 4px; }
   .wrap { padding: 0 16px; }
   .who .name, .links { display: none; }
   .two { grid-template-columns: 1fr; }
-  .round { width: 220px; }
+  .bscroll { padding: 0 16px 10px; }
+  .bcol { width: 214px; }
 }
 </style>
 </head>
@@ -232,6 +267,18 @@ dialog h2 { margin-bottom: 4px; }
     <p class="hint" style="margin:6px 0 0">Mỗi nhánh phải xong trong thời gian của vòng. Hết giờ mà chưa đủ số trận thắng thì <b>cả hai đội đều bị loại</b>.</p>
     <button class="primary" type="submit">Tạo giải</button>
     <div class="msg" id="createMsg"></div>
+  </form>
+</dialog>
+
+<dialog id="askDlg" aria-labelledby="askTitle">
+  <button class="close" type="button" data-close aria-label="Đóng">×</button>
+  <h2 id="askTitle"></h2>
+  <p class="hint" style="margin:0" id="askHint"></p>
+  <form id="askForm">
+    <label for="askInput" id="askLabel"></label>
+    <input id="askInput" required>
+    <button class="primary" type="submit" id="askBtn"></button>
+    <div class="msg" id="askMsg"></div>
   </form>
 </dialog>
 
@@ -382,7 +429,7 @@ $("createForm").onsubmit = async (e) => {
 };
 
 // ---------------- detail
-let D = null, openSeries = null;
+let D = null, openSeries = null, poll = null, busy = false;
 async function showTour() {
   try {
     D = await api("tour?id=" + tourId);
@@ -392,15 +439,73 @@ async function showTour() {
   }
   renderTour();
 }
-async function act(op, body, msgEl) {
-  if (!me) return askLogin(() => act(op, body, msgEl), "Đăng nhập để tiếp tục.");
+// While registering, seats fill up as other players sit down: reload now and then (not while a dialog is open).
+function schedulePoll() {
+  clearTimeout(poll);
+  if (D?.tour.status !== "reg") return;
+  poll = setTimeout(async () => {
+    if (!document.hidden && !document.querySelector("dialog[open]") && !busy) {
+      try { D = await api("tour?id=" + tourId); renderTour(); return; } catch {}
+    }
+    schedulePoll();
+  }, 30_000);
+}
+// done: called once the change went through (closes the dialog it came from).
+async function act(op, body, msgEl, done) {
+  if (!me) return askLogin(() => act(op, body, msgEl, done), "Đăng nhập để tiếp tục.");
+  if (busy) return;
+  busy = true;
   try {
     await api("tour/" + op, { id: tourId, ...body });
+    done?.();
     await showTour();
   } catch (e) {
-    if (e.status === 401) { setMe(null); askLogin(() => act(op, body, msgEl), "Phiên đăng nhập đã hết, hãy đăng nhập lại."); return; }
+    if (e.status === 401) { setMe(null); askLogin(() => act(op, body, msgEl, done), "Phiên đăng nhập đã hết, hãy đăng nhập lại."); return; }
     if (msgEl) flash(msgEl, e.message); else alert(e.message);
+  } finally {
+    busy = false;
   }
+}
+// One-field dialog: a team name or a player to invite.
+function ask({ title, hint = "", label, value = "", max, button, run }) {
+  $("askTitle").textContent = title;
+  $("askHint").textContent = hint;
+  $("askLabel").textContent = label;
+  $("askBtn").textContent = button;
+  $("askMsg").textContent = "";
+  const input = $("askInput");
+  input.value = value;
+  input.maxLength = max;
+  $("askForm").onsubmit = (e) => {
+    e.preventDefault();
+    const v = input.value.trim();
+    if (v) run(v, $("askMsg"), () => $("askDlg").close());
+  };
+  $("askDlg").showModal();
+  input.select();
+}
+// Bracket slot order of seeds 1..n, as the Worker draws it (tournament.js seedOrder).
+function seedOrder(n) {
+  let order = [1];
+  while (order.length < n) order = order.flatMap((s) => [s, order.length * 2 + 1 - s]);
+  return order;
+}
+// rounds: [{head, series: [html]}], the final last. The first half of each round goes on the left, the
+// second half on the right (mirrored), the final in the middle under the cup.
+function drawBracket(rounds, cup) {
+  const last = rounds.length - 1;
+  const col = (r, side) => {
+    const s = rounds[r].series, half = s.length / 2;
+    return `<div class="bcol ${side} ${r ? "in" : ""}"><div class="rh">${rounds[r].head}</div>
+      <div class="ms">${(side === "l" ? s.slice(0, half) : s.slice(half)).map((h) => `<div class="m">${h}</div>`).join("")}</div></div>`;
+  };
+  const sides = Array.from({ length: last }, (_, r) => r);
+  return `<div class="bscroll"><div class="bracket">
+    ${sides.map((r) => col(r, "l")).join("")}
+    <div class="bcol"><div class="rh">${rounds[last].head}</div>
+      <div class="ms"><div class="m"><div class="fin"><div class="cup">${cup}</div>${rounds[last].series[0]}<div class="sp"></div></div></div></div></div>
+    ${sides.reverse().map((r) => col(r, "r")).join("")}
+  </div></div>`;
 }
 const teamName = (id) => D.teams.find((t) => t.id === id)?.name ?? "?";
 const membersOf = (id) => (D.teams.find((t) => t.id === id)?.members ?? []).filter((m) => m.state === "in").map((m) => m.username);
@@ -409,6 +514,7 @@ function renderTour() {
   const t = D.tour;
   document.title = `${t.name} – Giải đấu SuperAoE`;
   const rounds = t.rounds ?? t.plan;
+  const scrollX = document.querySelector(".bscroll")?.scrollLeft;  // kept when the page reloads itself
   const myMember = me && D.teams.flatMap((x) => x.members.map((m) => ({ ...m, team: x.id }))).find((m) => same(m.username, me.username));
   const organizer = me && same(t.organizer, me.username);
   let deadline = t.startedAt ?? t.startAt;
@@ -438,70 +544,108 @@ function renderTour() {
     ${rulesHtml(t)}`;
   if (t.status === "reg") renderRegistration(myMember, organizer);
   else if (D.bracket) renderBracket();
+  const box = document.querySelector(".bscroll");
+  if (box && scrollX) box.scrollLeft = scrollX;
+  schedulePoll();
 }
 
+// Registration: the bracket is drawn already, each team a table ("bàn") with one seat per player.
+// Tables are only places to sit: the pairings are drawn at random when the tournament starts.
 function renderRegistration(my, organizer) {
   const t = D.tour;
   const body = $("body");
+  const solo = t.teamSize === 1;
   const captainOf = (team) => me && same(team.captain, me.username);
   const canInvite = (team) => organizer || (t.mode === "open" && captainOf(team));
-  const teamHtml = (x) => {
-    const free = t.teamSize - x.members.length;
-    const mine = my && my.team === x.id;
-    const kickable = (m) => organizer || (captainOf(x) && !same(m.username, me.username));
-    return `<div class="team ${mine ? "mine" : ""}">
-      <div class="tname"><span class="grow">${esc(x.name)}</span>${organizer && t.teamSize > 1 ? `<button class="x" title="Xoá đội" data-delteam="${x.id}">×</button>` : ""}</div>
-      ${t.teamSize > 1 || x.members.some((m) => m.state !== "in") ? `<ul>
-        ${x.members.map((m) => `<li class="${m.state === "in" ? "" : "wait"}"><span class="grow">${same(m.username, x.captain) ? "★ " : ""}${esc(m.username)}${m.state === "in" ? "" : " — đang chờ chấp nhận"}</span>
-          ${kickable(m) ? `<button class="x" title="Loại khỏi đội" data-kick="${esc(m.username)}">×</button>` : ""}</li>`).join("")}
-        ${Array.from({ length: free }, () => `<li class="free">— chỗ trống —</li>`).join("")}
-      </ul>` : ""}
-      ${free > 0 && t.teamSize > 1 && canInvite(x) ? `<form data-invite="${x.id}"><input placeholder="Tên người chơi" maxlength="24" required><button class="ghost small">Mời</button></form>` : ""}
-      ${free > 0 && t.teamSize > 1 && t.mode === "open" && !my ? `<button class="primary small" style="margin-top:6px" data-jointeam="${x.id}">Vào đội này</button>` : ""}
-      <div class="msg"></div>
-    </div>`;
+  const canSit = !my && t.mode === "open";
+  const inCount = (x) => x.members.filter((m) => m.state === "in").length;
+  const ready = D.teams.filter((x) => inCount(x) === t.teamSize).length;
+  const av = (name) => `<span class="av">${esc(name.slice(0, 1).toUpperCase())}</span>`;
+  // A free seat: what a click does depends on who looks.
+  const freeSeat = (x) => {
+    const button = (attr, label, extra = "") => `<div class="seat free"><button class="sit" ${attr}><span class="av">+</span><span class="n">${label}</span></button>${extra}</div>`;
+    const plain = (label) => `<div class="seat free"><span>${av("")}<span class="n">${label}</span></span></div>`;
+    if (!x) {
+      if (canSit) return button("data-sit", "Ngồi vào");
+      if (organizer && t.mode === "invite") return solo ? button("data-invitesolo", "Mời người chơi") : button("data-addteam", "Thêm đội");
+      return plain("Ghế trống");
+    }
+    const invite = canInvite(x);
+    if (canSit) return button(`data-jointeam="${x.id}"`, "Ngồi vào", invite ? `<button class="inv" data-invite="${x.id}" title="Mời người chơi vào ghế này">Mời</button>` : "");
+    if (invite) return button(`data-invite="${x.id}"`, "Mời bạn");
+    return plain("Ghế trống");
   };
-  const full = D.teams.length >= t.capacity;
-  const ready = D.teams.filter((x) => x.members.filter((m) => m.state === "in").length === t.teamSize).length;
+  const seat = (x, m) => {
+    const self = me && same(m.username, me.username);
+    const x_ = self ? (m.state === "in" ? `<button class="x" title="Rời ghế" data-leave>×</button>` : "")
+      : organizer || captainOf(x) ? `<button class="x" title="Loại khỏi đội" data-kick="${esc(m.username)}">×</button>` : "";
+    const name = `${!solo && same(m.username, x.captain) ? "★ " : ""}${m.username}${m.state === "in" ? "" : " (chờ nhận lời)"}`;
+    return `<div class="seat ${m.state === "in" ? "" : "wait"} ${self ? "me" : ""}" title="${esc(name)}">${av(m.username)}<span class="n">${esc(name)}</span>${x_}</div>`;
+  };
+  // 1-1: the bar is the seat. Teams: the bar is the table (name, seats taken), its seats below.
+  const table = (x) => {
+    const mine = my && x && my.team === x.id;
+    if (solo) return `<div class="table">${x ? seat(x, x.members[0] ?? { username: x.name, state: "in" }) : freeSeat(null)}</div>`;
+    const n = x ? inCount(x) : 0;
+    const bar = x
+      ? `<div class="tb ${mine ? "mine" : ""}"><span class="n" title="${esc(x.name)}">${esc(x.name)}</span>${organizer ? `<button class="x" title="Xoá đội" data-delteam="${x.id}">×</button>` : ""}<span class="w ${n === t.teamSize ? "ok" : ""}" title="Số người đã vào">${n}/${t.teamSize}</span></div>`
+      : `<div class="tb none"><span class="n">Bàn trống</span></div>`;
+    const seats = x ? [...x.members.map((m) => seat(x, m)), ...Array.from({ length: t.teamSize - x.members.length }, () => freeSeat(x))]
+      : Array.from({ length: t.teamSize }, () => freeSeat(null));
+    return `<div class="table">${bar}<div class="seats">${seats.join("")}</div></div>`;
+  };
+  // Teams fill the tables in seed order, so the first ones to register sit in different halves.
+  const tables = Array(t.capacity).fill(null);
+  seedOrder(t.capacity).forEach((seed, slot) => { tables[slot] = D.teams[seed - 1] ?? null; });
+  const total = t.plan.length;
+  let deadline = t.startAt;
+  const rounds = t.plan.map((r, ri) => {
+    deadline += r.hours * H;
+    const wait = `<div class="series"><div class="tb none"><span class="n">Chờ đội thắng</span></div><div class="tb none"><span class="n">Chờ đội thắng</span></div></div>`;
+    return { head: `<b>${roundName(ri, total)}</b><small>${bo(r.wins)}</small><small>hạn dự kiến ${fmtTime(deadline)}</small>`,
+      series: Array.from({ length: t.capacity >> (ri + 1) }, (_, k) => ri ? wait : `<div class="series">${table(tables[2 * k])}${table(tables[2 * k + 1])}</div>`) };
+  });
+  const how = t.mode === "open"
+    ? (solo ? "Bấm <b>Ngồi vào</b> ở một ghế trống để tham gia giải." : `Mỗi bàn là một đội ${t.teamSize} ghế. Bấm <b>Ngồi vào</b> ở bàn đã có đội để làm đồng đội, hoặc ở bàn trống để lập đội mới (bạn làm đội trưởng ★, đặt tên đội và mời bạn bè).`)
+    : "Giải chỉ dành cho người được mời: người tổ chức xếp đội và mời người chơi vào từng ghế.";
   body.innerHTML = `
     ${my?.state === "invited" ? `<div class="invite" style="margin-bottom:16px"><span class="grow">Bạn được mời vào đội <b>${esc(teamName(my.team))}</b>.</span>
       <button class="primary small" id="btnAccept">Chấp nhận</button><button class="ghost small" id="btnDecline">Từ chối</button></div>` : ""}
-    <div class="row"><h2 class="grow" style="margin:0">Các đội đăng ký</h2><span class="hint">${ready} đội đủ người · đội thiếu người khi bắt đầu sẽ không được xếp nhánh</span></div>
-    <div class="teams">${D.teams.map(teamHtml).join("") || `<div class="empty">Chưa có đội nào.</div>`}</div>
+    <div class="row"><h2 class="grow" style="margin:0">Sơ đồ thi đấu</h2><span class="hint">${D.teams.length}/${t.capacity} đội · ${ready} đội đủ người</span></div>
+    <p class="hint" style="margin:4px 0 14px">${how} Vị trí bàn chỉ để xếp chỗ: cặp đấu được <b>bốc thăm ngẫu nhiên</b> lúc giải bắt đầu, đội chưa đủ người khi đó sẽ không được xếp nhánh.</p>
+    <div class="msg" id="regMsg" style="margin:0 0 10px"></div>
+    ${drawBracket(rounds, `<b>🏆 Vô địch</b><small>Đội thắng chung kết</small>`)}
     <div class="actions">
-      ${!my && t.mode === "open" && t.teamSize === 1 && !full ? `<button class="primary" id="btnJoin">Tham gia giải</button>` : ""}
-      ${!my && t.mode === "open" && t.teamSize > 1 && !full ? `<form class="row" id="newTeam"><input placeholder="Tên đội mới" maxlength="30" required style="width:220px"><button class="primary">Tạo đội (làm đội trưởng)</button></form>` : ""}
-      ${organizer && t.mode === "invite" && t.teamSize > 1 && !full ? `<form class="row" id="addTeam"><input placeholder="Tên đội" maxlength="30" required style="width:220px"><button class="ghost">+ Thêm đội</button></form>` : ""}
-      ${organizer && t.teamSize === 1 && t.mode === "invite" && !full ? `<form class="row" id="inviteSolo"><input placeholder="Tên người chơi" maxlength="24" required style="width:220px"><button class="ghost">Mời người chơi</button></form>` : ""}
       ${my?.state === "in" ? `<button class="ghost" id="btnLeave">Rời giải</button>` : ""}
       ${!me ? `<button class="primary" id="btnSignin">Đăng nhập để tham gia</button>` : ""}
     </div>
-    ${t.mode === "invite" && !organizer && !my ? `<p class="hint">Giải này chỉ dành cho người được người tổ chức mời.</p>` : ""}
-    <div class="msg" id="regMsg"></div>
     ${organizer ? `<div class="actions" style="border-top:1px solid var(--line);padding-top:16px">
       <button class="primary" id="btnStart">Bắt đầu ngay (${ready} đội)</button>
       <button class="danger" id="btnCancel">Huỷ giải</button>
       <span class="hint" style="align-self:center">Nếu không bấm, giải tự bắt đầu lúc ${fmtTime(t.startAt)}.</span></div>` : ""}`;
   const msg = $("regMsg");
   const on = (id, fn) => { if ($(id)) $(id).onclick = fn; };
-  on("btnJoin", () => act("join", {}, msg));
-  on("btnLeave", () => confirm("Rời khỏi giải này?") && act("leave", {}, msg));
+  const all = (sel, fn) => body.querySelectorAll(sel).forEach((el) => el.onclick = () => fn(el));
+  const leave = () => confirm("Rời khỏi giải này?") && act("leave", {}, msg);
+  on("btnLeave", leave);
   on("btnAccept", () => act("respond", { accept: true }, msg));
   on("btnDecline", () => act("respond", { accept: false }, msg));
   on("btnSignin", () => askLogin(showTour, "Đăng nhập để tham gia giải."));
   on("btnStart", () => confirm("Bắt đầu giải ngay? Các đội đủ người sẽ được chia nhánh ngẫu nhiên, sau đó không đổi đội được nữa.") && act("start", {}, msg));
   on("btnCancel", () => confirm("Huỷ giải này? Không thể hoàn tác.") && act("cancel", {}, msg));
-  const formSubmit = (id, fn) => { if ($(id)) $(id).onsubmit = (e) => { e.preventDefault(); fn(e.target.querySelector("input").value.trim()); }; };
-  formSubmit("newTeam", (name) => act("join", { name }, msg));
-  formSubmit("addTeam", (name) => act("addteam", { name }, msg));
-  formSubmit("inviteSolo", (other) => act("invite", { other }, msg));
-  body.querySelectorAll("[data-invite]").forEach((f) => f.onsubmit = (e) => {
-    e.preventDefault();
-    act("invite", { team: Number(f.dataset.invite), other: f.querySelector("input").value.trim() }, f.parentElement.querySelector(".msg"));
-  });
-  body.querySelectorAll("[data-jointeam]").forEach((b) => b.onclick = () => act("join", { team: Number(b.dataset.jointeam) }, b.parentElement.querySelector(".msg")));
-  body.querySelectorAll("[data-kick]").forEach((b) => b.onclick = () => confirm(`Loại ${b.dataset.kick} khỏi đội?`) && act("kick", { other: b.dataset.kick }, b.closest(".team").querySelector(".msg")));
-  body.querySelectorAll("[data-delteam]").forEach((b) => b.onclick = () => confirm("Xoá đội này?") && act("delteam", { team: Number(b.dataset.delteam) }, msg));
+  const newTeam = () => ask({ title: "Lập đội mới", hint: "Bạn ngồi ghế đầu tiên và làm đội trưởng, sau đó mời đồng đội hoặc chờ người khác ngồi vào.",
+    label: "Tên đội", value: `Đội ${me.username}`, max: 30, button: "Lập đội và ngồi vào", run: (name, m, done) => act("join", { name }, m, done) });
+  all("[data-sit]", () => solo ? act("join", {}, msg) : me ? newTeam() : askLogin(newTeam, "Đăng nhập để ngồi vào bàn."));
+  all("[data-jointeam]", (b) => act("join", { team: Number(b.dataset.jointeam) }, msg));
+  all("[data-leave]", leave);
+  all("[data-kick]", (b) => confirm(`Loại ${b.dataset.kick} khỏi đội?`) && act("kick", { other: b.dataset.kick }, msg));
+  all("[data-delteam]", (b) => confirm(`Xoá đội ${teamName(Number(b.dataset.delteam))}?`) && act("delteam", { team: Number(b.dataset.delteam) }, msg));
+  all("[data-invite]", (b) => ask({ title: `Mời vào ${teamName(Number(b.dataset.invite))}`, hint: "Người được mời bấm Chấp nhận trên trang giải này.",
+    label: "Tên người chơi", max: 24, button: "Mời", run: (other, m, done) => act("invite", { team: Number(b.dataset.invite), other }, m, done) }));
+  all("[data-invitesolo]", () => ask({ title: "Mời người chơi", hint: "Mỗi người là một đội; họ bấm Chấp nhận trên trang giải này.",
+    label: "Tên người chơi", max: 24, button: "Mời", run: (other, m, done) => act("invite", { other }, m, done) }));
+  all("[data-addteam]", () => ask({ title: "Thêm đội", hint: "Sau đó mời người chơi vào từng ghế của đội.",
+    label: "Tên đội", max: 30, button: "Thêm đội", run: (name, m, done) => act("addteam", { name }, m, done) }));
 }
 
 function seriesStatus(s) {
@@ -520,32 +664,39 @@ function renderBracket() {
   const b = D.bracket, t = D.tour;
   const total = b.rounds.length;
   const side = (s, team, wins) => {
-    if (!team) return `<div class="t none"><span class="n">${s.status === "wait" ? "Chờ" : "—"}</span></div>`;
+    if (!team) return `<div class="tb none"><span class="n">${s.status === "wait" ? "Chờ đội thắng" : "—"}</span></div>`;
     const cls = s.winner ? (s.winner === team ? "win" : "lose") : s.status === "out" ? "lose" : "";
-    const ms = t.teamSize > 1 ? ` <small>${membersOf(team).map(esc).join(", ")}</small>` : "";
-    return `<div class="t ${cls}"><span class="n" title="${esc(teamName(team))}">${esc(teamName(team))}${ms}</span>${s.readyAt ? `<span class="w">${wins}</span>` : ""}</div>`;
+    const members = t.teamSize > 1 ? membersOf(team) : [];
+    return `<div class="tb ${cls}"><span class="n" title="${esc([teamName(team), ...members].join(" · "))}">${esc(teamName(team))}</span>${s.readyAt ? `<span class="w">${wins}</span>` : ""}</div>
+      ${members.length ? `<div class="mem">${members.map(esc).join(", ")}</div>` : ""}`;
   };
+  const rounds = b.rounds.map((r, i) => ({
+    head: `<b>${roundName(i, total)}</b><small>${bo(r.wins)}</small><small>hạn ${fmtTime(r.deadline)}</small>`,
+    series: r.series.map((s) => {
+      const [text, cls] = seriesStatus(s);
+      return `<div class="series ${s.status} ${openSeries === `${s.round}-${s.idx}` ? "open" : ""}" tabindex="0" data-s="${s.round}-${s.idx}">
+        ${side(s, s.a, s.wa)}${side(s, s.b, s.wb)}<div class="st ${cls}">${esc(text)}</div></div>`;
+    }),
+  }));
+  const cup = t.status === "done"
+    ? (t.champion ? `<b title="${esc(teamName(t.champion))}">🏆 ${esc(teamName(t.champion))}</b><small>Vô địch</small>` : `<b>Không có vô địch</b><small>Chung kết không xong đúng hạn</small>`)
+    : `<b>🏆 Vô địch</b><small>Đội thắng chung kết</small>`;
   const playing = new Set(b.rounds[0].series.flatMap((s) => [s.a, s.b]).filter(Boolean));
   const outside = D.teams.filter((x) => !playing.has(x.id));
   $("body").innerHTML = `
     <h2>Sơ đồ thi đấu</h2>
     <p class="hint" style="margin-top:-8px">Bấm vào một nhánh để xem từng ván, replay và kết quả.</p>
-    <div class="bscroll"><div class="bracket">${b.rounds.map((r, i) => `<div class="round">
-      <div class="rh"><b>${roundName(i, total)}</b><small>${bo(r.wins)} · hạn ${fmtTime(r.deadline)}</small></div>
-      <div class="slots">${r.series.map((s) => {
-        const [text, cls] = seriesStatus(s);
-        return `<div class="series ${s.status} ${openSeries === `${s.round}-${s.idx}` ? "open" : ""}" tabindex="0" data-s="${s.round}-${s.idx}">
-          ${side(s, s.a, s.wa)}${side(s, s.b, s.wb)}<div class="st ${cls}">${esc(text)}</div></div>`;
-      }).join("")}</div></div>`).join("")}</div></div>
+    ${drawBracket(rounds, cup)}
     <div class="sdetail panel hidden" id="sdetail"></div>
     ${outside.length ? `<p class="hint" style="margin-top:14px">Không được xếp nhánh (thiếu người khi bắt đầu): ${outside.map((x) => esc(x.name)).join(", ")}</p>` : ""}`;
-  document.querySelectorAll(".series").forEach((el) => {
+  document.querySelectorAll(".series[data-s]").forEach((el) => {
     const open = () => { openSeries = el.dataset.s; renderBracket(); $("sdetail").scrollIntoView({ block: "nearest", behavior: "smooth" }); };
     el.onclick = open;
     el.onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } };
   });
   if (openSeries) renderSeries(openSeries);
 }
+
 function renderSeries(key) {
   const [r, i] = key.split("-").map(Number);
   const s = D.bracket.rounds[r]?.series[i];
