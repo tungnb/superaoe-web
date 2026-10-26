@@ -198,15 +198,13 @@ dialog h2 { margin-bottom: 4px; }
 .choice input:focus-visible + span { outline: 2px solid var(--gold2); }
 .plan select, .plan input { padding: 6px 8px; font-size: 14px; }
 .plan input { width: 90px; }
-/* round robin: the table, then each matchday's pairings (renderLeague) */
+/* round robin: the table, then every pairing (renderLeague) */
 .standings td:nth-child(n+3), .standings th:nth-child(n+3) { text-align: center; }
 .standings td.pts { font-weight: 700; color: var(--gold); }
 .standings tr.top td { background: rgba(232,195,90,.08); }
 .standings tr.mine td:nth-child(2) { color: var(--gold); }
 .lgrid { display: grid; gap: 30px 16px; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); margin: 8px 0 34px; }
 .lgrid > .table + .table { margin-top: 0; }
-.lday { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; margin-top: 18px; }
-.lday b { font-family: var(--serif); color: var(--gold); font-size: 17px; }
 @media (max-width: 640px) {
   .wrap { padding: 0 16px; }
   .who .name, .links { display: none; }
@@ -341,8 +339,6 @@ const roundName = (r, total) => ["Chung kết", "Bán kết", "Tứ kết", "Vò
 const fmtSize = (n) => `${n}-${n}`;
 const FORMAT = { elim: "loại trực tiếp", rr: "vòng tròn tính điểm" };
 const isRR = (t) => t.format === "rr";
-// Matchdays of a full round robin: every team meets every other once, one rests when the count is odd.
-const matchdayCount = (teams) => teams - 1 + teams % 2;
 const STATUS = { reg: "Đang nhận đăng ký", run: "Đang thi đấu", done: "Đã kết thúc", cancel: "Đã huỷ" };
 const badge = (s) => `<span class="badge ${s}">${STATUS[s] ?? s}</span>`;
 const MODE = { open: "Tự tham gia", invite: "Chỉ người được mời" };
@@ -430,12 +426,12 @@ function buildCaps() {
 function buildPlan() {
   const rr = formVal("format") === "rr", cap = Number(formVal("cap"));
   const wins = (def) => `<select data-wins>${[1, 2, 3, 4, 5].map((w) => `<option value="${w}" ${w === def ? "selected" : ""}>${bo(w)}</option>`).join("")}</select>`;
-  $("cPlanHead").textContent = rr ? "Mỗi lượt" : "Vòng";
+  $("cPlanHead").textContent = rr ? "Mỗi cặp" : "Vòng";
   if (rr) {
-    // One row for every matchday: the deadline column shows when the last one ends.
-    $("cPlan").innerHTML = `<tr><td>${matchdayCount(cap)} lượt</td><td>${wins(1)}</td>
-      <td><input data-hours type="number" min="1" max="720" value="48"> giờ / lượt</td><td class="hint" data-deadline></td></tr>`;
-    $("cPlanHint").innerHTML = "Cặp nào cũng đánh được ngay từ khi giải bắt đầu, nhưng phải xong trước hạn của lượt mình. Hết hạn: đội đang dẫn thắng cặp đó, bằng nhau thì hoà, chưa đánh trận nào thì <b>cả hai 0 điểm</b>.";
+    // No fixtures: one row, the time the whole league lasts.
+    $("cPlan").innerHTML = `<tr><td>${cap * (cap - 1) / 2} cặp</td><td>${wins(1)}</td>
+      <td><input data-hours type="number" min="1" max="720" value="168"> giờ cho cả giải</td><td class="hint" data-deadline></td></tr>`;
+    $("cPlanHint").innerHTML = "Không xếp lịch: hai đội gặp nhau lúc nào cũng được, kết quả tự vào bảng điểm. Hết hạn chót: đội đang dẫn thắng cặp đó, bằng nhau thì hoà, chưa đánh trận nào thì <b>cả hai 0 điểm</b>.";
   } else {
     const rounds = Math.log2(cap);
     $("cPlan").innerHTML = Array.from({ length: rounds }, (_, r) => `<tr>
@@ -449,10 +445,9 @@ function buildPlan() {
 }
 function planDeadlines() {
   let t = new Date($("cStart").value).getTime();
-  const days = formVal("format") === "rr" ? matchdayCount(Number(formVal("cap"))) : 1;
   for (const tr of $("cPlan").children) {
-    t += (Number(tr.querySelector("[data-hours]").value) || 0) * H * days;
-    tr.querySelector("[data-deadline]").textContent = Number.isFinite(t) ? (days > 1 ? "kết thúc " : "") + fmtTime(t) : "";
+    t += (Number(tr.querySelector("[data-hours]").value) || 0) * H;
+    tr.querySelector("[data-deadline]").textContent = Number.isFinite(t) ? fmtTime(t) : "";
   }
 }
 $("createForm").onsubmit = async (e) => {
@@ -563,14 +558,12 @@ function renderTour() {
   const myMember = me && D.teams.flatMap((x) => x.members.map((m) => ({ ...m, team: x.id }))).find((m) => same(m.username, me.username));
   const organizer = me && same(t.organizer, me.username);
   let deadline = t.startedAt ?? t.startAt;
-  // A round robin registering: the matchdays of a full one (fewer if teams are missing at the start).
-  const planList = isRR(t) && !t.rounds ? Array(matchdayCount(t.capacity)).fill(t.plan[0]) : rounds;
-  const planRows = planList.map((r, i) => {
+  const planRows = rounds.map((r, i) => {
     deadline += r.hours * H;
-    return `<tr><td>${isRR(t) ? `Lượt ${i + 1}` : roundName(i, rounds.length)}</td><td>${bo(r.wins)}</td><td>${r.hours} giờ</td><td>${t.status === "reg" ? "dự kiến " : ""}${fmtTime(deadline)}</td></tr>`;
+    return `<tr><td>${isRR(t) ? "Cả giải" : roundName(i, rounds.length)}</td><td>${bo(r.wins)}</td><td>${r.hours} giờ</td><td>${t.status === "reg" ? "dự kiến " : ""}${fmtTime(deadline)}</td></tr>`;
   }).join("");
   const planHint = isRR(t)
-    ? `Mọi cặp đấu mở ngay từ khi giải bắt đầu, phải xong trước hạn của lượt mình. Hết hạn: đội đang dẫn thắng cặp đó, bằng nhau thì hoà, chưa đánh thì cả hai 0 điểm.${t.status === "reg" ? " Nếu khi bắt đầu chưa đủ đội, số lượt giảm theo số đội." : ""}`
+    ? "Không xếp lịch: hai đội gặp nhau lúc nào cũng được, từ khi giải bắt đầu đến hạn chót. Hết hạn: đội đang dẫn thắng cặp đó, bằng nhau thì hoà, chưa đánh thì cả hai 0 điểm."
     : `Nhánh chưa xong khi hết hạn chót: cả hai đội bị loại, đối thủ ở vòng sau được đi tiếp.${t.status === "reg" && t.capacity > 2 ? " Nếu khi bắt đầu chưa đủ đội, nhánh thu gọn lại và dùng các vòng cuối của lộ trình." : ""}`;
   const champ = t.status === "done" ? (t.champion
     ? `<div class="champion">🏆 ${esc(teamName(t.champion))}<small>Vô địch${t.teamSize > 1 ? " · " + membersOf(t.champion).map(esc).join(", ") : ""}</small></div>`
@@ -588,7 +581,7 @@ function renderTour() {
       <div><small>Người tổ chức</small><b>${esc(t.organizer)}</b></div>
       <div><small>${t.startedAt ? "Đã bắt đầu" : "Bắt đầu"}</small><b>${fmtTime(t.startedAt ?? t.startAt)}</b>${t.status === "reg" ? `<small>còn ${fmtLeft(t.startAt - D.now)}</small>` : ""}</div>
     </div>
-    <div class="panel"><h3>Lộ trình thi đấu</h3><div style="overflow-x:auto"><table class="plan"><thead><tr><th>${isRR(t) ? "Lượt" : "Vòng"}</th><th>Số trận</th><th>Thời gian</th><th>Hạn chót</th></tr></thead><tbody>${planRows}</tbody></table></div>
+    <div class="panel"><h3>Lộ trình thi đấu</h3><div style="overflow-x:auto"><table class="plan"><thead><tr><th>${isRR(t) ? "" : "Vòng"}</th><th>Số trận</th><th>Thời gian</th><th>Hạn chót</th></tr></thead><tbody>${planRows}</tbody></table></div>
       <p class="hint" style="margin:8px 0 0">${planHint}</p></div>
     <div id="body" style="margin-top:24px"></div>
     ${rulesHtml(t)}`;
@@ -663,7 +656,7 @@ function renderRegistration(my, organizer) {
       <button class="primary small" id="btnAccept">Chấp nhận</button><button class="ghost small" id="btnDecline">Từ chối</button></div>` : ""}
     <div class="row"><h2 class="grow" style="margin:0">${isRR(t) ? "Các đội" : "Sơ đồ thi đấu"}</h2><span class="hint">${D.teams.length}/${t.capacity} đội · ${ready} đội đủ người</span></div>
     <p class="hint" style="margin:4px 0 14px">${how} ${isRR(t)
-      ? "Lịch các lượt đấu được <b>bốc thăm ngẫu nhiên</b> lúc giải bắt đầu, đội chưa đủ người khi đó sẽ không được thi đấu."
+      ? "Không có lịch cố định: khi giải bắt đầu, các đội đủ người gặp nhau lúc nào cũng được. Đội chưa đủ người khi đó sẽ không được thi đấu."
       : "Vị trí bàn chỉ để xếp chỗ: cặp đấu được <b>bốc thăm ngẫu nhiên</b> lúc giải bắt đầu, đội chưa đủ người khi đó sẽ không được xếp nhánh."}</p>
     <div class="msg" id="regMsg" style="margin:0 0 10px"></div>
     ${isRR(t) ? `<div class="lgrid">${Array.from({ length: t.capacity }, (_, i) => table(D.teams[i] ?? null)).join("")}</div>`
@@ -751,7 +744,7 @@ function renderBracket() {
   if (openSeries) renderSeries(openSeries);
 }
 
-// Round robin: the table on top, then every matchday's pairings (the same series boxes as a bracket).
+// Round robin: the table on top, then every pairing, the ones still to play first (the same series boxes as a bracket).
 function renderLeague() {
   const b = D.bracket, t = D.tour;
   const mine = me && D.teams.find((x) => x.members.some((m) => m.state === "in" && same(m.username, me.username)))?.id;
@@ -764,20 +757,20 @@ function renderLeague() {
   const rows = b.table.map((r, n) => `<tr class="${n === 0 && t.status === "done" && t.champion === r.team ? "top" : ""} ${r.team === mine ? "mine" : ""}">
     <td>${n + 1}</td><td>${t.status === "done" && t.champion === r.team ? "🏆 " : ""}${esc(teamName(r.team))}${t.teamSize > 1 ? `<div class="hint">${membersOf(r.team).map(esc).join(", ")}</div>` : ""}</td>
     <td>${r.played}</td><td>${r.won}</td><td>${r.drawn}</td><td>${r.lost}</td><td>${r.gw}-${r.gl}</td><td>${r.gw - r.gl > 0 ? "+" : ""}${r.gw - r.gl}</td><td class="pts">${r.points}</td></tr>`).join("");
-  const days = b.rounds.map((r, d) => `<div class="lday"><b>Lượt ${d + 1}</b><span class="hint">${bo(r.wins)} · hạn ${fmtTime(r.deadline)}${r.rest ? ` · nghỉ: ${esc(teamName(r.rest))}` : ""}</span></div>
-    <div class="lgrid">${r.series.map((s) => {
+  const r = b.rounds[0], order = { play: 0, late: 1 };
+  const pairs = `<div class="lgrid">${[...r.series].sort((x, y) => (order[x.status] ?? 2) - (order[y.status] ?? 2)).map((s) => {
       const [text, cls] = seriesStatus(s);
       return `<div class="series ${s.status} ${openSeries === `${s.round}-${s.idx}` ? "open" : ""}" tabindex="0" data-s="${s.round}-${s.idx}">
         ${side(s, s.a, s.wa)}${side(s, s.b, s.wb)}<div class="st ${cls}">${esc(text)}</div></div>`;
-    }).join("")}</div>`).join("");
+    }).join("")}</div>`;
   const outside = D.teams.filter((x) => !b.table.some((r) => r.team === x.id));
   $("body").innerHTML = `
     <h2>Bảng xếp hạng</h2>
     <div style="overflow-x:auto"><table class="plan standings"><thead><tr><th>#</th><th>Đội</th><th title="Số cặp đấu đã xong">Trận</th><th>Thắng</th><th>Hoà</th><th>Thua</th><th title="Số ván thắng - thua">Ván</th><th title="Hiệu số ván">HS</th><th>Điểm</th></tr></thead><tbody>${rows}</tbody></table></div>
     <p class="hint" style="margin:8px 0 0">Thắng 3 điểm, hoà 1, thua hoặc bỏ trận 0. Bằng điểm: xếp theo hiệu số ván, số ván thắng, rồi kết quả đối đầu.</p>
-    <h2 style="margin-top:28px">Lịch thi đấu</h2>
-    <p class="hint" style="margin-top:-8px">Bấm vào một cặp đấu để xem từng ván, replay và kết quả.</p>
-    ${days}
+    <h2 style="margin-top:28px">Các cặp đấu</h2>
+    <p class="hint" style="margin-top:-8px">${bo(r.wins)} · hạn chót ${fmtTime(r.deadline)}${t.status === "run" ? ` (còn ${fmtLeft(r.deadline - D.now)})` : ""}. Không xếp lịch: hai đội vào phòng đánh với nhau lúc nào cũng được, kết quả tự vào bảng. Bấm vào một cặp để xem từng ván, replay và kết quả.</p>
+    ${pairs}
     <div class="sdetail panel hidden" id="sdetail"></div>
     ${outside.length ? `<p class="hint" style="margin-top:14px">Không được thi đấu (thiếu người khi bắt đầu): ${outside.map((x) => esc(x.name)).join(", ")}</p>` : ""}`;
   document.querySelectorAll(".series[data-s]").forEach((el) => {
@@ -797,7 +790,7 @@ function renderSeries(key) {
   const total = D.bracket.rounds.length;
   const [text] = seriesStatus(s);
   const redraw = () => isRR(D.tour) ? renderLeague() : renderBracket();
-  const head = `<div class="row"><h3 class="grow" style="margin:0">${isRR(D.tour) ? `Lượt ${r + 1}` : roundName(r, total)} ·${s.a ? esc(teamName(s.a)) : "?"} vs ${s.b ? esc(teamName(s.b)) : "?"}</h3>
+  const head = `<div class="row"><h3 class="grow" style="margin:0">${isRR(D.tour) ? "Vòng tròn" : roundName(r, total)} ·${s.a ? esc(teamName(s.a)) : "?"} vs ${s.b ? esc(teamName(s.b)) : "?"}</h3>
     <button class="x" id="sclose" aria-label="Đóng">×</button></div>
     <p class="hint" style="margin:4px 0 12px">${esc(text)}${s.readyAt ? ` · mở từ ${fmtTime(s.readyAt)} · hạn chót ${fmtTime(s.deadline)}` : ""} · cần ${s.need} trận thắng</p>`;
   let list = "";
@@ -840,7 +833,7 @@ function rulesHtml(t) {
     <ul>
       <li><b>Chạm N</b>: đội nào thắng N trận trước thì thắng nhánh (cặp đấu). Chạm 2 = đánh tối đa 3 trận (BO3), chạm 3 = BO5.</li>
       ${!t || !isRR(t) ? `<li><b>Loại trực tiếp</b>: khi đến giờ bắt đầu, các đội đủ người được <b>chia nhánh ngẫu nhiên</b>; đội lẻ được đi thẳng vào vòng sau.</li>` : ""}
-      ${!t || isRR(t) ? `<li><b>Vòng tròn tính điểm</b>: mỗi đội gặp tất cả các đội khác một lần, lịch các lượt bốc thăm lúc bắt đầu. Thắng cặp đấu <b>3 điểm</b>, hoà 1, thua hoặc bỏ trận 0. Hết hạn mà chưa đủ số trận thắng: đội đang dẫn thắng, bằng nhau là hoà. Đội nhiều điểm nhất vô địch (bằng điểm xét hiệu số ván, số ván thắng, đối đầu).</li>` : ""}
+      ${!t || isRR(t) ? `<li><b>Vòng tròn tính điểm</b>: mỗi đội gặp tất cả các đội khác một lần, không xếp lịch: hai đội gặp nhau lúc nào cũng được trước hạn chót, kết quả tự vào bảng điểm. Thắng cặp đấu <b>3 điểm</b>, hoà 1, thua hoặc bỏ trận 0. Hết hạn mà chưa đủ số trận thắng: đội đang dẫn thắng, bằng nhau là hoà. Đội nhiều điểm nhất vô địch (bằng điểm xét hiệu số ván, số ván thắng, đối đầu).</li>` : ""}
       <li>Hai đội tự hẹn giờ và vào một phòng trên launcher SuperAoE: một đội ngồi bên trái, đội kia bên phải, đúng thành viên đã đăng ký.</li>
       <li><b>Kết quả lấy tự động</b> từ trận đấu (bên đầu hàng / bị diệt / thoát game trước là thua), công khai cùng replay. Trận ngắn dưới 5 phút không được tính. Kết quả mà máy đối thủ không xác nhận được sẽ chờ admin xác nhận.</li>
       ${!t || !isRR(t) ? `<li>Mỗi vòng có <b>hạn chót</b>. Nhánh loại trực tiếp chưa xong khi hết hạn: <b>cả hai đội bị loại</b>.</li>` : ""}
