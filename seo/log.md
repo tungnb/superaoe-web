@@ -138,3 +138,17 @@
 - Khán giả vào giữa trận tua nhanh bắt kịp (23d262f): chưa viết lên website vì chưa rõ Worker live đã có core.js mới và chưa thử thật. Xác nhận thì vòng sau thêm vào trang khán giả.
 - Gửi ảnh chụp thật phòng chờ có dải “⚙ Tùy chọn” để đưa lên trang tạo phòng và bài outreach.
 - Vẫn tồn đọng: Google Search Console + Bing Webmaster Tools (sitemap 10 URL), ký số exe / notarize Mac, đăng bài outreach.
+
+## 2026-10-27 (vòng SEO 11 — tự động)
+- Sản phẩm đổi từ vòng trước: launcher 0.3.48 bắt buộc Win + Mac — lưu trận giữa chừng + đánh tiếp (0.3.47, Worker 28150510; hộp F3 sửa 0.3.48), tua replay / khán giả vào muộn / vào lại trận nhanh ~x95 (0.3.37), phím 1–8 theo màu (0.3.47), 9 giao diện phòng chờ, nhường chủ phòng / mời ra, lịch sử chat phòng. Cập nhật `seo/facts.md`.
+- Cải thiện lớn: /tao-phong-choi-de-che/ thêm mục #luu-tran “Lưu trận giữa chừng, hôm khác đánh tiếp” (4 bước F3 → L → mọi người Y → “💾 Trận đã lưu” → “▶ Đánh tiếp”, giới hạn 10 bản / 30 ngày / 3 lần, ghi chú tính năng mới chưa thử trận có AI + mời báo lỗi), 1 FAQ mới + JSON-LD (9 câu), meta description (152), “Cập nhật lần cuối” 27/10/2026, launcher 0.3.48.
+- Trang chủ: softwareVersion 0.3.36 → 0.3.48, featureList + lưu trận. llms.txt: launcher 0.3.48, câu lưu trận ở mục Phòng, mô tả trang tạo phòng, 1 câu trả lời nhanh. Sitemap lastmod 2026-10-27 cho / và /tao-phong-choi-de-che/.
+- Từ khóa mới (WebSearch): “lưu game đế chế online / chơi tiếp trận” — không có bài tiếng Việt nào nói lưu ván online → khoảng trống.
+- Không đo hạng (lần trước 2026-10-21, lần tới 2026-10-28); không soạn outreach (tuần này đã có 2026-10-26; tuần sau nên lấy lưu trận làm điểm nhấn).
+- Kiểm tra: html-validate chỉ còn doctype-style/no-inline-style (như trước), JSON-LD parse được, FAQ JSON-LD khớp hiển thị, không anchor nội bộ hỏng, title 58, description 152.
+- Lần sau: đo hạng 2026-10-28 (thêm “lưu game đế chế online”, “giải đấu đế chế”, “replay aoe”, “mirror random đế chế”); cập nhật /choi-aoe-co-khan-gia/ (xem thao tác chuột, phím 1–8 theo màu, khán giả vào giữa trận tua nhanh — đã phát hành 0.3.37 nhưng chưa thử phòng thật); /xem-lai-tran-aoe-replay/ nói tua nhanh hơn.
+
+### Cần chủ dự án quyết định / làm
+- Lưu trận chưa thử trận thật nhiều máy / trận có AI; website ghi là tính năng mới + mời báo lỗi. Thử thật xong thì báo để bỏ câu đó (và gửi ảnh hộp “Lưu trận và thoát?” / danh sách “💾 Trận đã lưu”).
+- Khán giả vào giữa trận tua nhanh (0.3.37): xác nhận đã chạy trong phòng thật thì vòng sau viết lên trang khán giả.
+- Vẫn tồn đọng: Google Search Console + Bing Webmaster Tools (sitemap 10 URL), ký số exe / notarize Mac, đăng bài outreach.

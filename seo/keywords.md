@@ -32,3 +32,4 @@
 | 3 | đế chế chế độ cửa sổ / đế chế full hd / độ phân giải đế chế win 10 | /tao-phong-choi-de-che/#cau-hinh — nguồn: suy từ tính năng Cấu hình game (launcher 0.3.5+), chưa đo |
 | 3 | mirror random đế chế / chung tầm nhìn đồng minh đế chế (shared exploration) | /tao-phong-choi-de-che/#tuy-chon-phong — nguồn: WebSearch 2026-10-26, kết quả toàn tiếng Anh (forums.ageofempires.com, AoE2 DE), không có bài tiếng Việt → khoảng trống |
 | 3 | chơi đế chế 1024x768 win 10 / độ phân giải đế chế | /tao-phong-choi-de-che/#cau-hinh — nguồn: WebSearch 2026-10-26, top là tinhte (phần mềm HRC), fptshop |
+| 2 | lưu game đế chế online / save game aoe đánh tiếp / chơi tiếp trận đế chế hôm sau | /tao-phong-choi-de-che/#luu-tran (từ 2026-10-27) — nguồn: WebSearch 2026-10-27 "lưu game đế chế online chơi tiếp": kết quả chỉ có bài tải/EgoPlay/GameRanger (fptshop, mytour), không ai nói lưu ván online → khoảng trống |
