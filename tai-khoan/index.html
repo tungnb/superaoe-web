@@ -3,10 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tài khoản – SuperAoE</title>
-<meta name="description" content="Đăng nhập SuperAoE để xem lịch sử trận đấu, tải replay và đổi mật khẩu.">
+<title>Tài khoản – SuperAqE</title>
+<meta name="description" content="Đăng nhập SuperAqE để xem lịch sử trận đấu, tải replay và đổi mật khẩu.">
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#140f0a">
+<meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111113" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -85,11 +86,12 @@ button, .btn { display: inline-flex; align-items: center; justify-content: cente
   .actions .btn { flex: 1; }
 }
 </style>
+<link rel="stylesheet" href="/modern.css">
 </head>
 <body>
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="/"><img src="/favicon.svg" alt="" width="30" height="36">SuperAoE</a>
+    <a class="brand" href="/"><img src="/favicon.svg" alt="" width="30" height="36">SuperAqE</a>
     <div class="who hidden" id="who"><a href="/lich-su-tran/">Lịch sử thi đấu</a><span>Xin chào, <b id="whoName"></b></span><button class="ghost small" id="btnLogout">Đăng xuất</button></div>
   </div>
 </header>
@@ -98,7 +100,7 @@ button, .btn { display: inline-flex; align-items: center; justify-content: cente
   <section id="loginView" class="hidden">
     <div class="panel login">
       <h2 id="loginTitle">Đăng nhập</h2>
-      <p class="sub" style="margin:0">Một tài khoản SuperAoE dùng chung cho website và launcher.</p>
+      <p class="sub" style="margin:0">Một tài khoản SuperAqE dùng chung cho website và launcher.</p>
       <form class="form" id="loginForm">
         <label for="lu">Tên đăng nhập</label>
         <input id="lu" name="username" autocomplete="username" required maxlength="24">
@@ -113,7 +115,7 @@ button, .btn { display: inline-flex; align-items: center; justify-content: cente
         <p class="swap" id="swapWhy">Chưa có tài khoản?</p>
         <button class="ghost" type="button" id="btnSwap">Tạo tài khoản mới</button>
       </form>
-      <p class="hint">Để chơi, <a href="/#tai-ve">tải SuperAoE</a> rồi đăng nhập launcher bằng tài khoản này. Đăng nhập trên web không làm launcher của bạn bị đăng xuất.</p>
+      <p class="hint">Để chơi, <a href="/#tai-ve">tải SuperAqE</a> rồi đăng nhập launcher bằng tài khoản này. Đăng nhập trên web không làm launcher của bạn bị đăng xuất.</p>
     </div>
   </section>
 
@@ -126,7 +128,7 @@ button, .btn { display: inline-flex; align-items: center; justify-content: cente
       <div class="stats" id="stats"></div>
       <div class="matches" id="matches"></div>
       <div class="more"><button class="ghost hidden" id="btnMore">Xem thêm</button></div>
-      <p class="hint">Bên thua là bên (cánh trái Nhất–Tứ phẩm, cánh phải Ngũ–Bát phẩm) có người đầu hàng hoặc thoát game trước. Nếu mọi người ngồi cùng một cánh thì mỗi người là một bên. Mở file .aoerep bằng launcher SuperAoE để xem lại.</p>
+      <p class="hint">Bên thua là bên (cánh trái Nhất–Tứ phẩm, cánh phải Ngũ–Bát phẩm) có người đầu hàng hoặc thoát game trước. Nếu mọi người ngồi cùng một cánh thì mỗi người là một bên. Mở file .aoerep bằng launcher SuperAqE để xem lại.</p>
     </div>
 
     <div class="panel">

@@ -3,21 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Giải đấu Đế Chế (AoE) online – SuperAoE</title>
-<meta name="description" content="Tạo và tham gia giải đấu Đế Chế (AoE Rise of Rome) online trên SuperAoE: 1-1 đến 4-4, loại trực tiếp hoặc vòng tròn tính điểm, chạm 2 / chạm 3, kết quả tự động và công khai.">
+<title>Giải đấu Đế Chế (AoE) online – SuperAqE</title>
+<meta name="description" content="Tạo và tham gia giải đấu Đế Chế (AoE Rise of Rome) online trên SuperAqE: 1-1 đến 4-4, loại trực tiếp hoặc vòng tròn tính điểm, chạm 2 / chạm 3, kết quả tự động và công khai.">
 <link rel="canonical" href="https://superaoe.com/giai-dau/">
-<meta name="theme-color" content="#140f0a">
+<meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111113" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Giải đấu Đế Chế – SuperAoE">
+<meta property="og:title" content="Giải đấu Đế Chế – SuperAqE">
 <meta property="og:description" content="Tổ chức giải Đế Chế online: chia nhánh, chạm 2, kết quả tự động và công khai.">
 <meta property="og:url" content="https://superaoe.com/giai-dau/">
 <meta property="og:image" content="https://superaoe.com/img/spectator.jpg">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
   --gold: #e8c35a; --gold2: #b8902f; --ink: #221a12;
@@ -213,11 +211,12 @@ dialog h2 { margin-bottom: 4px; }
   .bcol { width: 214px; }
 }
 </style>
+<link rel="stylesheet" href="/modern.css">
 </head>
 <body>
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="/"><img src="/favicon.svg" alt="" width="30" height="36">SuperAoE</a>
+    <a class="brand" href="/"><img src="/favicon.svg" alt="" width="30" height="36">SuperAqE</a>
     <nav class="links" aria-label="Trang"><a href="/giai-dau/" class="on">Giải đấu</a><a href="/lich-su-tran/">Lịch sử trận</a><a href="/tai-khoan/">Tài khoản</a></nav>
     <div class="who">
       <span class="hidden" id="who"><span class="name"><a href="/tai-khoan/"><b id="whoName"></b></a> · </span><button class="ghost small" id="btnLogout">Đăng xuất</button></span>
@@ -231,7 +230,7 @@ dialog h2 { margin-bottom: 4px; }
 <dialog id="loginDlg" aria-labelledby="loginTitle">
   <button class="close" type="button" data-close aria-label="Đóng">×</button>
   <h2 id="loginTitle">Đăng nhập</h2>
-  <p class="hint" style="margin:0" id="loginWhy">Đăng nhập bằng tài khoản SuperAoE.</p>
+  <p class="hint" style="margin:0" id="loginWhy">Đăng nhập bằng tài khoản SuperAqE.</p>
   <form id="loginForm">
     <label for="lu">Tên đăng nhập</label>
     <input id="lu" autocomplete="username" required maxlength="24">
@@ -240,7 +239,7 @@ dialog h2 { margin-bottom: 4px; }
     <button class="primary" type="submit">Đăng nhập</button>
     <div class="msg" id="loginMsg"></div>
   </form>
-  <p class="hint">Chưa có tài khoản? <a href="/#tai-ve">Tải SuperAoE</a> và đăng ký ngay trong launcher. Đăng nhập trên web không làm launcher của bạn bị đăng xuất.</p>
+  <p class="hint">Chưa có tài khoản? <a href="/#tai-ve">Tải SuperAqE</a> và đăng ký ngay trong launcher. Đăng nhập trên web không làm launcher của bạn bị đăng xuất.</p>
 </dialog>
 
 <dialog id="createDlg" class="wide" aria-labelledby="createTitle">
@@ -298,6 +297,7 @@ dialog h2 { margin-bottom: 4px; }
 <script>
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+const CUP = '<svg class="i-cup" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 01-10 0z"/><path d="M17 5h3v2a3 3 0 01-3 3M7 5H4v2a3 3 0 003 3"/></svg>';
 const H = 3600_000;
 let me = null, isAdmin = false, pending = null;
 const tourId = Number(new URLSearchParams(location.search).get("id")) || 0;
@@ -318,7 +318,7 @@ function setMe(info) {
 }
 function askLogin(then, why) {
   pending = then ?? null;
-  $("loginWhy").textContent = why ?? "Đăng nhập bằng tài khoản SuperAoE.";
+  $("loginWhy").textContent = why ?? "Đăng nhập bằng tài khoản SuperAqE.";
   $("loginMsg").textContent = "";
   $("loginDlg").showModal();
   $("lu").focus();
@@ -346,12 +346,12 @@ const flash = (el, text) => { el.textContent = text; };
 
 // ---------------- list
 async function showList() {
-  document.title = "Giải đấu Đế Chế – SuperAoE";
+  document.title = "Giải đấu Đế Chế – SuperAqE";
   const main = $("main");
   main.innerHTML = `
     <div class="row" style="align-items:flex-end">
       <div class="grow"><h1>Giải đấu</h1>
-      <p class="sub" style="margin-bottom:0">Tổ chức giải Đế Chế online cho bạn bè, hội nhóm: 1-1, 2-2, 3-3 hoặc 4-4, chia nhánh loại trực tiếp hoặc đá vòng tròn tính điểm, chạm 2 hay chạm 3 tuỳ vòng. Kết quả hệ thống tự lấy từ trận đấu trên SuperAoE và công khai cho mọi người xem.</p></div>
+      <p class="sub" style="margin-bottom:0">Tổ chức giải Đế Chế online cho bạn bè, hội nhóm: 1-1, 2-2, 3-3 hoặc 4-4, chia nhánh loại trực tiếp hoặc đá vòng tròn tính điểm, chạm 2 hay chạm 3 tuỳ vòng. Kết quả hệ thống tự lấy từ trận đấu trên SuperAqE và công khai cho mọi người xem.</p></div>
       <button class="primary" id="btnCreate">+ Tạo giải đấu</button>
     </div>
     <div class="invites" id="invites"></div>
@@ -381,7 +381,7 @@ function card(t) {
     <div class="row"><b class="grow">${esc(t.name)}</b>${badge(t.status)}</div>
     <div class="meta">${fmtSize(t.teamSize)} · ${isRR(t) ? "Vòng tròn" : "Loại trực tiếp"} · ${t.teams}/${t.capacity} đội · ${wins.length === 1 ? bo(wins[0]) : "Chạm " + wins.join("/")} · ${MODE[t.mode]}</div>
     <div class="meta">Tổ chức: ${esc(t.organizer)} · ${when}</div>
-    ${t.championName ? `<div class="champ">🏆 Vô địch: ${esc(t.championName)}</div>` : ""}
+    ${t.championName ? `<div class="champ">${CUP}Vô địch: ${esc(t.championName)}</div>` : ""}
   </a>`;
 }
 
@@ -411,7 +411,7 @@ function modeHint() {
   const size = Number(formVal("size"));
   $("cModeHint").textContent = formVal("mode") === "invite"
     ? (size === 1 ? "Bạn mời từng người chơi; mỗi người là một đội, họ bấm chấp nhận trên trang giải." : "Bạn tạo các đội và mời người vào từng đội; người được mời bấm chấp nhận trên trang giải.")
-    : (size === 1 ? "Ai có tài khoản SuperAoE cũng bấm Tham gia được, đến khi đủ số đội." : "Người chơi tự tạo đội (làm đội trưởng, mời đồng đội) hoặc vào đội còn chỗ, đến khi đủ số đội.");
+    : (size === 1 ? "Ai có tài khoản SuperAqE cũng bấm Tham gia được, đến khi đủ số đội." : "Người chơi tự tạo đội (làm đội trưởng, mời đồng đội) hoặc vào đội còn chỗ, đến khi đủ số đội.");
 }
 // The team counts of the format chosen (a bracket doubles, a round robin takes any small count).
 function buildCaps() {
@@ -552,7 +552,7 @@ const membersOf = (id) => (D.teams.find((t) => t.id === id)?.members ?? []).filt
 
 function renderTour() {
   const t = D.tour;
-  document.title = `${t.name} – Giải đấu SuperAoE`;
+  document.title = `${t.name} – Giải đấu SuperAqE`;
   const rounds = t.rounds ?? t.plan;
   const scrollX = document.querySelector(".bscroll")?.scrollLeft;  // kept when the page reloads itself
   const myMember = me && D.teams.flatMap((x) => x.members.map((m) => ({ ...m, team: x.id }))).find((m) => same(m.username, me.username));
@@ -566,7 +566,7 @@ function renderTour() {
     ? "Không xếp lịch: hai đội gặp nhau lúc nào cũng được, từ khi giải bắt đầu đến hạn chót. Hết hạn: đội đang dẫn thắng cặp đó, bằng nhau thì hoà, chưa đánh thì cả hai 0 điểm."
     : `Nhánh chưa xong khi hết hạn chót: cả hai đội bị loại, đối thủ ở vòng sau được đi tiếp.${t.status === "reg" && t.capacity > 2 ? " Nếu khi bắt đầu chưa đủ đội, nhánh thu gọn lại và dùng các vòng cuối của lộ trình." : ""}`;
   const champ = t.status === "done" ? (t.champion
-    ? `<div class="champion">🏆 ${esc(teamName(t.champion))}<small>Vô địch${t.teamSize > 1 ? " · " + membersOf(t.champion).map(esc).join(", ") : ""}</small></div>`
+    ? `<div class="champion">${CUP}${esc(teamName(t.champion))}<small>Vô địch${t.teamSize > 1 ? " · " + membersOf(t.champion).map(esc).join(", ") : ""}</small></div>`
     : `<div class="champion" style="color:var(--dim)">Không có nhà vô địch<small>${isRR(t) ? "Không đội nào ghi được điểm." : "Trận chung kết không kết thúc đúng hạn: cả hai đội bị loại."}</small></div>`) : "";
   $("main").innerHTML = `
     <p style="margin:20px 0 0"><a href="/giai-dau/">← Tất cả giải đấu</a></p>
@@ -660,7 +660,7 @@ function renderRegistration(my, organizer) {
       : "Vị trí bàn chỉ để xếp chỗ: cặp đấu được <b>bốc thăm ngẫu nhiên</b> lúc giải bắt đầu, đội chưa đủ người khi đó sẽ không được xếp nhánh."}</p>
     <div class="msg" id="regMsg" style="margin:0 0 10px"></div>
     ${isRR(t) ? `<div class="lgrid">${Array.from({ length: t.capacity }, (_, i) => table(D.teams[i] ?? null)).join("")}</div>`
-      : drawBracket(rounds, `<b>🏆 Vô địch</b><small>Đội thắng chung kết</small>`)}
+      : drawBracket(rounds, `<b>${CUP}Vô địch</b><small>Đội thắng chung kết</small>`)}
     <div class="actions">
       ${my?.state === "in" ? `<button class="ghost" id="btnLeave">Rời giải</button>` : ""}
       ${!me ? `<button class="primary" id="btnSignin">Đăng nhập để tham gia</button>` : ""}
@@ -726,8 +726,8 @@ function renderBracket() {
     }),
   }));
   const cup = t.status === "done"
-    ? (t.champion ? `<b title="${esc(teamName(t.champion))}">🏆 ${esc(teamName(t.champion))}</b><small>Vô địch</small>` : `<b>Không có vô địch</b><small>Chung kết không xong đúng hạn</small>`)
-    : `<b>🏆 Vô địch</b><small>Đội thắng chung kết</small>`;
+    ? (t.champion ? `<b title="${esc(teamName(t.champion))}">${CUP}${esc(teamName(t.champion))}</b><small>Vô địch</small>` : `<b>Không có vô địch</b><small>Chung kết không xong đúng hạn</small>`)
+    : `<b>${CUP}Vô địch</b><small>Đội thắng chung kết</small>`;
   const playing = new Set(b.rounds[0].series.flatMap((s) => [s.a, s.b]).filter(Boolean));
   const outside = D.teams.filter((x) => !playing.has(x.id));
   $("body").innerHTML = `
@@ -755,7 +755,7 @@ function renderLeague() {
       ${members.length ? `<div class="mem">${members.map(esc).join(", ")}</div>` : ""}`;
   };
   const rows = b.table.map((r, n) => `<tr class="${n === 0 && t.status === "done" && t.champion === r.team ? "top" : ""} ${r.team === mine ? "mine" : ""}">
-    <td>${n + 1}</td><td>${t.status === "done" && t.champion === r.team ? "🏆 " : ""}${esc(teamName(r.team))}${t.teamSize > 1 ? `<div class="hint">${membersOf(r.team).map(esc).join(", ")}</div>` : ""}</td>
+    <td>${n + 1}</td><td>${t.status === "done" && t.champion === r.team ? CUP : ""}${esc(teamName(r.team))}${t.teamSize > 1 ? `<div class="hint">${membersOf(r.team).map(esc).join(", ")}</div>` : ""}</td>
     <td>${r.played}</td><td>${r.won}</td><td>${r.drawn}</td><td>${r.lost}</td><td>${r.gw}-${r.gl}</td><td>${r.gw - r.gl > 0 ? "+" : ""}${r.gw - r.gl}</td><td class="pts">${r.points}</td></tr>`).join("");
   const r = b.rounds[0], order = { play: 0, late: 1 };
   const pairs = `<div class="lgrid">${[...r.series].sort((x, y) => (order[x.status] ?? 2) - (order[y.status] ?? 2)).map((s) => {
@@ -795,7 +795,7 @@ function renderSeries(key) {
     <p class="hint" style="margin:4px 0 12px">${esc(text)}${s.readyAt ? ` · mở từ ${fmtTime(s.readyAt)} · hạn chót ${fmtTime(s.deadline)}` : ""} · cần ${s.need} trận thắng</p>`;
   let list = "";
   if (s.readyAt && s.a && s.b) {
-    const howto = s.status === "play" || s.status === "late" ? `<p class="hint">Cách đấu: một người tạo phòng trong launcher SuperAoE. <b>${esc(teamName(s.a))}</b> ngồi bên trái (Quan Nhất–Tứ phẩm), <b>${esc(teamName(s.b))}</b> ngồi bên phải (Ngũ–Bát phẩm)${D.tour.teamSize > 1 ? ", đủ và đúng thành viên đã đăng ký" : ""}, không thêm người chơi khác (khán giả thì được). Trận dài từ 5 phút, đánh xong là kết quả tự hiện ở đây.</p>` : "";
+    const howto = s.status === "play" || s.status === "late" ? `<p class="hint">Cách đấu: một người tạo phòng trong launcher SuperAqE. <b>${esc(teamName(s.a))}</b> ngồi bên trái (Quan Nhất–Tứ phẩm), <b>${esc(teamName(s.b))}</b> ngồi bên phải (Ngũ–Bát phẩm)${D.tour.teamSize > 1 ? ", đủ và đúng thành viên đã đăng ký" : ""}, không thêm người chơi khác (khán giả thì được). Trận dài từ 5 phút, đánh xong là kết quả tự hiện ở đây.</p>` : "";
     list = s.games.length ? `<ul class="games">${s.games.map((g, n) => {
       const m = D.matches[g.matchId] ?? {};
       return `<li class="${g.voided ? "void" : ""}"><span class="tag">Ván ${n + 1} · ${fmtTime(g.started)}${m.durationMs ? " · " + fmtDur(m.durationMs) : ""}</span>
@@ -834,12 +834,12 @@ function rulesHtml(t) {
       <li><b>Chạm N</b>: đội nào thắng N trận trước thì thắng nhánh (cặp đấu). Chạm 2 = đánh tối đa 3 trận (BO3), chạm 3 = BO5.</li>
       ${!t || !isRR(t) ? `<li><b>Loại trực tiếp</b>: khi đến giờ bắt đầu, các đội đủ người được <b>chia nhánh ngẫu nhiên</b>; đội lẻ được đi thẳng vào vòng sau.</li>` : ""}
       ${!t || isRR(t) ? `<li><b>Vòng tròn tính điểm</b>: mỗi đội gặp tất cả các đội khác một lần, không xếp lịch: hai đội gặp nhau lúc nào cũng được trước hạn chót, kết quả tự vào bảng điểm. Thắng cặp đấu <b>3 điểm</b>, hoà 1, thua hoặc bỏ trận 0. Hết hạn mà chưa đủ số trận thắng: đội đang dẫn thắng, bằng nhau là hoà. Đội nhiều điểm nhất vô địch (bằng điểm xét hiệu số ván, số ván thắng, đối đầu).</li>` : ""}
-      <li>Hai đội tự hẹn giờ và vào một phòng trên launcher SuperAoE: một đội ngồi bên trái, đội kia bên phải, đúng thành viên đã đăng ký.</li>
+      <li>Hai đội tự hẹn giờ và vào một phòng trên launcher SuperAqE: một đội ngồi bên trái, đội kia bên phải, đúng thành viên đã đăng ký.</li>
       <li><b>Kết quả lấy tự động</b> từ trận đấu (bên đầu hàng / bị diệt / thoát game trước là thua), công khai cùng replay. Trận ngắn dưới 5 phút không được tính. Kết quả mà máy đối thủ không xác nhận được sẽ chờ admin xác nhận.</li>
       ${!t || !isRR(t) ? `<li>Mỗi vòng có <b>hạn chót</b>. Nhánh loại trực tiếp chưa xong khi hết hạn: <b>cả hai đội bị loại</b>.</li>` : ""}
       <li>Không ai sửa được kết quả. Chỉ <b>admin</b> có quyền xoá kết quả một ván để hai đội đấu lại (ví dụ khi bị lỗi mạng).</li>
     </ul>
-    ${t ? "" : `<p class="hint" style="margin:10px 0 0">Chưa có SuperAoE? <a href="/#tai-ve">Tải miễn phí cho Windows và MacBook</a>.</p>`}
+    ${t ? "" : `<p class="hint" style="margin:10px 0 0">Chưa có SuperAqE? <a href="/#tai-ve">Tải miễn phí cho Windows và MacBook</a>.</p>`}
   </section>`;
 }
 

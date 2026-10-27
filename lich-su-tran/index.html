@@ -3,21 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lịch sử thi đấu Đế Chế, tải replay AoE – SuperAoE</title>
-<meta name="description" content="Toàn bộ trận Đế Chế (AoE Rise of Rome) đã đấu trên SuperAoE, kèm replay tải về xem lại để học hỏi cách đánh. Thích và bình luận từng trận.">
+<title>Lịch sử thi đấu Đế Chế, tải replay AoE – SuperAqE</title>
+<meta name="description" content="Toàn bộ trận Đế Chế (AoE Rise of Rome) đã đấu trên SuperAqE, kèm replay tải về xem lại để học hỏi cách đánh. Thích và bình luận từng trận.">
 <link rel="canonical" href="https://superaoe.com/lich-su-tran/">
-<meta name="theme-color" content="#140f0a">
+<meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111113" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Lịch sử thi đấu – SuperAoE">
-<meta property="og:description" content="Xem mọi trận Đế Chế đã đấu trên SuperAoE, tải replay về xem lại để học hỏi.">
+<meta property="og:title" content="Lịch sử thi đấu – SuperAqE">
+<meta property="og:description" content="Xem mọi trận Đế Chế đã đấu trên SuperAqE, tải replay về xem lại để học hỏi.">
 <meta property="og:url" content="https://superaoe.com/lich-su-tran/">
 <meta property="og:image" content="https://superaoe.com/img/replay-tua.jpg">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
   --gold: #e8c35a; --gold2: #b8902f; --ink: #221a12;
@@ -157,11 +155,12 @@ dialog h2 { margin-bottom: 4px; }
   .who .name { display: none; }
 }
 </style>
+<link rel="stylesheet" href="/modern.css">
 </head>
 <body>
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="/"><img src="/favicon.svg" alt="" width="30" height="36">SuperAoE</a>
+    <a class="brand" href="/"><img src="/favicon.svg" alt="" width="30" height="36">SuperAqE</a>
     <div class="who">
       <span class="hidden" id="who"><span class="name"><a href="/tai-khoan/"><b id="whoName"></b></a> · </span><button class="ghost small" id="btnLogout">Đăng xuất</button></span>
       <button class="primary small hidden" id="btnLogin">Đăng nhập</button>
@@ -171,7 +170,7 @@ dialog h2 { margin-bottom: 4px; }
 
 <main class="wrap">
   <h1>Lịch sử thi đấu</h1>
-  <p class="sub">Mọi trận Đế Chế đã đấu trên SuperAoE có replay. Tải replay về xem lại để học hỏi cách đánh của các cao thủ, thích trận hay và bình luận cùng mọi người.</p>
+  <p class="sub">Mọi trận Đế Chế đã đấu trên SuperAqE có replay. Tải replay về xem lại để học hỏi cách đánh của các cao thủ, thích trận hay và bình luận cùng mọi người.</p>
 
   <div class="matches" id="matches"></div>
   <div class="more"><button class="ghost hidden" id="btnMore">Xem thêm</button></div>
@@ -180,17 +179,17 @@ dialog h2 { margin-bottom: 4px; }
     <h2>Cách xem lại một trận</h2>
     <ol>
       <li>Bấm <b>Tải replay</b> để lưu file <code>.aoerep</code> về máy.</li>
-      <li>Mở launcher SuperAoE, chọn <b>Lịch sử trận / Xem lại</b> → <b>Mở file replay</b> rồi chọn file vừa tải (trên Windows có thể bấm đúp vào file).</li>
+      <li>Mở launcher SuperAqE, chọn <b>Lịch sử trận / Xem lại</b> → <b>Mở file replay</b> rồi chọn file vừa tải (trên Windows có thể bấm đúp vào file).</li>
       <li>Thanh điều khiển ở dưới màn hình cho tua nhanh, lùi, tạm dừng, xem từ góc nhìn của từng người chơi.</li>
     </ol>
-    <p class="hint" style="margin-bottom:0">Chưa có SuperAoE? <a href="/#tai-ve">Tải miễn phí cho Windows và MacBook</a>. Xem thêm về <a href="/xem-lai-tran-aoe-replay/">tính năng xem lại replay</a>.</p>
+    <p class="hint" style="margin-bottom:0">Chưa có SuperAqE? <a href="/#tai-ve">Tải miễn phí cho Windows và MacBook</a>. Xem thêm về <a href="/xem-lai-tran-aoe-replay/">tính năng xem lại replay</a>.</p>
   </section>
 </main>
 
 <dialog id="loginDlg" aria-labelledby="loginTitle">
   <button class="x" type="button" id="dlgClose" aria-label="Đóng">×</button>
   <h2 id="loginTitle">Đăng nhập</h2>
-  <p class="hint" style="margin:0" id="loginWhy">Đăng nhập bằng tài khoản SuperAoE để thích và bình luận.</p>
+  <p class="hint" style="margin:0" id="loginWhy">Đăng nhập bằng tài khoản SuperAqE để thích và bình luận.</p>
   <form id="loginForm">
     <label for="lu">Tên đăng nhập</label>
     <input id="lu" name="username" autocomplete="username" required maxlength="24">
@@ -205,7 +204,7 @@ dialog h2 { margin-bottom: 4px; }
     <p class="swap" id="swapWhy">Chưa có tài khoản?</p>
     <button class="ghost" type="button" id="btnSwap">Tạo tài khoản mới</button>
   </form>
-  <p class="hint">Tài khoản dùng chung cho website và <a href="/#tai-ve">launcher SuperAoE</a>. Đăng nhập trên web không làm launcher của bạn bị đăng xuất.</p>
+  <p class="hint">Tài khoản dùng chung cho website và <a href="/#tai-ve">launcher SuperAqE</a>. Đăng nhập trên web không làm launcher của bạn bị đăng xuất.</p>
 </dialog>
 
 <script>
@@ -241,7 +240,7 @@ function setMe(info) {
 // Signed out (or the session ended): ask to sign in, then carry on with what was clicked.
 function askLogin(then, why) {
   pending = then ?? null;
-  $("loginWhy").textContent = why ?? "Đăng nhập bằng tài khoản SuperAoE để thích và bình luận.";
+  $("loginWhy").textContent = why ?? "Đăng nhập bằng tài khoản SuperAqE để thích và bình luận.";
   setRegister(false);
   $("loginDlg").showModal();
   $("lu").focus();
