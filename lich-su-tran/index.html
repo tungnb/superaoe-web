@@ -123,6 +123,7 @@ svg.i { width: 17px; height: 17px; flex: none; }
 .scoretable td.total { color: var(--gold); font-weight: 700; }
 .scoretable td.best { color: #ffe28a; font-weight: 700; text-shadow: 0 0 6px rgba(232,195,90,.45); }
 .scoretable td.yes { color: #9bd3a3; }
+.sumtl { margin-top: 12px; }
 .tlbox { position: relative; background: #0d0a06; border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px 4px; }
 /* Phones: the timeline keeps a readable width and scrolls sideways */
 .tlscroll { overflow-x: auto; scrollbar-color: var(--line) transparent; }
@@ -473,15 +474,18 @@ const resultCell = (p) => `<td>${p.state === 1 ? '<span class="win">Thắng</spa
 // timeline version 2), the game's timeline, details & ages, charts.
 function renderStats(tl, box) {
   const ps = timelineStats(tl);
-  const tabs = [...(tl.scores ? SCORE_TABS : []), ...OTHER_TABS];
+  // The timeline sits under the summary table, so it is its own tab only for old matches.
+  const tabs = tl.scores ? [...SCORE_TABS, ...OTHER_TABS.filter((t) => t.key !== "timeline")] : OTHER_TABS;
   box.innerHTML = `<div class="ctabs mtabs">${tabs.map((t, i) => `<button class="btn${i ? "" : " on"}" data-k="${t.key}">${t.label}</button>`).join("")}</div>
     <div class="mpane"></div>
     <p class="hint">Số liệu do game của ${esc(tl.by ?? "người chơi")} ghi lại${tl.agreed ? `, khớp với ${tl.agreed} người chơi khác` : ""}. Giờ là giờ trong game.${tl.scores ? "" : " Trận này ghi bằng launcher cũ nên chưa có bảng điểm như cuối game."}</p>`;
   const pane = box.querySelector(".mpane");
   const show = (key) => {
     const scoreTab = SCORE_TABS.find((t) => t.key === key);
-    if (scoreTab) pane.innerHTML = scoreTable(scoreTab, ps);
-    else if (key === "timeline") drawTimeline(tl, ps, pane);
+    if (scoreTab) {
+      pane.innerHTML = scoreTable(scoreTab, ps) + (key === "summary" ? '<div class="sumtl"></div>' : "");
+      if (key === "summary") drawTimeline(tl, ps, pane.querySelector(".sumtl"));
+    } else if (key === "timeline") drawTimeline(tl, ps, pane);
     else if (key === "details") renderDetails(tl, ps, pane);
     else renderCharts(tl, ps, pane);
   };
