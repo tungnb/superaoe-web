@@ -6,7 +6,7 @@
 <title>Chơi Đế Chế (AoE) online miễn phí, replay, Mac – SuperAqE</title>
 <meta name="description" content="SuperAqE: chơi Đế Chế (AoE) online miễn phí, lưu và xem lại trận cũ để rút kinh nghiệm, học hỏi đối thủ. Chạy mượt trên Windows và MacBook M1–M4.">
 <meta property="og:title" content="SuperAqE – Chơi Đế Chế online, xem lại replay, có bản Mac">
-<meta property="og:description" content="Chơi AoE online 8 người + 3 khán giả xem trực tiếp. Lưu và xem lại trận đấu cũ để rút kinh nghiệm, học hỏi từ đối thủ. Chạy mượt trên Windows và MacBook M1–M4. Miễn phí.">
+<meta property="og:description" content="Chơi AoE online 8 người + 4 khán giả xem trực tiếp. Lưu và xem lại trận đấu cũ để rút kinh nghiệm, học hỏi từ đối thủ. Chạy mượt trên Windows và MacBook M1–M4. Miễn phí.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://superaqe.com/">
 <meta property="og:image" content="https://superaqe.com/img/spectator.jpg">
@@ -59,13 +59,14 @@
  "name": "SuperAqE",
  "applicationCategory": "GameApplication",
  "operatingSystem": "Windows, macOS",
- "description": "Launcher chơi Đế Chế (Age of Empires 1 Rise of Rome) online cho Windows 10/11 và MacBook chip Apple: tài khoản, danh sách phòng, phòng chờ 8 người chơi + 3 khán giả xem trực tiếp, mọi trận tự lưu replay để xem lại, không cần VPN hay mở cổng.",
+ "description": "Launcher chơi Đế Chế (Age of Empires 1 Rise of Rome) online cho Windows 10/11 và MacBook chip Apple: tài khoản, danh sách phòng, phòng chờ 8 người chơi + 4 khán giả xem trực tiếp, mọi trận tự lưu replay để xem lại, không cần VPN hay mở cổng.",
  "url": "https://superaqe.com/",
  "downloadUrl": ["https://superaqe.com/download/setup", "https://superaqe.com/download/mac"],
- "softwareVersion": "0.3.48",
+ "softwareVersion": "0.3.59",
  "featureList": [
   "Chơi Đế Chế online tới 8 người, không cần VPN hay mở cổng",
-  "3 ghế khán giả xem trực tiếp bằng đồ họa gốc",
+  "4 ghế khán giả xem trực tiếp bằng đồ họa gốc",
+  "Chủ phòng chọn khán giả xem một bên hoặc cả hai, trực tiếp hoặc chậm 1–5 phút",
   "Khán giả và replay thấy công nghệ từng người chơi đã nghiên cứu (icon gốc của game)",
   "Lưu và xem lại trận đấu cũ (replay tự lưu mọi trận online) để rút kinh nghiệm và học hỏi từ đối thủ",
   "Trình xem replay: tua lùi/tới 10 và 30 giây, tốc độ x0.5 đến x8, nhảy tới thời điểm bất kỳ, khóa theo màn hình từng người chơi",
@@ -147,7 +148,7 @@
    "name": "Một phòng chơi được bao nhiêu người?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Tối đa 8 người chơi và 3 khán giả. Mỗi phòng nhận tối đa 15 thành viên."
+    "text": "Tối đa 8 người chơi và 4 khán giả. Mỗi phòng nhận tối đa 15 thành viên."
    }
   },
   {
@@ -487,8 +488,8 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
       </div>
       <div class="card">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div>
-        <h3>3 ghế khán giả trực tiếp</h3>
-        <p>Vua ngồi giữa, hai Thái giám hai bên. Xem cả bản đồ không sương mù, bấm phím 1–8 để theo dõi từng người chơi.</p>
+        <h3>4 ghế khán giả trực tiếp</h3>
+        <p>Hai ngai ở giữa, hai Thái giám hai bên. Chủ phòng chọn xem cả hai đội hay chỉ một bên, trực tiếp hay chậm 1–5 phút; bấm phím 1–8 để theo từng người chơi.</p>
       </div>
       <div class="card">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 109-9 9.7 9.7 0 00-6.7 2.8L3 8"/><path d="M3 3v5h5M12 7v5l3 2"/></svg></div>
@@ -544,10 +545,10 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
       <h2>Xem trực tiếp như ngồi cạnh người chơi</h2>
       <p class="sub" style="margin-bottom:28px">Đế Chế bản gốc không có chế độ khán giả. SuperAqE cho game chạy theo đúng dòng lệnh của người chơi, nên khán giả thấy trận y hệt bằng chính đồ họa gốc.</p>
       <ol class="steps">
-        <li><span class="n">1</span><div><h3>Ngồi ghế khán giả</h3><p>Ghế Vua ở giữa hoặc hai ghế Thái giám hai bên, đầu phòng chữ U.</p></div></li>
+        <li><span class="n">1</span><div><h3>Ngồi ghế khán giả</h3><p>Hai ngai ở giữa hoặc hai ghế Thái giám hai bên, đầu phòng chữ U.</p></div></li>
         <li><span class="n">2</span><div><h3>Chủ phòng bấm Bắt đầu</h3><p>Game của khán giả tự mở ở chế độ chỉ xem, không ra lệnh được cho quân.</p></div></li>
-        <li><span class="n">3</span><div><h3>Xem toàn bản đồ</h3><p>Bấm phím 1–8 để theo góc nhìn từng người chơi, thấy cả hướng họ trỏ quân.</p></div></li>
-        <li><span class="n">4</span><div><h3>Vào lại bất cứ lúc nào</h3><p>Khán giả xem gần như cùng lúc với người chơi. Lỡ thoát ra vẫn vào lại trận đang diễn ra được.</p></div></li>
+        <li><span class="n">3</span><div><h3>Theo dõi từng người</h3><p>Bấm phím 1–8 để theo góc nhìn từng người chơi, thấy cả chuột và quân họ đang chọn.</p></div></li>
+        <li><span class="n">4</span><div><h3>Vào lại bất cứ lúc nào</h3><p>Mặc định khán giả xem gần như cùng lúc với người chơi (chủ phòng có thể đặt chậm 1–5 phút). Lỡ thoát ra vẫn vào lại trận đang diễn ra được.</p></div></li>
       </ol>
       <p style="margin-top:22px"><a href="/choi-aoe-co-khan-gia/">Hướng dẫn chơi AoE có khán giả chi tiết →</a></p>
     </div>
@@ -563,9 +564,12 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
   <div class="wrap lobby">
     <div class="u">
       <svg viewBox="0 0 440 330" role="img" aria-label="Sơ đồ sảnh chờ chữ U">
-        <rect x="150" y="18" width="140" height="48" rx="10" fill="#3a2d1e" stroke="#e8c35a" stroke-width="2"/>
-        <text x="220" y="40" text-anchor="middle" fill="#e8c35a" font-size="15" font-weight="700" font-family="Be Vietnam Pro, sans-serif">Vua</text>
-        <text x="220" y="57" text-anchor="middle" fill="#b7a583" font-size="11" font-family="Be Vietnam Pro, sans-serif">khán giả</text>
+        <rect x="150" y="18" width="66" height="48" rx="10" fill="#3a2d1e" stroke="#e8c35a" stroke-width="2"/>
+        <text x="183" y="40" text-anchor="middle" fill="#e8c35a" font-size="14" font-weight="700" font-family="Be Vietnam Pro, sans-serif">Ngai</text>
+        <text x="183" y="57" text-anchor="middle" fill="#b7a583" font-size="11" font-family="Be Vietnam Pro, sans-serif">khán giả</text>
+        <rect x="224" y="18" width="66" height="48" rx="10" fill="#3a2d1e" stroke="#e8c35a" stroke-width="2"/>
+        <text x="257" y="40" text-anchor="middle" fill="#e8c35a" font-size="14" font-weight="700" font-family="Be Vietnam Pro, sans-serif">Ngai</text>
+        <text x="257" y="57" text-anchor="middle" fill="#b7a583" font-size="11" font-family="Be Vietnam Pro, sans-serif">khán giả</text>
         <rect x="40" y="26" width="96" height="36" rx="8" fill="#2c2218" stroke="#b8902f" stroke-dasharray="4 3"/>
         <text x="88" y="49" text-anchor="middle" fill="#b7a583" font-size="12" font-family="Be Vietnam Pro, sans-serif">Thái giám</text>
         <rect x="304" y="26" width="96" height="36" rx="8" fill="#2c2218" stroke="#b8902f" stroke-dasharray="4 3"/>
@@ -575,12 +579,12 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
           <g id="seatsL"></g><g id="seatsR"></g>
         </g>
       </svg>
-      <div class="legend"><span><i style="background:#e8c35a"></i>Khán giả (3)</span><span><i style="background:#3b6ec2"></i>Người chơi (8)</span><span>Tối đa 15 thành viên mỗi phòng</span></div>
+      <div class="legend"><span><i style="background:#e8c35a"></i>Khán giả (4)</span><span><i style="background:#3b6ec2"></i>Người chơi (8)</span><span>Tối đa 15 thành viên mỗi phòng</span></div>
     </div>
     <div>
       <div class="kicker">Sảnh chờ</div>
       <h2>Triều đình chữ U, chuẩn không khí Đế Chế</h2>
-      <p class="sub" style="margin-bottom:0">Hai cánh là 8 ghế quần thần từ Nhất đến Bát phẩm, phẩm hàm chính là màu trong trận. Ba ghế đầu phòng dành cho khán giả.</p>
+      <p class="sub" style="margin-bottom:0">Hai cánh là 8 ghế quần thần từ Nhất đến Bát phẩm, phẩm hàm chính là màu trong trận. Bốn ghế đầu phòng dành cho khán giả.</p>
       <ul class="ticks">
         <li><b>Danh sách phòng trực tiếp:</b> thấy các phòng đang mở, tìm theo mã, đặt mật khẩu nếu muốn chơi riêng.</li>
         <li><b>Một nút bắt đầu:</b> chủ phòng bấm, mọi người tự vào game đúng vai, không phải gõ IP.</li>
@@ -676,7 +680,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
       <details><summary>Có cần cài Age of Empires trước không?</summary><p>Không. Bộ cài SuperAoE-Setup.exe đã có sẵn Age of Empires 1 Rise of Rome, cài là chạy.</p></details>
       <details><summary>SuperAqE có bản cho MacBook chưa?</summary><p>Có. SuperAqE có bản cài riêng, chạy mượt trên MacBook chip Apple (M1, M2, M3, M4…), tải tại <a href="https://superaqe.com/download/mac">superaqe.com/download/mac</a>. Gói đã kèm Wine và game, cài thành ứng dụng SuperAqE trong thư mục Applications và tự cập nhật trong app. Bản Mac chơi chung phòng với bản Windows. Mac chip Intel không được hỗ trợ.</p></details>
       <details><summary>SuperAqE có lưu replay để xem lại trận không?</summary><p>Có. Mọi trận online trên SuperAqE được tự động lưu replay (.aoerep) trên máy chủ, để bạn xem lại trận đấu cũ, rút kinh nghiệm và học hỏi từ đối thủ. Trong launcher, vào menu Lịch sử trận / Xem lại, bấm vào trận để xem lại bằng chính game gốc, tua lùi/tới 10 hoặc 30 giây, chỉnh tốc độ x0.5 đến x8. Miễn phí. <a href="/xem-lai-tran-aoe-replay/">Xem hướng dẫn replay</a>.</p></details>
-      <details><summary>Một phòng chơi được bao nhiêu người?</summary><p>Tối đa 8 người chơi và 3 khán giả. Mỗi phòng nhận tối đa 15 thành viên.</p></details>
+      <details><summary>Một phòng chơi được bao nhiêu người?</summary><p>Tối đa 8 người chơi và 4 khán giả. Mỗi phòng nhận tối đa 15 thành viên.</p></details>
       <details><summary>Mất mạng giữa trận thì sao?</summary><p>Trận tạm dừng và cả phòng chờ bạn kết nối lại, tổng cộng tối đa 30 phút mỗi trận. Mạng có lại thì game tự nối; lỡ tắt game thì mở launcher bấm "Vào lại trận" (tối đa 5 lần mỗi trận). Quá 30 phút thì bạn bị loại, những người khác chơi tiếp. Khán giả vào lại trận lúc nào cũng được.</p></details>
       <details><summary>Tìm người chơi cùng hoặc báo lỗi ở đâu?</summary><p>Vào <a href="https://www.facebook.com/groups/1496567506003702" target="_blank" rel="noopener">nhóm Facebook SuperAqE</a> để hẹn trận, hỏi cách cài và báo lỗi. Tin bản cập nhật mới được đăng trên <a href="https://www.facebook.com/profile.php?id=61595397195188" target="_blank" rel="noopener">trang Facebook SuperAqE</a>.</p></details>
     </div>

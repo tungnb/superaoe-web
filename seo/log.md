@@ -157,3 +157,21 @@
 - Toàn bộ canonical, og:url, JSON-LD, sitemap, robots, llms.txt, mac.sh chuyển sang https://superaqe.com.
 - superaoe.com trả 301 về cùng đường dẫn trên superaqe.com (Worker xtv-relay) đến 2026-11-28, rồi bỏ.
 - Việc tay: Google Search Console thêm property superaqe.com + "Thay đổi địa chỉ" từ superaoe.com; Bing Webmaster tương tự; gửi IndexNow cho host superaqe.com.
+
+## 2026-10-28 (vòng SEO 12 — tự động)
+- Chuẩn bị: pull về đổi tên miền superaoe.com → superaqe.com (6124574, peer) + tên hiển thị SuperAqE; đã live (superaoe.com 301 → superaqe.com, robots/sitemap/llms/IndexNow key trên superaqe.com trả 200). Không có thay đổi lạ trong git status.
+- Sản phẩm đổi từ vòng trước: launcher 0.3.59 — 4 ghế khán giả + cài đặt xem trận (xem một bên mặc định, delay 0/1/3/5 phút, hộp chờ đếm ngược; 0.3.52–0.3.56), chống hack, ping, trạng thái người chơi. Cập nhật `seo/facts.md`.
+- Sửa sai sự thật toàn site: "3 ghế khán giả" → 4 ghế (trang chủ + sơ đồ SVG 2 ngai, /choi-aoe-online-mien-phi/, /choi-de-che-qua-mang/, /tao-phong-choi-de-che/, llms.txt, JSON-LD). Trang chủ bỏ câu "xem cả bản đồ không sương mù" (phòng mới mặc định xem một bên, có sương mù).
+- Cải thiện lớn: /choi-aoe-co-khan-gia/ — lead mới, mục #cai-dat-xem (bảng 2 nút 👀 Xem / ⏱ Delay, cách chọn cho trận nghiêm túc / chơi vui, ghi chú tính năng mới + mời báo lỗi), mục #xem-thao-tac (chuột, khung chọn, quân đang chọn, phím M), bảng phím thêm M/F1 + 1–8 theo màu + 0/9 khi xem một bên, khán giả vào giữa trận tua nhanh (nói nhẹ), FAQ 8 câu (JSON-LD sinh lại từ FAQ hiển thị), HowTo khớp các bước, meta/og description, "Cập nhật lần cuối" 28/10/2026, launcher 0.3.56+.
+- softwareVersion 0.3.48 → 0.3.59, featureList + cài đặt xem trận. llms.txt: launcher 0.3.59, cài đặt khán giả, câu trả lời nhanh "khán giả nhắc bài". Sitemap lastmod 2026-10-28 cho 5 URL.
+- Đo hạng (ước lượng WebSearch, `seo/rankings.md`): superaqe.com/superaoe.com không thấy ở cả 7 từ khóa (chơi aoe online miễn phí, đế chế macbook m1, replay aoe, khán giả, không cần vpn, thương hiệu, giải đấu). Bình thường: tên miền mới đổi hôm nay, chưa xác minh Search Console. Đối thủ vẫn là bài blog bán hàng (fptshop, hoanghamobile, mytour, cellphones) về GameTV/GPlay/EgoPlay/GameRanger.
+- Từ khóa mới: "khán giả nhắc bài / delay khán giả đế chế" (khoảng trống).
+- Không soạn outreach (tuần này đã có 2026-10-26; lần tới ~2026-11-02, điểm nhấn: lưu trận + khán giả xem một bên/delay).
+- Kiểm tra: html-validate chỉ còn doctype-style/no-inline-style (như trước), JSON-LD 5 trang parse được, FAQ JSON-LD khớp hiển thị, anchor #cai-dat-xem/#xem-thao-tac có, title ≤ 58, description ≤ 152.
+- Lần sau: đo hạng lại 2026-11-04 (sau khi Google nhận tên miền mới); trang đích giải đấu; cân nhắc mô tả phòng chờ kiểu "Tối giản" (mặc định từ 0.3.50) thay vì chỉ "điện rồng / chữ U"; chống hack (khi chủ dự án muốn quảng bá).
+
+### Cần chủ dự án quyết định / làm
+- GẤP vì vừa đổi tên miền: Google Search Console thêm property superaqe.com + "Thay đổi địa chỉ" từ superaoe.com, gửi sitemap https://superaqe.com/sitemap.xml; Bing Webmaster Tools tương tự. Giữ 301 superaoe.com càng lâu càng tốt (log ghi bỏ sau 2026-11-28 — nên giữ ít nhất 6–12 tháng để không mất tín hiệu).
+- Cài đặt xem trận chưa thử trận có AI; website ghi "tính năng mới" + mời báo lỗi. Gửi ảnh chụp thật hai nút 👀 Xem / ⏱ Delay hoặc hộp "Chờ vào xem" để thay chữ bằng hình.
+- Chống hack, ping, trạng thái người chơi chưa viết lên website — báo nếu muốn quảng bá.
+- Vẫn tồn đọng: ký số exe / notarize Mac, đăng bài outreach.
