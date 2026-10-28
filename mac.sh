@@ -1,6 +1,6 @@
 #!/bin/bash
 # Cai SuperAqE cho MacBook chip Apple (M1 tro len). Dan dong nay vao Terminal roi bam Enter:
-#   curl -fsSL https://superaoe.com/mac.sh | bash
+#   curl -fsSL https://superaqe.com/mac.sh | bash
 # Tai SuperAoE_Mac_M.zip (SuperAoE.app kem Wine + game), giai nen vao thu muc tam roi chay
 # file .command trong do: cai Rosetta 2 neu thieu, chep SuperAoE.app vao Applications, mo app.
 # File tai bang curl khong bi macOS gan co "quarantine", nen khong co canh bao "Apple khong the
@@ -17,7 +17,7 @@ main() {
   trap 'rm -rf "$tmp"' EXIT
 
   echo "Dang tai SuperAqE (khoang 300 MB, vai phut tuy mang)..."
-  curl -fL --retry 3 --progress-bar -o "$tmp/SuperAoE_Mac_M.zip" https://superaoe.com/download/mac
+  curl -fL --retry 3 --progress-bar -o "$tmp/SuperAoE_Mac_M.zip" https://superaqe.com/download/mac
   echo "Dang giai nen..."
   ditto -x -k "$tmp/SuperAoE_Mac_M.zip" "$tmp"
   rm -f "$tmp/SuperAoE_Mac_M.zip"

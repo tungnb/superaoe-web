@@ -152,3 +152,8 @@
 - Lưu trận chưa thử trận thật nhiều máy / trận có AI; website ghi là tính năng mới + mời báo lỗi. Thử thật xong thì báo để bỏ câu đó (và gửi ảnh hộp “Lưu trận và thoát?” / danh sách “💾 Trận đã lưu”).
 - Khán giả vào giữa trận tua nhanh (0.3.37): xác nhận đã chạy trong phòng thật thì vòng sau viết lên trang khán giả.
 - Vẫn tồn đọng: Google Search Console + Bing Webmaster Tools (sitemap 10 URL), ký số exe / notarize Mac, đăng bài outreach.
+
+## 2026-10-28 — Đổi tên miền superaoe.com → superaqe.com
+- Toàn bộ canonical, og:url, JSON-LD, sitemap, robots, llms.txt, mac.sh chuyển sang https://superaqe.com.
+- superaoe.com trả 301 về cùng đường dẫn trên superaqe.com (Worker xtv-relay) đến 2026-11-28, rồi bỏ.
+- Việc tay: Google Search Console thêm property superaqe.com + "Thay đổi địa chỉ" từ superaoe.com; Bing Webmaster tương tự; gửi IndexNow cho host superaqe.com.

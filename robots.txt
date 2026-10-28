@@ -31,4 +31,4 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
-Sitemap: https://superaoe.com/sitemap.xml
+Sitemap: https://superaqe.com/sitemap.xml
