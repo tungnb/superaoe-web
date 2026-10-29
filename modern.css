@@ -110,6 +110,13 @@ label { color: var(--muted); font-weight: 500; }
 .hero-mac p b { color: var(--fg); }
 .screen { border: 0; border-radius: 16px; background: var(--surface); box-shadow: var(--shadow-lg); }
 .screen figcaption { background: var(--surface); border-top: 1px solid var(--line); color: var(--muted); }
+/* Desktop: wider hero so the screenshot gets the extra room; the text column keeps its ~560px measure.
+   The shot pins under the header instead of floating mid-way down the tall text column. */
+@media (min-width: 901px) {
+  body:has(.hero) .top .wrap { max-width: 1360px; }
+  .hero .wrap { max-width: 1360px; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 56px; align-items: start; }
+  .hero .screen { position: sticky; top: 84px; margin-top: 40px; }
+}
 figcaption .live { background: var(--bad); border-radius: 99px; padding: 1px 8px; }
 
 /* ---------- Sections, cards ---------- */
