@@ -58,10 +58,10 @@
  "@type": "SoftwareApplication",
  "name": "SuperAqE",
  "applicationCategory": "GameApplication",
- "operatingSystem": "Windows, macOS",
+ "operatingSystem": "Windows, macOS, Linux",
  "description": "Launcher chơi Đế Chế (Age of Empires 1 Rise of Rome) online cho Windows 10/11 và MacBook chip Apple: tài khoản, danh sách phòng, phòng chờ 8 người chơi + 4 khán giả xem trực tiếp, mọi trận tự lưu replay để xem lại, không cần VPN hay mở cổng.",
  "url": "https://superaqe.com/",
- "downloadUrl": ["https://superaqe.com/download/setup", "https://superaqe.com/download/mac"],
+ "downloadUrl": ["https://superaqe.com/download/setup", "https://superaqe.com/download/mac", "https://superaqe.com/download/linux"],
  "softwareVersion": "0.3.69",
  "featureList": [
   "Chơi Đế Chế online tới 8 người, không cần VPN hay mở cổng",
@@ -73,6 +73,7 @@
   "Khán giả và replay thấy thao tác chuột, khung kéo chọn, nhà đang đặt và quân đang chọn của người chơi",
   "Lịch sử trận công khai trên web, tải replay, bảng điểm cuối trận; giải đấu loại trực tiếp với kết quả tự động",
   "Bản cho Windows 10/11 và macOS, chạy mượt trên MacBook chip Apple M1, M2, M3, M4",
+  "Bản cho Linux 64-bit (Ubuntu, Linux Mint, Debian, Fedora…), kèm sẵn Wine và game, cài không cần sudo",
   "Phòng chờ chữ U, mã phòng 6 ký tự",
   "Tùy chọn phòng: tầm nhìn đồng minh từ đầu trận, Mirror random (hai đội cùng bộ nước), độ phân giải 1024×768 đến 1920×1080",
   "Lưu trận đang chơi dở khi mọi người chơi đồng ý, hôm khác đánh tiếp đúng chỗ đã dừng",
@@ -133,6 +134,14 @@
    "acceptedAnswer": {
     "@type": "Answer",
     "text": "Có. SuperAqE có bản cài riêng, chạy mượt trên MacBook chip Apple (M1, M2, M3, M4…), tải tại superaqe.com/download/mac. Gói đã kèm Wine và game, cài thành ứng dụng SuperAqE trong thư mục Applications và tự cập nhật trong app. Bản Mac chơi chung phòng với bản Windows. Mac chip Intel không được hỗ trợ."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "SuperAqE có bản cho Linux chưa?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Có. SuperAqE có bản cho Linux 64-bit Intel/AMD (x86_64) có giao diện đồ họa: Ubuntu 22.04 trở lên, Linux Mint, Debian, Fedora…, tải tại superaqe.com/download/linux. Gói đã kèm Wine và game, không cần cài Wine, không cần sudo, tự cập nhật. Cách cài dễ nhất: mở Terminal (Ctrl + Alt + T), dán curl -fsSL https://superaqe.com/linux.sh | bash rồi bấm Enter. Bản Linux chơi chung phòng với bản Windows và Mac. Linux ARM không được hỗ trợ."
    }
   },
   {
@@ -283,7 +292,7 @@ h2 { font-family: var(--serif); font-size: clamp(28px, 3.6vw, 40px); line-height
 .ticks b { color: var(--text); font-weight: 600; }
 
 /* Download */
-.dl { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.dl { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .os { background: linear-gradient(180deg, var(--panel), #221a11); border: 1px solid rgba(184,144,47,.4); border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 14px; }
 .os .osh { display: flex; align-items: center; gap: 14px; }
 .os .osh svg { width: 40px; height: 40px; color: var(--gold); }
@@ -400,7 +409,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
 <section class="hero">
   <div class="wrap">
     <div>
-      <span class="eyebrow"><span class="dot"></span> Đế Chế online · Xem trực tiếp · Xem lại replay · Windows &amp; Mac</span>
+      <span class="eyebrow"><span class="dot"></span> Đế Chế online · Xem trực tiếp · Xem lại replay · Windows, Mac &amp; Linux</span>
       <h1>Chơi Đế Chế online.<br><span class="g">Xem trực tiếp, xem lại replay.</span></h1>
       <p class="lead">SuperAqE đưa Age of Empires: Rise of Rome lên mạng bằng đồ họa gốc của game, không cần VPN hay mở cổng router.</p>
       <ul class="feats">
@@ -418,13 +427,19 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8s1.9.8 3.2.8c1.3 0 2.1-1.2 2.9-2.4.9-1.4 1.3-2.7 1.3-2.8-.1 0-2.4-.9-2.4-4zM14 5.4c.7-.8 1.1-1.9 1-3-1 0-2.1.6-2.8 1.4-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.5 2.8-1.3z"/></svg>
           <span>Tải cho Mac<small>MacBook M1, M2, M3, M4</small></span>
         </a>
+        <a class="btn ghost" data-dl="linux" href="https://superaqe.com/download/linux" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9l3 3-3 3M12 15h5"/></svg>
+          <span>Tải cho Linux<small>Ubuntu, Mint, Debian, Fedora</small></span>
+        </a>
       </div>
       <p class="win-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M12 8v4M12 16h.01"/></svg><span>Nếu Windows hiện “Windows protected your PC”, bấm <b>More info</b> → <b>Run anyway</b>.</span></p>
       <div class="hero-mac">
         <p><b>Mac: cài bằng 1 lệnh</b> (khuyên dùng, macOS không chặn). Mở Terminal, dán lệnh rồi bấm Enter:</p>
         <div class="cmdline"><code>curl -fsSL https://superaqe.com/mac.sh | bash</code><button type="button" class="copy" data-copy="curl -fsSL https://superaqe.com/mac.sh | bash">Sao chép</button></div>
+        <p style="margin-top:10px"><b>Linux: cài bằng 1 lệnh</b> (không cần sudo). Bấm Ctrl + Alt + T, dán lệnh rồi bấm Enter:</p>
+        <div class="cmdline"><code>curl -fsSL https://superaqe.com/linux.sh | bash</code><button type="button" class="copy" data-copy="curl -fsSL https://superaqe.com/linux.sh | bash">Sao chép</button></div>
       </div>
-      <p class="meta">Miễn phí · Không cần VPN hay mở cổng · <a href="/xem-lai-tran-aoe-replay/">Xem lại trận bằng replay</a> · <a href="/lich-su-tran/">Lịch sử thi đấu</a> · <a href="/giai-dau/">Giải đấu</a> · <a href="/choi-aoe-tren-macbook/">Cài trên Mac</a></p>
+      <p class="meta">Miễn phí · Không cần VPN hay mở cổng · <a href="/xem-lai-tran-aoe-replay/">Xem lại trận bằng replay</a> · <a href="/lich-su-tran/">Lịch sử thi đấu</a> · <a href="/giai-dau/">Giải đấu</a> · <a href="/choi-aoe-tren-macbook/">Cài trên Mac</a> · <a href="/choi-aoe-tren-linux/">Cài trên Linux</a></p>
     </div>
 
     <figure class="screen">
@@ -600,7 +615,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
   <div class="wrap">
     <div class="kicker">Tải về</div>
     <h2>Chọn bản cho máy của bạn</h2>
-    <p class="sub">Bản Windows và bản Mac đều đã kèm game, chơi chung phòng với nhau và tự lưu replay mọi trận online. Xem <a href="/tai-aoe-rise-of-rome/">cách cài và sửa lỗi khi tải Đế Chế</a> và <a href="/choi-aoe-online-mien-phi/">hướng dẫn chơi AoE online miễn phí từng bước</a>.</p>
+    <p class="sub">Bản Windows, bản Mac và bản Linux đều đã kèm game, chơi chung phòng với nhau và tự lưu replay mọi trận online. Xem <a href="/tai-aoe-rise-of-rome/">cách cài và sửa lỗi khi tải Đế Chế</a> và <a href="/choi-aoe-online-mien-phi/">hướng dẫn chơi AoE online miễn phí từng bước</a>.</p>
     <div class="dl">
       <div class="os">
         <div class="osh">
@@ -634,6 +649,22 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
           <span data-mac-label>Tải SuperAqE cho Mac</span>
         </a>
       </div>
+      <div class="os">
+        <div class="osh">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9l3 3-3 3M12 15h5"/></svg>
+          <div><h3>Linux <span class="badge new">MỚI</span></h3><p class="req">Linux 64-bit Intel/AMD (x86_64) · Ubuntu 22.04+, Mint, Debian, Fedora… · khoảng 300 MB</p></div>
+        </div>
+        <ul>
+          <li>Đóng gói sẵn Wine và game, không cần cài Wine, không cần sudo</li>
+          <li><b>Cài nhanh nhất:</b> mở <b>Terminal</b> (Ctrl + Alt + T), dán lệnh này rồi bấm Enter. Lệnh tự tải, cài vào thư mục nhà, thêm SuperAqE vào menu ứng dụng và màn hình rồi mở app:<div class="cmdline"><code>curl -fsSL https://superaqe.com/linux.sh | bash</code><button type="button" class="copy" data-copy="curl -fsSL https://superaqe.com/linux.sh | bash">Sao chép</button></div></li>
+          <li>Hoặc tải file tar.xz bên dưới, giải nén rồi chạy <code>bash SuperAoE_Linux/install.sh</code> (<a href="/choi-aoe-tren-linux/#cai-dat">hướng dẫn</a>)</li>
+          <li>App tự cập nhật; chơi chung phòng với bản Windows và Mac. Linux ARM không hỗ trợ</li>
+        </ul>
+        <a class="btn primary" data-dl="linux" href="https://superaqe.com/download/linux" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg>
+          Tải SuperAqE cho Linux
+        </a>
+      </div>
     </div>
     <p class="note">Tìm người chơi cùng, hỏi cách cài hoặc báo lỗi: tham gia <a href="https://www.facebook.com/groups/1496567506003702" target="_blank" rel="noopener">nhóm Facebook SuperAqE</a> và theo dõi <a href="https://www.facebook.com/profile.php?id=61595397195188" target="_blank" rel="noopener">trang Facebook SuperAqE</a> để nhận tin bản cập nhật mới.</p>
   </div>
@@ -653,6 +684,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
       <p style="margin-top:22px"><a class="btn primary" data-dl="mac" href="https://superaqe.com/download/mac" download>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg>
         Tải SuperAqE cho Mac</a></p>
+      <p style="margin-top:14px">Dùng Linux (Ubuntu, Mint, Debian, Fedora…)? <a data-dl="linux" href="https://superaqe.com/download/linux" download>Tải SuperAqE cho Linux</a> · <a href="/choi-aoe-tren-linux/">hướng dẫn chơi AoE trên Linux</a>.</p>
     </div>
     <div>
       <div class="card">
@@ -679,6 +711,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
       <details><summary>Có cần VPN, Hamachi hay mở cổng không?</summary><p>Không. Launcher tự nối các máy trong trận với nhau (P2P qua WebRTC), không nối thẳng được thì chạy qua máy chủ SuperAqE trên Cloudflare; chỉ cần có Internet là vào phòng được.</p></details>
       <details><summary>Có cần cài Age of Empires trước không?</summary><p>Không. Bộ cài SuperAoE-Setup.exe đã có sẵn Age of Empires 1 Rise of Rome, cài là chạy.</p></details>
       <details><summary>SuperAqE có bản cho MacBook chưa?</summary><p>Có. SuperAqE có bản cài riêng, chạy mượt trên MacBook chip Apple (M1, M2, M3, M4…), tải tại <a href="https://superaqe.com/download/mac">superaqe.com/download/mac</a>. Gói đã kèm Wine và game, cài thành ứng dụng SuperAqE trong thư mục Applications và tự cập nhật trong app. Bản Mac chơi chung phòng với bản Windows. Mac chip Intel không được hỗ trợ.</p></details>
+      <details><summary>SuperAqE có bản cho Linux chưa?</summary><p>Có. SuperAqE có bản cho Linux 64-bit Intel/AMD (x86_64) có giao diện đồ họa: Ubuntu 22.04 trở lên, Linux Mint, Debian, Fedora…, tải tại <a href="https://superaqe.com/download/linux">superaqe.com/download/linux</a>. Gói đã kèm Wine và game, không cần cài Wine, không cần sudo, tự cập nhật. Cách cài dễ nhất: mở Terminal (Ctrl + Alt + T), dán <code>curl -fsSL https://superaqe.com/linux.sh | bash</code> rồi bấm Enter (<a href="/choi-aoe-tren-linux/">hướng dẫn chi tiết</a>). Bản Linux chơi chung phòng với bản Windows và Mac. Linux ARM không được hỗ trợ.</p></details>
       <details><summary>SuperAqE có lưu replay để xem lại trận không?</summary><p>Có. Mọi trận online trên SuperAqE được tự động lưu replay (.aoerep) trên máy chủ, để bạn xem lại trận đấu cũ, rút kinh nghiệm và học hỏi từ đối thủ. Trong launcher, vào menu Lịch sử trận / Xem lại, bấm vào trận để xem lại bằng chính game gốc, tua lùi/tới 10 hoặc 30 giây, chỉnh tốc độ x0.5 đến x8. Miễn phí. <a href="/xem-lai-tran-aoe-replay/">Xem hướng dẫn replay</a>.</p></details>
       <details><summary>Một phòng chơi được bao nhiêu người?</summary><p>Tối đa 8 người chơi và 4 khán giả. Mỗi phòng nhận tối đa 15 thành viên.</p></details>
       <details><summary>Mất mạng giữa trận thì sao?</summary><p>Trận tạm dừng và cả phòng chờ bạn kết nối lại, tổng cộng tối đa 30 phút mỗi trận. Mạng có lại thì game tự nối; lỡ tắt game thì mở launcher bấm "Vào lại trận" (tối đa 5 lần mỗi trận). Quá 30 phút thì bạn bị loại, những người khác chơi tiếp. Khán giả vào lại trận lúc nào cũng được.</p></details>
@@ -690,7 +723,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
 
 <footer>
   <div class="wrap">
-    <span>© <span id="yr">2026</span> SuperAqE · Dự án cộng đồng của người chơi Đế Chế Việt Nam · <a href="/choi-aoe-online-mien-phi/" style="color:inherit">Chơi AoE online miễn phí</a> · <a href="/tao-phong-choi-de-che/" style="color:inherit">Tạo phòng chơi Đế Chế</a> · <a href="/choi-aoe-co-khan-gia/" style="color:inherit">Chơi AoE có khán giả</a> · <a href="/xem-lai-tran-aoe-replay/" style="color:inherit">Xem lại trận AoE (replay)</a> · <a href="/choi-aoe-tren-macbook/" style="color:inherit">AoE trên MacBook</a> · <a href="/tai-aoe-rise-of-rome/" style="color:inherit">Tải AoE 1 Rise of Rome</a> · <a href="/choi-de-che-qua-mang/" style="color:inherit">Chơi Đế Chế qua mạng</a> · <a href="https://www.facebook.com/profile.php?id=61595397195188" target="_blank" rel="noopener" style="color:inherit">Facebook SuperAqE</a> · <a href="https://www.facebook.com/groups/1496567506003702" target="_blank" rel="noopener" style="color:inherit">Nhóm Facebook</a></span>
+    <span>© <span id="yr">2026</span> SuperAqE · Dự án cộng đồng của người chơi Đế Chế Việt Nam · <a href="/choi-aoe-online-mien-phi/" style="color:inherit">Chơi AoE online miễn phí</a> · <a href="/tao-phong-choi-de-che/" style="color:inherit">Tạo phòng chơi Đế Chế</a> · <a href="/choi-aoe-co-khan-gia/" style="color:inherit">Chơi AoE có khán giả</a> · <a href="/xem-lai-tran-aoe-replay/" style="color:inherit">Xem lại trận AoE (replay)</a> · <a href="/choi-aoe-tren-macbook/" style="color:inherit">AoE trên MacBook</a> · <a href="/choi-aoe-tren-linux/" style="color:inherit">AoE trên Linux</a> ·<a href="/tai-aoe-rise-of-rome/" style="color:inherit">Tải AoE 1 Rise of Rome</a> · <a href="/choi-de-che-qua-mang/" style="color:inherit">Chơi Đế Chế qua mạng</a> · <a href="https://www.facebook.com/profile.php?id=61595397195188" target="_blank" rel="noopener" style="color:inherit">Facebook SuperAqE</a> · <a href="https://www.facebook.com/groups/1496567506003702" target="_blank" rel="noopener" style="color:inherit">Nhóm Facebook</a></span>
     <span>Age of Empires là thương hiệu của Microsoft. SuperAqE không liên kết với Microsoft.</span>
   </div>
 </footer>
@@ -700,10 +733,13 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
 // The Mac build (Apple Silicon, bundled Wine) is served from R2 SuperAoE_Mac_M.zip.
 const WIN_URL = "https://superaqe.com/download/setup";
 const MAC_URL = "https://superaqe.com/download/mac";
+// The Linux build (x86_64, bundled WoW64 Wine) is served as SuperAoE_Linux.tar.xz.
+const LINUX_URL = "https://superaqe.com/download/linux";
 
 document.querySelectorAll('[data-dl="win"]').forEach(a => { a.href = WIN_URL; a.setAttribute("download", ""); });
 document.querySelectorAll('[data-dl="mac"]').forEach(a => { a.href = MAC_URL; a.setAttribute("download", ""); });
-// Copy buttons for the Mac one-line install command.
+document.querySelectorAll('[data-dl="linux"]').forEach(a => { a.href = LINUX_URL; a.setAttribute("download", ""); });
+// Copy buttons for the Mac / Linux one-line install commands.
 document.querySelectorAll("[data-copy]").forEach(b => b.addEventListener("click", async () => {
   try { await navigator.clipboard.writeText(b.dataset.copy); }
   catch { const r = document.createRange(); r.selectNodeContents(b.previousElementSibling); getSelection().removeAllRanges(); getSelection().addRange(r); document.execCommand("copy"); }
