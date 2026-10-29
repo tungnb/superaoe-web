@@ -35,3 +35,5 @@ Cập nhật: 2026-10-28 (launcher 0.3.59 mới nhất — NOTES.md §9z: 4 gh�
 Chưa kiểm chứng (không viết là có):
 - Xem replay trên bản Mac: chưa được kiểm chứng riêng (gói Mac có thể chưa có thanh điều khiển mới). Không viết riêng "xem replay trên Mac".
 - Không có số liệu người chơi/trận công khai: không bịa.
+
+- **Launcher 0.3.60–0.3.69 (2026-10-28/29, mới nhất 0.3.69 Win + Mac bắt buộc):** khán giả vào giữa trận đuổi kịp nhanh hơn (0.3.63), game vẫn mở khi trình diệt virus xoá spec_version.dll (0.3.64), lỗi mở game do trình diệt virus / Smart App Control hiện bằng tiếng Việt kèm cách sửa (0.3.65: Windows Security → Lịch sử bảo vệ → khôi phục, thêm thư mục SuperAoE vào Loại trừ; Smart App Control phải tắt, tắt rồi không bật lại được). Bộ cài Windows mặc định cài vào %LOCALAPPDATA%\Programs\SuperAoE. Đồng hồ phút trận trong phòng (0.3.61), nút Bắt đầu/Mời bạn/Đứng lên/Rời phòng dưới khung chat, giao diện mới (0.3.66–0.3.69). Website viết phần diệt virus/Smart App Control 2026-10-29 (/tai-aoe-rise-of-rome/#virus).

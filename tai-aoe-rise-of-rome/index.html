@@ -84,6 +84,14 @@
   },
   {
    "@type": "Question",
+   "name": "Trình diệt virus xoá file, Đế Chế không mở được thì làm sao?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Mở Windows Security → Bảo vệ khỏi virus & mối đe dọa → Lịch sử bảo vệ, khôi phục file bị xoá, rồi thêm thư mục SuperAoE vào Loại trừ. Windows 11 bật Smart App Control thì phải tắt nó mới mở được game (tắt rồi không bật lại được). Chi tiết ở mục sửa lỗi phía trên."
+   }
+  },
+  {
+   "@type": "Question",
    "name": "Tải SuperAqE có mất phí không?",
    "acceptedAnswer": {
     "@type": "Answer",
@@ -336,7 +344,7 @@ footer a { color: var(--dim); }
       </a>
     </div>
     <p class="win-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M12 8v4M12 16h.01"/></svg><span>Nếu Windows hiện “Windows protected your PC”, bấm <b>More info</b> → <b>Run anyway</b>.</span></p>
-    <p class="meta">Cập nhật lần cuối: <time datetime="2026-10-22">22/10/2026</time> · Launcher 0.3.9</p>
+    <p class="meta">Cập nhật lần cuối: <time datetime="2026-10-29">29/10/2026</time> · Launcher 0.3.69</p>
   </div>
 </section>
 
@@ -386,13 +394,28 @@ footer a { color: var(--dim); }
         <thead><tr><th scope="col">Hiện tượng</th><th scope="col">Cách xử lý</th></tr></thead>
         <tbody>
           <tr><th scope="row">Windows báo "Windows đã bảo vệ PC của bạn" (SmartScreen)</th><td>Bộ cài SuperAoE-Setup.exe chưa có chữ ký số nên Windows cảnh báo như với nhiều ứng dụng mới, đây là chuyện bình thường. Bấm "Thông tin thêm" → "Vẫn chạy". Chỉ làm vậy với file tải từ superaqe.com.</td></tr>
-          <tr><th scope="row">Mở game không lên, báo thiếu file</th><td>Tải lại SuperAoE-Setup.exe từ superaqe.com/download/setup rồi cài lại.</td></tr>
+          <tr><th scope="row">Mở game không lên, báo thiếu file (spec.dll, spec_launcher.exe, EMPIRESX.EXE…)</th><td>Thường do trình diệt virus đã cách ly file. Khôi phục file và thêm thư mục SuperAoE vào Loại trừ theo <a href="#virus">các bước bên dưới</a>; vẫn thiếu thì tải lại SuperAoE-Setup.exe từ superaqe.com/download/setup rồi cài lại.</td></tr>
+          <tr><th scope="row">Windows chặn mở game (Smart App Control)</th><td>Windows 11 có Smart App Control chặn chương trình chưa ký số, nên game không mở. Xem <a href="#smart-app-control">cách xử lý bên dưới</a> và đọc kỹ lưu ý trước khi tắt.</td></tr>
           <tr><th scope="row">Lỡ tắt game hoặc game bị lỗi giữa chừng</th><td>Người chơi: mở launcher bấm “↻ Vào lại trận”, game tua nhanh tới đúng lúc bạn rời rồi chơi tiếp (tối đa 5 lần mỗi trận, cách nhau ít nhất 30 giây). Khán giả: bấm “↻ Mở lại game”, luôn vào lại được.</td></tr>
           <tr><th scope="row">Rớt mạng giữa trận</th><td>Trận tạm dừng, cả phòng chờ bạn tối đa 30 phút mỗi trận (cộng dồn các lần rớt). Mạng có lại thì game tự nối, không cần làm gì. Hết 30 phút mà chưa về thì bạn bị loại, những người khác chơi tiếp.</td></tr>
           <tr><th scope="row">Muốn gửi game cho bạn</th><td>Gửi link superaqe.com/download/setup. Bộ cài đã kèm game, bạn bè chỉ cần tải về và cài.</td></tr>
         </tbody>
       </table>
     </div>
+
+    <h3 id="virus">Game không mở vì trình diệt virus xoá hoặc chặn file</h3>
+    <p>SuperAqE chạy kèm một phần nhỏ (spec.dll) nạp vào game Đế Chế để nối phòng, cho khán giả xem và chạy replay. Một số trình diệt virus coi kiểu nạp này là đáng ngờ và cách ly file, khiến game không mở. Từ launcher 0.3.65, SuperAqE báo lỗi này bằng tiếng Việt và chỉ cách sửa ngay trong app. Cách làm với Windows Security (trình diệt virus có sẵn của Windows):</p>
+    <ol class="steps">
+      <li><span class="n">1</span><div><h4>Mở Lịch sử bảo vệ</h4><p>Mở Windows Security → Bảo vệ khỏi virus &amp; mối đe dọa → Lịch sử bảo vệ, tìm mục liên quan tới SuperAoE.</p></div></li>
+      <li><span class="n">2</span><div><h4>Khôi phục file</h4><p>Chọn mục đó, bấm Hành động → Khôi phục (hoặc Cho phép trên thiết bị).</p></div></li>
+      <li><span class="n">3</span><div><h4>Thêm thư mục SuperAoE vào Loại trừ</h4><p>Bảo vệ khỏi virus &amp; mối đe dọa → Quản lý cài đặt → Loại trừ → Thêm loại trừ → Thư mục. Bộ cài mặc định đặt SuperAoE ở <code>%LOCALAPPDATA%\Programs\SuperAoE</code>. Dùng trình diệt virus khác thì làm tương tự trong phần cách ly / ngoại lệ của nó.</p></div></li>
+      <li><span class="n">4</span><div><h4>Mở lại game, vẫn lỗi thì cài lại</h4><p>Vẫn thiếu file thì tải lại SuperAoE-Setup.exe từ superaqe.com/download/setup và cài lại (sau khi đã thêm Loại trừ).</p></div></li>
+    </ol>
+    <p>Chỉ loại trừ thư mục SuperAoE cài từ bộ cài tải ở superaqe.com, không loại trừ cả ổ đĩa.</p>
+
+    <h3 id="smart-app-control">Windows 11 chặn mở game (Smart App Control)</h3>
+    <p>Smart App Control là tính năng của Windows 11 (thường bật sẵn trên máy mới cài) chặn mọi chương trình chưa có chữ ký số. SuperAqE và bản game đi kèm chưa có chữ ký số, nên khi tính năng này bật, Windows có thể từ chối mở game. Windows không cho bỏ qua riêng một ứng dụng, cách duy nhất là tắt: Windows Security → Kiểm soát ứng dụng &amp; trình duyệt → Cài đặt Smart App Control → Tắt, rồi mở lại game.</p>
+    <p><strong>Lưu ý trước khi tắt:</strong> sau khi tắt, Windows không cho bật lại Smart App Control (trừ khi cài lại Windows). Windows Security vẫn tiếp tục quét virus bình thường. Nếu không muốn tắt, bạn chưa chơi SuperAqE được trên máy đó.</p>
   </div>
 </section>
 
@@ -405,6 +428,7 @@ footer a { color: var(--dim); }
       <details><summary>Đế Chế có chạy trên Windows 11 không?</summary><p>Có. Gói SuperAqE dành cho Windows 10 và Windows 11, game đi kèm đã có cnc-ddraw để hiển thị đúng trên Windows đời mới.</p></details>
       <details><summary>Có phải cài đặt game không?</summary><p>Không cần cài game riêng. Chỉ cần mở SuperAoE-Setup.exe, bấm cài một lần (không cần quyền quản trị) rồi mở SuperAqE từ biểu tượng trên Desktop.</p></details>
       <details><summary>Vì sao Windows cảnh báo khi mở SuperAoE-Setup.exe?</summary><p>Bộ cài SuperAoE-Setup.exe chưa có chữ ký số, nên Windows SmartScreen cảnh báo như với nhiều ứng dụng mới. Bấm "Thông tin thêm" rồi "Vẫn chạy", và chỉ làm vậy với file tải từ superaqe.com.</p></details>
+      <details><summary>Trình diệt virus xoá file, Đế Chế không mở được thì làm sao?</summary><p>Mở Windows Security → Bảo vệ khỏi virus &amp; mối đe dọa → Lịch sử bảo vệ, khôi phục file bị xoá, rồi thêm thư mục SuperAoE vào Loại trừ. Windows 11 bật Smart App Control thì phải tắt nó mới mở được game (tắt rồi không bật lại được). Chi tiết ở mục sửa lỗi phía trên.</p></details>
       <details><summary>Tải SuperAqE có mất phí không?</summary><p>Không. Tải về, đăng ký tài khoản và chơi đều miễn phí.</p></details>
       <details><summary>Có bản cho MacBook không?</summary><p>Có. SuperAqE có bản cài riêng cho MacBook chip Apple (M1, M2, M3, M4…), tải tại <a href="https://superaqe.com/download/mac">superaqe.com/download/mac</a> (kèm Wine và game). Cách cài xem ở trang <a href="/choi-aoe-tren-macbook/">chơi AoE trên MacBook</a>.</p></details>
     </div>

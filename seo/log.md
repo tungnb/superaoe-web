@@ -175,3 +175,16 @@
 - Cài đặt xem trận chưa thử trận có AI; website ghi "tính năng mới" + mời báo lỗi. Gửi ảnh chụp thật hai nút 👀 Xem / ⏱ Delay hoặc hộp "Chờ vào xem" để thay chữ bằng hình.
 - Chống hack, ping, trạng thái người chơi chưa viết lên website — báo nếu muốn quảng bá.
 - Vẫn tồn đọng: ký số exe / notarize Mac, đăng bài outreach.
+
+## 2026-10-29 (vòng SEO 13 — tự động)
+- Chuẩn bị: git pull không có gì mới, git status sạch. Sản phẩm đổi từ vòng trước: launcher 0.3.60 → 0.3.69 (bắt buộc Win + Mac): khán giả vào muộn đuổi kịp nhanh hơn, xử lý trình diệt virus xoá file (0.3.64) + lỗi diệt virus / Smart App Control bằng tiếng Việt (0.3.65), đồng hồ trận, giao diện phòng mới. Cập nhật `seo/facts.md`.
+- Cải thiện lớn: /tai-aoe-rise-of-rome/ — mục sửa lỗi thêm #virus (4 bước Windows Security: Lịch sử bảo vệ → Khôi phục → Loại trừ thư mục %LOCALAPPDATA%\Programs\SuperAoE → cài lại) và #smart-app-control (vì sao chặn, cách tắt, lưu ý tắt rồi không bật lại được), 2 dòng bảng lỗi mới, 1 FAQ mới + JSON-LD (7 câu, khớp hiển thị), "Cập nhật lần cuối" 29/10/2026, launcher 0.3.69.
+- Trang chủ softwareVersion 0.3.59 → 0.3.69. llms.txt: launcher 0.3.69, mô tả trang tải có diệt virus/Smart App Control, 1 câu trả lời nhanh. Sitemap lastmod 2026-10-29 cho / và /tai-aoe-rise-of-rome/.
+- Từ khóa mới: "đế chế không mở được / diệt virus xoá file / smart app control chặn" — kết quả chỉ tiếng Anh → khoảng trống.
+- Không đo hạng (lần trước 2026-10-28, lần tới 2026-11-04); không soạn outreach (lần tới ~2026-11-02).
+- Kiểm tra: html-validate chỉ còn doctype-style/no-inline-style (như trước), JSON-LD 3 khối parse được, FAQ khớp, anchor #virus/#smart-app-control có, title 54, description 153.
+- Lần sau: đo hạng 2026-11-04; /choi-aoe-tren-macbook/ (lastmod 23/10) rà lại theo 0.3.69; trang đích giải đấu; ping trong phòng/F4 nếu chủ dự án muốn quảng bá.
+
+### Cần chủ dự án quyết định / làm
+- Câu "Smart App Control phải tắt, tắt rồi không bật lại được" lấy từ thông báo trong launcher 0.3.65 — nếu muốn khuyên cách khác (vd. chờ bản ký số) thì báo. Ký số exe sẽ giải quyết cả SmartScreen lẫn Smart App Control.
+- Vẫn tồn đọng: Google Search Console + Bing Webmaster Tools cho superaqe.com (Thay đổi địa chỉ từ superaoe.com, gửi sitemap), giữ 301 superaoe.com lâu hơn 2026-11-28, ký số exe / notarize Mac, đăng bài outreach.

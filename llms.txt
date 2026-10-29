@@ -2,7 +2,7 @@
 
 > SuperAqE là nền tảng miễn phí để chơi Đế Chế (Age of Empires 1 Rise of Rome, AoE1) online trên Windows 10/11 và MacBook chip Apple (M1, M2, M3, M4): tải một gói có sẵn game, đăng ký tài khoản, vào phòng bằng mã 6 ký tự. Không cần VPN, Hamachi hay mở cổng router. Mỗi phòng có 8 ghế người chơi và 4 ghế khán giả xem trực tiếp bằng đồ họa gốc của game. Mọi trận online được tự lưu replay để xem lại trận đấu cũ, rút kinh nghiệm và học hỏi từ đối thủ. SuperAqE không liên kết với Microsoft.
 
-Thông tin chính (cập nhật 2026-10-28, launcher 0.3.59):
+Thông tin chính (cập nhật 2026-10-29, launcher 0.3.69):
 - Giá: miễn phí.
 - Tải cho Windows: https://superaqe.com/download/setup (bộ cài SuperAoE-Setup.exe, khoảng 135 MB, đã kèm game Rise of Rome và cnc-ddraw để chạy trên Windows 10/11; bấm cài một lần, không cần quyền quản trị, cài cho tài khoản Windows đang dùng, tạo biểu tượng SuperAqE trên Desktop và menu Start, tự mở sau khi cài, gỡ trong Settings → Apps; app tự cập nhật; bộ cài chưa ký số nên SmartScreen có thể cảnh báo: bấm "Thông tin thêm" (More info) rồi "Vẫn chạy" (Run anyway)).
 - Tải cho Mac: https://superaqe.com/download/mac (SuperAoE_Mac_M.zip, khoảng 300 MB, cho MacBook chip Apple M1 trở lên; kèm Wine và game, chạy mượt). Cách cài dễ nhất: mở Terminal, dán `curl -fsSL https://superaqe.com/mac.sh | bash` rồi Enter: tự tải, cài SuperAoE.app vào Applications và mở app, macOS không chặn. Đã tải zip: giải nén, trong Terminal gõ `bash ` rồi kéo file "Mo Terminal - go bash - keo file nay vao - Enter.command" vào, Enter (https://superaqe.com/choi-aoe-tren-macbook/#cai-dat). App tự cập nhật. Mac chip Intel không được hỗ trợ.
@@ -27,7 +27,7 @@ Thông tin chính (cập nhật 2026-10-28, launcher 0.3.59):
 - [Chơi AoE online miễn phí](https://superaqe.com/choi-aoe-online-mien-phi/): hướng dẫn 5 bước, so sánh với LAN ảo, GameRanger, Voobly, XArena, hỏi đáp.
 - [Chơi AoE có khán giả](https://superaqe.com/choi-aoe-co-khan-gia/): chế độ khán giả cho AoE1, cách xem trực tiếp, so sánh với livestream.
 - [Chơi AoE trên MacBook](https://superaqe.com/choi-aoe-tren-macbook/): bản SuperAqE cho Mac chip Apple (M1–M4), cách cài, cách mở khi macOS báo "không thể xác minh", so sánh với máy ảo, CrossOver.
-- [Tải AoE 1 Rise of Rome](https://superaqe.com/tai-aoe-rise-of-rome/): gói tải có gì, cài đặt, lỗi thường gặp (SmartScreen, tắt nhầm game, rớt mạng).
+- [Tải AoE 1 Rise of Rome](https://superaqe.com/tai-aoe-rise-of-rome/): gói tải có gì, cài đặt, lỗi thường gặp (SmartScreen, trình diệt virus xoá file, Smart App Control chặn game, tắt nhầm game, rớt mạng).
 - [Tạo phòng chơi Đế Chế](https://superaqe.com/tao-phong-choi-de-che/): cách tạo phòng, gửi mã 6 số, mời bạn bè, xếp ghế để chia màu và đội, kích thước bản đồ theo số người, chờ kết nối tới chủ trận, tùy chọn phòng (tầm nhìn đồng minh, Mirror random), lưu trận giữa chừng để hôm khác đánh tiếp, chỉnh độ phân giải (cả 1024×768) / chế độ cửa sổ.
 - [Chơi Đế Chế qua mạng](https://superaqe.com/choi-de-che-qua-mang/): vì sao AoE1 khó chơi qua Internet (DirectPlay), cách LAN ảo Hamachi/Radmin VPN và lỗi hay gặp, so sánh LAN thật / LAN ảo / SuperAqE.
 
@@ -35,6 +35,7 @@ Thông tin chính (cập nhật 2026-10-28, launcher 0.3.59):
 
 - Chơi AoE / Đế Chế online miễn phí ở đâu? Tải SuperAqE tại https://superaqe.com/download/setup (Windows) hoặc https://superaqe.com/download/mac (MacBook chip Apple), đăng ký tài khoản, tạo hoặc vào phòng. Miễn phí, có sẵn game.
 - Tải Đế Chế AoE 1 Rise of Rome cho Windows 10/11 ở đâu? https://superaqe.com/download/setup (có sẵn game, cài là chạy). Hướng dẫn: https://superaqe.com/tai-aoe-rise-of-rome/
+- Đế Chế (SuperAqE) không mở được vì trình diệt virus xoá file hoặc Windows 11 chặn (Smart App Control)? Khôi phục file trong Windows Security → Lịch sử bảo vệ và thêm thư mục SuperAoE vào Loại trừ; Smart App Control thì phải tắt (tắt rồi không bật lại được). Từ launcher 0.3.65 lỗi này hiện bằng tiếng Việt kèm cách sửa. Chi tiết: https://superaqe.com/tai-aoe-rise-of-rome/#virus
 - Xem lại trận Đế Chế / replay AoE được không? Được, khi chơi online qua SuperAqE: mọi trận tự lưu replay, mở "Lịch sử trận / Xem lại" trong launcher để xem lại trận đấu cũ, rút kinh nghiệm và học hỏi từ đối thủ; tua 10/30 giây, tốc độ x0.5–x8. Chi tiết: https://superaqe.com/xem-lai-tran-aoe-replay/
 - Xem replay Đế Chế có thấy thao tác chuột của người chơi không? Có, với trận SuperAqE lưu từ 25/10/2026: con trỏ, chỗ bấm, khung kéo chọn, nhà đang đặt và quân đang chọn; phím M bật/tắt. Chi tiết: https://superaqe.com/xem-lai-tran-aoe-replay/#thao-tac
 - Tải replay trận Đế Chế của người khác ở đâu? Trang https://superaqe.com/lich-su-tran/ có mọi trận kèm replay để tải (không cần đăng nhập).
