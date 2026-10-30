@@ -97,7 +97,7 @@
    "name": "SuperAqE có bản cho MacBook chưa?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Có. SuperAqE có bản cài riêng, chạy mượt trên MacBook chip Apple (M1, M2, M3, M4…), tải tại superaqe.com/download/mac. Gói đã kèm Wine và game, cài thành ứng dụng SuperAqE trong thư mục Applications và tự cập nhật trong app."
+    "text": "Có. SuperAqE có bản cài riêng, chạy mượt trên MacBook chip Apple (M1, M2, M3, M4…): tải tại superaqe.com/download/mac. Gói đã kèm Wine và game, cài thành ứng dụng SuperAqE trong thư mục Applications và tự cập nhật trong app."
    }
   },
   {
@@ -114,6 +114,22 @@
    "acceptedAnswer": {
     "@type": "Answer",
     "text": "File cài chưa ký với Apple nên macOS cảnh báo, không phải virus. Cách dễ nhất là cài bằng lệnh: mở Terminal, dán curl -fsSL https://superaqe.com/mac.sh | bash rồi bấm Enter. Nếu đã tải file zip: mở Terminal, gõ bash và một dấu cách, kéo file Mo Terminal - go bash - keo file nay vao - Enter.command vào cửa sổ Terminal rồi bấm Enter."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Trên Mac gán nhóm quân (Ctrl + số) bằng phím nào?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Bấm control + số như Ctrl + số trên Windows, ví dụ control 1 gán nhóm 1; phím ⌘ + số cũng dùng được. Nếu control + số làm đổi màn hình Desktop, vào System Settings → Keyboard → Keyboard Shortcuts… → Mission Control và bỏ chọn “Switch to Desktop 1…9”."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Sao bấm F3, F4 trên MacBook game không nhận?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "macOS dùng hàng phím F cho độ sáng, âm lượng. Giữ fn khi bấm (ví dụ fn + F3 để tạm dừng), hoặc bật “Use F1, F2, etc. keys as standard function keys” trong System Settings → Keyboard → Keyboard Shortcuts… → Function Keys."
    }
   },
   {
@@ -334,6 +350,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
       <a href="/choi-aoe-online-mien-phi/">Chơi online</a>
       <a href="#tinh-trang">Bản Mac</a>
       <a href="#cai-dat">Cài đặt</a>
+      <a href="#phim-tren-mac">Phím</a>
       <a href="#cach-khac">Cách khác</a>
       <a href="#hoi-dap">Hỏi đáp</a>
       <a class="cta" href="https://superaqe.com/download/mac" download>Tải cho Mac</a>
@@ -355,7 +372,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
       <div class="quick-or">hoặc</div>
       <div class="btns"><a class="btn ghost" href="https://superaqe.com/download/mac" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg><span>Tải file zip về<small>SuperAoE_Mac_M.zip · khoảng 300 MB · chip Apple</small></span></a><a class="more" href="#cai-dat">Xem hướng dẫn chi tiết ↓</a></div>
     </div>
-    <p class="meta">Cập nhật lần cuối: <time datetime="2026-10-24">24/10/2026</time></p>
+    <p class="meta">Cập nhật lần cuối: <time datetime="2026-10-30">30/10/2026</time></p>
   </div>
 </section>
 
@@ -370,11 +387,13 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
       <li><b>Tự cập nhật:</b> có bản mới, app tự tải và cài ngay trong app, không phải tải lại gói.</li>
       <li><b>Xem lại trận:</b> mọi trận online trên SuperAqE được tự lưu replay trên máy chủ. Xem <a href="/xem-lai-tran-aoe-replay/">cách xem lại trận AoE bằng replay</a>.</li>
       <li><b>Lưu ý:</b> file cài chưa ký với Apple nên bấm đúp sẽ bị macOS chặn; cài bằng lệnh Terminal thì không bị chặn.</li>
-      <li><b>Chơi chung:</b> bản Mac dùng chung máy chủ, tài khoản và phòng với bản Windows.</li>
+      <li><b>Chơi chung:</b> bản Mac dùng chung máy chủ, tài khoản và phòng với bản Windows và bản <a href="/choi-aoe-tren-linux/">Linux</a>.</li>
+      <li><b>Phím:</b> gán nhóm quân bằng <b>control + số</b> như Ctrl + số trên Windows; phím F1–F12 cần giữ <b>fn</b> hoặc bật phím chức năng chuẩn (<a href="#phim-tren-mac">xem bảng phím</a>).</li>
+      <li><b>Màn hình:</b> bản Mac chạy game ở độ phân giải 1366×768.</li>
       <li><b>Mac chip Intel:</b> không hỗ trợ.</li>
     </ul>
     <p><a class="btn primary" href="https://superaqe.com/download/mac" download>Tải SuperAqE cho Mac</a></p>
-    <p class="note">SuperAqE có bản cho Windows 10/11 và bản cho Mac chip Apple. Nếu bạn dùng máy Windows, xem <a href="/choi-aoe-online-mien-phi/">cách chơi AoE online miễn phí</a>.</p>
+    <p class="note">SuperAqE có bản cho Windows 10/11, bản cho Mac chip Apple và <a href="/choi-aoe-tren-linux/">bản cho Linux</a>. Nếu bạn dùng máy Windows, xem <a href="/choi-aoe-online-mien-phi/">cách chơi AoE online miễn phí</a>.</p>
   </div>
 </section>
 
@@ -398,7 +417,28 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
   </div>
 </section>
 
-<section id="cach-khac">
+<section id="phim-tren-mac">
+  <div class="wrap narrow">
+    <div class="kicker">Phím trên Mac</div>
+    <h2>Phím Ctrl, F1–F12 khi chơi Đế Chế trên MacBook</h2>
+    <p>Bàn phím MacBook khác laptop Windows ở hai chỗ: gán nhóm quân (Ctrl + số) và hàng phím F (macOS dùng cho độ sáng, âm lượng). Cách xử lý dưới đây cũng có trong app: <b>Cài đặt → Phím trên Mac</b>.</p>
+    <div class="tbl">
+      <table>
+        <thead><tr><th scope="col">Việc cần làm</th><th scope="col">Trên Windows</th><th scope="col">Trên Mac (SuperAqE)</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Gán nhóm quân</th><td>Ctrl + số</td><td><b>control + số</b> (ví dụ control 1 gán nhóm 1, bấm 1 để chọn lại). Phím <b>⌘</b> + số cũng dùng được.</td></tr>
+          <tr><th scope="row">Tạm dừng (F3), điểm (F4), menu (F10), giờ/dân số (F11)</th><td>Bấm thẳng phím F</td><td>Giữ <b>fn</b> rồi bấm, ví dụ fn + F3; hoặc bật phím chức năng chuẩn để bấm thẳng</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>Nếu control + số làm đổi màn hình Desktop</h3>
+    <p>Mở <b>System Settings → Keyboard → Keyboard Shortcuts… → Mission Control</b>, bỏ chọn “Switch to Desktop 1…9”. Nếu F11 làm hiện màn hình nền thì bỏ chọn thêm “Show Desktop”.</p>
+    <h3>Muốn bấm F1–F12 không cần giữ fn</h3>
+    <p>Mở <b>System Settings → Keyboard → Keyboard Shortcuts… → Function Keys</b>, bật <b>“Use F1, F2, etc. keys as standard function keys”</b>. Từ đó muốn chỉnh độ sáng, âm lượng thì giữ fn. SuperAqE không tự đổi cài đặt bàn phím của máy bạn.</p>
+  </div>
+</section>
+
+<section id="cach-khac" class="alt">
   <div class="wrap narrow">
     <div class="kicker">Cách khác</div>
     <h2>Các cách người dùng Mac thường thử để chơi Đế Chế</h2>
@@ -418,7 +458,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
   </div>
 </section>
 
-<section id="hoi-dap" class="alt">
+<section id="hoi-dap">
   <div class="wrap narrow">
     <div class="kicker">Hỏi đáp</div>
     <h2>Câu hỏi thường gặp về Đế Chế trên Mac</h2>
@@ -427,6 +467,8 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
       <details><summary>SuperAqE có bản cho MacBook chưa?</summary><p>Có. SuperAqE có bản cài riêng, chạy mượt trên MacBook chip Apple (M1, M2, M3, M4…): <a href="https://superaqe.com/download/mac">tải tại đây</a>. Gói đã kèm Wine và game, cài thành ứng dụng SuperAqE trong thư mục Applications và tự cập nhật trong app.</p></details>
       <details><summary>MacBook M1, M2, M3, M4 có chơi Đế Chế được không?</summary><p>Có. Bản SuperAqE cho Mac chip Apple đóng gói sẵn Wine và game (<a href="https://superaqe.com/download/mac">tải tại đây</a>), chơi online chung phòng với người dùng Windows. Ngoài ra có thể dùng máy ảo Windows 11 ARM hoặc CrossOver.</p></details>
       <details><summary>Mac báo “Apple không thể xác minh” khi mở file cài thì làm sao?</summary><p>File cài chưa ký với Apple nên macOS cảnh báo, không phải virus. Cách dễ nhất là cài bằng lệnh: mở Terminal, dán <code>curl -fsSL https://superaqe.com/mac.sh | bash</code> rồi bấm Enter. Nếu đã tải file zip: mở Terminal, gõ <code>bash</code> và một dấu cách, kéo file Mo Terminal - go bash - keo file nay vao - Enter.command vào cửa sổ Terminal rồi bấm Enter.</p></details>
+      <details><summary>Trên Mac gán nhóm quân (Ctrl + số) bằng phím nào?</summary><p>Bấm control + số như Ctrl + số trên Windows, ví dụ control 1 gán nhóm 1; phím ⌘ + số cũng dùng được. Nếu control + số làm đổi màn hình Desktop, vào System Settings → Keyboard → Keyboard Shortcuts… → Mission Control và bỏ chọn “Switch to Desktop 1…9”.</p></details>
+      <details><summary>Sao bấm F3, F4 trên MacBook game không nhận?</summary><p>macOS dùng hàng phím F cho độ sáng, âm lượng. Giữ fn khi bấm (ví dụ fn + F3 để tạm dừng), hoặc bật “Use F1, F2, etc. keys as standard function keys” trong System Settings → Keyboard → Keyboard Shortcuts… → Function Keys.</p></details>
       <details><summary>Có dùng Boot Camp để chơi Đế Chế được không?</summary><p>Chỉ trên Mac chip Intel đời cũ. Mac chip Apple (M1 trở lên) không hỗ trợ Boot Camp.</p></details>
       <details><summary>Mac chip Intel có dùng được SuperAqE không?</summary><p>Không. Bản SuperAqE cho Mac dành cho chip Apple (M1 trở lên). Nếu Mac chip Intel đã cài Windows qua Boot Camp thì dùng bản Windows của SuperAqE.</p></details>
     </div>

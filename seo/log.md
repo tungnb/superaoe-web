@@ -188,3 +188,17 @@
 ### Cần chủ dự án quyết định / làm
 - Câu "Smart App Control phải tắt, tắt rồi không bật lại được" lấy từ thông báo trong launcher 0.3.65 — nếu muốn khuyên cách khác (vd. chờ bản ký số) thì báo. Ký số exe sẽ giải quyết cả SmartScreen lẫn Smart App Control.
 - Vẫn tồn đọng: Google Search Console + Bing Webmaster Tools cho superaqe.com (Thay đổi địa chỉ từ superaoe.com, gửi sitemap), giữ 301 superaoe.com lâu hơn 2026-11-28, ký số exe / notarize Mac, đăng bài outreach.
+
+## 2026-10-30 (vòng SEO 14 — tự động)
+- Chuẩn bị: git pull về 4 commit peer (bong bóng Chat tổng chat.js trên mọi trang, ảnh hero, trang /choi-aoe-tren-linux/ từ 1838670) — đã live (/, /chat.js, /choi-aoe-tren-linux/ trả 200). git status sạch. Sản phẩm đổi: launcher Win+Mac 0.3.77, bản Linux 0.3.77. Cập nhật `seo/facts.md` (0.3.70–0.3.77, Linux, phím trên Mac).
+- Cải thiện lớn: /choi-aoe-tren-macbook/ — mục mới #phim-tren-mac (bảng Windows ↔ Mac: control + số / ⌘ + số gán nhóm quân, fn + F3/F4/F10/F11; tắt "Switch to Desktop 1…9", "Show Desktop"; bật phím chức năng chuẩn), 2 gạch đầu dòng Tình trạng (phím, 1366×768), link chéo bản Linux, 2 FAQ mới (8 câu, JSON-LD sinh lại từ FAQ hiển thị), menu "Phím", "Cập nhật lần cuối" 30/10/2026. Không nhắc ô "fn làm Ctrl" (chưa phát hành).
+- Kỹ thuật: /choi-aoe-tren-linux/ title 61 → 52 ký tự, description 167 → 135; /giai-dau/ description 173 → 145. llms.txt: mô tả trang Mac + câu trả lời nhanh về phím trên Mac. Sitemap lastmod 2026-10-30 cho Mac, Linux, giải đấu. robots/.assetsignore vẫn đúng; 3 h1 ở /giai-dau/ là template JS (chỉ 1 h1 hiển thị) — bỏ qua.
+- Từ khóa mới: "chơi đế chế trên macbook phím ctrl / gán nhóm quân trên mac" (khoảng trống, chỉ có diễn đàn tiếng Anh).
+- Không đo hạng (lần tới 2026-11-04); không soạn outreach (lần tới ~2026-11-02: lưu trận, khán giả xem một bên/delay, bản Linux).
+- Kiểm tra: html-validate trang Mac chỉ còn doctype-style/no-inline-style (như trước), JSON-LD mọi trang parse được, không link nội bộ hỏng, title ≤ 58, description ≤ 153 (trừ /tai-khoan/ noindex).
+- Lần sau: đo hạng 2026-11-04; outreach 2026-11-02; trang đích giải đấu (JSON-LD, BreadcrumbList cho /giai-dau/ và /lich-su-tran/ còn thiếu); trang chủ softwareVersion 0.3.69 → cập nhật khi chạm trang chủ.
+
+### Cần chủ dự án quyết định / làm
+- Trang Linux (peer viết) ghi chạy trên "Linux Mint, Debian, Fedora…" trong h1/og/FAQ, nhưng mới thử trên WSL2 Ubuntu 24.04 và chưa chơi qua màn thiết lập. Thử thật một trận trên Ubuntu thật (và nếu được Mint/Fedora) hoặc báo để agent sửa câu chữ cho nhẹ hơn.
+- Bong bóng Chat tổng trên website chưa có kiểm duyệt — cân nhắc lọc từ ngữ / báo cáo trước khi quảng bá.
+- Vẫn tồn đọng: Google Search Console + Bing Webmaster Tools cho superaqe.com (Thay đổi địa chỉ từ superaoe.com, gửi sitemap), giữ 301 superaoe.com lâu hơn 2026-11-28, ký số exe / notarize Mac, đăng bài outreach.
