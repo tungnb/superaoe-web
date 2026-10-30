@@ -267,6 +267,9 @@ input:focus { outline: none; background: var(--surface, #fff); border-color: var
       retryTimer = setTimeout(connect, document.hidden ? Math.max(wait, 5000) : wait);
     };
   }
+  // Heartbeat, as launchers send on the menu socket: the Directory answers "pong" without waking up and
+  // closes a socket silent for 90 s (a laptop asleep, a network gone without a close).
+  setInterval(() => { if (ws && ws.readyState === 1) ws.send("ping"); }, 20_000);
   // Back on the tab after the phone slept: reconnect at once instead of waiting out the back-off.
   document.addEventListener("visibilitychange", () => {
     if (!document.hidden && ws && ws.readyState > 1) { retry = 0; connect(); }
