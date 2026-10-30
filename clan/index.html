@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bảng xếp hạng clan Đế Chế (AoE) – SuperAqE</title>
+<meta name="description" content="Bảng xếp hạng clan Đế Chế (AoE Rise of Rome) trên SuperAqE: điểm clan theo mùa, clan chiến, thách đấu, cấp clan và vương miện top 3 mỗi tháng.">
+<link rel="canonical" href="https://superaqe.com/clan/">
+<meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111113" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bảng xếp hạng clan – SuperAqE">
+<meta property="og:description" content="Clan Đế Chế: điểm theo mùa, clan chiến, thách đấu, vương miện top 3.">
+<meta property="og:url" content="https://superaqe.com/clan/">
+<meta property="og:image" content="https://superaqe.com/img/spectator.jpg">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+:root {
+  --gold: #e8c35a; --gold2: #b8902f; --ink: #221a12;
+  --bg: #140f0a; --bg2: #1c150e; --panel: #2c2218; --panel2: #3a2d1e;
+  --line: #5a4728; --text: #f2e6cf; --dim: #b7a583; --red: #a33a32; --green: #4f9a5a;
+  --serif: "Playfair Display", Georgia, serif;
+  --sans: "Be Vietnam Pro", "Segoe UI", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.6; }
+a { color: var(--gold); }
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.top { position: sticky; top: 0; z-index: 10; background: rgba(20,15,10,.88); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(184,144,47,.35); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-weight: 800; font-size: 22px; color: var(--gold); text-decoration: none; }
+.brand img { width: 30px; height: 36px; }
+.who { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--dim); }
+.who b { color: var(--text); }
+.who a { text-decoration: none; }
+.links { display: flex; gap: 14px; font-size: 14px; }
+.links a { color: var(--dim); text-decoration: none; }
+.links a:hover, .links a.on { color: var(--gold); }
+h1 { font-family: var(--serif); font-size: clamp(28px, 4vw, 38px); margin: 36px 0 6px; overflow-wrap: anywhere; }
+h2 { font-family: var(--serif); font-size: 24px; margin: 0 0 14px; }
+h3 { font-size: 16px; margin: 0 0 8px; color: var(--gold); }
+.sub { color: var(--dim); margin: 0 0 24px; max-width: 760px; white-space: pre-wrap; overflow-wrap: anywhere; }
+label { display: block; font-size: 14px; color: var(--dim); margin: 12px 0 4px; }
+input, textarea, select { width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--line); background: #0e0b07; color: var(--text); font: inherit; }
+textarea { resize: vertical; min-height: 60px; }
+input:focus, textarea:focus, select:focus { outline: 2px solid var(--gold2); outline-offset: 0; border-color: var(--gold2); }
+button, .btn { display: inline-flex; align-items: center; justify-content: center; gap: 7px; padding: 10px 18px; border-radius: 9px; font: inherit; font-weight: 700; font-size: 15px; cursor: pointer; text-decoration: none; border: 0; }
+.primary { background: linear-gradient(#e8c35a, #b8902f); color: var(--ink); }
+.primary:hover { filter: brightness(1.08); }
+button:disabled { opacity: .6; cursor: default; }
+.ghost { color: var(--text); border: 1px solid var(--line); background: rgba(58,45,30,.4); }
+.ghost:hover { border-color: var(--gold2); }
+.danger { color: #f6c0b8; border: 1px solid rgba(240,138,126,.5); background: rgba(163,58,50,.18); }
+.danger:hover { border-color: #f08a7e; }
+.small { padding: 6px 12px; font-size: 13px; }
+.tiny { padding: 2px 8px; font-size: 12px; font-weight: 600; border-radius: 6px; }
+.msg { min-height: 0; margin-top: 10px; font-size: 14px; color: #f08a7e; }
+.msg:empty { display: none; }
+.hint { font-size: 13px; color: var(--dim); }
+.hidden { display: none !important; }
+.row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.grow { flex: 1; }
+.empty { color: var(--dim); text-align: center; padding: 24px; border: 1px dashed var(--line); border-radius: 12px; }
+.panel { border: 1px solid var(--line); border-radius: 12px; background: linear-gradient(180deg, var(--panel), #241b12); padding: 16px 18px; }
+.badge { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 99px; border: 1px solid var(--line); color: var(--dim); white-space: nowrap; }
+.badge.reg { color: #9fd3ff; border-color: rgba(120,180,240,.5); }
+.badge.run { color: #8fd69a; border-color: rgba(79,154,90,.7); }
+.badge.done { color: var(--gold); border-color: var(--gold2); }
+.badge.cancel { color: #f08a7e; border-color: rgba(240,138,126,.5); }
+
+/* clan table */
+.seasonbar { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 6px 0 14px; }
+.seasonbar select { width: auto; }
+.ctable { width: 100%; border-collapse: collapse; }
+.ctable th { text-align: left; font-size: 12px; color: var(--muted, var(--dim)); font-weight: 600; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+.ctable td { padding: 10px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+.ctable tr.link { cursor: pointer; }
+.ctable tr.link:hover td { background: var(--surface2, rgba(255,255,255,.04)); }
+.ctable .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.place { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; font-weight: 700; font-size: 13px; background: var(--surface3, #3a2d1e); }
+.place.p1 { background: #f5c542; color: #3d2a00; } .place.p2 { background: #d4d9e0; color: #2b2f36; } .place.p3 { background: #c27c3e; color: #fff; }
+.cname { display: flex; align-items: center; gap: 10px; }
+.cname b { font-size: 16px; }
+.ctag { display: inline-flex; align-items: center; gap: 3px; font-weight: 700; font-size: 13px; letter-spacing: .3px; margin-right: 4px; }
+.cbadge text { fill: #fff; font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "SimSun", serif; font-weight: 700; }
+.cbadge.glow { filter: drop-shadow(0 0 3px rgba(245,197,66,.8)); }
+.cols { display: grid; grid-template-columns: 2fr 1fr; gap: 18px; align-items: start; }
+.chead { display: flex; gap: 18px; align-items: center; margin: 30px 0 14px; }
+.chead h1 { margin: 0; }
+.stats { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; margin: 0 0 18px; }
+.stat { padding: 12px 14px; border-radius: 12px; background: var(--surface2, var(--panel)); }
+.stat small { display: block; color: var(--muted, var(--dim)); font-size: 12px; }
+.stat b { font-size: 20px; }
+.notice { white-space: pre-wrap; padding: 12px 14px; border-radius: 12px; background: var(--accent-soft, rgba(232,195,90,.12)); margin-bottom: 18px; }
+.wars { list-style: none; margin: 0; padding: 0; }
+.wars li { display: flex; gap: 10px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+.res { min-width: 50px; text-align: center; padding: 2px 8px; border-radius: 8px; font-weight: 700; font-size: 12px; }
+.res.win { background: rgba(52,199,89,.15); color: #248a3d; } .res.loss { background: rgba(255,59,48,.12); color: #d70015; }
+.frame { display: inline-block; width: 13px; height: 13px; vertical-align: -1px; margin-left: 3px; }
+.rules ul { margin: 6px 0 0; padding-left: 18px; line-height: 1.6; font-size: 14px; }
+@media (max-width: 760px) { .cols { grid-template-columns: 1fr; } .ctable .hide-sm { display: none; } }
+@media (max-width: 480px) { .links { gap: 8px; font-size: 13px; } .links a:last-child { display: none; } }
+</style>
+<link rel="stylesheet" href="/modern.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/favicon.svg" alt="" width="30" height="36">SuperAqE</a>
+    <nav class="links" aria-label="Trang"><a href="/clan/" class="on">Clan</a><a href="/giai-dau/">Giải đấu</a><a href="/lich-su-tran/">Lịch sử trận</a><a href="/tai-khoan/">Tài khoản</a></nav>
+  </div>
+</header>
+
+<main class="wrap" id="main"><p class="hint" style="margin-top:40px">Đang tải...</p></main>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+// The launcher's clan badge (renderer/app.js clanBadge): a Hán glyph on a coloured shape, the level's
+// ring, the season crown.
+const GLYPHS = { long: "龍", ho: "虎", ung: "鷹", kiem: "劍", hoa: "火", son: "山", vuong: "王", thien: "天", phong: "風", loi: "雷", nguyet: "月", nhat: "日", tinh: "星", vo: "武", nghia: "義", dung: "勇" };
+const SHAPES = { shield: '<path d="M20 2 36 8v12c0 9-7 15-16 18C11 35 4 29 4 20V8z"/>', round: '<circle cx="20" cy="20" r="18"/>',
+  diamond: '<path d="M20 1 39 20 20 39 1 20z"/>', banner: '<path d="M5 2h30v35l-15-7-15 7z"/>' };
+const RINGS = { 2: "#b87333", 3: "#c0c7d1", 4: "#e3b341", 5: "#f5c542" };
+const PLACES = { 1: "#f5c542", 2: "#c0c7d1", 3: "#c27c3e" };
+const PLACE_NAMES = { 1: "Vô địch", 2: "Á quân", 3: "Hạng ba" };
+const RANKS = { leader: "Trưởng clan", officer: "Phó clan", member: "Thành viên" };
+function badge(c, px = 20) {
+  const color = /^#[0-9a-f]{6}$/i.test(c?.color) ? c.color : "#334155";
+  const ring = RINGS[c?.lv], crown = PLACES[c?.crown];
+  return `<svg class="cbadge${c?.lv >= 5 ? " glow" : ""}" viewBox="0 0 40 40" width="${px}" height="${px}" aria-hidden="true">` +
+    `<g fill="${color}" stroke="${ring ?? "rgba(255,255,255,.55)"}" stroke-width="${ring ? 3.5 : 2}">${SHAPES[c?.shape] ?? SHAPES.shield}</g>` +
+    `<text x="20" y="${c?.shape === "banner" ? 19 : 21}" text-anchor="middle" dominant-baseline="central" font-size="${c?.shape === "diamond" ? 15 : 19}">${GLYPHS[c?.icon] ?? "?"}</text>` +
+    (crown ? `<path d="M25 9l3 3 3.5-6 3.5 6 3-3-1.5 8h-10z" fill="${crown}" stroke="#5a3d00" stroke-width="1"/>` : "") + "</svg>";
+}
+const frame = (p) => PLACES[p] ? `<svg class="frame" viewBox="0 0 24 24" aria-label="Top ${p} clan mùa trước"><path fill="${PLACES[p]}" stroke="rgba(0,0,0,.35)" d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17l-6.1 3.4 1.5-6.8L2.2 9l6.9-.7z"/></svg>` : "";
+const tagHTML = (c) => `<span class="ctag">${badge(c, 16)}${esc(c.tag)}</span>`;
+const seasonName = (s) => `Mùa ${Number(s.slice(5))}/${s.slice(0, 4)}`;
+const day = (t) => new Date(t).toLocaleDateString("vi-VN");
+const when = (t) => new Date(t).toLocaleString("vi-VN", { hour12: false, day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
+const get = (path) => fetch(path).then((r) => r.ok ? r.json() : Promise.reject(r.status));
+
+async function showTable(season = "") {
+  const s = await get("/api/clans/season" + (season ? "?season=" + encodeURIComponent(season) : ""));
+  document.title = `Bảng xếp hạng clan ${seasonName(s.season)} – SuperAqE`;
+  const r = s.rules;
+  $("main").innerHTML = `
+    <h1>Bảng xếp hạng clan</h1>
+    <p class="sub">Clan Đế Chế (AoE) trên SuperAqE: mỗi trận thắng thua của thành viên đều cộng điểm cho clan, đánh clan chiến được thêm điểm. Hết mỗi tháng, top 3 clan nhận vương miện trên huy hiệu. Lập clan, xin vào clan và thách đấu ngay trong launcher (nút <b>Clan</b>).</p>
+    <div class="seasonbar"><label for="season" style="margin:0">Mùa</label>
+      <select id="season">${s.seasons.map((x) => `<option value="${esc(x)}" ${x === s.season ? "selected" : ""}>${esc(seasonName(x))}${x === s.current ? " (đang diễn ra)" : ""}</option>`).join("")}</select>
+      <span class="hint">${s.closed ? "Đã kết thúc" : `${day(s.from)} – ${day(s.to - 1)}`}</span></div>
+    ${s.awards.length ? `<p class="hint">${s.awards.map((a) => `${PLACE_NAMES[a.place]}: <b>${esc(a.tag)}</b> ${esc(a.name)}`).join(" · ")}</p>` : ""}
+    <div class="cols">
+      <div class="panel" style="padding:6px 8px">${s.clans.length ? `<table class="ctable"><thead><tr><th>#</th><th>Clan</th><th class="num">Điểm</th>
+        <th class="num hide-sm">Thắng / trận</th><th class="num hide-sm">Clan chiến</th><th class="num hide-sm">Người đánh</th></tr></thead><tbody>
+        ${s.clans.map((c) => `<tr class="link" data-tag="${esc(c.tag)}"><td><span class="place p${c.place}">${c.place}</span></td>
+          <td><div class="cname">${badge(c, 30)}<div><b>${esc(c.name)}</b><br><span class="hint">${esc(c.tag)} · cấp ${c.lv} · ${c.members} thành viên</span></div></div></td>
+          <td class="num"><b>${c.points}</b></td><td class="num hide-sm">${c.wins}/${c.matches}</td><td class="num hide-sm">${c.wars}</td><td class="num hide-sm">${c.players}</td></tr>`).join("")}
+        </tbody></table>` : `<div class="empty">Mùa này chưa có trận nào tính điểm clan.</div>`}</div>
+      <div>
+        <div class="panel"><h3>Người đóng góp nhiều nhất</h3>${s.players.length ? `<table class="ctable"><tbody>${s.players.slice(0, 12).map((p, i) =>
+          `<tr><td>${i + 1}</td><td>${tagHTML(p.clan)} ${esc(p.username)}</td><td class="num">${p.points}</td></tr>`).join("")}</tbody></table>` : `<p class="hint">Chưa có.</p>`}</div>
+        <div class="panel rules" style="margin-top:14px"><h3>Cách tính điểm</h3><ul>
+          <li>Trận có thắng thua, từ ${r.minMinutes} phút; cùng những người chơi chỉ tính ${r.perDay} trận mỗi ngày.</li>
+          <li>Thắng +${r.win}, thua +${r.loss}; thắng người của clan khác +${r.rival}.</li>
+          <li>Clan chiến (cả clan một bên, một clan khác bên kia): clan thắng +${r.war}, trận thách đấu đã nhận +${r.challenge}.</li>
+          <li>Cấp clan theo tổng điểm: ${s.levels.map((l) => `cấp ${l.lv}: ${l.points} điểm, ${l.members} người`).join("; ")}.</li>
+          <li>Hết mùa: top 3 clan có từ ${r.awardMinPoints} điểm nhận vương miện; thành viên đánh từ ${r.awardMinMatches} trận cho clan nhận khung tên.</li>
+          <li>Gian lận bị khóa tài khoản thì mất điểm đã đóng góp trong mùa.</li></ul></div>
+      </div>
+    </div>`;
+  $("season").onchange = () => showTable($("season").value);
+  for (const tr of document.querySelectorAll("tr[data-tag]")) tr.onclick = () => { history.pushState(null, "", "?tag=" + encodeURIComponent(tr.dataset.tag)); route(); };
+}
+
+async function showClan(tag) {
+  const { clan: c } = await get("/api/clans/info?tag=" + encodeURIComponent(tag));
+  document.title = `Clan ${c.tag} · ${c.name} – SuperAqE`;
+  const members = [...c.members].sort((a, b) => (b.season?.points ?? 0) - (a.season?.points ?? 0));
+  $("main").innerHTML = `
+    <p style="margin-top:20px"><a href="/clan/">← Bảng xếp hạng clan</a></p>
+    <div class="chead">${badge(c, 84)}<div><h1>${esc(c.name)}</h1><div class="hint">${esc(c.tag)} · cấp ${c.lv} · trưởng clan ${esc(c.leader)} · thành lập ${day(c.created)} · ${c.recruit ? "đang tuyển thành viên" : "ngừng tuyển"}</div>
+      ${c.motto ? `<div style="margin-top:4px">“${esc(c.motto)}”</div>` : ""}</div></div>
+    <div class="stats">
+      <div class="stat"><small>${esc(seasonName(c.season.id))}</small><b>${c.season.points} điểm</b><small>${c.season.place ? "hạng " + c.season.place + " · " : ""}${c.season.wins}/${c.season.matches} trận thắng</small></div>
+      <div class="stat"><small>Tổng điểm</small><b>${c.points}</b><small>${c.next ? `cấp ${c.next.lv} ở ${c.next.points} điểm` : "cấp cao nhất"}</small></div>
+      <div class="stat"><small>Clan chiến</small><b>${c.wars.won} thắng · ${c.wars.lost} thua</b></div>
+      <div class="stat"><small>Thành viên</small><b>${c.members.length}/${c.maxMembers}</b></div>
+    </div>
+    ${c.notice ? `<div class="notice">${esc(c.notice)}</div>` : ""}
+    ${c.awards.length ? `<p>${c.awards.map((a) => `🏆 ${PLACE_NAMES[a.place]} ${esc(seasonName(a.season))} (${a.points} điểm)`).join(" · ")}</p>` : ""}
+    <div class="cols">
+      <div class="panel" style="padding:6px 8px"><table class="ctable"><thead><tr><th>Thành viên</th><th class="num">Điểm mùa này</th><th class="num hide-sm">Thắng / trận</th></tr></thead><tbody>
+        ${members.map((m) => `<tr><td><b>${esc(m.username)}</b>${frame(m.frame)} <span class="hint">${RANKS[m.rank]}</span></td>
+          <td class="num">${m.season?.points ?? 0}</td><td class="num hide-sm">${m.season ? `${m.season.wins}/${m.season.matches}` : "-"}</td></tr>`).join("")}
+      </tbody></table></div>
+      <div class="panel"><h3>Clan chiến gần đây</h3>${c.wars.recent.length ? `<ul class="wars">${c.wars.recent.map((w) =>
+        `<li><span class="res ${w.won ? "win" : "loss"}">${w.won ? "Thắng" : "Thua"}</span><span>${w.size}-${w.size} với <a href="?tag=${encodeURIComponent(w.other.tag || "")}">${esc(w.other.tag || "?")}</a>${w.challenge ? " · thách đấu" : ""}<br><span class="hint">${when(w.t)}</span></span></li>`).join("")}</ul>`
+        : `<p class="hint">Chưa có trận clan chiến.</p>`}</div>
+    </div>`;
+  for (const a of document.querySelectorAll('a[href^="?tag="]')) a.onclick = (e) => { e.preventDefault(); history.pushState(null, "", a.getAttribute("href")); route(); };
+}
+
+function route() {
+  const tag = new URLSearchParams(location.search).get("tag");
+  (tag ? showClan(tag) : showTable()).catch(() => {
+    $("main").innerHTML = `<div class="empty" style="margin-top:40px">${tag ? "Không tìm thấy clan này." : "Không tải được bảng xếp hạng, hãy thử lại sau."} <a href="/clan/">Bảng xếp hạng clan</a></div>`;
+  });
+  scrollTo(0, 0);
+}
+addEventListener("popstate", route);
+route();
+</script>
+<script src="/chat.js" defer></script>
+</body>
+</html>

@@ -212,12 +212,13 @@ dialog h2 { margin-bottom: 4px; }
 }
 </style>
 <link rel="stylesheet" href="/modern.css">
+<style>.clanchk { display: flex; gap: 8px; align-items: flex-start; margin-top: 12px; cursor: pointer; } .clanchk input { width: auto; margin-top: 4px; }</style>
 </head>
 <body>
 <header class="top">
   <div class="wrap">
     <a class="brand" href="/"><img src="/favicon.svg" alt="" width="30" height="36">SuperAqE</a>
-    <nav class="links" aria-label="Trang"><a href="/giai-dau/" class="on">Giải đấu</a><a href="/lich-su-tran/">Lịch sử trận</a><a href="/tai-khoan/">Tài khoản</a></nav>
+    <nav class="links" aria-label="Trang"><a href="/clan/">Clan</a><a href="/giai-dau/" class="on">Giải đấu</a><a href="/lich-su-tran/">Lịch sử trận</a><a href="/tai-khoan/">Tài khoản</a></nav>
     <div class="who">
       <span class="hidden" id="who"><span class="name"><a href="/tai-khoan/"><b id="whoName"></b></a> · </span><button class="ghost small" id="btnLogout">Đăng xuất</button></span>
       <button class="primary small hidden" id="btnLogin">Đăng nhập</button>
@@ -272,6 +273,7 @@ dialog h2 { margin-bottom: 4px; }
       <label><input type="radio" name="mode" value="invite"><span>Chỉ người được mời</span></label>
     </div>
     <p class="hint" id="cModeHint" style="margin:6px 0 0"></p>
+    <label class="clanchk"><input type="checkbox" id="cClan"> <span><b>Giải clan</b>: mỗi đội chỉ gồm người cùng một clan, tên đội là ký hiệu clan (<a href="/clan/">bảng xếp hạng clan</a>)</span></label>
     <label for="cStart">Giờ bắt đầu (hết hạn đăng ký, bốc thăm ngẫu nhiên)</label>
     <input id="cStart" type="datetime-local" required>
     <label>Lộ trình thi đấu</label>
@@ -379,7 +381,7 @@ function card(t) {
   const when = t.status === "reg" ? `Bắt đầu ${fmtTime(t.startAt)}` : t.status === "run" ? `Bắt đầu ${fmtTime(t.startedAt)}` : t.finishedAt ? `Kết thúc ${fmtTime(t.finishedAt)}` : "";
   return `<a class="card" href="?id=${t.id}">
     <div class="row"><b class="grow">${esc(t.name)}</b>${badge(t.status)}</div>
-    <div class="meta">${fmtSize(t.teamSize)} · ${isRR(t) ? "Vòng tròn" : "Loại trực tiếp"} · ${t.teams}/${t.capacity} đội · ${wins.length === 1 ? bo(wins[0]) : "Chạm " + wins.join("/")} · ${MODE[t.mode]}</div>
+    <div class="meta">${fmtSize(t.teamSize)} · ${isRR(t) ? "Vòng tròn" : "Loại trực tiếp"} · ${t.teams}/${t.capacity} đội · ${wins.length === 1 ? bo(wins[0]) : "Chạm " + wins.join("/")} · ${MODE[t.mode]}${t.clan ? " · Giải clan" : ""}</div>
     <div class="meta">Tổ chức: ${esc(t.organizer)} · ${when}</div>
     ${t.championName ? `<div class="champ">${CUP}Vô địch: ${esc(t.championName)}</div>` : ""}
   </a>`;
@@ -458,7 +460,7 @@ $("createForm").onsubmit = async (e) => {
   try {
     const rounds = [...$("cPlan").children].map((tr) => ({ wins: Number(tr.querySelector("[data-wins]").value), hours: Number(tr.querySelector("[data-hours]").value) }));
     const { id } = await api("tour/create", { name: $("cName").value, desc: $("cDesc").value, format: formVal("format"), teamSize: Number(formVal("size")),
-      capacity: Number(formVal("cap")), mode: formVal("mode"), rounds, startAt: new Date($("cStart").value).getTime() });
+      capacity: Number(formVal("cap")), mode: formVal("mode"), rounds, startAt: new Date($("cStart").value).getTime(), clan: $("cClan").checked });
     location.href = "?id=" + id;
   } catch (err) {
     if (err.status === 401) { setMe(null); $("createDlg").close(); askLogin(openCreate, "Phiên đăng nhập đã hết, hãy đăng nhập lại."); }
@@ -577,7 +579,7 @@ function renderTour() {
     <div class="info">
       <div><small>Thể thức</small><b>${fmtSize(t.teamSize)} · ${FORMAT[t.format] ?? FORMAT.elim}</b></div>
       <div><small>Số đội</small><b>${D.teams.length} / ${t.capacity}</b></div>
-      <div><small>Cách vào giải</small><b>${MODE[t.mode]}</b></div>
+      <div><small>Cách vào giải</small><b>${MODE[t.mode]}${t.clan ? " · giải clan" : ""}</b></div>
       <div><small>Người tổ chức</small><b>${esc(t.organizer)}</b></div>
       <div><small>${t.startedAt ? "Đã bắt đầu" : "Bắt đầu"}</small><b>${fmtTime(t.startedAt ?? t.startAt)}</b>${t.status === "reg" ? `<small>còn ${fmtLeft(t.startAt - D.now)}</small>` : ""}</div>
     </div>
@@ -648,9 +650,11 @@ function renderRegistration(my, organizer) {
     return { head: `<b>${roundName(ri, total)}</b><small>${bo(r.wins)}</small><small>hạn dự kiến ${fmtTime(deadline)}</small>`,
       series: Array.from({ length: t.capacity >> (ri + 1) }, (_, k) => ri ? wait : `<div class="series">${table(tables[2 * k])}${table(tables[2 * k + 1])}</div>`) };
   });
-  const how = t.mode === "open"
-    ? (solo ? "Bấm <b>Ngồi vào</b> ở một ghế trống để tham gia giải." : `Mỗi bàn là một đội ${t.teamSize} ghế. Bấm <b>Ngồi vào</b> ở bàn đã có đội để làm đồng đội, hoặc ở bàn trống để lập đội mới (bạn làm đội trưởng ★, đặt tên đội và mời bạn bè).`)
-    : "Giải chỉ dành cho người được mời: người tổ chức xếp đội và mời người chơi vào từng ghế.";
+  const how = (t.clan ? "<b>Giải clan</b>: chỉ người đang ở trong một clan được tham gia, mỗi đội gồm người cùng một clan và mang ký hiệu clan. " : "") + (t.mode === "open"
+    ? (solo ? "Bấm <b>Ngồi vào</b> ở một ghế trống để tham gia giải." : t.clan
+      ? `Mỗi bàn là một đội ${t.teamSize} ghế. Bấm <b>Ngồi vào</b> ở bàn của clan bạn để làm đồng đội, hoặc ở bàn trống để lập đội mới cho clan (bạn làm đội trưởng ★ và mời người cùng clan).`
+      : `Mỗi bàn là một đội ${t.teamSize} ghế. Bấm <b>Ngồi vào</b> ở bàn đã có đội để làm đồng đội, hoặc ở bàn trống để lập đội mới (bạn làm đội trưởng ★, đặt tên đội và mời bạn bè).`)
+    : "Giải chỉ dành cho người được mời: người tổ chức xếp đội và mời người chơi vào từng ghế.");
   body.innerHTML = `
     ${my?.state === "invited" ? `<div class="invite" style="margin-bottom:16px"><span class="grow">Bạn được mời vào đội <b>${esc(teamName(my.team))}</b>.</span>
       <button class="primary small" id="btnAccept">Chấp nhận</button><button class="ghost small" id="btnDecline">Từ chối</button></div>` : ""}
@@ -681,7 +685,9 @@ function renderRegistration(my, organizer) {
   on("btnCancel", () => confirm("Huỷ giải này? Không thể hoàn tác.") && act("cancel", {}, msg));
   const newTeam = () => ask({ title: "Lập đội mới", hint: "Bạn ngồi ghế đầu tiên và làm đội trưởng, sau đó mời đồng đội hoặc chờ người khác ngồi vào.",
     label: "Tên đội", value: `Đội ${me.username}`, max: 30, button: "Lập đội và ngồi vào", run: (name, m, done) => act("join", { name }, m, done) });
-  all("[data-sit]", () => solo ? act("join", {}, msg) : me ? newTeam() : askLogin(newTeam, "Đăng nhập để ngồi vào bàn."));
+  // A clan tournament names the team after the clan: no name to ask.
+  const sitNew = () => t.clan ? act("join", {}, msg) : newTeam();
+  all("[data-sit]", () => solo ? act("join", {}, msg) : me ? sitNew() : askLogin(sitNew,"Đăng nhập để ngồi vào bàn."));
   all("[data-jointeam]", (b) => act("join", { team: Number(b.dataset.jointeam) }, msg));
   all("[data-leave]", leave);
   all("[data-kick]", (b) => confirm(`Loại ${b.dataset.kick} khỏi đội?`) && act("kick", { other: b.dataset.kick }, msg));
@@ -690,8 +696,8 @@ function renderRegistration(my, organizer) {
     label: "Tên người chơi", max: 24, button: "Mời", run: (other, m, done) => act("invite", { team: Number(b.dataset.invite), other }, m, done) }));
   all("[data-invitesolo]", () => ask({ title: "Mời người chơi", hint: "Mỗi người là một đội; họ bấm Chấp nhận trên trang giải này.",
     label: "Tên người chơi", max: 24, button: "Mời", run: (other, m, done) => act("invite", { other }, m, done) }));
-  all("[data-addteam]", () => ask({ title: "Thêm đội", hint: "Sau đó mời người chơi vào từng ghế của đội.",
-    label: "Tên đội", max: 30, button: "Thêm đội", run: (name, m, done) => act("addteam", { name }, m, done) }));
+  all("[data-addteam]", () => ask({ title: "Thêm đội", hint: t.clan ? "Giải clan: nhập ký hiệu của clan, sau đó mời người của clan đó vào từng ghế." : "Sau đó mời người chơi vào từng ghế của đội.",
+    label: t.clan ? "Ký hiệu clan" : "Tên đội", max: 30, button: "Thêm đội", run: (name, m, done) => act("addteam", { name }, m, done) }));
 }
 
 function seriesStatus(s) {
