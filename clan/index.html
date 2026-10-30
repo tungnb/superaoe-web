@@ -164,9 +164,9 @@ async function showTable(season = "") {
         <div class="panel"><h3>Người đóng góp nhiều nhất</h3>${s.players.length ? `<table class="ctable"><tbody>${s.players.slice(0, 12).map((p, i) =>
           `<tr><td>${i + 1}</td><td>${tagHTML(p.clan)} ${esc(p.username)}</td><td class="num">${p.points}</td></tr>`).join("")}</tbody></table>` : `<p class="hint">Chưa có.</p>`}</div>
         <div class="panel rules" style="margin-top:14px"><h3>Cách tính điểm</h3><ul>
-          <li>Trận có thắng thua, từ ${r.minMinutes} phút; cùng những người chơi chỉ tính ${r.perDay} trận mỗi ngày.</li>
+          <li>Trận có thắng thua, từ ${r.minMinutes} phút; gặp cùng một đối thủ chỉ tính ${r.perDay} trận mỗi ngày, mỗi người tối đa ${r.perPlayerDay} trận mỗi ngày.</li>
           <li>Thắng +${r.win}, thua +${r.loss}; thắng người của clan khác +${r.rival}.</li>
-          <li>Clan chiến (cả clan một bên, một clan khác bên kia): clan thắng +${r.war}, trận thách đấu đã nhận +${r.challenge}.</li>
+          <li>Clan chiến (từ 2-2, cả clan một bên, một clan khác bên kia): clan thắng +${r.war}, trận thách đấu đã nhận +${r.challenge}.</li>
           <li>Cấp clan theo tổng điểm: ${s.levels.map((l) => `cấp ${l.lv}: ${l.points} điểm, ${l.members} người`).join("; ")}.</li>
           <li>Hết mùa: top 3 clan có từ ${r.awardMinPoints} điểm nhận vương miện; thành viên đánh từ ${r.awardMinMatches} trận cho clan nhận khung tên.</li>
           <li>Gian lận bị khóa tài khoản thì mất điểm đã đóng góp trong mùa.</li></ul></div>
