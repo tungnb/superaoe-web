@@ -202,3 +202,16 @@
 - Trang Linux (peer viết) ghi chạy trên "Linux Mint, Debian, Fedora…" trong h1/og/FAQ, nhưng mới thử trên WSL2 Ubuntu 24.04 và chưa chơi qua màn thiết lập. Thử thật một trận trên Ubuntu thật (và nếu được Mint/Fedora) hoặc báo để agent sửa câu chữ cho nhẹ hơn.
 - Bong bóng Chat tổng trên website chưa có kiểm duyệt — cân nhắc lọc từ ngữ / báo cáo trước khi quảng bá.
 - Vẫn tồn đọng: Google Search Console + Bing Webmaster Tools cho superaqe.com (Thay đổi địa chỉ từ superaoe.com, gửi sitemap), giữ 301 superaoe.com lâu hơn 2026-11-28, ký số exe / notarize Mac, đăng bài outreach.
+
+## 2026-10-31 (vòng SEO 15 — tự động)
+- Chuẩn bị: git pull không có gì mới (3 commit peer /clan/ đã có từ trước, đã live), git status sạch. Sản phẩm đổi: launcher Win + Mac + Linux 0.3.91 (clan 0.3.79–0.3.86, backup replay, khán giả nhìn như người chơi). Cập nhật `seo/facts.md` (clan: luật điểm lấy từ /api/clans/season live + xtv-cf/src/clans.js; 0.3.78–0.3.91).
+- Cải thiện lớn: /clan/ — trang trước đây chỉ render bằng JS (bot không chạy JS chỉ thấy "Đang tải..."). Thêm h1 tĩnh trong placeholder (JS thay bằng h1 của nó → luôn 1 h1) và mục hướng dẫn tĩnh #huong-dan dưới bảng: clan là gì, #lap-clan (4 bước, từ 10 trận, huy hiệu, xin vào), #tinh-diem (bảng điểm + chống cày điểm), #clan-chien (thách đấu, giải clan), #cap-clan (bảng cấp, mùa, vương miện, khung tên), #hoi-dap 6 câu, "Cập nhật lần cuối" 31/10/2026, footer có dòng không liên kết Microsoft + link nội bộ. JSON-LD CollectionPage + BreadcrumbList + FAQPage (sinh từ FAQ hiển thị).
+- Kỹ thuật: BreadcrumbList JSON-LD cho /giai-dau/ và /lich-su-tran/ (việc tồn từ vòng 14). Trang chủ softwareVersion 0.3.69 → 0.3.91. llms.txt: launcher 0.3.91, link /clan/ + câu trả lời nhanh về clan. Sitemap lastmod 2026-10-31 cho /, /clan/, /giai-dau/, /lich-su-tran/.
+- Từ khóa mới: "clan đế chế / bảng xếp hạng clan aoe / lập clan đế chế" (đối thủ: EGOPLAY E-CLAN) — chưa WebSearch đo, thêm vào keywords.md.
+- Không đo hạng (lần tới 2026-11-04); không soạn outreach (lần tới 2026-11-02: lưu trận, khán giả xem một bên/delay, bản Linux, clan mùa 11).
+- Kiểm tra: html-validate /clan/ chỉ còn doctype-style/no-inline-style (như trước), JSON-LD 4 trang parse được, FAQ JSON-LD khớp hiển thị, không link nội bộ hỏng.
+- Lần sau: đo hạng 2026-11-04; outreach 2026-11-02; /giai-dau/ và /lich-su-tran/ cũng render bằng JS — cân nhắc thêm đoạn giới thiệu tĩnh + FAQ; trang đích "giải đấu đế chế online".
+
+### Cần chủ dự án quyết định / làm
+- Kiểm tra câu chữ mục clan trên /clan/ (đặc biệt: +40 thách đấu thay cho +20; 1-1 chỉ là clan chiến khi đúng thách đấu; "không có tiền tệ hay vật phẩm mua bán"). Nếu luật điểm đổi trong Worker, trang tĩnh phải sửa theo (bảng động trong khung "Cách tính điểm" vẫn lấy từ API).
+- Vẫn tồn đọng: Google Search Console + Bing Webmaster Tools cho superaqe.com (Thay đổi địa chỉ từ superaoe.com, gửi sitemap), giữ 301 superaoe.com lâu hơn 2026-11-28, ký số exe / notarize Mac, đăng bài outreach, kiểm duyệt chat tổng trước khi quảng bá.

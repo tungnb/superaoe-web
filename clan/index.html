@@ -101,8 +101,106 @@ button:disabled { opacity: .6; cursor: default; }
 .rules ul { margin: 6px 0 0; padding-left: 18px; line-height: 1.6; font-size: 14px; }
 @media (max-width: 760px) { .cols { grid-template-columns: 1fr; } .ctable .hide-sm { display: none; } }
 @media (max-width: 480px) { .links { gap: 8px; font-size: 13px; } .links a:last-child { display: none; } }
+.guide { margin-top: 48px; padding-bottom: 20px; max-width: 900px; }
+.guide h2 { margin: 36px 0 12px; }
+.guide h3 { margin: 18px 0 4px; }
+.guide ol { padding-left: 22px; }
+.guide li { margin: 6px 0; }
+.guide .panel { margin: 12px 0; }
+footer { margin-top: 40px; padding: 30px 0 40px; border-top: 1px solid var(--line); color: var(--dim); font-size: 13px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+footer a { color: var(--dim); }
 </style>
 <link rel="stylesheet" href="/modern.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "CollectionPage",
+   "@id": "https://superaqe.com/clan/#page",
+   "url": "https://superaqe.com/clan/",
+   "name": "Bảng xếp hạng clan Đế Chế (AoE) – SuperAqE",
+   "inLanguage": "vi",
+   "description": "Bảng xếp hạng clan Đế Chế (AoE Rise of Rome) trên SuperAqE theo mùa, cách lập clan, tính điểm, clan chiến và thách đấu.",
+   "isPartOf": {
+    "@id": "https://superaqe.com/#website"
+   },
+   "dateModified": "2026-10-31"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "SuperAqE",
+     "item": "https://superaqe.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Clan",
+     "item": "https://superaqe.com/clan/"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Lập clan Đế Chế trên SuperAqE có mất tiền không?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Không. Lập clan, vào clan, clan chiến và giải clan đều miễn phí; SuperAqE không bán vật phẩm hay tiền tệ trong game."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Cần bao nhiêu trận mới lập được clan?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Tài khoản cần đã đánh ít nhất 10 trận trên SuperAqE. Vào clan có sẵn thì không cần số trận tối thiểu."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Một người vào được mấy clan?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Một clan. Muốn sang clan khác thì rời clan cũ trước; trưởng clan phải nhường chức rồi mới rời được."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Điểm clan được tính thế nào?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Tự động theo kết quả trận từ 10 phút có thắng thua: thắng +10, thua +2, thắng người clan khác +5, clan chiến thắng +20, đúng lời thách đấu đã nhận +40. Cùng một cặp chỉ tính 3 trận mỗi ngày, mỗi người tối đa 8 trận mỗi ngày."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Clan chiến là gì?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Trận từ 2-2 trở lên mà cả một bên cùng một clan, bên kia cùng một clan khác. Clan thắng được thêm 20 điểm, hoặc 40 điểm nếu đó là trận thách đấu đã nhận lời."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Mùa clan kéo dài bao lâu và thưởng gì?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Mỗi mùa là một tháng. Top 3 clan có từ 100 điểm nhận vương miện trên huy hiệu, thành viên đánh từ 10 trận cho clan nhận khung tên, giữ tới hết mùa sau."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
 </head>
 <body>
 <header class="top">
@@ -112,7 +210,73 @@ button:disabled { opacity: .6; cursor: default; }
   </div>
 </header>
 
-<main class="wrap" id="main"><p class="hint" style="margin-top:40px">Đang tải...</p></main>
+<main class="wrap" id="main"><h1>Bảng xếp hạng clan Đế Chế</h1><p class="hint">Đang tải bảng xếp hạng mùa này...</p></main>
+<section class="wrap guide" id="huong-dan" aria-labelledby="hd-title">
+  <h2 id="hd-title">Clan Đế Chế trên SuperAqE là gì?</h2>
+  <p>Clan là nhóm người chơi Đế Chế (Age of Empires 1 Rise of Rome) cùng một ký hiệu <b>[TAG]</b> và huy hiệu trên SuperAqE. Mỗi trận online có thắng thua của thành viên tự động cộng điểm cho clan, bảng xếp hạng chốt theo mùa (mỗi tháng). Lập clan, xin vào clan, chat clan và thách đấu clan khác đều làm trong launcher SuperAqE, miễn phí, không có tiền tệ hay vật phẩm mua bán.</p>
+
+  <h2 id="lap-clan">Cách lập clan hoặc vào clan</h2>
+  <ol>
+    <li><a href="/tai-aoe-rise-of-rome/">Tải SuperAqE</a> (Windows, <a href="/choi-aoe-tren-macbook/">MacBook chip M</a> hoặc <a href="/choi-aoe-tren-linux/">Linux</a>), tạo tài khoản và đăng nhập.</li>
+    <li>Bấm nút <b>Clan</b> trong launcher. Muốn <b>lập clan</b> thì tài khoản cần đã đánh ít nhất 10 trận trên SuperAqE: đặt tên clan (3–24 ký tự, có dấu được), ký hiệu 2–5 chữ/số, khẩu hiệu, rồi chọn huy hiệu — hình Việt Nam hoặc châu Âu (trống đồng, hoa sen, chim Lạc, voi chiến, nón lá, cây tre, kiếm, đại bàng, lâu đài…) trên khiên, tròn, thoi hoặc cờ với màu tùy chọn, hoặc tải ảnh riêng của clan.</li>
+    <li>Muốn <b>vào clan</b> có sẵn: mở danh sách clan, lọc “Đang tuyển”, bấm <b>Xin vào</b> và chờ trưởng hoặc phó clan duyệt; hoặc nhận lời mời của họ. Mỗi người chỉ ở một clan.</li>
+    <li>Vào phòng chơi như bình thường. Ký hiệu và huy hiệu clan hiện trước tên bạn ở ghế trong phòng, chat và danh sách đang online; bảng mời bạn vào phòng có mục người cùng clan đang online và nút mời cả clan.</li>
+  </ol>
+  <p>Chức trong clan: <b>trưởng clan</b> (sửa clan, phong/hạ phó, nhường chức, giải tán), <b>phó clan</b> (mời, duyệt đơn xin vào, mời thành viên thường ra), <b>thành viên</b>. Trưởng clan muốn rời thì nhường chức trước.</p>
+
+  <h2 id="tinh-diem">Cách tính điểm clan</h2>
+  <p>Điểm lấy tự động từ kết quả trận trên SuperAqE (như <a href="/giai-dau/">giải đấu</a>), không ai nhập tay. Trận được tính khi có thắng thua và kéo dài từ 10 phút.</p>
+  <div class="panel" style="padding:6px 8px"><table class="ctable">
+    <thead><tr><th>Kết quả</th><th class="num">Điểm cho clan</th></tr></thead>
+    <tbody>
+      <tr><td>Thành viên thắng một trận</td><td class="num">+10</td></tr>
+      <tr><td>Thành viên thua một trận</td><td class="num">+2</td></tr>
+      <tr><td>Thắng người của clan khác (cộng thêm)</td><td class="num">+5</td></tr>
+      <tr><td>Clan chiến: clan thắng (cộng thêm)</td><td class="num">+20</td></tr>
+      <tr><td>Clan chiến đúng lời thách đấu đã nhận (thay cho +20)</td><td class="num">+40</td></tr>
+    </tbody></table></div>
+  <p>Chống cày điểm: cùng một cặp thắng – thua chỉ tính 3 trận mỗi ngày, mỗi người tối đa 8 trận tính điểm mỗi ngày; tài khoản thử nghiệm không có điểm; người bị khóa vì gian lận mất điểm đã đóng góp trong mùa.</p>
+
+  <h2 id="clan-chien">Clan chiến và thách đấu</h2>
+  <p><b>Clan chiến</b> là trận từ 2-2 trở lên mà cả một bên là người cùng một clan, bên kia là người của một clan khác (trận 1-1 chỉ tính là clan chiến khi đúng lời thách đấu đã nhận). Trưởng hoặc phó clan có thể gửi <b>lời thách đấu</b> tới clan khác ngay trong launcher; clan kia nhận lời thì đánh cùng số người trong 24 giờ để được điểm thách đấu. Muốn đấu nhiều trận có nhánh đấu, tạo <a href="/giai-dau/">giải clan</a> (ô “Giải clan” khi tạo giải): mỗi đội chỉ gồm người cùng một clan.</p>
+
+  <h2 id="cap-clan">Cấp clan, mùa và phần thưởng</h2>
+  <div class="panel" style="padding:6px 8px"><table class="ctable">
+    <thead><tr><th>Cấp clan</th><th class="num">Tổng điểm cần</th><th class="num">Số thành viên tối đa</th></tr></thead>
+    <tbody>
+      <tr><td>Cấp 1</td><td class="num">0</td><td class="num">30</td></tr>
+      <tr><td>Cấp 2</td><td class="num">300</td><td class="num">40</td></tr>
+      <tr><td>Cấp 3</td><td class="num">1.000</td><td class="num">50</td></tr>
+      <tr><td>Cấp 4</td><td class="num">3.000</td><td class="num">65</td></tr>
+      <tr><td>Cấp 5</td><td class="num">8.000</td><td class="num">80</td></tr>
+    </tbody></table></div>
+  <p>Huy hiệu clan cấp 2 trở lên có viền đồng, bạc, vàng. Mỗi mùa là một tháng (giờ Việt Nam). Hết mùa, top 3 clan có từ 100 điểm nhận <b>vương miện</b> trên huy hiệu, thành viên đánh từ 10 trận cho clan nhận <b>khung tên</b> (ngôi sao cạnh tên), giữ tới hết mùa sau.</p>
+
+  <h2 id="hoi-dap">Hỏi đáp về clan Đế Chế</h2>
+  <div class="faq">
+    <h3>Lập clan Đế Chế trên SuperAqE có mất tiền không?</h3>
+    <p>Không. Lập clan, vào clan, clan chiến và giải clan đều miễn phí; SuperAqE không bán vật phẩm hay tiền tệ trong game.</p>
+    <h3>Cần bao nhiêu trận mới lập được clan?</h3>
+    <p>Tài khoản cần đã đánh ít nhất 10 trận trên SuperAqE. Vào clan có sẵn thì không cần số trận tối thiểu.</p>
+    <h3>Một người vào được mấy clan?</h3>
+    <p>Một clan. Muốn sang clan khác thì rời clan cũ trước; trưởng clan phải nhường chức rồi mới rời được.</p>
+    <h3>Điểm clan được tính thế nào?</h3>
+    <p>Tự động theo kết quả trận từ 10 phút có thắng thua: thắng +10, thua +2, thắng người clan khác +5, clan chiến thắng +20, đúng lời thách đấu đã nhận +40. Cùng một cặp chỉ tính 3 trận mỗi ngày, mỗi người tối đa 8 trận mỗi ngày.</p>
+    <h3>Clan chiến là gì?</h3>
+    <p>Trận từ 2-2 trở lên mà cả một bên cùng một clan, bên kia cùng một clan khác. Clan thắng được thêm 20 điểm, hoặc 40 điểm nếu đó là trận thách đấu đã nhận lời.</p>
+    <h3>Mùa clan kéo dài bao lâu và thưởng gì?</h3>
+    <p>Mỗi mùa là một tháng. Top 3 clan có từ 100 điểm nhận vương miện trên huy hiệu, thành viên đánh từ 10 trận cho clan nhận khung tên, giữ tới hết mùa sau.</p>
+  </div>
+  <p class="hint">Cập nhật lần cuối: 31/10/2026 (launcher 0.3.91). Xem thêm: <a href="/giai-dau/">Giải đấu Đế Chế</a> · <a href="/lich-su-tran/">Lịch sử trận và replay</a> · <a href="/tao-phong-choi-de-che/">Tạo phòng chơi Đế Chế</a> · <a href="/choi-aoe-online-mien-phi/">Chơi AoE online miễn phí</a></p>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 SuperAqE · <a href="/">Trang chủ</a> · <a href="/tai-aoe-rise-of-rome/">Tải AoE 1 Rise of Rome</a> · <a href="/giai-dau/">Giải đấu</a> · <a href="/xem-lai-tran-aoe-replay/">Xem lại trận AoE (replay)</a> · <a href="https://www.facebook.com/groups/1496567506003702" target="_blank" rel="noopener">Nhóm Facebook</a></span>
+    <span>Age of Empires là thương hiệu của Microsoft. SuperAqE không liên kết với Microsoft.</span>
+  </div>
+</footer>
+
 
 <script src="/clan-icons.js"></script>
 <script>

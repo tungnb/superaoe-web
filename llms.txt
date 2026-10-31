@@ -2,7 +2,7 @@
 
 > SuperAqE là nền tảng miễn phí để chơi Đế Chế (Age of Empires 1 Rise of Rome, AoE1) online trên Windows 10/11 và MacBook chip Apple (M1, M2, M3, M4): tải một gói có sẵn game, đăng ký tài khoản, vào phòng bằng mã 6 ký tự. Không cần VPN, Hamachi hay mở cổng router. Mỗi phòng có 8 ghế người chơi và 4 ghế khán giả xem trực tiếp bằng đồ họa gốc của game. Mọi trận online được tự lưu replay để xem lại trận đấu cũ, rút kinh nghiệm và học hỏi từ đối thủ. SuperAqE không liên kết với Microsoft.
 
-Thông tin chính (cập nhật 2026-10-29, launcher 0.3.69):
+Thông tin chính (cập nhật 2026-10-31, launcher 0.3.91):
 - Giá: miễn phí.
 - Tải cho Windows: https://superaqe.com/download/setup (bộ cài SuperAoE-Setup.exe, khoảng 135 MB, đã kèm game Rise of Rome và cnc-ddraw để chạy trên Windows 10/11; bấm cài một lần, không cần quyền quản trị, cài cho tài khoản Windows đang dùng, tạo biểu tượng SuperAqE trên Desktop và menu Start, tự mở sau khi cài, gỡ trong Settings → Apps; app tự cập nhật; bộ cài chưa ký số nên SmartScreen có thể cảnh báo: bấm "Thông tin thêm" (More info) rồi "Vẫn chạy" (Run anyway)).
 - Tải cho Mac: https://superaqe.com/download/mac (SuperAoE_Mac_M.zip, khoảng 300 MB, cho MacBook chip Apple M1 trở lên; kèm Wine và game, chạy mượt). Cách cài dễ nhất: mở Terminal, dán `curl -fsSL https://superaqe.com/mac.sh | bash` rồi Enter: tự tải, cài SuperAoE.app vào Applications và mở app, macOS không chặn. Đã tải zip: giải nén, trong Terminal gõ `bash ` rồi kéo file "Mo Terminal - go bash - keo file nay vao - Enter.command" vào, Enter (https://superaqe.com/choi-aoe-tren-macbook/#cai-dat). App tự cập nhật. Mac chip Intel không được hỗ trợ.
@@ -25,6 +25,7 @@ Thông tin chính (cập nhật 2026-10-29, launcher 0.3.69):
 - [Xem lại trận AoE bằng replay](https://superaqe.com/xem-lai-tran-aoe-replay/): replay tự lưu mọi trận, cách xem trong launcher, thanh điều khiển và phím tắt, dùng để rút kinh nghiệm và học hỏi đối thủ, hỏi đáp.
 - [Lịch sử thi đấu](https://superaqe.com/lich-su-tran/): mọi trận Đế Chế có replay trên SuperAqE, tải .aoerep, bảng điểm và biểu đồ, thích và bình luận.
 - [Giải đấu Đế Chế](https://superaqe.com/giai-dau/): tạo và tham gia giải 1-1 đến 4-4, nhánh loại trực tiếp, chạm N, kết quả tự động.
+- [Clan Đế Chế](https://superaqe.com/clan/): bảng xếp hạng clan theo mùa (mỗi tháng), cách lập clan (từ 10 trận) hoặc xin vào clan, cách tính điểm, clan chiến, thách đấu, cấp clan, vương miện top 3, hỏi đáp.
 - [Chơi AoE online miễn phí](https://superaqe.com/choi-aoe-online-mien-phi/): hướng dẫn 5 bước, so sánh với LAN ảo, GameRanger, Voobly, XArena, hỏi đáp.
 - [Chơi AoE có khán giả](https://superaqe.com/choi-aoe-co-khan-gia/): chế độ khán giả cho AoE1, cách xem trực tiếp, so sánh với livestream.
 - [Chơi AoE trên MacBook](https://superaqe.com/choi-aoe-tren-macbook/): bản SuperAqE cho Mac chip Apple (M1–M4), cách cài, cách mở khi macOS báo "không thể xác minh", phím trên Mac (control + số gán nhóm quân, fn + F1–F12), so sánh với máy ảo, CrossOver.
@@ -34,6 +35,7 @@ Thông tin chính (cập nhật 2026-10-29, launcher 0.3.69):
 - [Chơi Đế Chế qua mạng](https://superaqe.com/choi-de-che-qua-mang/): vì sao AoE1 khó chơi qua Internet (DirectPlay), cách LAN ảo Hamachi/Radmin VPN và lỗi hay gặp, so sánh LAN thật / LAN ảo / SuperAqE.
 
 ## Trả lời nhanh
+- Lập clan Đế Chế ở đâu, tính điểm thế nào? Trong launcher SuperAqE bấm nút Clan (tài khoản cần từ 10 trận), đặt tên, ký hiệu và huy hiệu; miễn phí. Điểm tự động theo trận từ 10 phút có thắng thua: thắng +10, thua +2, thắng người clan khác +5, clan chiến (từ 2-2, mỗi bên một clan) thắng +20, đúng lời thách đấu đã nhận +40; xếp hạng theo tháng, top 3 nhận vương miện. Chi tiết: https://superaqe.com/clan/
 
 - Chơi AoE / Đế Chế online miễn phí ở đâu? Tải SuperAqE tại https://superaqe.com/download/setup (Windows) hoặc https://superaqe.com/download/mac (MacBook chip Apple), đăng ký tài khoản, tạo hoặc vào phòng. Miễn phí, có sẵn game.
 - Tải Đế Chế AoE 1 Rise of Rome cho Windows 10/11 ở đâu? https://superaqe.com/download/setup (có sẵn game, cài là chạy). Hướng dẫn: https://superaqe.com/tai-aoe-rise-of-rome/
