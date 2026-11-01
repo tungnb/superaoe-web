@@ -203,6 +203,19 @@ dialog h2 { margin-bottom: 4px; }
 .standings tr.mine td:nth-child(2) { color: var(--gold); }
 .lgrid { display: grid; gap: 30px 16px; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); margin: 8px 0 34px; }
 .lgrid > .table + .table { margin-top: 0; }
+.guide { margin-top: 48px; padding-bottom: 20px; max-width: 900px; }
+.guide h2 { margin: 36px 0 12px; }
+.guide h3 { margin: 18px 0 4px; }
+.guide ol, .guide ul { padding-left: 22px; }
+.guide li { margin: 6px 0; }
+.tscroll { overflow-x: auto; }
+.gtable { width: 100%; border-collapse: collapse; margin: 12px 0; }
+.gtable th { text-align: left; font-size: 13px; font-weight: 600; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+.gtable td { padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.gtable td:first-child { font-weight: 600; white-space: nowrap; }
+footer { margin-top: 40px; padding: 30px 0 40px; border-top: 1px solid var(--line); color: var(--dim); font-size: 13px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+footer a { color: var(--dim); }
 @media (max-width: 640px) {
   .wrap { padding: 0 16px; }
   .who .name, .links { display: none; }
@@ -233,6 +246,62 @@ dialog h2 { margin-bottom: 4px; }
  ]
 }
 </script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Tổ chức giải Đế Chế online trên SuperAqE có mất tiền không?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Không. Tạo giải, tham gia, xem nhánh đấu và replay đều miễn phí; chỉ cần tài khoản SuperAqE."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Chạm 2, chạm 3 nghĩa là gì?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Chạm N là đội nào thắng N ván trước thì thắng cặp đấu. Chạm 2 là đánh tối đa 3 ván (BO3), chạm 3 là tối đa 5 ván (BO5)."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Ai nhập kết quả trận?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Không ai cả. Kết quả lấy tự động từ trận đánh trên SuperAqE và công khai kèm replay. Kết quả mà máy đối thủ không xác nhận được thì chờ admin xác nhận; chỉ admin xoá được kết quả một ván để hai đội đấu lại, ví dụ khi lỗi mạng."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Rớt mạng giữa trận giải thì sao?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Như mọi trận online trên SuperAqE: trận tạm dừng, cả phòng chờ người rớt tối đa 30 phút, mạng có lại thì game tự nối, lỡ tắt game thì bấm “Vào lại trận” trong launcher."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Người chơi MacBook vào giải được không?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Được. Bản Windows, MacBook chip Apple M và Linux chơi chung phòng, nên vào chung một giải."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Giải clan khác giải thường thế nào?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Giải clan chỉ nhận người đang ở trong một clan; mỗi đội gồm người cùng một clan và mang ký hiệu clan đó. Cách thi đấu và tính kết quả giống giải thường."
+   }
+  }
+ ]
+}
+</script>
 </head>
 <body>
 <header class="top">
@@ -246,7 +315,62 @@ dialog h2 { margin-bottom: 4px; }
   </div>
 </header>
 
-<main class="wrap" id="main"></main>
+<main class="wrap" id="main"><h1>Giải đấu Đế Chế online</h1><p class="hint">Đang tải danh sách giải...</p></main>
+<section class="wrap guide" id="huong-dan" aria-labelledby="hd-title">
+  <h2 id="hd-title">Giải đấu Đế Chế online trên SuperAqE là gì?</h2>
+  <p>Trên SuperAqE, ai có tài khoản cũng tự tổ chức được giải Đế Chế (Age of Empires 1 Rise of Rome) online miễn phí: chọn 1-1, 2-2, 3-3 hoặc 4-4, loại trực tiếp (2/4/8/16 đội) hoặc vòng tròn tính điểm (3–10 đội), chạm bao nhiêu mỗi vòng. Các đội vào phòng trên launcher SuperAqE đánh như bình thường; kết quả, nhánh đấu và replay từng ván tự cập nhật trên trang này, không ai phải nhập tỉ số tay.</p>
+
+  <h2 id="tao-giai">Cách tạo giải đấu Đế Chế</h2>
+  <ol>
+    <li><a href="/tai-aoe-rise-of-rome/">Tải SuperAqE</a> (Windows, <a href="/choi-aoe-tren-macbook/">MacBook chip M</a> hoặc <a href="/choi-aoe-tren-linux/">Linux</a>) và tạo tài khoản — tạo ngay trên web cũng được.</li>
+    <li>Bấm <b>Tạo giải</b> trên trang này hoặc nút <b>Giải đấu</b> trong launcher (cùng một biểu mẫu). Đặt tên giải, phần giới thiệu / luật riêng / giải thưởng nếu có.</li>
+    <li>Chọn <b>thể thức</b> (loại trực tiếp hoặc vòng tròn), <b>số người mỗi đội</b> (1–4), <b>tổng số đội</b>, cách vào giải (<b>Tự tham gia</b> hoặc <b>Chỉ người được mời</b>) và có phải <b>giải clan</b> không (mỗi đội gồm người cùng một <a href="/clan/">clan</a>).</li>
+    <li>Đặt <b>giờ bắt đầu</b> (hết hạn đăng ký) và <b>lộ trình</b>: mỗi vòng chạm mấy (chạm 1 đến chạm 5) và bao nhiêu giờ để đánh xong. Mặc định loại trực tiếp là chạm 2 (BO3) 48 giờ mỗi vòng, chung kết chạm 3 (BO5) 72 giờ.</li>
+    <li>Gửi link trang giải cho mọi người. Đến giờ bắt đầu, hệ thống bốc thăm chia nhánh ngẫu nhiên (loại trực tiếp) hoặc mở mọi cặp đấu (vòng tròn).</li>
+  </ol>
+
+  <h2 id="tham-gia">Tham gia và thi đấu</h2>
+  <ul>
+    <li>Giải <b>tự tham gia</b>: đăng nhập, bấm Tham gia (1-1) hoặc tạo đội rồi mời đồng đội, hay vào đội còn chỗ. Giải <b>chỉ người được mời</b>: người tổ chức mời, bạn bấm chấp nhận trên trang giải hoặc trong launcher (launcher báo khi có lời mời).</li>
+    <li>Hai đội tự hẹn giờ, vào chung một <a href="/tao-phong-choi-de-che/">phòng trên launcher</a>: một đội ngồi cột trái, đội kia cột phải, đúng người đã đăng ký. Bạn bè vào ghế khán giả để <a href="/choi-aoe-co-khan-gia/">xem trực tiếp</a>.</li>
+    <li>Đánh xong, ván tự vào giải: bên đầu hàng, bị diệt hoặc thoát game trước là thua. Ván dưới 5 phút không tính. Mỗi ván có <a href="/xem-lai-tran-aoe-replay/">replay</a> để cả giải xem lại.</li>
+  </ul>
+
+  <h2 id="the-thuc">So sánh hai thể thức</h2>
+  <div class="tscroll"><table class="gtable">
+    <thead><tr><th></th><th>Loại trực tiếp</th><th>Vòng tròn tính điểm</th></tr></thead>
+    <tbody>
+      <tr><td>Số đội</td><td>2, 4, 8 hoặc 16</td><td>3, 4, 5, 6, 8 hoặc 10</td></tr>
+      <tr><td>Ai gặp ai</td><td>Bốc thăm chia nhánh, thua là bị loại</td><td>Mỗi đội gặp mọi đội khác một lần</td></tr>
+      <tr><td>Lịch đấu</td><td>Mỗi vòng có hạn chót riêng</td><td>Không xếp lịch, gặp nhau lúc nào cũng được trước hạn chót của cả giải</td></tr>
+      <tr><td>Hết hạn mà chưa xong</td><td>Cả hai đội của nhánh bị loại</td><td>Đội đang dẫn thắng cặp đó, bằng nhau là hoà, chưa đánh thì cả hai 0 điểm</td></tr>
+      <tr><td>Vô địch</td><td>Đội thắng chung kết</td><td>Nhiều điểm nhất (thắng 3, hoà 1, thua 0; bằng điểm xét hiệu số ván, số ván thắng, đối đầu)</td></tr>
+    </tbody></table></div>
+
+  <h2 id="hoi-dap">Hỏi đáp về giải đấu Đế Chế</h2>
+  <div class="faq">
+    <h3>Tổ chức giải Đế Chế online trên SuperAqE có mất tiền không?</h3>
+    <p>Không. Tạo giải, tham gia, xem nhánh đấu và replay đều miễn phí; chỉ cần tài khoản SuperAqE.</p>
+    <h3>Chạm 2, chạm 3 nghĩa là gì?</h3>
+    <p>Chạm N là đội nào thắng N ván trước thì thắng cặp đấu. Chạm 2 là đánh tối đa 3 ván (BO3), chạm 3 là tối đa 5 ván (BO5).</p>
+    <h3>Ai nhập kết quả trận?</h3>
+    <p>Không ai cả. Kết quả lấy tự động từ trận đánh trên SuperAqE và công khai kèm replay. Kết quả mà máy đối thủ không xác nhận được thì chờ admin xác nhận; chỉ admin xoá được kết quả một ván để hai đội đấu lại, ví dụ khi lỗi mạng.</p>
+    <h3>Rớt mạng giữa trận giải thì sao?</h3>
+    <p>Như mọi trận online trên SuperAqE: trận tạm dừng, cả phòng chờ người rớt tối đa 30 phút, mạng có lại thì game tự nối, lỡ tắt game thì bấm “Vào lại trận” trong launcher.</p>
+    <h3>Người chơi MacBook vào giải được không?</h3>
+    <p>Được. Bản Windows, MacBook chip Apple M và Linux chơi chung phòng, nên vào chung một giải.</p>
+    <h3>Giải clan khác giải thường thế nào?</h3>
+    <p>Giải clan chỉ nhận người đang ở trong một clan; mỗi đội gồm người cùng một clan và mang ký hiệu clan đó. Cách thi đấu và tính kết quả giống giải thường.</p>
+  </div>
+  <p class="hint">Cập nhật lần cuối: 01/11/2026 (launcher 0.3.94). Xem thêm: <a href="/clan/">Bảng xếp hạng clan</a> · <a href="/lich-su-tran/">Lịch sử trận và replay</a> · <a href="/tao-phong-choi-de-che/">Tạo phòng chơi Đế Chế</a> · <a href="/choi-aoe-online-mien-phi/">Chơi AoE online miễn phí</a></p>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 SuperAqE · <a href="/">Trang chủ</a> · <a href="/tai-aoe-rise-of-rome/">Tải AoE 1 Rise of Rome</a> · <a href="/clan/">Clan</a> · <a href="/xem-lai-tran-aoe-replay/">Xem lại trận AoE (replay)</a> · <a href="https://www.facebook.com/groups/1496567506003702" target="_blank" rel="noopener">Nhóm Facebook</a></span>
+    <span>Age of Empires là thương hiệu của Microsoft. SuperAqE không liên kết với Microsoft.</span>
+  </div>
+</footer>
 
 <dialog id="loginDlg" aria-labelledby="loginTitle">
   <button class="close" type="button" data-close aria-label="Đóng">×</button>

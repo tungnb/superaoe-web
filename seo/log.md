@@ -215,3 +215,16 @@
 ### Cần chủ dự án quyết định / làm
 - Kiểm tra câu chữ mục clan trên /clan/ (đặc biệt: +40 thách đấu thay cho +20; 1-1 chỉ là clan chiến khi đúng thách đấu; "không có tiền tệ hay vật phẩm mua bán"). Nếu luật điểm đổi trong Worker, trang tĩnh phải sửa theo (bảng động trong khung "Cách tính điểm" vẫn lấy từ API).
 - Vẫn tồn đọng: Google Search Console + Bing Webmaster Tools cho superaqe.com (Thay đổi địa chỉ từ superaoe.com, gửi sitemap), giữ 301 superaoe.com lâu hơn 2026-11-28, ký số exe / notarize Mac, đăng bài outreach, kiểm duyệt chat tổng trước khi quảng bá.
+
+## 2026-11-01 (vòng SEO 16 — tự động)
+- Chuẩn bị: git pull không có gì mới, git status sạch. Sản phẩm đổi: launcher Win + Mac + Linux 0.3.94 (nút Quay lại, menu đầu trang, khán giả thấy nhóm quân, @tag báo một lần). Cập nhật `seo/facts.md`.
+- Cải thiện lớn: /giai-dau/ — trước chỉ render bằng JS (bot không chạy JS thấy `<main>` rỗng, không h1). Thêm h1 tĩnh trong `<main>` (JS thay → luôn 1 h1) và mục tĩnh #huong-dan: giải đấu là gì, #tao-giai (5 bước, website hoặc nút Giải đấu trong launcher), #tham-gia, #the-thuc (bảng so sánh loại trực tiếp ↔ vòng tròn), #hoi-dap 6 câu, "Cập nhật lần cuối" 01/11/2026; footer có dòng không liên kết Microsoft + link nội bộ (trang trước không có footer). JSON-LD FAQPage sinh từ FAQ hiển thị (BreadcrumbList giữ nguyên).
+- Kỹ thuật: trang chủ softwareVersion 0.3.91 → 0.3.94; llms.txt launcher 0.3.94, mô tả giải đấu thêm vòng tròn/giải clan/launcher + 1 câu trả lời nhanh "tổ chức giải Đế Chế online ở đâu"; sitemap lastmod 2026-11-01 cho / và /giai-dau/. robots.txt, .assetsignore vẫn đúng.
+- Từ khóa mới: "tổ chức giải đấu đế chế online / tạo giải aoe / chạm 2 chạm 3" — WebSearch: không bài tiếng Việt nào → khoảng trống.
+- Không đo hạng (lần tới 2026-11-04); không soạn outreach (lần tới 2026-11-02: lưu trận, khán giả xem một bên/delay, bản Linux, clan mùa 11, giải đấu).
+- Kiểm tra: html-validate /giai-dau/ không thêm lỗi mới so với trước (các lỗi cũ ở dialog/template JS), JSON-LD parse được, không link nội bộ hỏng, 1 h1 trong main.
+- Lần sau: đo hạng 2026-11-04; outreach 2026-11-02; /lich-su-tran/ cũng render bằng JS — thêm đoạn giới thiệu tĩnh + FAQ.
+
+### Cần chủ dự án quyết định / làm
+- Rà câu chữ /giai-dau/#huong-dan (mặc định lộ trình chạm 2 / 48 h, chung kết chạm 3 / 72 h; "rớt mạng chờ tối đa 30 phút" áp dụng cho trận giải như trận thường).
+- Vẫn tồn đọng: Google Search Console + Bing Webmaster Tools cho superaqe.com (Thay đổi địa chỉ từ superaoe.com, gửi sitemap), giữ 301 superaoe.com lâu hơn 2026-11-28, ký số exe / notarize Mac, đăng bài outreach, kiểm duyệt chat tổng trước khi quảng bá.
