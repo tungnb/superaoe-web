@@ -154,6 +154,15 @@ dialog h2 { margin-bottom: 4px; }
   .mhead .btn { width: 100%; }
   .who .name { display: none; }
 }
+.guide { margin-top: 8px; padding-bottom: 20px; max-width: 900px; }
+.guide h2 { margin: 36px 0 12px; }
+.guide h3 { margin: 18px 0 4px; font-size: 17px; }
+.guide ol, .guide ul { padding-left: 22px; }
+.guide li { margin: 6px 0; }
+.guide .faq p { margin: 0 0 8px; color: var(--dim); }
+footer { margin-top: 40px; padding: 30px 0 40px; border-top: 1px solid var(--line); color: var(--dim); font-size: 13px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+footer a { color: var(--dim); }
 </style>
 <link rel="stylesheet" href="/modern.css">
 <script type="application/ld+json">
@@ -172,6 +181,62 @@ dialog h2 { margin-bottom: 4px; }
    "position": 2,
    "name": "Lịch sử trận",
    "item": "https://superaqe.com/lich-su-tran/"
+  }
+ ]
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Trận của tôi có tự lưu vào lịch sử không?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Có. Mọi trận online đấu trên SuperAqE tự lưu replay trên máy chủ và hiện ở đây cùng thống kê, không cần bấm gì. Trận chơi một mình không có thống kê và replay thì không hiện."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Xem lịch sử trận có mất tiền hay phải đăng nhập không?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Không. Xem danh sách, thống kê và tải replay đều miễn phí, không cần đăng nhập. Chỉ thích và bình luận mới cần tài khoản SuperAqE (tạo ngay trên web được)."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Mở file .aoerep bằng gì?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Bằng launcher SuperAqE: chọn Lịch sử trận / Xem lại → Mở file replay, trên Windows bấm đúp vào file cũng được. Replay chạy bằng game gốc (mô phỏng lại trận, không phải video) nên file rất nhẹ."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Click Đ3 là gì?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Là giờ game lúc bắt đầu bấm nghiên cứu lên Đời Đồng (đời 3), tính bằng giờ lên Đồng trừ 2:20 thời gian nghiên cứu. Người chơi Đế Chế Việt hay so số này để biết ai lên đời nhanh hơn."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Trận giải đấu có ở đây không?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Có. Các ván của giải đấu cũng là trận online bình thường nên có replay và thống kê ở đây, và được gắn vào trang giải tương ứng."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Trong launcher có xem được lịch sử trận không?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Có. Launcher SuperAqE có mục Lịch sử trận / Xem lại với cùng bảng thống kê; bấm một trận để xem replay ngay, không cần tải file."
+   }
   }
  ]
 }
@@ -205,6 +270,52 @@ dialog h2 { margin-bottom: 4px; }
     <p class="hint" style="margin-bottom:0">Chưa có SuperAqE? <a href="/#tai-ve">Tải miễn phí cho Windows và MacBook</a>. Xem thêm về <a href="/xem-lai-tran-aoe-replay/">tính năng xem lại replay</a>.</p>
   </section>
 </main>
+
+<section class="wrap guide" id="huong-dan" aria-labelledby="hd-title">
+  <h2 id="hd-title">Lịch sử trận Đế Chế trên SuperAqE có gì?</h2>
+  <p>Trang này liệt kê các trận Đế Chế (Age of Empires 1 Rise of Rome) online đã đấu trên SuperAqE, mới nhất ở trên. Mỗi trận có file replay <code>.aoerep</code> tải về miễn phí và bảng thống kê lấy từ chính game: điểm cuối trận, giờ lên đời, diễn biến, biểu đồ theo thời gian. Ai cũng xem được, không cần đăng nhập; muốn thích hoặc bình luận thì đăng nhập tài khoản SuperAqE.</p>
+
+  <h2 id="moi-tran">Mỗi trận hiển thị những gì</h2>
+  <ul>
+    <li><b>Người chơi và kết quả</b>: hai bên (cột trái gặp cột phải trong phòng), ai thắng, giờ bắt đầu, thời lượng, tên phòng, số khán giả. Tên phe (Egyptian, Greek, Yamato, Choson…) giữ đúng như trong game.</li>
+    <li><b>Tổng kết</b>: các bảng Quân sự, Kinh tế, Tôn giáo, Công nghệ giống màn hình cuối trận của game (giết, phá nhà, vàng, dân cao nhất, khám phá, cải đạo, cổ vật, công nghệ, lên Đồng / Sắt đầu tiên, tổng điểm).</li>
+    <li><b>Timeline</b>: dải màu điểm của từng người theo thời gian, như timeline cuối trận của game.</li>
+    <li><b>Chi tiết &amp; đời</b>: giờ lên Đời Công Cụ, Đồng, Sắt của từng người, giờ bắt đầu click lên Đời Đồng (đời 3), dân và quân đông nhất, và các mốc diễn biến (ai lên đời, ai bị loại / đầu hàng, ai thắng).</li>
+    <li><b>Biểu đồ</b>: dân số, quân đội, lính giết, tài nguyên đang có, khám phá %, điểm — theo giờ game.</li>
+    <li><b>Thích, bình luận, chia sẻ</b>: mỗi trận có link riêng (dạng <code>/lich-su-tran/#tran-…</code>) để gửi cho bạn bè hoặc nhóm.</li>
+  </ul>
+
+  <h2 id="hoc-tu-replay">Dùng lịch sử trận để lên tay</h2>
+  <ol>
+    <li>Tìm trận của cao thủ hoặc trận mình vừa thua, mở <b>Chi tiết &amp; đời</b> so giờ click lên Đời Đồng của mình với đối thủ — thường là chỗ thua đầu tiên.</li>
+    <li>Mở <b>Biểu đồ</b> dân số và quân đội để thấy lúc nào bị bỏ xa: dân đứng yên là thiếu nông dân hoặc nghẽn nhà, quân tụt là thua một trận giao tranh.</li>
+    <li>Tải replay, xem lại trong launcher bằng chính game gốc: thấy toàn bản đồ, tua tới / lùi, chỉnh tốc độ, xem theo từng người chơi. Chi tiết ở trang <a href="/xem-lai-tran-aoe-replay/">xem lại trận AoE (replay)</a>.</li>
+  </ol>
+
+  <h2 id="hoi-dap">Hỏi đáp về lịch sử trận và replay</h2>
+  <div class="faq">
+    <h3>Trận của tôi có tự lưu vào lịch sử không?</h3>
+    <p>Có. Mọi trận online đấu trên SuperAqE tự lưu replay trên máy chủ và hiện ở đây cùng thống kê, không cần bấm gì. Trận chơi một mình không có thống kê và replay thì không hiện.</p>
+    <h3>Xem lịch sử trận có mất tiền hay phải đăng nhập không?</h3>
+    <p>Không. Xem danh sách, thống kê và tải replay đều miễn phí, không cần đăng nhập. Chỉ thích và bình luận mới cần tài khoản SuperAqE (tạo ngay trên web được).</p>
+    <h3>Mở file .aoerep bằng gì?</h3>
+    <p>Bằng launcher SuperAqE: chọn <b>Lịch sử trận / Xem lại</b> → <b>Mở file replay</b>, trên Windows bấm đúp vào file cũng được. Replay chạy bằng game gốc (mô phỏng lại trận, không phải video) nên file rất nhẹ.</p>
+    <h3>Click Đ3 là gì?</h3>
+    <p>Là giờ game lúc bắt đầu bấm nghiên cứu lên Đời Đồng (đời 3), tính bằng giờ lên Đồng trừ 2:20 thời gian nghiên cứu. Người chơi Đế Chế Việt hay so số này để biết ai lên đời nhanh hơn.</p>
+    <h3>Trận giải đấu có ở đây không?</h3>
+    <p>Có. Các ván của <a href="/giai-dau/">giải đấu</a> cũng là trận online bình thường nên có replay và thống kê ở đây, và được gắn vào trang giải tương ứng.</p>
+    <h3>Trong launcher có xem được lịch sử trận không?</h3>
+    <p>Có. Launcher SuperAqE có mục <b>Lịch sử trận / Xem lại</b> với cùng bảng thống kê; bấm một trận để xem replay ngay, không cần tải file.</p>
+  </div>
+  <p class="hint">Cập nhật lần cuối: 02/11/2026 (launcher 0.3.95). Xem thêm: <a href="/xem-lai-tran-aoe-replay/">Xem lại trận AoE (replay)</a> · <a href="/giai-dau/">Giải đấu</a> · <a href="/clan/">Bảng xếp hạng clan</a> · <a href="/choi-aoe-co-khan-gia/">Chơi AoE có khán giả</a> · <a href="/choi-aoe-online-mien-phi/">Chơi AoE online miễn phí</a></p>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 SuperAqE · <a href="/">Trang chủ</a> · <a href="/tai-aoe-rise-of-rome/">Tải AoE 1 Rise of Rome</a> · <a href="/clan/">Clan</a> · <a href="/giai-dau/">Giải đấu</a> · <a href="/xem-lai-tran-aoe-replay/">Xem lại trận AoE (replay)</a> · <a href="https://www.facebook.com/groups/1496567506003702" target="_blank" rel="noopener">Nhóm Facebook</a></span>
+    <span>Age of Empires là thương hiệu của Microsoft. SuperAqE không liên kết với Microsoft.</span>
+  </div>
+</footer>
 
 <dialog id="loginDlg" aria-labelledby="loginTitle">
   <button class="x" type="button" id="dlgClose" aria-label="Đóng">×</button>

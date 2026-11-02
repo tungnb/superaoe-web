@@ -62,7 +62,7 @@
  "description": "Launcher chơi Đế Chế (Age of Empires 1 Rise of Rome) online cho Windows 10/11 và MacBook chip Apple: tài khoản, danh sách phòng, phòng chờ 8 người chơi + 4 khán giả xem trực tiếp, mọi trận tự lưu replay để xem lại, không cần VPN hay mở cổng.",
  "url": "https://superaqe.com/",
  "downloadUrl": ["https://superaqe.com/download/setup", "https://superaqe.com/download/mac", "https://superaqe.com/download/linux"],
- "softwareVersion": "0.3.94",
+ "softwareVersion": "0.3.95",
  "featureList": [
   "Chơi Đế Chế online tới 8 người, không cần VPN hay mở cổng",
   "4 ghế khán giả xem trực tiếp bằng đồ họa gốc",
@@ -165,7 +165,7 @@
    "name": "Mất mạng giữa trận thì sao?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Trận tạm dừng và cả phòng chờ bạn kết nối lại, tổng cộng tối đa 30 phút mỗi trận. Mạng có lại thì game tự nối; lỡ tắt game thì mở launcher bấm \"Vào lại trận\" (tối đa 5 lần mỗi trận). Quá 30 phút thì bạn bị loại, những người khác chơi tiếp. Khán giả vào lại trận lúc nào cũng được."
+    "text": "Trận tạm dừng và cả phòng chờ bạn kết nối lại, tổng cộng tối đa 30 phút mỗi trận. Mạng có lại thì game tự nối; lỡ tắt game thì mở launcher bấm \"Vào lại trận\" (tối đa 5 lần mỗi trận). Quá 30 phút thì bạn bị loại, những người khác chơi tiếp. Từ launcher 0.3.95, người rớt đã vắng quá 2 phút thì người còn lại có thể bấm “Không chờ” (phím K) để người đó rời trận và đánh tiếp. Khán giả vào lại trận lúc nào cũng được."
    }
   },
   {
@@ -458,7 +458,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
         <li><span class="n">1</span><div><h3>Trận tự tạm dừng</h3><p>Mọi người trong trận thấy thông báo ai mất kết nối và còn bao lâu để người đó vào lại.</p></div></li>
         <li><span class="n">2</span><div><h3>Mạng có lại là đánh tiếp</h3><p>Mạng chập chờn rồi có lại, game tự kết nối, trận chạy tiếp như chưa có gì.</p></div></li>
         <li><span class="n">3</span><div><h3>Lỡ tắt game? Bấm "Vào lại trận"</h3><p>Mở launcher, bấm "↻ Vào lại trận": game tua nhanh tới đúng lúc bạn rời rồi cho bạn chơi tiếp quân của mình.</p></div></li>
-        <li><span class="n">4</span><div><h3>Tối đa 30 phút mỗi người</h3><p>Mỗi người được chờ tổng cộng 30 phút mỗi trận. Hết giờ mà chưa về thì người đó bị loại, những người còn lại đánh tiếp.</p></div></li>
+        <li><span class="n">4</span><div><h3>Tối đa 30 phút mỗi người</h3><p>Mỗi người được chờ tổng cộng 30 phút mỗi trận. Hết giờ mà chưa về thì người đó bị loại, những người còn lại đánh tiếp. Không muốn chờ lâu thì sau 2 phút có thể bấm “Không chờ” (phím K).</p></div></li>
       </ol>
       <p class="meta">Vào lại trận tối đa 5 lần mỗi trận, mỗi lần cách nhau ít nhất 30 giây. Có từ bản 0.2.8 cho Windows và Mac (launcher tự cập nhật).</p>
     </div>
@@ -714,7 +714,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
       <details><summary>SuperAqE có bản cho Linux chưa?</summary><p>Có. SuperAqE có bản cho Linux 64-bit Intel/AMD (x86_64) có giao diện đồ họa: Ubuntu 22.04 trở lên, Linux Mint, Debian, Fedora…, tải tại <a href="https://superaqe.com/download/linux">superaqe.com/download/linux</a>. Gói đã kèm Wine và game, không cần cài Wine, không cần sudo, tự cập nhật. Cách cài dễ nhất: mở Terminal (Ctrl + Alt + T), dán <code>curl -fsSL https://superaqe.com/linux.sh | bash</code> rồi bấm Enter (<a href="/choi-aoe-tren-linux/">hướng dẫn chi tiết</a>). Bản Linux chơi chung phòng với bản Windows và Mac. Linux ARM không được hỗ trợ.</p></details>
       <details><summary>SuperAqE có lưu replay để xem lại trận không?</summary><p>Có. Mọi trận online trên SuperAqE được tự động lưu replay (.aoerep) trên máy chủ, để bạn xem lại trận đấu cũ, rút kinh nghiệm và học hỏi từ đối thủ. Trong launcher, vào menu Lịch sử trận / Xem lại, bấm vào trận để xem lại bằng chính game gốc, tua lùi/tới 10 hoặc 30 giây, chỉnh tốc độ x0.5 đến x8. Miễn phí. <a href="/xem-lai-tran-aoe-replay/">Xem hướng dẫn replay</a>.</p></details>
       <details><summary>Một phòng chơi được bao nhiêu người?</summary><p>Tối đa 8 người chơi và 4 khán giả. Mỗi phòng nhận tối đa 15 thành viên.</p></details>
-      <details><summary>Mất mạng giữa trận thì sao?</summary><p>Trận tạm dừng và cả phòng chờ bạn kết nối lại, tổng cộng tối đa 30 phút mỗi trận. Mạng có lại thì game tự nối; lỡ tắt game thì mở launcher bấm "Vào lại trận" (tối đa 5 lần mỗi trận). Quá 30 phút thì bạn bị loại, những người khác chơi tiếp. Khán giả vào lại trận lúc nào cũng được.</p></details>
+      <details><summary>Mất mạng giữa trận thì sao?</summary><p>Trận tạm dừng và cả phòng chờ bạn kết nối lại, tổng cộng tối đa 30 phút mỗi trận. Mạng có lại thì game tự nối; lỡ tắt game thì mở launcher bấm "Vào lại trận" (tối đa 5 lần mỗi trận). Quá 30 phút thì bạn bị loại, những người khác chơi tiếp. Từ launcher 0.3.95, người rớt đã vắng quá 2 phút thì người còn lại có thể bấm “Không chờ” (phím K) để người đó rời trận và đánh tiếp. Khán giả vào lại trận lúc nào cũng được.</p></details>
       <details><summary>Tìm người chơi cùng hoặc báo lỗi ở đâu?</summary><p>Vào <a href="https://www.facebook.com/groups/1496567506003702" target="_blank" rel="noopener">nhóm Facebook SuperAqE</a> để hẹn trận, hỏi cách cài và báo lỗi. Tin bản cập nhật mới được đăng trên <a href="https://www.facebook.com/profile.php?id=61595397195188" target="_blank" rel="noopener">trang Facebook SuperAqE</a>.</p></details>
     </div>
   </div>

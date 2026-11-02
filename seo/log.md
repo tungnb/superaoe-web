@@ -228,3 +228,17 @@
 ### Cần chủ dự án quyết định / làm
 - Rà câu chữ /giai-dau/#huong-dan (mặc định lộ trình chạm 2 / 48 h, chung kết chạm 3 / 72 h; "rớt mạng chờ tối đa 30 phút" áp dụng cho trận giải như trận thường).
 - Vẫn tồn đọng: Google Search Console + Bing Webmaster Tools cho superaqe.com (Thay đổi địa chỉ từ superaoe.com, gửi sitemap), giữ 301 superaoe.com lâu hơn 2026-11-28, ký số exe / notarize Mac, đăng bài outreach, kiểm duyệt chat tổng trước khi quảng bá.
+
+## 2026-11-02 (vòng SEO 17 — tự động)
+- Chuẩn bị: git pull về 1 commit peer 005d82f (tên phe trong lịch sử trận giữ tên game) — đã live. git status sạch. Sản phẩm đổi: launcher Win + Mac + Linux 0.3.95 (Không chờ sau 2 phút, mời bất kỳ ai online, Giám sát trong phòng). Cập nhật `seo/facts.md`.
+- Cải thiện lớn: /lich-su-tran/ — danh sách trận render bằng JS, trước chỉ có h1 + 3 bước. Thêm mục tĩnh #huong-dan dưới `<main>`: trang có gì (đoạn trả lời thẳng), #moi-tran (kết quả, Tổng kết, Timeline, Chi tiết & đời, Biểu đồ, link chia sẻ #tran-…), #hoc-tu-replay (3 bước dùng thống kê để lên tay), #hoi-dap 6 câu (tự lưu, miễn phí/không cần đăng nhập, mở .aoerep, Click Đ3, trận giải, xem trong launcher), "Cập nhật lần cuối" 02/11/2026; footer (dòng không liên kết Microsoft + link nội bộ — trang trước không có footer). JSON-LD FAQPage sinh từ FAQ hiển thị (BreadcrumbList giữ nguyên).
+- Sửa theo sự thật 0.3.95: FAQ rớt mạng trên trang chủ (hiển thị + JSON-LD + mục 4 bước "Tối đa 30 phút") và /giai-dau/ (hiển thị + JSON-LD) thêm câu "vắng quá 2 phút → bấm Không chờ (phím K)". llms.txt: 0.3.95, câu Không chờ, mô tả /lich-su-tran/#huong-dan, trả lời nhanh "Click Đ3 là gì". Trang chủ softwareVersion 0.3.94 → 0.3.95. Sitemap lastmod 2026-11-02 cho /, /giai-dau/, /lich-su-tran/.
+- Outreach: `seo/outreach/2026-11-02-facebook-group.md` (giải đấu, clan mùa 11, lịch sử trận, Không chờ, mời ai cũng được; link superaqe.com).
+- Không đo hạng (lần tới 2026-11-04).
+- Kiểm tra: html-validate /lich-su-tran/ chỉ còn lỗi cũ ở header/dialog (button type, input type); JSON-LD 3 trang parse được; không link nội bộ hỏng; 1 h1.
+- Lần sau: đo hạng 2026-11-04; các trang /choi-aoe-online-mien-phi/, /choi-de-che-qua-mang/, /tai-aoe-rise-of-rome/, /tao-phong-choi-de-che/ còn câu "chờ tối đa 30 phút" chưa nhắc Không chờ — thêm 1 câu (không sai, chỉ thiếu); trang đích "giải đấu đế chế online".
+
+### Cần chủ dự án quyết định / làm
+- Rà /lich-su-tran/#huong-dan (đặc biệt "trận chơi một mình không hiện", "Click Đ3 = giờ lên Đồng trừ 2:20").
+- Đăng bài nháp outreach 2026-11-02 nếu thấy hợp.
+- Vẫn tồn đọng: Google Search Console + Bing Webmaster Tools cho superaqe.com (Thay đổi địa chỉ từ superaoe.com, gửi sitemap), giữ 301 superaoe.com lâu hơn 2026-11-28, ký số exe / notarize Mac, kiểm duyệt chat tổng trước khi quảng bá.
