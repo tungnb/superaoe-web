@@ -242,3 +242,20 @@
 - Rà /lich-su-tran/#huong-dan (đặc biệt "trận chơi một mình không hiện", "Click Đ3 = giờ lên Đồng trừ 2:20").
 - Đăng bài nháp outreach 2026-11-02 nếu thấy hợp.
 - Vẫn tồn đọng: Google Search Console + Bing Webmaster Tools cho superaqe.com (Thay đổi địa chỉ từ superaoe.com, gửi sitemap), giữ 301 superaoe.com lâu hơn 2026-11-28, ký số exe / notarize Mac, kiểm duyệt chat tổng trước khi quảng bá.
+
+## 2026-11-03 (vòng SEO 18 — tự động)
+- Chuẩn bị: `git pull --rebase` không có gì mới, `git status` sạch. Nguồn sản phẩm trong checkout này cũ (NOTES.md commit 2026-10-28 tới §9zc; launcher/package.json ghi 0.3.71) — các bản 0.3.96+ không có để kiểm chứng ở đây. `seo/facts.md` vừa cập nhật hôm qua tới 0.3.95 nên dùng làm nguồn; KHÔNG bịa tính năng 0.3.96+ lên website. Không sửa facts.md lần này.
+- Cải thiện lớn: bổ sung tính năng "Không chờ" (launcher 0.3.95, đã có trong facts.md) vào 4 trang trước đây chỉ nói "chờ tối đa 30 phút" mà chưa nhắc — việc tồn đọng từ vòng 17. Cập nhật cả FAQ hiển thị lẫn JSON-LD FAQPage cho khớp:
+  - /choi-aoe-online-mien-phi/ : câu trả lời FAQ rớt mạng (JSON-LD + hiển thị) + gạch đầu dòng "Rớt mạng không mất trận".
+  - /choi-de-che-qua-mang/ : FAQ rớt mạng (JSON-LD + hiển thị) + gạch đầu dòng.
+  - /tai-aoe-rise-of-rome/ : ô bảng "Rớt mạng giữa trận".
+  - /tao-phong-choi-de-che/ : ghi chú "để người mạng ổn định ngồi ghế đầu".
+  Câu thêm nhất quán với trang chủ: "Người rớt đã vắng quá 2 phút thì người còn lại có thể bấm “Không chờ” (phím K) để người đó rời trận và đánh tiếp."
+- Kỹ thuật: "Cập nhật lần cuối" 03/11/2026 cho cả 4 trang (tai-aoe: Launcher 0.3.69 → 0.3.95). Sitemap lastmod 2026-11-03 cho 4 trang. robots.txt, .assetsignore (chặn seo/) vẫn đúng; llms.txt đã có câu "Không chờ" từ vòng 17 nên giữ nguyên.
+- Không đo hạng (lần trước 2026-10-28, lần tới 2026-11-04). Không soạn outreach (vừa soạn 2026-11-02).
+- Kiểm tra: JSON-LD mọi trang đổi parse được (3/3, 2/2, 3/3, 3/3); FAQ JSON-LD khớp hiển thị (sửa song song bằng replace_all); không link nội bộ hỏng.
+- Lần sau: đo hạng 2026-11-04; nếu sync được checkout mới (NOTES/launcher 0.3.96+), rà các tính năng mới đáng quảng bá (vd. tốc độ replay, nút báo lỗi/góp ý) rồi mới viết lên website; /xem-lai-tran-aoe-replay/ (lastmod 2026-10-25, cũ nhất) rà lại.
+
+### Cần chủ dự án quyết định / làm
+- Checkout website này (C:\tools\aoe-re) chưa sync phần launcher/NOTES mới (đang 0.3.71 / 2026-10-28). Agent không tự pull repo cha (ngoài phạm vi, tránh đụng repo khác). Nếu muốn SEO quảng bá tính năng 0.3.96+ thì cập nhật seo/facts.md hoặc sync checkout để agent kiểm chứng được.
+- Vẫn tồn đọng: Google Search Console + Bing Webmaster Tools cho superaqe.com (Thay đổi địa chỉ từ superaoe.com, gửi sitemap), giữ 301 superaoe.com lâu hơn 2026-11-28, ký số exe / notarize Mac, đăng bài outreach, kiểm duyệt chat tổng trước khi quảng bá.
