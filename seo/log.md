@@ -259,3 +259,19 @@
 ### Cần chủ dự án quyết định / làm
 - Checkout website này (C:\tools\aoe-re) chưa sync phần launcher/NOTES mới (đang 0.3.71 / 2026-10-28). Agent không tự pull repo cha (ngoài phạm vi, tránh đụng repo khác). Nếu muốn SEO quảng bá tính năng 0.3.96+ thì cập nhật seo/facts.md hoặc sync checkout để agent kiểm chứng được.
 - Vẫn tồn đọng: Google Search Console + Bing Webmaster Tools cho superaqe.com (Thay đổi địa chỉ từ superaoe.com, gửi sitemap), giữ 301 superaoe.com lâu hơn 2026-11-28, ký số exe / notarize Mac, đăng bài outreach, kiểm duyệt chat tổng trước khi quảng bá.
+
+## 2026-11-04 (vòng SEO 19 — tự động)
+- Chuẩn bị: `git pull --rebase` không có gì mới (2 commit chủ dự án b702959 Mac Intel qua mac.sh, 54102db replay x1–x4 đã live — kiểm tra trang chủ live có "x1 đến x4"). `git status` sạch. Checkout launcher/NOTES vẫn cũ (0.3.71). Cập nhật `seo/facts.md`: Mac Intel đã hỗ trợ (mac.sh tự nhận chip, /download/mac-intel trả 206), replay x1–x4.
+- Đo hạng (7 ngày): 7 từ khóa, superaqe.com không xuất hiện ở từ khóa nào, kể cả tên thương hiệu "SuperAqE" → nghi chưa được lập chỉ mục. Bảng trong `seo/rankings.md`.
+- Cải thiện lớn: /xem-lai-tran-aoe-replay/ (lastmod cũ nhất 25/10): mục mới #nhu-nguoi-choi (khung chọn gốc 0.3.91, số nhóm quân Ctrl+1..9 0.3.93, phím 1–8 theo màu), #tua-nhanh (tua tới nhanh, tua lùi mở lại game vài giây — không hứa số giây), bảng phím ghi "theo màu", FAQ mới "Người giữ trận tắt máy giữa chừng thì còn replay không?" (0.3.71 tải trước khi đóng + 0.3.88 bản dự phòng từ người chơi khác) — hiển thị + JSON-LD khớp (9/9). "Cập nhật lần cuối" 04/11/2026, sitemap lastmod 2026-11-04.
+- llms.txt: sửa thông tin sai còn sót "tốc độ x0.5 đến x8" (2 chỗ) → x1–x4; phím 1–8 theo màu; khung chọn/nhóm quân; replay dự phòng; ngày 2026-11-04.
+- Kiểm tra: JSON-LD 3 khối parse được, 1 h1, không link nội bộ hỏng; html-validate chỉ còn doctype-style/no-inline-style như trước.
+- Không soạn outreach (lần trước 2026-11-02, lần tới ~2026-11-09).
+- URL đã đổi: /xem-lai-tran-aoe-replay/, /llms.txt, /sitemap.xml.
+- Lần sau: nếu chủ dự án cập nhật facts (0.3.96+/1.0.x: Báo lỗi & góp ý, P2P mới) thì đưa lên site + softwareVersion; trang /choi-aoe-co-khan-gia/ (lastmod 28/10) rà lại: khung chọn gốc, nhóm quân, khán giả vào giữa trận; đo hạng lại 2026-11-11.
+
+### Cần chủ dự án quyết định / làm
+- **Quan trọng nhất:** superaqe.com chưa xuất hiện kể cả khi tìm tên thương hiệu → xác minh Google Search Console + Bing Webmaster Tools, gửi sitemap https://superaqe.com/sitemap.xml, dùng "Thay đổi địa chỉ" từ superaoe.com; giữ 301 superaoe.com lâu hơn 2026-11-28.
+- `.claude/agents/seo-agent.md` mục "Quy tắc sự thật" còn ghi "KHÔNG nói hỗ trợ Mac chip Intel" và tốc độ "x0.5–x8" — đã cũ so với site (b702959, 54102db). Agent không tự sửa file quy tắc; chủ dự án sửa giúp (facts.md đã ghi đúng).
+- Ảnh /img/replay-tua.jpg vẫn chụp thanh replay cũ (x0.5–x8) — chụp lại ảnh mới với x1–x4 khi rảnh.
+- Vẫn tồn đọng: ký số exe / notarize Mac, đăng bài outreach 2026-11-02, kiểm duyệt chat tổng trước khi quảng bá.
