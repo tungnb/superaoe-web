@@ -275,3 +275,23 @@
 - `.claude/agents/seo-agent.md` mục "Quy tắc sự thật" còn ghi "KHÔNG nói hỗ trợ Mac chip Intel" và tốc độ "x0.5–x8" — đã cũ so với site (b702959, 54102db). Agent không tự sửa file quy tắc; chủ dự án sửa giúp (facts.md đã ghi đúng).
 - Ảnh /img/replay-tua.jpg vẫn chụp thanh replay cũ (x0.5–x8) — chụp lại ảnh mới với x1–x4 khi rảnh.
 - Vẫn tồn đọng: ký số exe / notarize Mac, đăng bài outreach 2026-11-02, kiểm duyệt chat tổng trước khi quảng bá.
+
+## 2026-11-05 (vòng SEO 20 — tự động)
+- Chuẩn bị: `git pull --rebase` không có gì mới, `git status` sạch. Checkout launcher/NOTES vẫn cũ (0.3.71) → không viết tính năng 0.3.96+/1.0.x.
+- Cải thiện lớn: /choi-aoe-co-khan-gia/ (lastmod cũ nhất 28/10):
+  - Mục mới #nhu-nguoi-choi: khung chọn gốc của game + khay giữa (0.3.91), số nhóm quân Ctrl+1..9 (0.3.93).
+  - Sửa câu đã cũ: "khán giả chỉ nhận lệnh từ máy chủ" / "Máy chủ SuperAqE chuyển lệnh" → máy giữ trận (P2P) hoặc máy chủ khi không nối thẳng; bỏ "chấm màu người chơi" cạnh con trỏ (đã bỏ từ 0.3.88) và "khung màu quanh quân đang chọn" (0.3.91 dùng khung game); "mã phòng 6 ký tự" → 6 số; FAQ cài game thêm MacBook và Ubuntu.
+  - FAQ mới "Người chơi rớt mạng thì khán giả có bị đứng hình không?" (sửa ở 0.3.88–0.3.89). FAQ hiển thị + JSON-LD khớp 9/9.
+  - "Cập nhật lần cuối" 05/11/2026, áp dụng launcher 0.3.95 (Windows, Mac, Linux).
+- /xem-lai-tran-aoe-replay/: cũng bỏ "kèm chấm màu người chơi" và "khung màu" (trỏ tới #nhu-nguoi-choi).
+- llms.txt: thêm Ubuntu, "mã 6 số", mô tả trang khán giả (khung chọn, nhóm quân, vào giữa trận), ngày 2026-11-05. Sitemap lastmod 2026-11-05 cho 2 trang. facts.md ghi thêm mục 2026-11-05.
+- Không đo hạng (lần trước 2026-11-04, lần tới 2026-11-11). Không soạn outreach (lần tới ~2026-11-09).
+- Kiểm tra: JSON-LD 3 khối/trang parse được, 1 h1, html-validate chỉ còn doctype-style/no-inline-style như trước.
+- URL đã đổi: /choi-aoe-co-khan-gia/, /xem-lai-tran-aoe-replay/, /llms.txt, /sitemap.xml.
+- Lần sau: outreach ~2026-11-09; đo hạng 2026-11-11; trang chủ + /choi-aoe-online-mien-phi/ rà câu "máy chủ" cho đúng P2P.
+
+### Cần chủ dự án quyết định / làm
+- **Quan trọng nhất (vẫn tồn đọng):** superaqe.com chưa xuất hiện trên Google kể cả tên thương hiệu → xác minh Google Search Console + Bing Webmaster Tools, gửi sitemap, "Thay đổi địa chỉ" từ superaoe.com; giữ 301 superaoe.com lâu hơn 2026-11-28.
+- Sync checkout C:\tools\aoe-re (launcher/NOTES đang 0.3.71) hoặc cập nhật seo/facts.md nếu muốn quảng bá tính năng 0.3.96+/1.0.x (Báo lỗi & góp ý, Điểm mạng, Line 1/2/3…).
+- seo-agent.md mục "Quy tắc sự thật" vẫn ghi cũ (không hỗ trợ Mac Intel, x0.5–x8). Ảnh /img/replay-tua.jpg vẫn là thanh replay cũ.
+- Ký số exe / notarize Mac, đăng bài outreach 2026-11-02.

@@ -71,7 +71,7 @@
    "name": "Khán giả có làm người chơi bị lag không?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Khán giả chỉ nhận lệnh từ máy chủ, không gửi lệnh vào trận, nên không làm chậm game của người chơi."
+    "text": "Khán giả chỉ nhận lệnh của trận (từ máy giữ trận hoặc máy chủ SuperAqE), không gửi lệnh vào trận, nên không làm chậm game của người chơi."
    }
   },
   {
@@ -95,7 +95,15 @@
    "name": "Khán giả có thấy chuột của người chơi không?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Có. Khán giả thấy con trỏ chuột, chỗ bấm, khung kéo chọn, nhà đang đặt và khung màu quanh quân người chơi đang chọn. Phím M chuyển giữa người đang xem, tất cả người chơi, và tắt."
+    "text": "Có. Khán giả thấy con trỏ chuột, chỗ bấm, khung kéo chọn, nhà đang đặt và quân người chơi đang chọn (vẽ bằng khung chọn của chính game), cùng số nhóm quân họ đã gán bằng Ctrl + 1…9. Phím M chuyển giữa người đang xem, tất cả người chơi, và tắt."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Người chơi rớt mạng thì khán giả có bị đứng hình không?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Trận tạm dừng chờ người rớt mạng như với mọi người chơi; khi trận chạy lại thì khán giả xem tiếp. Lỗi khán giả bị kẹt hình sau khi có người rớt mạng đã được sửa ở launcher 0.3.88–0.3.89."
    }
   },
   {
@@ -111,7 +119,7 @@
    "name": "Xem khán giả có cần cài game không?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Không cần cài game riêng. Bộ cài SuperAoE-Setup.exe đã có sẵn game. Chỉ cần máy Windows 10/11 và tài khoản SuperAqE miễn phí."
+    "text": "Không cần cài game riêng. Bộ cài SuperAoE-Setup.exe (Windows 10/11) đã có sẵn game; MacBook và Ubuntu cũng có bản SuperAqE kèm game. Chỉ cần thêm tài khoản SuperAqE miễn phí."
    }
   }
  ]
@@ -133,7 +141,7 @@
    "@type": "HowToStep",
    "position": 2,
    "name": "Vào phòng của người chơi",
-   "text": "Chọn phòng trong danh sách hoặc nhập mã phòng 6 ký tự mà người chơi gửi cho bạn."
+   "text": "Chọn phòng trong danh sách hoặc nhập mã phòng 6 số mà người chơi gửi cho bạn."
   },
   {
    "@type": "HowToStep",
@@ -151,7 +159,7 @@
    "@type": "HowToStep",
    "position": 5,
    "name": "Theo dõi trận",
-   "text": "Bấm phím 1–8 để theo người chơi có màu đó (1 xanh dương, 2 đỏ…), thấy con trỏ chuột, khung kéo chọn và quân họ đang chọn (phím M). Bảng điểm hiện đúng tên tài khoản của người chơi; khay dưới cùng màn hình hiện công nghệ mỗi người đã nghiên cứu (phím P ẩn/hiện). Lỡ tắt game thì bấm “Mở lại game” trong launcher để xem tiếp trận đang diễn ra."
+   "text": "Bấm phím 1–8 để theo người chơi có màu đó (1 xanh dương, 2 đỏ…), thấy con trỏ chuột, khung kéo chọn, quân họ đang chọn và nhóm quân họ đã gán (phím M). Bảng điểm hiện đúng tên tài khoản của người chơi; khay dưới cùng màn hình hiện công nghệ mỗi người đã nghiên cứu (phím P ẩn/hiện). Lỡ tắt game thì bấm “Mở lại game” trong launcher để xem tiếp trận đang diễn ra."
   }
  ]
 }
@@ -346,7 +354,7 @@ footer a { color: var(--dim); }
       <a href="/img/spectator.jpg" target="_blank" rel="noopener"><img src="/img/spectator.jpg" width="1366" height="768" alt="Ảnh chụp thật màn hình khán giả SuperAqE trong một trận Đế Chế 1v1: nhà chính, dân làng, rừng và bản đồ nhỏ"></a>
       <figcaption><b>Ảnh chụp thật ở ghế khán giả</b>Đồ họa gốc của game, không phải video hay luồng phát hình.</figcaption>
     </figure>
-    <p class="meta">Cập nhật lần cuối: <time datetime="2026-10-28">28/10/2026</time> · Áp dụng cho launcher 0.3.56 trở lên (Windows và Mac, tự cập nhật)</p>
+    <p class="meta">Cập nhật lần cuối: <time datetime="2026-11-05">05/11/2026</time> · Áp dụng cho launcher 0.3.95 trở lên (Windows, Mac và Linux, tự cập nhật)</p>
   </div>
 </section>
 
@@ -356,10 +364,10 @@ footer a { color: var(--dim); }
     <h2>Cách xem trực tiếp một trận Đế Chế bằng SuperAqE</h2>
     <ol class="steps">
       <li><span class="n">1</span><div><h3>Tải SuperAqE và đăng ký</h3><p>Tải SuperAoE-Setup.exe tại <a href="https://superaqe.com/download/setup">superaqe.com/download/setup</a> (Windows 10/11, đã kèm game), cài tự động, mở SuperAqE từ biểu tượng trên Desktop và tạo tài khoản miễn phí.</p></div></li>
-      <li><span class="n">2</span><div><h3>Vào phòng của người chơi</h3><p>Chọn phòng trong danh sách hoặc nhập mã phòng 6 ký tự mà người chơi gửi cho bạn.</p></div></li>
+      <li><span class="n">2</span><div><h3>Vào phòng của người chơi</h3><p>Chọn phòng trong danh sách hoặc nhập mã phòng 6 số mà người chơi gửi cho bạn.</p></div></li>
       <li><span class="n">3</span><div><h3>Ngồi ghế khán giả</h3><p>Bốn ghế ở đầu phòng: hai ngai ở giữa, hai ghế Thái giám hai bên. Khi chủ phòng bật “👀 Xem: Một bên”, cặp ghế bên trái chỉ xem đội trái, cặp ghế bên phải chỉ xem đội phải. Tám ghế hai cánh là ghế người chơi.</p></div></li>
       <li><span class="n">4</span><div><h3>Chờ chủ phòng bấm Bắt đầu</h3><p>Launcher hiện hộp “Đang đợi thiết đặt”, rồi “Chờ vào xem” có đếm ngược nếu phòng đặt delay. Game của bạn tự mở ở chế độ chỉ xem, bạn không cần bấm gì. Khán giả không ra lệnh được cho quân và không làm ảnh hưởng trận đấu.</p></div></li>
-      <li><span class="n">5</span><div><h3>Theo dõi trận</h3><p>Bấm phím 1–8 để theo người chơi có màu đó (1 xanh dương, 2 đỏ…), thấy con trỏ chuột, khung kéo chọn và quân họ đang chọn (phím M). Bảng điểm hiện đúng tên tài khoản của người chơi; khay dưới cùng màn hình hiện công nghệ mỗi người đã nghiên cứu (phím P ẩn/hiện). Lỡ tắt game thì bấm “Mở lại game” trong launcher để xem tiếp trận đang diễn ra.</p></div></li>
+      <li><span class="n">5</span><div><h3>Theo dõi trận</h3><p>Bấm phím 1–8 để theo người chơi có màu đó (1 xanh dương, 2 đỏ…), thấy con trỏ chuột, khung kéo chọn, quân họ đang chọn và nhóm quân họ đã gán (phím M). Bảng điểm hiện đúng tên tài khoản của người chơi; khay dưới cùng màn hình hiện công nghệ mỗi người đã nghiên cứu (phím P ẩn/hiện). Lỡ tắt game thì bấm “Mở lại game” trong launcher để xem tiếp trận đang diễn ra.</p></div></li>
     </ol>
     <h3 id="phim-tat" style="margin-top:32px">Phím tắt khi xem trận</h3>
     <div class="tbl">
@@ -388,7 +396,9 @@ footer a { color: var(--dim); }
     </ul>
     <p>Bảng điểm (F4) của khán giả hiện đúng tên tài khoản SuperAqE của từng người chơi, không còn "Player 1", "Player 2".</p>
     <h3 id="xem-thao-tac" style="margin-top:32px">Xem thao tác: thấy chuột và quân người chơi đang chọn</h3>
-    <p>Khán giả không chỉ thấy quân di chuyển mà thấy cả người chơi đang làm gì: con trỏ chuột (con trỏ của game kèm chấm màu người chơi), vòng chỗ bấm (trắng là chuột trái, màu là chuột phải), khung kéo chọn quân, chân nhà đang đặt kèm tên nhà, và khung màu quanh những quân đang được chọn. Phím M chuyển giữa chuột của người đang xem, chuột của tất cả người chơi, và tắt. Replay của các trận từ 25/10/2026 cũng có phần này, xem <a href="/xem-lai-tran-aoe-replay/">cách xem lại trận AoE bằng replay</a>.</p>
+    <p>Khán giả không chỉ thấy quân di chuyển mà thấy cả người chơi đang làm gì: con trỏ chuột (đúng con trỏ của game), vòng chỗ bấm (trắng là chuột trái, màu là chuột phải), khung kéo chọn quân, chân nhà đang đặt kèm tên nhà, và những quân đang được chọn. Phím M chuyển giữa chuột của người đang xem, chuột của tất cả người chơi, và tắt. Replay của các trận từ 25/10/2026 cũng có phần này, xem <a href="/xem-lai-tran-aoe-replay/">cách xem lại trận AoE bằng replay</a>.</p>
+    <h3 id="nhu-nguoi-choi" style="margin-top:32px">Nhìn như người chơi: khung chọn và nhóm quân</h3>
+    <p>Từ launcher 0.3.91, quân người chơi đang chọn được vẽ bằng chính khung chọn của game, khay thông tin nằm giữa đáy màn hình như lúc chơi, nên khán giả nhìn trận giống hệt người đang cầm chuột. Từ launcher 0.3.93 khán giả còn thấy số nhóm quân người chơi đã gán (<code>Ctrl</code> + <code>1</code>…<code>9</code>): biết họ chia quân thành mấy nhóm và điều nhóm nào đi đâu. Rất hợp để học cách chia quân của người chơi giỏi.</p>
     <p class="note">Đang đánh trận mà phòng đã đủ người? Trong lúc trận diễn ra vẫn ngồi được vào ghế khán giả còn trống; game của bạn tua nhanh từ đầu trận tới thời điểm hiện tại rồi xem tiếp.</p>
   </div>
 </section>
@@ -421,7 +431,7 @@ footer a { color: var(--dim); }
   <div class="wrap narrow">
     <div class="kicker">Hoạt động thế nào</div>
     <h2>Vì sao khán giả thấy trận y hệt người chơi</h2>
-    <p>Age of Empires 1 là game "lockstep": mọi máy chạy cùng một mô phỏng và chỉ gửi cho nhau lệnh của người chơi. Máy chủ SuperAqE chuyển những lệnh đó tới game của khán giả, nên game của khán giả tự tính ra đúng trận đang diễn ra, với chính đồ họa gốc của Rise of Rome. Vì không phải phát video, khán giả xem rõ nét mà tốn rất ít băng thông.</p>
+    <p>Age of Empires 1 là game "lockstep": mọi máy chạy cùng một mô phỏng và chỉ gửi cho nhau lệnh của người chơi. Launcher của người giữ trận (hoặc máy chủ SuperAqE, khi không nối thẳng được) chuyển những lệnh đó tới game của khán giả, nên game của khán giả tự tính ra đúng trận đang diễn ra, với chính đồ họa gốc của Rise of Rome. Vì không phải phát video, khán giả xem rõ nét mà tốn rất ít băng thông.</p>
     <ul class="ticks">
       <li><b>Trực tiếp hoặc chậm theo ý chủ phòng:</b> mặc định khán giả thấy trận gần như cùng lúc với người chơi; trận nghiêm túc thì bật xem một bên và delay 1–5 phút (xem <a href="#cai-dat-xem">cài đặt xem trận</a>).</li>
       <li><b>Không lộ thông tin cho người chơi:</b> khán giả chỉ xem, không gửi lệnh vào trận.</li>
@@ -457,12 +467,13 @@ footer a { color: var(--dim); }
     <div class="faq">
       <details open><summary>AoE 1 có chế độ khán giả không?</summary><p>Bản gốc Age of Empires 1 Rise of Rome không có. SuperAqE thêm 4 ghế khán giả cho mỗi phòng, xem trực tiếp bằng chính game gốc.</p></details>
       <details><summary>Một trận có bao nhiêu khán giả được xem?</summary><p>Tối đa 4 khán giả mỗi phòng: hai ngai ở giữa và hai ghế Thái giám hai bên. Phòng có thêm 8 ghế người chơi, tối đa 15 thành viên.</p></details>
-      <details><summary>Khán giả có làm người chơi bị lag không?</summary><p>Khán giả chỉ nhận lệnh từ máy chủ, không gửi lệnh vào trận, nên không làm chậm game của người chơi.</p></details>
+      <details><summary>Khán giả có làm người chơi bị lag không?</summary><p>Khán giả chỉ nhận lệnh của trận (từ máy giữ trận hoặc máy chủ SuperAqE), không gửi lệnh vào trận, nên không làm chậm game của người chơi.</p></details>
       <details><summary>Khán giả có nhắc bài cho người chơi được không?</summary><p>Chủ phòng chặn được. Bật “👀 Xem: Một bên” thì mỗi khán giả chỉ thấy đội mình, có sương mù, không mở bản đồ; đặt “⏱ Delay” 1, 3 hoặc 5 phút thì khán giả xem chậm hơn trận thật. Phòng mới mặc định xem một bên. Nếu để Cả hai bên + Trực tiếp, chỉ nên mời khán giả mình tin tưởng.</p></details>
       <details><summary>Vào xem giữa chừng có được không?</summary><p>Được. Trong lúc trận diễn ra vẫn ngồi được vào ghế khán giả còn trống; game tua nhanh từ đầu trận tới thời điểm hiện tại rồi xem tiếp. Khán giả lỡ thoát ra thì bấm “Mở lại game” để vào lại trận đang đánh.</p></details>
-      <details><summary>Khán giả có thấy chuột của người chơi không?</summary><p>Có. Khán giả thấy con trỏ chuột, chỗ bấm, khung kéo chọn, nhà đang đặt và khung màu quanh quân người chơi đang chọn. Phím M chuyển giữa người đang xem, tất cả người chơi, và tắt.</p></details>
+      <details><summary>Khán giả có thấy chuột của người chơi không?</summary><p>Có. Khán giả thấy con trỏ chuột, chỗ bấm, khung kéo chọn, nhà đang đặt và quân người chơi đang chọn (vẽ bằng khung chọn của chính game), cùng số nhóm quân họ đã gán bằng Ctrl + 1…9. Phím M chuyển giữa người đang xem, tất cả người chơi, và tắt.</p></details>
+      <details><summary>Người chơi rớt mạng thì khán giả có bị đứng hình không?</summary><p>Trận tạm dừng chờ người rớt mạng như với mọi người chơi; khi trận chạy lại thì khán giả xem tiếp. Lỗi khán giả bị kẹt hình sau khi có người rớt mạng đã được sửa ở launcher 0.3.88–0.3.89.</p></details>
       <details><summary>Khán giả có xem được người chơi đã nghiên cứu công nghệ gì không?</summary><p>Được. Từ launcher 0.3.16, khay dưới cùng màn hình khán giả hiện công nghệ mỗi người chơi đã nghiên cứu bằng icon gốc của game, chia theo đội, mỗi người một dòng theo thứ tự nghiên cứu, chuỗi nâng cấp chỉ giữ cấp cao nhất. Phím P ẩn/hiện. Khi xem replay cũng có khay này.</p></details>
-      <details><summary>Xem khán giả có cần cài game không?</summary><p>Không cần cài game riêng. Bộ cài SuperAoE-Setup.exe đã có sẵn game. Chỉ cần máy Windows 10/11 và tài khoản SuperAqE miễn phí.</p></details>
+      <details><summary>Xem khán giả có cần cài game không?</summary><p>Không cần cài game riêng. Bộ cài SuperAoE-Setup.exe (Windows 10/11) đã có sẵn game; MacBook và Ubuntu cũng có bản SuperAqE kèm game. Chỉ cần thêm tài khoản SuperAqE miễn phí.</p></details>
     </div>
     <p style="margin-top:24px">Muốn chơi chứ không chỉ xem? Đọc <a href="/choi-aoe-online-mien-phi/">cách chơi AoE online miễn phí</a>.</p>
   </div>
