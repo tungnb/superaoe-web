@@ -295,3 +295,19 @@
 - Sync checkout C:\tools\aoe-re (launcher/NOTES đang 0.3.71) hoặc cập nhật seo/facts.md nếu muốn quảng bá tính năng 0.3.96+/1.0.x (Báo lỗi & góp ý, Điểm mạng, Line 1/2/3…).
 - seo-agent.md mục "Quy tắc sự thật" vẫn ghi cũ (không hỗ trợ Mac Intel, x0.5–x8). Ảnh /img/replay-tua.jpg vẫn là thanh replay cũ.
 - Ký số exe / notarize Mac, đăng bài outreach 2026-11-02.
+
+## 2026-11-06 (vòng SEO 21 — tự động)
+- Chuẩn bị: `git pull --rebase` không có gì mới, `git status` sạch. Checkout launcher/NOTES vẫn cũ (0.3.71) → không viết tính năng 0.3.96+/1.0.x.
+- Rà câu "máy chủ" ở trang chủ + /choi-aoe-online-mien-phi/ (việc từ vòng trước): đã đúng P2P (nối thẳng, dự phòng Cloudflare) — không cần sửa.
+- Sửa nhất quán toàn site: "mã (phòng) 6 ký tự" → "mã 6 số" (khớp trang khán giả + llms.txt): trang chủ (JSON-LD featureList + mục Tạo phòng), /choi-aoe-online-mien-phi/ (og:description, lead, bước 3, FAQ JSON-LD), /choi-de-che-qua-mang/ (lead, bước 3, FAQ hiển thị + JSON-LD), /tai-aoe-rise-of-rome/ (bước 5 + JSON-LD), llms.txt (Q&A qua mạng).
+- /choi-aoe-tren-macbook/: bảng so sánh "Cách khác" còn cũ so với commit b702959 (Mac Intel) → dòng SuperAqE ghi có bản chip Apple + chip Intel, hạn chế = cài bằng 1 lệnh Terminal (không còn "bấm cho phép"); dòng Boot Camp ghi đúng (chỉ Mac Intel, cần bản quyền Windows, dùng được bản Windows SuperAqE). "Cập nhật lần cuối" 06/11/2026. Sitemap lastmod trang Mac trước đó sai (10-30 trong khi trang sửa 11-02) → 2026-11-06.
+- Kiểm tra: JSON-LD 5 trang parse được, mỗi trang 1 h1. robots.txt/.assetsignore/IndexNow key vẫn đúng.
+- Không đo hạng (lần tới 2026-11-11). Không soạn outreach (lần tới ~2026-11-09).
+- URL đã đổi: /, /choi-aoe-online-mien-phi/, /choi-de-che-qua-mang/, /tai-aoe-rise-of-rome/, /choi-aoe-tren-macbook/, /llms.txt, /sitemap.xml.
+- Lần sau: outreach ~2026-11-09; đo hạng 2026-11-11; /choi-aoe-tren-linux/ (lastmod 30/10) rà lại.
+
+### Cần chủ dự án quyết định / làm
+- **Quan trọng nhất (vẫn tồn đọng):** superaqe.com chưa xuất hiện trên Google kể cả tên thương hiệu → Google Search Console + Bing Webmaster Tools, gửi sitemap, "Thay đổi địa chỉ" từ superaoe.com; giữ 301 superaoe.com lâu hơn 2026-11-28.
+- Xác nhận mã phòng luôn là 6 chữ số (site giờ ghi "mã 6 số" ở mọi trang).
+- Sync checkout C:\tools\aoe-re (launcher 0.3.71) hoặc cập nhật seo/facts.md để site quảng bá 0.3.96–1.0.12 (Báo lỗi & góp ý, Điểm mạng, nối mạng mới…); softwareVersion trang chủ vẫn 0.3.95.
+- seo-agent.md "Quy tắc sự thật" vẫn cũ (không hỗ trợ Mac Intel, x0.5–x8); ảnh /img/replay-tua.jpg vẫn thanh replay cũ x0.5–x8.
