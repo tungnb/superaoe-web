@@ -132,6 +132,17 @@ button, .btn { display: inline-flex; align-items: center; justify-content: cente
     </div>
 
     <div class="panel">
+      <h2>Tên hiển thị</h2>
+      <form class="form pw" id="nameForm">
+        <label for="nn">Tên mọi người thấy trong phòng, chat, bạn bè, clan và lịch sử (2-24 ký tự: chữ có dấu, số, ký tự đặc biệt như _ . , * ™ ®; để trống = dùng tên đăng nhập)</label>
+        <input id="nn" type="text" autocomplete="nickname" maxlength="24">
+        <button class="primary" type="submit">Đổi tên hiển thị</button>
+        <div class="msg" id="nameMsg"></div>
+      </form>
+      <p class="hint">Tên đăng nhập giữ nguyên. Trong game chỉ hiện chữ không dấu và ký tự ASCII. Đổi lại được sau 1 giờ.</p>
+    </div>
+
+    <div class="panel">
       <h2>Đổi mật khẩu</h2>
       <form class="form pw" id="pwForm">
         <label for="pc">Mật khẩu hiện tại</label>
@@ -170,10 +181,14 @@ function showLogin() {
   $("lu").focus();
 }
 
+const NICKS = {};  // username -> display name (from /api/web/matches nicks and /api/web/me)
+const shown = (u) => NICKS[u] || u;
 async function showAccount(info) {
   me = info;
-  $("whoName").textContent = $("accName").textContent = info.username;
-  $("accSub").textContent = (info.email ? info.email + " · " : "") + "Tham gia từ " + new Date(info.created).toLocaleDateString("vi-VN");
+  if (info.nick) NICKS[info.username] = info.nick; else delete NICKS[info.username];
+  $("whoName").textContent = $("accName").textContent = info.nick || info.username;
+  $("nn").value = info.nick || "";
+  $("accSub").textContent = (info.nick ? "Tên đăng nhập " + info.username + " · " : "") + (info.email ? info.email + " · " : "") + "Tham gia từ " + new Date(info.created).toLocaleDateString("vi-VN");
   $("who").classList.remove("hidden");
   $("loginView").classList.add("hidden");
   $("accountView").classList.remove("hidden");
@@ -199,7 +214,7 @@ function outcome(m) {
 function renderMatch(m) {
   const o = outcome(m);
   const r = m.result;
-  const name = (u) => `<span class="${u === me.username ? "me" : ""} ${r && r.losers.includes(u) ? "lost" : ""}">${esc(u)}</span>`;
+  const name = (u) => `<span class="${u === me.username ? "me" : ""} ${r && r.losers.includes(u) ? "lost" : ""}" title="${esc(u)}">${esc(shown(u))}</span>`;
   const side = (arm) => m.players.filter((u) => (m.seats[u] || "")[0] === arm);
   const L = side("L"), R = side("R");
   const teams = L.length && R.length
@@ -231,14 +246,15 @@ function age3Stat() {
   const a = me.age3;
   if (!a) return "";
   const s = Math.floor(a.avgMs / 1000), t = `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
-  return `<div class="stat age3" title="Trung bình bắt đầu click lên Đời Đồng (đời 3), giờ game, ${a.matches} trận"><span class="n">${esc(me.username)}</span><b>${t}</b></div>`;
+  return `<div class="stat age3" title="Trung bình bắt đầu click lên Đời Đồng (đời 3), giờ game, ${a.matches} trận"><span class="n">${esc(me.nick || me.username)}</span><b>${t}</b></div>`;
 }
 
 async function loadMatches() {
   const btn = $("btnMore");
   btn.disabled = true;
   try {
-    const { matches } = await api("matches?limit=20" + (oldest ? "&before=" + oldest : ""));
+    const { matches, nicks } = await api("matches?limit=20" + (oldest ? "&before=" + oldest : ""));
+    Object.assign(NICKS, nicks || {});
     for (const m of matches) {
       $("matches").appendChild(renderMatch(m));
       const o = outcome(m);
@@ -316,6 +332,28 @@ $("loginForm").onsubmit = async (e) => {
 $("btnLogout").onclick = async () => {
   await api("logout", {}).catch(() => {});
   showLogin();
+};
+
+$("nameForm").onsubmit = async (e) => {
+  e.preventDefault();
+  const msg = $("nameMsg");
+  msg.className = "msg err";
+  const btn = e.target.querySelector("button");
+  btn.disabled = true;
+  try {
+    const out = await api("name", { name: $("nn").value });
+    me.nick = out.nick || null;
+    if (me.nick) NICKS[me.username] = me.nick; else delete NICKS[me.username];
+    $("whoName").textContent = $("accName").textContent = out.name;
+    $("nn").value = out.nick || "";
+    msg.className = "msg ok";
+    msg.textContent = out.nick ? `Tên hiển thị của bạn giờ là ${out.nick}.` : "Đã bỏ tên hiển thị, mọi người thấy tên đăng nhập của bạn.";
+  } catch (err) {
+    if (err.status === 401) return showLogin();
+    msg.textContent = err.message;
+  } finally {
+    btn.disabled = false;
+  }
 };
 
 $("pwForm").onsubmit = async (e) => {

@@ -385,12 +385,26 @@ const fmtDuration = (ms) => {
 const fmtSize = (b) => b > 1048576 ? (b / 1048576).toFixed(1) + " MB" : Math.max(1, Math.round(b / 1024)) + " KB";
 const fmtTime = (t) => new Date(t).toLocaleString("vi-VN", { dateStyle: "short", timeStyle: "short" });
 
+// Display names (launcher "tên hiển thị", Worker users.nick): POST /api/names tells which players
+// picked one; the page shows it in place of the login name (the login name stays in the title).
+const NICKS = {};
+const shown = (u) => NICKS[u] || u;
+async function loadNicks(users) {
+  const want = [...new Set(users)].filter((u) => !(u in NICKS));
+  if (!want.length) return;
+  for (const u of want) NICKS[u] = "";
+  try {
+    const { nicks } = await fetch("/api/names", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ users: want.slice(0, 300) }) }).then((r) => r.json());
+    Object.assign(NICKS, nicks || {});
+    for (const el of document.querySelectorAll(".p[data-u]")) { const n = shown(el.dataset.u); if (el.lastChild && el.lastChild.nodeType === 3 && el.lastChild.textContent !== n) el.lastChild.textContent = n; }
+  } catch {}
+}
 function renderMatch(m) {
   const r = m.result;
   const name = (u) => {
     const c = seatColour(m.seats[u]);
     const cls = r ? (r.winners.includes(u) ? "won" : r.losers.includes(u) ? "lost" : "") : "";
-    return `<span class="p ${cls}">${c ? `<i style="background:${c}"></i>` : ""}${esc(u)}</span>`;
+    return `<span class="p ${cls}" data-u="${esc(u)}" title="${esc(u)}">${c ? `<i style="background:${c}"></i>` : ""}${esc(shown(u))}</span>`;
   };
   const side = (arm) => m.players.filter((u) => (m.seats[u] || "")[0] === arm);
   const L = side("L"), R = side("R");
@@ -830,6 +844,7 @@ async function loadMatches() {
       $("matches").appendChild(renderMatch(m));
       oldest = m.id;
     }
+    loadNicks(matches.flatMap((m) => m.players || []));
     if (!$("matches").children.length) $("matches").innerHTML = '<div class="empty">Chưa có trận nào có replay.</div>';
     btn.classList.toggle("hidden", matches.length < 20);
     // A shared link to one match (#tran-123): scroll to it once it is on the page.
