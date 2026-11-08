@@ -345,7 +345,8 @@ footer a { color: var(--dim); }
       <tr><td>Số đội</td><td>2, 4, 8 hoặc 16</td><td>3, 4, 5, 6, 8 hoặc 10</td></tr>
       <tr><td>Ai gặp ai</td><td>Bốc thăm chia nhánh, thua là bị loại</td><td>Mỗi đội gặp mọi đội khác một lần</td></tr>
       <tr><td>Lịch đấu</td><td>Mỗi vòng có hạn chót riêng</td><td>Không xếp lịch, gặp nhau lúc nào cũng được trước hạn chót của cả giải</td></tr>
-      <tr><td>Hết hạn mà chưa xong</td><td>Cả hai đội của nhánh bị loại</td><td>Đội đang dẫn thắng cặp đó, bằng nhau là hoà, chưa đánh thì cả hai 0 điểm</td></tr>
+      <tr><td>Hết hạn mà chưa xong</td><td>Đội đang dẫn đi tiếp; hoà hoặc chưa đánh thì cả hai đội bị xử thua</td><td>Đội đang dẫn thắng cặp đó, bằng nhau là hoà, chưa đánh thì cả hai 0 điểm</td></tr>
+      <tr><td>Nhánh không đấu được</td><td colspan="2">Quản trị viên phán xử: cho một đội thắng hoặc kết thúc với cả hai đội thua</td></tr>
       <tr><td>Vô địch</td><td>Đội thắng chung kết</td><td>Nhiều điểm nhất (thắng 3, hoà 1, thua 0; bằng điểm xét hiệu số ván, số ván thắng, đối đầu)</td></tr>
     </tbody></table></div>
 
@@ -587,7 +588,7 @@ function buildPlan() {
       <td>${wins(r === rounds - 1 ? 3 : 2)}</td>
       <td><input data-hours type="number" min="1" max="720" value="${r === rounds - 1 ? 72 : 48}"> giờ</td>
       <td class="hint" data-deadline></td></tr>`).join("");
-    $("cPlanHint").innerHTML = "Mỗi nhánh phải xong trong thời gian của vòng. Hết giờ mà chưa đủ số trận thắng thì <b>cả hai đội đều bị loại</b>.";
+    $("cPlanHint").innerHTML = "Mỗi nhánh phải xong trong thời gian của vòng. Hết giờ mà chưa đủ số trận thắng: <b>đội đang dẫn đi tiếp</b>; hoà hoặc chưa đánh thì <b>cả hai đội bị xử thua</b>.";
   }
   planDeadlines();
 }
@@ -769,10 +770,10 @@ function renderTour() {
   }).join("");
   const planHint = isRR(t)
     ? "Không xếp lịch: hai đội gặp nhau lúc nào cũng được, từ khi giải bắt đầu đến hạn chót. Hết hạn: đội đang dẫn thắng cặp đó, bằng nhau thì hoà, chưa đánh thì cả hai 0 điểm."
-    : `Nhánh chưa xong khi hết hạn chót: cả hai đội bị loại, đối thủ ở vòng sau được đi tiếp.${t.status === "reg" && t.capacity > 2 ? " Nếu khi bắt đầu chưa đủ đội, nhánh thu gọn lại và dùng các vòng cuối của lộ trình." : ""}`;
+    : `Nhánh chưa xong khi hết hạn: đội đang dẫn đi tiếp; hoà hoặc chưa đánh thì cả hai đội bị xử thua, đối thủ ở vòng sau đi thẳng. Quản trị viên có thể phán xử nhánh không đấu được.${t.status === "reg" && t.capacity > 2 ? " Nếu khi bắt đầu chưa đủ đội, nhánh thu gọn lại và dùng các vòng cuối của lộ trình." : ""}`;
   const champ = t.status === "done" ? (t.champion
     ? `<div class="champion">${CUP}${esc(teamName(t.champion))}<small>Vô địch${t.teamSize > 1 ? " · " + membersOf(t.champion).map(esc).join(", ") : ""}</small></div>`
-    : `<div class="champion" style="color:var(--dim)">Không có nhà vô địch<small>${isRR(t) ? "Không đội nào ghi được điểm." : "Trận chung kết không kết thúc đúng hạn: cả hai đội bị loại."}</small></div>`) : "";
+    : `<div class="champion" style="color:var(--dim)">Không có nhà vô địch<small>${isRR(t) ? "Không đội nào ghi được điểm." : "Trận chung kết không kết thúc đúng hạn: cả hai đội bị xử thua."}</small></div>`) : "";
   $("main").innerHTML = `
     <p style="margin:20px 0 0"><a href="/giai-dau/">← Tất cả giải đấu</a></p>
     <div class="row" style="align-items:baseline"><h1 class="grow">${esc(t.name)}</h1>${badge(t.status)}</div>
@@ -926,10 +927,10 @@ function seriesStatus(s) {
     case "wait": return ["Chờ đối thủ", ""];
     case "play": return [`Đang đấu · ${s.wa}-${s.wb} · còn ${fmtLeft(left)}`, "live"];
     case "late": return ["Hết giờ · chờ kết quả ván đang đấu", "bad"];
-    case "done": return [`${teamName(s.winner)} thắng ${Math.max(s.wa, s.wb)}-${Math.min(s.wa, s.wb)}`, ""];
+    case "done": return [`${teamName(s.winner)} thắng ${Math.max(s.wa, s.wb)}-${Math.min(s.wa, s.wb)}${s.ruled ? " (admin phán xử)" : s.timeout ? " (hết giờ, đội dẫn đi tiếp)" : ""}`, ""];
     case "draw": return [`Hoà ${s.wa}-${s.wb}`, ""];
-    case "bye": return [s.round === 0 ? "Đi tiếp (không có đối thủ)" : "Đi tiếp (đối thủ bị loại)", ""];
-    case "out": return [isRR(D.tour) ? "Hết giờ, không đấu: cả hai 0 điểm" : "Hết giờ: cả hai đội bị loại", "bad"];
+    case "bye": return [s.round === 0 ? "Đi tiếp (không có đối thủ)" : "Đi tiếp (đối thủ bị xử thua)", ""];
+    case "out": return [s.ruled ? "Admin phán xử: cả hai đội thua" : isRR(D.tour) ? "Hết giờ, không đấu: cả hai 0 điểm" : "Hết giờ: cả hai đội bị xử thua", "bad"];
     default: return ["—", ""];
   }
 }
@@ -1024,9 +1025,26 @@ function renderSeries(key) {
     const howto = s.status === "play" || s.status === "late" ? `<p class="hint">Cách đấu: một người tạo phòng trong launcher SuperAqE. <b>${esc(teamName(s.a))}</b> ngồi bên trái (Quan Nhất–Tứ phẩm), <b>${esc(teamName(s.b))}</b> ngồi bên phải (Ngũ–Bát phẩm)${D.tour.teamSize > 1 ? ", đủ và đúng thành viên đã đăng ký" : ""}, không thêm người chơi khác (khán giả thì được). Trận dài từ 5 phút, đánh xong là kết quả tự hiện ở đây.</p>` : "";
     list = s.games.length ? `<ul class="games">${s.games.map((g, n) => gameHtml(g, n, isAdmin)).join("")}</ul>` : `<p class="hint">Chưa có ván nào.</p>`;
     list = howto + list;
+    // A quản trị viên decides a series the teams cannot play out: one team wins it, or both lose.
+    const canRule = tourAdminPrefix() && D.tour.status === "run" && (s.status === "play" || s.status === "late");
+    if (canRule || (s.ruled && tourAdminPrefix())) list += `<div class="actions" style="margin-top:12px;align-items:center"><span class="hint">Quản trị viên phán xử:</span>
+      ${canRule ? `<button class="ghost tiny" data-rule="${s.a}">${esc(teamName(s.a))} thắng</button><button class="ghost tiny" data-rule="${s.b}">${esc(teamName(s.b))} thắng</button>
+      <button class="danger tiny" data-rule="none">Kết thúc, cả hai thua</button>` : `<button class="ghost tiny" data-rule="clear">Huỷ phán xử (mở lại nhánh)</button>`}</div>`;
   }
   box.innerHTML = head + list;
   $("sclose").onclick = () => { openSeries = null; redraw(); };
+  box.querySelectorAll("[data-rule]").forEach((btn) => btn.onclick = async () => {
+    const v = btn.dataset.rule;
+    const body = v === "clear" ? { clear: true } : { winner: v === "none" ? null : Number(v) };
+    const what = v === "clear" ? "Huỷ phán xử nhánh này? Nhánh mở lại để hai đội thi đấu tiếp."
+      : v === "none" ? "Kết thúc nhánh này, cả hai đội đều thua? Đối thủ ở vòng sau được đi thẳng." : `Cho ${teamName(Number(v))} thắng nhánh này?`;
+    if (!confirm(what)) return;
+    btn.disabled = true;
+    try {
+      await api("tour/rule", { id: tourId, round: s.round, idx: s.idx, ...body }, tourAdminPrefix());
+      await showTour();
+    } catch (e) { alert(e.message); btn.disabled = false; }
+  });
   box.querySelectorAll("[data-confirm]").forEach((btn) => btn.onclick = async () => {
     btn.disabled = true;
     try {
@@ -1083,8 +1101,8 @@ function rulesHtml(t) {
       <li><b>Hạn đăng ký cũng là giờ khởi tranh</b>, không phải hạn thi đấu: đến giờ đó đăng ký đóng lại và các đội mới bắt đầu thi đấu. Trận đánh trước giờ khởi tranh không được tính. Mỗi ${!t || !isRR(t) ? "vòng" : "giải"} có hạn thi đấu riêng ghi trong lộ trình.</li>
       <li>Hai đội tự hẹn giờ (sau khởi tranh, trước hạn thi đấu) và vào một phòng trên launcher SuperAqE: một đội ngồi bên trái, đội kia bên phải, đúng thành viên đã đăng ký.</li>
       <li><b>Kết quả lấy tự động</b> từ trận đấu (bên đầu hàng / bị diệt / thoát game trước là thua), công khai cùng replay. Trận ngắn dưới 5 phút không được tính. Kết quả mà máy đối thủ không xác nhận được sẽ chờ admin xác nhận.</li>
-      ${!t || !isRR(t) ? `<li>Mỗi vòng có <b>hạn chót</b>. Nhánh loại trực tiếp chưa xong khi hết hạn: <b>cả hai đội bị loại</b>.</li>` : ""}
-      <li>Không ai sửa được kết quả. Chỉ <b>admin</b> có quyền xoá kết quả một ván để hai đội đấu lại (ví dụ khi bị lỗi mạng).</li>
+      ${!t || !isRR(t) ? `<li>Mỗi vòng có <b>hạn thi đấu</b>. Nhánh chưa xong khi hết hạn: <b>đội đang dẫn đi tiếp</b>; hoà hoặc chưa đánh ván nào thì <b>cả hai đội bị xử thua</b>, đối thủ vòng sau đi thẳng.</li>` : ""}
+      <li>Không ai sửa được kết quả. Chỉ <b>quản trị viên</b> có quyền xoá kết quả một ván để hai đội đấu lại (ví dụ khi bị lỗi mạng), hoặc <b>phán xử</b> một nhánh không đấu được: cho một đội thắng hay kết thúc với cả hai đội thua.</li>
     </ul>
     ${t ? "" : `<p class="hint" style="margin:10px 0 0">Chưa có SuperAqE? <a href="/#tai-ve">Tải miễn phí cho Windows và MacBook</a>.</p>`}
   </section>`;
