@@ -174,6 +174,8 @@ button:disabled { opacity: .6; cursor: default; }
 .games .res b { color: #8fd69a; }
 .games .tag { font-size: 12px; color: var(--dim); }
 .games .tag.v { color: #f08a7e; }
+.rgroup { margin: 14px 0 6px; font-size: 15px; }
+.rgroup small { margin-left: 8px; font-weight: 400; color: var(--dim); }
 .rules { margin: 36px 0 48px; padding: 20px 22px; border: 1px solid rgba(184,144,47,.35); border-radius: 14px; background: var(--bg2); }
 .rules h2 { font-size: 20px; margin-bottom: 8px; }
 .rules ol, .rules ul { margin: 0; padding-left: 20px; color: var(--dim); }
@@ -789,6 +791,7 @@ function renderTour() {
     <div class="panel"><h3>Lộ trình thi đấu</h3><div style="overflow-x:auto"><table class="plan"><thead><tr><th>${isRR(t) ? "" : "Vòng"}</th><th>Số trận</th><th>Thời gian</th><th>Hạn chót</th></tr></thead><tbody>${planRows}</tbody></table></div>
       <p class="hint" style="margin:8px 0 0">${planHint}</p></div>
     <div id="body" style="margin-top:24px"></div>
+    <div id="replays"></div>
     ${rulesHtml(t)}`;
   if (tourAdminPrefix()) {
     $("btnAdminEdit").onclick = () => openEdit(t);
@@ -799,6 +802,7 @@ function renderTour() {
   }
   if (t.status === "reg") renderRegistration(myMember, organizer);
   else if (D.bracket) isRR(t) ? renderLeague() : renderBracket();
+  renderReplays();
   const box = document.querySelector(".bscroll");
   if (box && scrollX) box.scrollLeft = scrollX;
   schedulePoll();
@@ -1012,15 +1016,7 @@ function renderSeries(key) {
   let list = "";
   if (s.readyAt && s.a && s.b) {
     const howto = s.status === "play" || s.status === "late" ? `<p class="hint">Cách đấu: một người tạo phòng trong launcher SuperAqE. <b>${esc(teamName(s.a))}</b> ngồi bên trái (Quan Nhất–Tứ phẩm), <b>${esc(teamName(s.b))}</b> ngồi bên phải (Ngũ–Bát phẩm)${D.tour.teamSize > 1 ? ", đủ và đúng thành viên đã đăng ký" : ""}, không thêm người chơi khác (khán giả thì được). Trận dài từ 5 phút, đánh xong là kết quả tự hiện ở đây.</p>` : "";
-    list = s.games.length ? `<ul class="games">${s.games.map((g, n) => {
-      const m = D.matches[g.matchId] ?? {};
-      return `<li class="${g.voided ? "void" : ""}"><span class="tag">Ván ${n + 1} · ${fmtTime(g.started)}${m.durationMs ? " · " + fmtDur(m.durationMs) : ""}</span>
-        <span class="res grow"><b>${esc(teamName(g.win))}</b> thắng ${esc(teamName(g.lose))}</span>
-        ${g.voided ? `<span class="tag v">Admin đã xoá kết quả</span>` : g.disputed ? `<span class="tag v" title="Kết quả chỉ có từ máy một người chơi, chưa được máy đối thủ xác nhận">Chờ admin xác nhận</span>` : !g.counted ? `<span class="tag">không tính (${isRR(D.tour) ? "cặp đấu" : "nhánh"} đã có kết quả)</span>` : ""}
-        ${m.hasReplay ? `<a class="btn ghost tiny" href="/api/replays/${g.matchId}.aoerep">Tải replay</a><a class="btn ghost tiny" href="/lich-su-tran/#tran-${g.matchId}">Thống kê</a>` : ""}
-        ${isAdmin && g.disputed && !g.voided ? `<button class="primary tiny" data-confirm="${g.matchId}">Xác nhận</button>` : ""}
-        ${isAdmin ? `<button class="${g.voided ? "ghost" : "danger"} tiny" data-void="${g.matchId}" data-on="${g.voided ? 0 : 1}">${g.voided ? "Khôi phục" : "Xoá kết quả"}</button>` : ""}</li>`;
-    }).join("")}</ul>` : `<p class="hint">Chưa có ván nào.</p>`;
+    list = s.games.length ? `<ul class="games">${s.games.map((g, n) => gameHtml(g, n, isAdmin)).join("")}</ul>` : `<p class="hint">Chưa có ván nào.</p>`;
     list = howto + list;
   }
   box.innerHTML = head + list;
@@ -1041,6 +1037,34 @@ function renderSeries(key) {
       await showTour();
     } catch (e) { alert(e.message); btn.disabled = false; }
   });
+}
+
+// One game of a series: when, who won, its replay and statistics; the admin buttons when asked.
+function gameHtml(g, n, admin) {
+  const m = D.matches[g.matchId] ?? {};
+  return `<li class="${g.voided ? "void" : ""}"><span class="tag">Ván ${n + 1} · ${fmtTime(g.started)}${m.durationMs ? " · " + fmtDur(m.durationMs) : ""}</span>
+    <span class="res grow"><b>${esc(teamName(g.win))}</b> thắng ${esc(teamName(g.lose))}</span>
+    ${g.voided ? `<span class="tag v">Admin đã xoá kết quả</span>` : g.disputed ? `<span class="tag v" title="Kết quả chỉ có từ máy một người chơi, chưa được máy đối thủ xác nhận">Chờ admin xác nhận</span>` : !g.counted ? `<span class="tag">không tính (${isRR(D.tour) ? "cặp đấu" : "nhánh"} đã có kết quả)</span>` : ""}
+    ${m.hasReplay ? `<a class="btn ghost tiny" href="/api/replays/${g.matchId}.aoerep">Tải replay</a><a class="btn ghost tiny" href="/lich-su-tran/#tran-${g.matchId}">Thống kê</a>` : `<span class="tag">không có replay</span>`}
+    ${admin && g.disputed && !g.voided ? `<button class="primary tiny" data-confirm="${g.matchId}">Xác nhận</button>` : ""}
+    ${admin ? `<button class="${g.voided ? "ghost" : "danger"} tiny" data-void="${g.matchId}" data-on="${g.voided ? 0 : 1}">${g.voided ? "Khôi phục" : "Xoá kết quả"}</button>` : ""}</li>`;
+}
+
+// A finished tournament lists every game of every series in one place, with its replay, so the whole
+// tournament can be watched again without opening each series: in bracket order, the final last.
+function renderReplays() {
+  const t = D.tour, box = $("replays");
+  if (!box) return;
+  const groups = t.status === "done" && D.bracket
+    ? D.bracket.rounds.flatMap((r, ri) => r.series.filter((s) => s.games.length).map((s) => ({ ri, s }))) : [];
+  const n = groups.reduce((a, g) => a + g.s.games.length, 0);
+  if (!n) { box.innerHTML = ""; return; }
+  const withReplay = groups.reduce((a, g) => a + g.s.games.filter((x) => D.matches[x.matchId]?.hasReplay).length, 0);
+  const total = D.bracket.rounds.length;
+  box.innerHTML = `<div class="panel" style="margin-top:24px"><h3 style="margin:0 0 4px">Replay các ván</h3>
+    <p class="hint" style="margin:0 0 12px">${n} ván, ${withReplay} replay. Bấm <b>Tải replay</b> rồi mở file .aoerep bằng launcher SuperAqE, hoặc trong launcher vào Giải đấu → giải này → <b>Xem replay</b>.</p>
+    ${groups.map(({ ri, s }) => `<h4 class="rgroup">${isRR(t) ? "Vòng tròn" : roundName(ri, total)} · ${esc(teamName(s.a))} vs ${esc(teamName(s.b))}<small>${esc(seriesStatus(s)[0])}</small></h4>
+      <ul class="games">${s.games.map((g, k) => gameHtml(g, k, false)).join("")}</ul>`).join("")}</div>`;
 }
 
 function rulesHtml(t) {
