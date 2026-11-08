@@ -596,6 +596,54 @@ function planDeadlines() {
     tr.querySelector("[data-deadline]").textContent = Number.isFinite(t) ? fmtTime(t) : "";
   }
 }
+// ---------------- admin: edit / delete any tournament (account role "admin", or the Google admin of /admin)
+const tourAdminPrefix = () => me?.role === "admin" ? "/api/web/" : isAdmin ? "/api/admin/" : "";
+let editing = null;  // the tournament the create dialog edits
+const toLocal = (ms) => { const d = new Date(ms); return new Date(d - d.getTimezoneOffset() * 60000).toISOString().slice(0, 16); };
+function openEdit(t) {
+  openCreate();
+  editing = t;
+  const form = $("createForm");
+  form.querySelectorAll("input, select, textarea").forEach((el) => { el.disabled = false; });
+  $("createTitle").textContent = "Sửa giải: " + t.name;
+  form.querySelector("button[type=submit]").textContent = "Lưu thay đổi";
+  $("cName").value = t.name;
+  $("cDesc").value = t.desc ?? "";
+  const pick = (name, v) => { const el = form.querySelector(`input[name=${name}][value="${v}"]`); if (el) el.checked = true; };
+  pick("format", t.format ?? "elim");
+  pick("size", t.teamSize);
+  pick("mode", t.mode);
+  $("cClan").checked = !!t.clan;
+  buildCaps();
+  pick("cap", t.capacity);
+  $("cStart").value = toLocal(t.startedAt ?? t.startAt);
+  buildPlan();
+  const rounds = t.rounds ?? t.plan;
+  if (t.startedAt && !isRR(t)) {
+    // A running bracket plays only the rounds it needs: show just those.
+    $("cPlan").innerHTML = [...$("cPlan").children].slice(-rounds.length).map((tr) => tr.outerHTML).join("");
+    [...$("cPlan").children].forEach((tr, i) => { tr.firstElementChild.textContent = roundName(i, rounds.length); });
+  }
+  [...$("cPlan").children].forEach((tr, i) => { if (rounds[i]) { tr.querySelector("[data-wins]").value = rounds[i].wins; tr.querySelector("[data-hours]").value = rounds[i].hours; } });
+  planDeadlines();
+  modeHint();
+  // What the Worker lets change: everything while registering (the shape only before a team is in),
+  // once started the name, description and hours; over, name and description.
+  const teams = D.teams.length;
+  const lock = (sel) => form.querySelectorAll(sel).forEach((el) => { el.disabled = true; });
+  if (t.status !== "reg") { lock("input[name=format], input[name=size], input[name=mode], input[name=cap], #cClan, #cStart, [data-wins]"); if (t.status !== "run") lock("[data-hours]"); }
+  else if (teams) { lock("input[name=format], input[name=size], #cClan"); form.querySelectorAll("input[name=cap]").forEach((el) => { if (Number(el.value) < teams) el.disabled = true; }); }
+  $("createMsg").textContent = t.status === "reg" ? (teams ? `Giải đã có ${teams} đội: không đổi được thể thức, số người mỗi đội và giải clan; tổng số đội không ít hơn số đội đã có.` : "")
+    : t.status === "run" ? "Giải đang thi đấu: chỉ sửa được tên, giới thiệu và thời gian của các vòng (dời hạn chót)." : "Giải đã kết thúc: chỉ sửa được tên và giới thiệu.";
+}
+$("createDlg").addEventListener("close", () => {
+  if (!editing) return;
+  editing = null;
+  $("createTitle").textContent = "Tạo giải đấu";
+  $("createForm").querySelector("button[type=submit]").textContent = "Tạo giải";
+  $("createForm").querySelectorAll("input, select, textarea").forEach((el) => { el.disabled = false; });
+  $("createMsg").textContent = "";
+});
 $("createForm").onsubmit = async (e) => {
   e.preventDefault();
   const btn = e.target.querySelector("button[type=submit]");
@@ -603,11 +651,20 @@ $("createForm").onsubmit = async (e) => {
   $("createMsg").textContent = "";
   try {
     const rounds = [...$("cPlan").children].map((tr) => ({ wins: Number(tr.querySelector("[data-wins]").value), hours: Number(tr.querySelector("[data-hours]").value) }));
+    if (editing) {
+      const t = editing, body = { id: t.id, name: $("cName").value, desc: $("cDesc").value };
+      if (t.status === "reg") Object.assign(body, { format: formVal("format"), teamSize: Number(formVal("size")), capacity: Number(formVal("cap")),
+        mode: formVal("mode"), rounds, startAt: new Date($("cStart").value).getTime(), clan: $("cClan").checked });
+      else if (t.status === "run") body.rounds = rounds;
+      await api("tour/edit", body, tourAdminPrefix());
+      location.reload();
+      return;
+    }
     const { id } = await api("tour/create", { name: $("cName").value, desc: $("cDesc").value, format: formVal("format"), teamSize: Number(formVal("size")),
       capacity: Number(formVal("cap")), mode: formVal("mode"), rounds, startAt: new Date($("cStart").value).getTime(), clan: $("cClan").checked });
     location.href = "?id=" + id;
   } catch (err) {
-    if (err.status === 401) { setMe(null); $("createDlg").close(); askLogin(openCreate, "Phiên đăng nhập đã hết, hãy đăng nhập lại."); }
+    if (err.status === 401 && !editing) { setMe(null); $("createDlg").close(); askLogin(openCreate, "Phiên đăng nhập đã hết, hãy đăng nhập lại."); }
     else $("createMsg").textContent = err.message;
   } finally {
     btn.disabled = false;
@@ -718,6 +775,8 @@ function renderTour() {
     <p style="margin:20px 0 0"><a href="/giai-dau/">← Tất cả giải đấu</a></p>
     <div class="row" style="align-items:baseline"><h1 class="grow">${esc(t.name)}</h1>${badge(t.status)}</div>
     ${t.desc ? `<p class="sub">${esc(t.desc)}</p>` : ""}
+    ${tourAdminPrefix() ? `<div class="actions" style="margin:0 0 14px"><span class="hint" style="align-self:center">Quản trị viên:</span>
+      <button class="ghost small" id="btnAdminEdit">Sửa giải</button><button class="danger small" id="btnAdminDelete">Xoá giải</button></div>` : ""}
     ${t.status === "cancel" ? `<div class="empty" style="margin-bottom:20px">${esc(t.note ?? "Giải đã bị huỷ.")}</div>` : ""}
     ${champ}
     <div class="info">
@@ -731,6 +790,13 @@ function renderTour() {
       <p class="hint" style="margin:8px 0 0">${planHint}</p></div>
     <div id="body" style="margin-top:24px"></div>
     ${rulesHtml(t)}`;
+  if (tourAdminPrefix()) {
+    $("btnAdminEdit").onclick = () => openEdit(t);
+    $("btnAdminDelete").onclick = async () => {
+      if (!confirm(`Xoá giải "${t.name}"? Giải, các đội và kết quả của giải bị xoá hẳn (replay các trận vẫn còn trong lịch sử). Không thể hoàn tác.`)) return;
+      try { await api("tour/delete", { id: t.id }, tourAdminPrefix()); location.href = "/giai-dau/"; } catch (e) { alert(e.message); }
+    };
+  }
   if (t.status === "reg") renderRegistration(myMember, organizer);
   else if (D.bracket) isRR(t) ? renderLeague() : renderBracket();
   const box = document.querySelector(".bscroll");
