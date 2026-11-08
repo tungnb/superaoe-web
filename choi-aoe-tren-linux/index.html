@@ -118,6 +118,30 @@
   },
   {
    "@type": "Question",
+   "name": "Game chạy ở độ phân giải nào?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Trên Linux, game chạy 1366×768, toàn màn hình không viền. Lần đầu vào game mất khoảng 1 phút để chuẩn bị Wine."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Đang bật bộ gõ tiếng Việt (Unikey) thì phím tắt trong game có dùng được không?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Được. Từ bản Linux 0.3.96, SuperAqE tự tắt bộ gõ ibus/fcitx cho riêng game, nên phím tắt như H, C dùng bình thường mà không cần tắt Unikey. Nếu vẫn bị, thử chuyển bộ gõ sang tiếng Anh khi chơi và báo trong nhóm Facebook."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Tự cài Wine hoặc Lutris để chơi AoE online có được không?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Chơi đơn thường được, nhưng phải tự tìm bản Wine hợp với Rise of Rome và tự lo LAN ảo hoặc mở cổng để chơi qua Internet; trên diễn đàn có người báo chơi mạng bị lỗi. SuperAqE cho Linux đã kèm Wine, game và kết nối online sẵn, cài bằng 1 lệnh. Xem bảng so sánh."
+   }
+  },
+  {
+   "@type": "Question",
    "name": "Máy Linux ARM (Raspberry Pi…) có chơi được không?",
    "acceptedAnswer": {
     "@type": "Answer",
@@ -129,7 +153,7 @@
    "name": "App không mở được vì thiếu thư viện thì làm sao?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Trên bản cài tối giản có thể thiếu thư viện. Trên Ubuntu/Debian chạy: sudo apt install libnss3 libgbm1 libgtk-3-0 libasound2 libxss1 libfreetype6 libgl1 libpulse0 (Ubuntu 24.04 trở lên thay libasound2 bằng libasound2t64 và libgtk-3-0 bằng libgtk-3-0t64)."
+    "text": "Trên bản cài tối giản có thể thiếu thư viện. Trên Ubuntu/Debian chạy sudo apt install libnss3 libgbm1 libgtk-3-0 libasound2 libxss1 libfreetype6 libgl1 libpulse0 (Ubuntu 24.04 trở lên thay libasound2 bằng libasound2t64 và libgtk-3-0 bằng libgtk-3-0t64). Xem phần sửa lỗi."
    }
   }
  ]
@@ -335,6 +359,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
       <a href="#tinh-trang">Bản Linux</a>
       <a href="#cai-dat">Cài đặt</a>
       <a href="#loi-thuong-gap">Sửa lỗi</a>
+      <a href="#cach-khac">Cách khác</a>
       <a href="#hoi-dap">Hỏi đáp</a>
       <a class="cta" href="https://superaqe.com/download/linux" download>Tải cho Linux</a>
     </nav>
@@ -355,7 +380,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
       <div class="quick-or">hoặc</div>
       <div class="btns"><a class="btn ghost" href="https://superaqe.com/download/linux" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg><span>Tải file tar.xz về<small>SuperAoE_Linux.tar.xz · khoảng 300 MB · x86_64</small></span></a><a class="more" href="#cai-dat">Xem hướng dẫn chi tiết ↓</a></div>
     </div>
-    <p class="meta">Cập nhật lần cuối: <time datetime="2026-10-29">29/10/2026</time></p>
+    <p class="meta">Cập nhật lần cuối: <time datetime="2026-11-08">08/11/2026</time></p>
   </div>
 </section>
 
@@ -406,11 +431,32 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
     <div class="cmdline"><code>sudo apt install libnss3 libgbm1 libgtk-3-0 libasound2 libxss1 libfreetype6 libgl1 libpulse0</code><button type="button" class="copy" data-copy="sudo apt install libnss3 libgbm1 libgtk-3-0 libasound2 libxss1 libfreetype6 libgl1 libpulse0">Sao chép</button></div>
     <p>Ubuntu 24.04 trở lên dùng tên gói mới:</p>
     <div class="cmdline"><code>sudo apt install libnss3 libgbm1 libgtk-3-0t64 libasound2t64 libxss1 libfreetype6 libgl1 libpulse0</code><button type="button" class="copy" data-copy="sudo apt install libnss3 libgbm1 libgtk-3-0t64 libasound2t64 libxss1 libfreetype6 libgl1 libpulse0">Sao chép</button></div>
+    <h3 id="bo-go-tieng-viet">Phím tắt trong game không ăn khi bật bộ gõ tiếng Việt</h3>
+    <p>Máy Ubuntu, Linux Mint của người Việt thường bật bộ gõ <b>ibus</b> hoặc <b>fcitx</b> (Unikey, Bamboo…). Bộ gõ có thể "nuốt" phím chữ nên các phím tắt như <kbd>H</kbd> (chọn nhà chính), <kbd>C</kbd> (tạo dân) không tới được game. Từ bản Linux 0.3.96, SuperAqE tự tắt bộ gõ cho riêng game, phím tắt dùng bình thường mà không cần tắt Unikey; app tự cập nhật nên chỉ cần mở lại SuperAqE. Nếu vẫn bị, thử chuyển bộ gõ sang chế độ tiếng Anh khi chơi và báo trong nhóm Facebook kèm tên bộ gõ bạn dùng.</p>
     <p class="note">Biểu tượng trên màn hình không mở được trên GNOME? Bấm chuột phải vào biểu tượng, chọn <b>Allow Launching</b>. Vẫn gặp lỗi: hỏi trong <a href="https://www.facebook.com/groups/1496567506003702" target="_blank" rel="noopener">nhóm Facebook SuperAqE</a>.</p>
   </div>
 </section>
 
-<section id="hoi-dap" class="alt">
+<section id="cach-khac" class="alt">
+  <div class="wrap narrow">
+    <div class="kicker">Cách khác</div>
+    <h2>So sánh các cách chơi Đế Chế trên Linux</h2>
+    <p>Ngoài SuperAqE, người dùng Linux thường thử tự cài Wine, máy ảo hoặc cài thêm Windows. SuperAqE chưa kiểm chứng việc chạy SuperAqE bằng các cách dưới đây; thông tin về phần mềm khác có thể thay đổi, hãy kiểm tra trên trang chính thức của họ.</p>
+    <div class="tbl">
+      <table>
+        <thead><tr><th scope="col">Cách</th><th scope="col">Chi phí</th><th scope="col">Ưu điểm</th><th scope="col">Hạn chế</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Bản SuperAqE cho Linux</th><td>Miễn phí</td><td>Kèm sẵn Wine và game, cài 1 lệnh không cần sudo, tự cập nhật; chơi online chung phòng với Windows và Mac, không cần VPN hay mở cổng; có khán giả xem trực tiếp và replay mọi trận</td><td>Chỉ máy 64-bit Intel/AMD (x86_64); game chạy 1366×768; máy người ngồi ghế đầu giữ trận, máy đó tắt launcher hoặc mất mạng hẳn thì ván dừng cho cả phòng</td></tr>
+          <tr><th scope="row">Tự cài Wine / Lutris / PlayOnLinux</th><td>Miễn phí (tự có bộ game)</td><td>Tự chọn bản Wine, chơi đơn được</td><td>Phải tự tìm bản Wine hợp với Rise of Rome; trên diễn đàn có người báo chơi đơn được nhưng chơi mạng báo lỗi; chơi qua Internet vẫn phải tự lo <a href="/choi-de-che-qua-mang/">LAN ảo hoặc mở cổng</a></td></tr>
+          <tr><th scope="row">Máy ảo Windows (VirtualBox…)</th><td>Cần bản quyền Windows</td><td>Chạy Windows thật bên trong Linux, dùng được bản Windows của SuperAqE</td><td>Tốn RAM và ổ đĩa; đồ họa và chuột trong máy ảo thường kém mượt hơn chạy thẳng</td></tr>
+          <tr><th scope="row">Cài thêm Windows (dual boot)</th><td>Cần bản quyền Windows</td><td>Chạy Windows thật, dùng <a href="/choi-aoe-online-mien-phi/">bản Windows của SuperAqE</a></td><td>Phải chia ổ đĩa, khởi động lại máy mỗi lần muốn chơi</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="hoi-dap">
   <div class="wrap narrow">
     <div class="kicker">Hỏi đáp</div>
     <h2>Câu hỏi thường gặp về Đế Chế trên Linux</h2>
@@ -420,6 +466,8 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
       <details><summary>Có phải tự cài Wine hay thư viện 32-bit không?</summary><p>Không. Gói đã kèm Wine (bản WoW64) nên không cần cài Wine hay thư viện 32-bit, và cài không cần sudo.</p></details>
       <details><summary>Người dùng Linux có chơi chung với Windows và Mac được không?</summary><p>Được. Bản Linux dùng chung máy chủ, tài khoản và phòng với bản Windows và bản Mac.</p></details>
       <details><summary>Game chạy ở độ phân giải nào?</summary><p>Trên Linux, game chạy 1366×768, toàn màn hình không viền. Lần đầu vào game mất khoảng 1 phút để chuẩn bị Wine.</p></details>
+      <details><summary>Đang bật bộ gõ tiếng Việt (Unikey) thì phím tắt trong game có dùng được không?</summary><p>Được. Từ bản Linux 0.3.96, SuperAqE tự tắt bộ gõ ibus/fcitx cho riêng game, nên phím tắt như H, C dùng bình thường mà không cần tắt Unikey. Nếu vẫn bị, thử chuyển bộ gõ sang tiếng Anh khi chơi và báo trong <a href="https://www.facebook.com/groups/1496567506003702" target="_blank" rel="noopener">nhóm Facebook</a> (xem <a href="#bo-go-tieng-viet">phần sửa lỗi</a>).</p></details>
+      <details><summary>Tự cài Wine hoặc Lutris để chơi AoE online có được không?</summary><p>Chơi đơn thường được, nhưng phải tự tìm bản Wine hợp với Rise of Rome và tự lo LAN ảo hoặc mở cổng để chơi qua Internet; trên diễn đàn có người báo chơi mạng bị lỗi. SuperAqE cho Linux đã kèm Wine, game và kết nối online sẵn, cài bằng 1 lệnh. Xem <a href="#cach-khac">bảng so sánh</a>.</p></details>
       <details><summary>Máy Linux ARM (Raspberry Pi…) có chơi được không?</summary><p>Không. Bản Linux chỉ dành cho máy 64-bit Intel/AMD (x86_64); Linux ARM không được hỗ trợ.</p></details>
       <details><summary>App không mở được vì thiếu thư viện thì làm sao?</summary><p>Trên bản cài tối giản có thể thiếu thư viện. Trên Ubuntu/Debian chạy <code>sudo apt install libnss3 libgbm1 libgtk-3-0 libasound2 libxss1 libfreetype6 libgl1 libpulse0</code> (Ubuntu 24.04 trở lên thay <code>libasound2</code> bằng <code>libasound2t64</code> và <code>libgtk-3-0</code> bằng <code>libgtk-3-0t64</code>). Xem <a href="#loi-thuong-gap">phần sửa lỗi</a>.</p></details>
     </div>

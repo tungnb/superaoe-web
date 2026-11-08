@@ -311,3 +311,23 @@
 - Xác nhận mã phòng luôn là 6 chữ số (site giờ ghi "mã 6 số" ở mọi trang).
 - Sync checkout C:\tools\aoe-re (launcher 0.3.71) hoặc cập nhật seo/facts.md để site quảng bá 0.3.96–1.0.12 (Báo lỗi & góp ý, Điểm mạng, nối mạng mới…); softwareVersion trang chủ vẫn 0.3.95.
 - seo-agent.md "Quy tắc sự thật" vẫn cũ (không hỗ trợ Mac Intel, x0.5–x8); ảnh /img/replay-tua.jpg vẫn thanh replay cũ x0.5–x8.
+
+## 2026-11-08 (vòng SEO 22 — tự động)
+- Chuẩn bị: `git pull --rebase` không có gì mới, `git status` sạch. Checkout launcher/NOTES vẫn 0.3.71; dùng memory chủ dự án cho bản Linux 0.3.96 (sửa bộ gõ).
+- Cải thiện lớn /choi-aoe-tren-linux/ (lastmod cũ nhất 30/10):
+  - Mục mới #cach-khac: bảng so sánh SuperAqE cho Linux / tự cài Wine-Lutris-PlayOnLinux / máy ảo Windows / dual boot (trung thực, có câu "SuperAqE chưa kiểm chứng…"), thêm vào menu.
+  - Sửa lỗi mới #bo-go-tieng-viet: ibus/fcitx Unikey nuốt phím tắt H, C → tự tắt bộ gõ cho game từ Linux 0.3.96.
+  - FAQ: +2 câu (bộ gõ tiếng Việt, tự cài Wine/Lutris chơi online). JSON-LD FAQ trước đó thiếu câu "độ phân giải" (6/7) → dựng lại từ FAQ hiển thị, khớp 9/9.
+  - "Cập nhật lần cuối" 08/11/2026; sitemap lastmod 2026-11-08.
+- llms.txt: thêm Q&A bộ gõ + Wine/Lutris, mô tả trang Linux, dòng "cập nhật 2026-11-08 … bản Linux 0.3.96".
+- keywords.md: +2 từ khóa Linux (WebSearch 2026-11-08: không bài tiếng Việt, chỉ WineHQ/Lutris tiếng Anh; Lutris có người báo RoR multiplayer lỗi → khoảng trống). facts.md: mục 2026-11-08.
+- Outreach: seo/outreach/2026-11-08-facebook-group.md (bài cho người dùng Ubuntu/Mint).
+- Không đo hạng (lần tới 2026-11-11).
+- Kiểm tra: JSON-LD 3 khối parse được, 1 h1, html-validate chỉ còn doctype-style/no-inline-style như trước.
+- URL đã đổi: /choi-aoe-tren-linux/, /llms.txt, /sitemap.xml.
+- Lần sau: đo hạng 2026-11-11; /clan/ (lastmod 31/10) rà lại.
+
+### Cần chủ dự án quyết định / làm
+- **Quan trọng nhất (vẫn tồn đọng):** superaqe.com chưa lên Google kể cả tên thương hiệu → Google Search Console + Bing Webmaster Tools, gửi sitemap, "Thay đổi địa chỉ" từ superaoe.com; giữ 301 superaoe.com lâu hơn 2026-11-28.
+- Bản Linux mới thử trên WSL2 tới màn thiết lập; trang vẫn ghi "Linux Mint, Debian, Fedora…" và giờ có mục sửa bộ gõ (0.3.96 chưa tái hiện trên máy thật). Nên chơi thử 1 ván trên Ubuntu thật trước khi đăng bài outreach Linux.
+- Sync checkout C:\tools\aoe-re (launcher 0.3.71) hoặc cập nhật seo/facts.md để quảng bá 0.3.96–1.0.12; seo-agent.md "Quy tắc sự thật" vẫn cũ (Mac Intel, x0.5–x8); ảnh /img/replay-tua.jpg vẫn thanh replay cũ.
