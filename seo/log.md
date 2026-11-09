@@ -331,3 +331,18 @@
 - **Quan trọng nhất (vẫn tồn đọng):** superaqe.com chưa lên Google kể cả tên thương hiệu → Google Search Console + Bing Webmaster Tools, gửi sitemap, "Thay đổi địa chỉ" từ superaoe.com; giữ 301 superaoe.com lâu hơn 2026-11-28.
 - Bản Linux mới thử trên WSL2 tới màn thiết lập; trang vẫn ghi "Linux Mint, Debian, Fedora…" và giờ có mục sửa bộ gõ (0.3.96 chưa tái hiện trên máy thật). Nên chơi thử 1 ván trên Ubuntu thật trước khi đăng bài outreach Linux.
 - Sync checkout C:\tools\aoe-re (launcher 0.3.71) hoặc cập nhật seo/facts.md để quảng bá 0.3.96–1.0.12; seo-agent.md "Quy tắc sự thật" vẫn cũ (Mac Intel, x0.5–x8); ảnh /img/replay-tua.jpg vẫn thanh replay cũ.
+
+## 2026-11-09 (vòng SEO 23 — tự động)
+- Chuẩn bị: `git pull --rebase` không có gì mới, `git status` sạch. HEAD có commit b0a5da1 (tên hiển thị trên /tai-khoan/ + /lich-su-tran/) của phiên khác CHƯA live (NOTES 39c766b: "Worker/site deploy pending approval", cần Worker ffe4509) → không đụng; deploy vòng này từ worktree tạm giữ 2 trang đó ở bản b0a5da1^ (= bản đang live).
+- Rà /clan/ (lastmod cũ nhất 31/10): so với xtv-cf/src/clans.js (POINTS 10/2/5/20/40, 3 trận/cặp/ngày, 8 trận/người/ngày, cấp 300/1000/3000/8000, ≥10 trận lập clan) → vẫn đúng, không sửa.
+- Cải thiện /giai-dau/: phần hướng dẫn đã được phiên khác cập nhật luật mới (hạn đăng ký = giờ khởi tranh, đội dẫn đi tiếp khi hết hạn, admin phán xử) nhưng FAQ chưa có → +2 câu hỏi đáp ("Hạn đăng ký có phải hạn thi đấu không?", "Hết hạn mà nhánh đấu chưa xong thì sao?") hiển thị + JSON-LD (8/8). "Cập nhật lần cuối" 09/11/2026 (launcher 1.0.18); sitemap lastmod 2026-11-09 (trước ghi 11-02 dù trang đổi 11-08).
+- llms.txt: câu cũ "nhánh chưa xong khi hết hạn thì cả hai đội bị loại" → luật mới (đội dẫn đi tiếp, hoà/chưa đánh thì cả hai thua, admin phán xử), thêm hạn đăng ký = khởi tranh; dòng cập nhật 2026-11-09.
+- Kiểm tra: JSON-LD parse được, html-validate chỉ còn lỗi cũ ngoài phần sửa.
+- Không đo hạng (lần tới 2026-11-11). Outreach: bài gần nhất 2026-11-08 → bỏ qua tuần này.
+- URL đã đổi: /giai-dau/, /llms.txt, /sitemap.xml.
+- Lần sau: đo hạng 2026-11-11; khi b0a5da1 + Worker ffe4509 live thì cân nhắc viết "tên hiển thị" (nick có dấu/ký hiệu) lên site + facts.md.
+
+### Cần chủ dự án quyết định / làm
+- **Quan trọng nhất (vẫn tồn đọng):** superaqe.com chưa lên Google kể cả tên thương hiệu → Google Search Console + Bing Webmaster Tools, gửi sitemap, "Thay đổi địa chỉ" từ superaoe.com; giữ 301 superaoe.com lâu hơn 2026-11-28.
+- Commit b0a5da1 (tên hiển thị) đã push nhưng chưa deploy; khi duyệt phát hành 1.0.19 + Worker nhớ `npx wrangler deploy` website (agent SEO cố ý không deploy 2 trang đó).
+- seo-agent.md "Quy tắc sự thật" vẫn cũ (Mac Intel, x0.5–x8); ảnh /img/replay-tua.jpg vẫn thanh replay cũ.
