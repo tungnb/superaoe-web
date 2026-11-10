@@ -346,3 +346,18 @@
 - **Quan trọng nhất (vẫn tồn đọng):** superaqe.com chưa lên Google kể cả tên thương hiệu → Google Search Console + Bing Webmaster Tools, gửi sitemap, "Thay đổi địa chỉ" từ superaoe.com; giữ 301 superaoe.com lâu hơn 2026-11-28.
 - Commit b0a5da1 (tên hiển thị) đã push nhưng chưa deploy; khi duyệt phát hành 1.0.19 + Worker nhớ `npx wrangler deploy` website (agent SEO cố ý không deploy 2 trang đó).
 - seo-agent.md "Quy tắc sự thật" vẫn cũ (Mac Intel, x0.5–x8); ảnh /img/replay-tua.jpg vẫn thanh replay cũ.
+
+## 2026-11-10 (vòng SEO 24 — tự động)
+- Chuẩn bị: `git pull --rebase` không có gì mới, `git status` sạch. Kiểm tra live = HEAD (bỏ qua CRLF) cho /, /tai-khoan/, /lich-su-tran/, /giai-dau/, /clan/, /tao-phong-choi-de-che/, /choi-aoe-tren-macbook/, llms.txt, sitemap.xml → commit b0a5da1 (tên hiển thị) đã được deploy, deploy vòng này từ repo an toàn. NOTES: launcher 1.0.23 (bắt buộc, 2026-11-10).
+- Nội dung: tính năng **tên hiển thị** (1.0.20) lên site. /choi-aoe-online-mien-phi/: FAQ mới #ten-hien-thi "Đổi tên hoặc đặt tên có dấu, ký tự đặc biệt được không?" (hiển thị + JSON-LD, 7/7), bước 2 (hiển thị + HowTo) thêm "đặt thêm tên hiển thị sau", "Cập nhật lần cuối" 10/11/2026. llms.txt: mô tả tài khoản + Q&A đổi tên, dòng cập nhật 2026-11-10 launcher 1.0.23. Sitemap lastmod 2026-11-10.
+- Từ khóa: WebSearch "đổi tên nick đế chế online ký tự đặc biệt" → không có bài tiếng Việt nào về AoE1 (chỉ game khác, Đế Chế Online/AoE Online) → khoảng trống nhỏ, thêm vào keywords.md ưu tiên 3.
+- facts.md: mục 2026-11-10 (tên hiển thị, 1.0.23).
+- Kiểm tra: JSON-LD parse được, FAQ 7 hiển thị = 7 JSON-LD, 1 h1, html-validate chỉ còn doctype-style (như trước).
+- Không đo hạng (lần tới 2026-11-11). Outreach: bài gần nhất 2026-11-08 → bỏ qua.
+- URL đã đổi: /choi-aoe-online-mien-phi/, /llms.txt, /sitemap.xml.
+- Lần sau: **đo hạng 2026-11-11**; outreach ~2026-11-15.
+
+### Cần chủ dự án quyết định / làm
+- **Quan trọng nhất (vẫn tồn đọng):** superaqe.com chưa lên Google kể cả tên thương hiệu → Google Search Console + Bing Webmaster Tools, gửi sitemap, "Thay đổi địa chỉ" từ superaoe.com; giữ 301 superaoe.com lâu hơn 2026-11-28.
+- Câu gợi ý trên /tai-khoan/ "Trong game chỉ hiện chữ không dấu và ký tự ASCII" hơi lệch với bản 1.0.20 (game giữ â/ê/ô và ™ ® …) — nếu muốn chính xác thì sửa câu đó (agent không sửa trang app).
+- seo-agent.md "Quy tắc sự thật" vẫn cũ (Mac Intel, x0.5–x8); ảnh /img/replay-tua.jpg vẫn thanh replay cũ.
