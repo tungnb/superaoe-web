@@ -55,3 +55,8 @@ Chưa kiểm chứng (không viết là có):
 - **Cập nhật 2026-11-08 (theo memory chủ dự án):** bản Linux 0.3.96 (bắt buộc, 2026-11-02) đặt XMODIFIERS=@im=none cho Wine → bộ gõ ibus/fcitx (Unikey, Bamboo) không còn nuốt phím tắt chữ (H, C…) trong game. Chưa tái hiện trên máy thật (chỉ chẩn đoán) → website nói "tự tắt bộ gõ cho riêng game" + nếu vẫn bị thì chuyển bộ gõ sang tiếng Anh và báo nhóm. Win/Mac vẫn 0.3.95 theo website.
 
 - **Cập nhật 2026-11-10 (NOTES §9zzw + memory, launcher 1.0.20 bắt buộc 2026-11-09, website b0a5da1 đã live):** Tên hiển thị: tên đăng nhập giữ nguyên (định danh), đặt thêm tên hiển thị 2–24 ký tự Unicode (chữ có dấu, số, ký hiệu như _ . , * ™ ®; cần ≥1 chữ/số; không trùng tên đăng nhập/tên hiển thị người khác), đổi tối đa 1 lần/giờ; đổi trong launcher (menu tên góc phải "Đổi tên hiển thị…", Cài đặt › Tài khoản) hoặc /tai-khoan/ trên web; hiện ở ghế, chat phòng/tổng/clan, online, bạn bè, clan, lịch sử, giải đấu. Trong game: tên được chuyển sang dạng game hiển thị được (bỏ bớt dấu: ấ→â, đ→d; một số ký hiệu như ™ ® giữ). Launcher mới nhất 1.0.23 (tốc độ trận x1.05 — chi tiết kỹ thuật, không cần quảng bá).
+
+## 2026-11-11
+- Launcher mới nhất 1.0.29 (bắt buộc, Win + Mac + Linux, phát hành 2026-11-10; NOTES mục 10e).
+- Từ launcher 1.0.28: khi xem replay, phím Tab mở màn Achievements (Thành tích) của chính game (như Menu → Achievements), Tab lần nữa hoặc Esc về bản đồ; trận vẫn chạy khi đang mở màn. Đã thử trên replay (NOTES 10c). Tính năng cũng bật cho ghế khán giả nhưng NOTES ghi "chưa thử trên trận trực tiếp" → site chỉ viết cho replay, chưa viết cho khán giả.
+- Tốc độ replay hiện tại x1/x1.5/x2/x4 (không còn x0.5–x8 như seo-agent.md ghi).

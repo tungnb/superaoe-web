@@ -140,6 +140,14 @@
   },
   {
    "@type": "Question",
+   "name": "Xem replay có xem được bảng điểm, thành tích giữa trận không?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Có, từ launcher 1.0.28: đang xem replay bấm Tab là mở màn Thành tích (Achievements) của chính game với điểm của mọi người chơi tính tới thời điểm đang xem; bấm Tab lần nữa hoặc Esc để về bản đồ. Bảng điểm cuối trận còn có trên trang Lịch sử trận của superaqe.com."
+   }
+  },
+  {
+   "@type": "Question",
    "name": "Có mở file replay .aoerep được không?",
    "acceptedAnswer": {
     "@type": "Answer",
@@ -367,7 +375,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
       </a>
     </div>
     <p class="win-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M12 8v4M12 16h.01"/></svg><span>Nếu Windows hiện “Windows protected your PC”, bấm <b>More info</b> → <b>Run anyway</b>.</span></p>
-    <p class="meta">Cập nhật lần cuối: <time datetime="2026-11-04">04/11/2026</time> · Miễn phí</p>
+    <p class="meta">Cập nhật lần cuối: <time datetime="2026-11-11">11/11/2026</time> · Miễn phí</p>
   </div>
 </section>
 
@@ -424,6 +432,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
           <tr><th scope="row">Khóa theo màn hình người chơi / xem tự do</th><td>Ô trạng thái phía trên thanh (“Đang khóa theo …” / “Đang xem tự do”)</td><td><code>F</code></td></tr>
           <tr><th scope="row">Ẩn / hiện khay công nghệ</th><td>—</td><td><code>P</code></td></tr>
           <tr><th scope="row">Xem thao tác chuột: người đang xem / tất cả / tắt</th><td>—</td><td><code>M</code></td></tr>
+          <tr><th scope="row">Mở / đóng <a href="#bang-thanh-tich">bảng thành tích</a> (Achievements) của game</th><td>—</td><td><code>Tab</code></td></tr>
           <tr><th scope="row">Thu gọn / mở bảng phím tắt góc trái dưới</th><td>Bấm vào bảng</td><td><code>F1</code></td></tr>
         </tbody>
       </table>
@@ -443,6 +452,9 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
     <p>Kết hợp với <a href="#man-hinh-nguoi-choi">khóa theo màn hình</a>, bạn thấy gần như đúng những gì người chơi thấy và làm: họ chọn quân nào, kéo khung ra sao, đặt nhà ở đâu. Phím <code>M</code> đổi giữa chỉ người đang xem → tất cả người chơi (kèm tên) → tắt. Khán giả <a href="/choi-aoe-co-khan-gia/">xem trực tiếp</a> cũng thấy thao tác chuột như vậy. Replay cũ hơn không có dữ liệu chuột.</p>
     <h3 id="nhu-nguoi-choi" style="margin-top:32px">Nhìn như người chơi: khung chọn và nhóm quân</h3>
     <p>Từ launcher 0.3.91, khi xem replay (và khi ngồi ghế khán giả) quân đang chọn được vẽ bằng chính khung chọn của game, khay thông tin nằm giữa đáy màn hình như lúc chơi. Từ launcher 0.3.93 còn thấy số nhóm quân người chơi đã gán (<code>Ctrl</code> + <code>1</code>…<code>9</code>), nên biết họ chia quân thành mấy nhóm và điều nhóm nào đi đâu. Phím <code>1</code>–<code>8</code> chọn người chơi theo màu (1 xanh dương, 2 đỏ…), không theo thứ tự ghế.</p>
+    <h3 id="bang-thanh-tich" style="margin-top:32px">Bấm Tab để xem bảng thành tích giữa trận</h3>
+    <p>Từ launcher 1.0.28, khi đang xem replay bấm <code>Tab</code> là mở đúng màn <b>Thành tích (Achievements)</b> của game, giống lúc người chơi vào Menu → Achievements: bảng điểm của mọi người chơi tính tới đúng thời điểm đang xem, có đủ các thẻ của game như Quân sự, Kinh tế và Tổng kết. Bấm <code>Tab</code> lần nữa hoặc <code>Esc</code> để về bản đồ. Trong lúc mở bảng, trận vẫn chạy tiếp, nên muốn so điểm ở một thời điểm thì bấm <code>Space</code> dừng trước rồi mới bấm <code>Tab</code>.</p>
+    <p>Cách dùng để rút kinh nghiệm: tua tới phút 10, phút 15, phút 20 rồi bấm <code>Tab</code> ở từng mốc để xem lúc đó ai hơn điểm kinh tế, ai hơn điểm quân sự, từ đó biết mình bị bỏ xa từ đoạn nào. Bảng điểm cuối trận thì xem được ngay trên web ở trang <a href="/lich-su-tran/">Lịch sử trận</a> mà không cần mở replay.</p>
     <h3 id="tua-nhanh" style="margin-top:32px">Tua tới nhanh</h3>
     <p>Bấm thanh tiến trình để nhảy tới phút sau, game tua nhanh tới đó trong vài giây thay vì phải chờ chạy lại từ đầu. Tua lùi thì game mở lại từ đầu trận rồi tua nhanh tới chỗ bạn chọn, nên mất thêm vài giây.</p>
     <h3 id="tren-web" style="margin-top:32px">Lịch sử trận và tải replay trên web</h3>
@@ -485,6 +497,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
       <details><summary>Replay SuperAqE có phải là video quay lại không?</summary><p>Không. Replay được chạy lại bằng chính game Age of Empires Rise of Rome theo đúng từng lệnh của người chơi, nên hình ảnh là đồ họa gốc và bạn thấy toàn bản đồ như một khán giả, không phải đoạn video quay màn hình.</p></details>
       <details><summary>Replay có đi theo màn hình của từng người chơi không?</summary><p>Có, với trận lưu từ ngày 24/10/2026 (launcher 0.3.15 trở lên): replay ghi lại chỗ mỗi người chơi nhìn trên bản đồ. Chọn người chơi bằng phím 1–8 thì camera đi đúng màn hình người đó trong trận; bấm F để chuyển sang xem tự do. Replay cũ hơn không có dữ liệu này nên chỉ xem tự do.</p></details>
       <details><summary>Replay có thấy thao tác chuột của người chơi không?</summary><p>Có, với trận lưu từ ngày 25/10/2026 (launcher 0.3.27 trở lên): replay vẽ con trỏ chuột của người chơi, vòng tròn chỗ họ bấm, khung kéo chọn quân và chân nhà họ đang định đặt kèm tên nhà; từ launcher 0.3.30 còn thấy khung quanh quân họ đang chọn. Phím M đổi giữa chỉ người đang xem, tất cả người chơi, hoặc tắt. Khán giả xem trực tiếp cũng thấy như vậy.</p></details>
+      <details><summary>Xem replay có xem được bảng điểm, thành tích giữa trận không?</summary><p>Có, từ launcher 1.0.28: đang xem replay bấm Tab là mở màn Thành tích (Achievements) của chính game với điểm của mọi người chơi tính tới thời điểm đang xem; bấm Tab lần nữa hoặc Esc để về bản đồ. Bảng điểm cuối trận còn có trên trang Lịch sử trận của superaqe.com.</p></details>
       <details><summary>Có mở file replay .aoerep được không?</summary><p>Được. Trong launcher SuperAqE chọn Mở file replay rồi chọn file .aoerep. File .aoerep của mọi trận có replay tải được ở trang <a href="/lich-su-tran/">Lịch sử trận</a> trên superaqe.com (superaqe.com/lich-su-tran/), không cần đăng nhập.</p></details>
       <details><summary>Người giữ trận tắt máy giữa chừng thì còn replay không?</summary><p>Thường vẫn còn. Trận chạy P2P thì máy người ngồi ghế đầu giữ trận và tải replay lên máy chủ; người đó thoát launcher giữa chừng thì launcher tải replay lên trước khi đóng. Nếu máy giữ trận vẫn không gửi được replay, launcher của người chơi khác trong trận tải bản của họ lên thay.</p></details>
       <details><summary>Xem lại trận trên SuperAqE có mất phí không?</summary><p>Không. Lưu replay và xem lại trận đều miễn phí, giống như chơi online trên SuperAqE.</p></details>

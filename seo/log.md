@@ -361,3 +361,19 @@
 - **Quan trọng nhất (vẫn tồn đọng):** superaqe.com chưa lên Google kể cả tên thương hiệu → Google Search Console + Bing Webmaster Tools, gửi sitemap, "Thay đổi địa chỉ" từ superaoe.com; giữ 301 superaoe.com lâu hơn 2026-11-28.
 - Câu gợi ý trên /tai-khoan/ "Trong game chỉ hiện chữ không dấu và ký tự ASCII" hơi lệch với bản 1.0.20 (game giữ â/ê/ô và ™ ® …) — nếu muốn chính xác thì sửa câu đó (agent không sửa trang app).
 - seo-agent.md "Quy tắc sự thật" vẫn cũ (Mac Intel, x0.5–x8); ảnh /img/replay-tua.jpg vẫn thanh replay cũ.
+
+## 2026-11-11 (vòng SEO 25 — tự động)
+- Chuẩn bị: `git pull --rebase` không có gì mới, `git status` sạch (HEAD 8fa27f6 = bản SEO hôm qua). NOTES: launcher 1.0.29 bắt buộc (2026-11-10).
+- **Đo hạng** (WebSearch, 8 truy vấn, xem seo/rankings.md): superaqe.com không xuất hiện ở truy vấn nào, kể cả "SuperAqE đế chế superaqe.com" → vẫn chưa được lập chỉ mục (lần đo thứ 3 liên tiếp). Đối thủ mới nổi: ai-hay.vn "nền tảng chơi AoE online miễn phí 2026" (EGO Play, GPlay 5.0) đứng đầu "chơi aoe online miễn phí".
+- Nội dung: /xem-lai-tran-aoe-replay/ thêm tính năng 1.0.28 **Tab = bảng thành tích (Achievements) của game khi xem replay**: mục mới #bang-thanh-tich (cách dùng để so điểm theo mốc phút), dòng Tab trong bảng phím tắt, FAQ mới "Xem replay có xem được bảng điểm, thành tích giữa trận không?" (hiển thị + JSON-LD, 10/10), "Cập nhật lần cuối" 11/11/2026. Chỉ viết cho replay (đã thử); chưa viết cho ghế khán giả vì NOTES ghi chưa thử trên trận trực tiếp.
+- llms.txt: Q&A bảng điểm giữa trận, dòng cập nhật 2026-11-11 launcher 1.0.29. Sitemap lastmod 2026-11-11. facts.md: mục 2026-11-11.
+- Kiểm tra: JSON-LD parse được, FAQ hiển thị = JSON-LD, 1 h1, thẻ details/tr cân.
+- Outreach: bài gần nhất 2026-11-08 → bỏ qua (lần tới ~2026-11-15).
+- URL đã đổi: /xem-lai-tran-aoe-replay/, /llms.txt, /sitemap.xml.
+- Lần sau: outreach ~2026-11-15; đo hạng 2026-11-18; cân nhắc trang so sánh nền tảng (EGO Play / GPlay / GameTV Plus / XArena) vì ai-hay.vn đang đứng đầu bằng đúng dạng bài này — cần chủ dự án xác nhận dữ kiện về đối thủ trước.
+
+### Cần chủ dự án quyết định / làm
+- **Quan trọng nhất (tồn đọng từ 28/10):** superaqe.com chưa lên chỉ mục tìm kiếm kể cả tên thương hiệu → Google Search Console + Bing Webmaster Tools, gửi sitemap, "Thay đổi địa chỉ" từ superaoe.com; giữ 301 superaoe.com lâu hơn 2026-11-28.
+- Xác nhận Tab thành tích chạy đúng khi ngồi ghế khán giả xem trực tiếp → agent sẽ thêm vào /choi-aoe-co-khan-gia/.
+- Có muốn trang so sánh SuperAqE với EGO Play / GPlay / GameTV Plus / XArena không (cần dữ kiện chính xác về họ).
+- seo-agent.md "Quy tắc sự thật" vẫn cũ (Mac Intel, x0.5–x8); ảnh /img/replay-tua.jpg vẫn thanh replay cũ; câu gợi ý /tai-khoan/ về tên trong game.

@@ -33,3 +33,18 @@
 | tổ chức giải đấu đế chế online | không thấy | Google Docs (GTV Plus), esports.onlive.vn, battlefy |
 
 Ghi chú: công cụ WebSearch không phải Google VN; superaqe.com chưa xuất hiện kể cả với tên thương hiệu → nhiều khả năng chưa được lập chỉ mục. Việc quan trọng nhất là Google Search Console + Bing Webmaster Tools (gửi sitemap, Thay đổi địa chỉ).
+
+## 2026-11-11 (ước lượng WebSearch, 14 ngày sau khi đổi tên miền)
+
+| Từ khóa | 2026-11-11 | Đối thủ top (2026-11-11) |
+|---|---|---|
+| chơi aoe online miễn phí | không thấy | ai-hay.vn ("nền tảng chơi AoE online miễn phí 2026": EGO Play, GPlay 5.0), hoanghamobile (nhiều bài), fptshop, topuplist/bluestacks (AoE Mobile), mytour |
+| chơi đế chế trên macbook m1 | không thấy | fragster, bluestacks (AoE Mobile), applegamingwiki, gearvn, macrumors (AoE4), codeweavers (AoE3 DE); vẫn không có trang tiếng Việt về AoE1 |
+| xem lại trận đế chế / replay aoe rise of rome | không thấy | mobygames, forums.ageofempires.com (replay launcher AoE2), support.ageofempires.com (AoE4), strategywiki, giantbomb; không có bài replay AoE1 |
+| xem trực tiếp trận đế chế khán giả aoe | không thấy | Google Docs (GTV Plus), hoanghamobile (EGO Play), liquipedia (AoE Việt–Trung 2025), tinhte (VTC), vnreview |
+| chơi đế chế online không cần vpn | không thấy | trang VPN (veepn, protonvpn, expressvpn), mytour (GameRanger, Garena), tinhte (UPnP) |
+| SuperAqE đế chế superaqe.com (thương hiệu) | không thấy | toàn kết quả rác (trang cá cược AE888, hackmd…) → superaqe.com vẫn chưa có trong chỉ mục |
+| tổ chức giải đấu đế chế online | không thấy | trang giải LMHT/Valorant/Supercell, Google Docs (GTV Plus), esports.onlive.vn |
+| chơi đế chế trên ubuntu linux (mới đo) | không thấy | bài 0 A.D. (linuxadictos, ubunlog), hướng dẫn Wine game khác; không có bài tiếng Việt về AoE1 |
+
+Ghi chú: 3 lần đo liên tiếp sau khi đổi tên miền (28/10, 04/11, 11/11) đều không thấy superaqe.com kể cả truy vấn thương hiệu → gần như chắc chắn chưa được lập chỉ mục; nội dung không phải nút thắt, việc cần là Google Search Console + Bing Webmaster Tools.
