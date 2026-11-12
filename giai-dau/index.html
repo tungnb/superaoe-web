@@ -155,6 +155,9 @@ button:disabled { opacity: .6; cursor: default; }
   background: var(--panel2); color: var(--gold); }
 .seat .n { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .seat.wait { color: var(--dim); font-style: italic; }
+.seat[draggable=true] { cursor: grab; }
+.seat.dragging { opacity: .45; }
+.seat.dropon, .table.dropon { outline: 2px dashed var(--gold); outline-offset: 1px; border-radius: 8px; }
 .seat.me { border-color: var(--gold); background: rgba(232,195,90,.1); }
 .seat.free { border-style: dashed; color: var(--dim); padding: 0; }
 .seat.free > span { display: flex; align-items: center; gap: 5px; padding: 0 5px; }
@@ -627,6 +630,8 @@ let editing = null;  // the tournament the create dialog edits
 // and a quản trị viên, /api/admin/tour/... for the Google admin of /admin.
 const timePrefix = (t) => !["reg", "run"].includes(t.status) ? "" : me && (same(t.organizer, me.username) || me.role === "admin") ? "/api/web/" : isAdmin ? "/api/admin/" : "";
 let timesOpen = false;
+// The player an admin is dragging to another seat of the registration tables (null: none).
+let dragging = null;
 function renderTimes() {
   const box = $("timesPanel");
   if (!box) return;
@@ -753,7 +758,7 @@ function schedulePoll() {
   clearTimeout(poll);
   if (D?.tour.status !== "reg") return;
   poll = setTimeout(async () => {
-    if (!document.hidden && !document.querySelector("dialog[open]") && !busy && !timesOpen && document.activeElement?.tagName !== "INPUT") {
+    if (!document.hidden && !document.querySelector("dialog[open]") && !busy && !timesOpen && !dragging && document.activeElement?.tagName !== "INPUT") {
       try { D = await api("tour?id=" + tourId); renderTour(); return; } catch {}
     }
     schedulePoll();
@@ -894,6 +899,17 @@ function renderRegistration(my, organizer) {
   const canInvite = (team) => organizer || (t.mode === "open" && captainOf(team));
   const canSit = !my && t.mode === "open";
   const inCount = (x) => x.members.filter((m) => m.state === "in").length;
+  // An admin (a quản trị viên, or the Google admin of /admin) takes anybody out (×) and, in a team
+  // tournament, drags a player to another seat: a free seat of a team, a free table (a new team), or
+  // onto a player to change places (tour/move).
+  const admin = tourAdminPrefix(), canDrag = !!admin && !solo && !(t.clan && (t.roster ?? 0) > t.teamSize);
+  const adminAct = async (op, body) => {
+    if (busy) return;
+    busy = true;
+    try { await api("tour/" + op, { id: tourId, ...body }, admin); await showTour(); }
+    catch (e) { if ($("regMsg")) $("regMsg").textContent = e.message; else alert(e.message); }
+    finally { busy = false; }
+  };
   const ready = D.teams.filter((x) => inCount(x) === t.teamSize).length;
   const av = (name) => `<span class="av">${esc(name.slice(0, 1).toUpperCase())}</span>`;
   // A free seat: what a click does depends on who looks.
@@ -913,9 +929,10 @@ function renderRegistration(my, organizer) {
   const seat = (x, m) => {
     const self = me && same(m.username, me.username);
     const x_ = self ? (m.state === "in" ? `<button class="x" title="Rời ghế" data-leave>×</button>` : "")
-      : organizer || captainOf(x) ? `<button class="x" title="Loại khỏi đội" data-kick="${esc(m.username)}">×</button>` : "";
+      : organizer || captainOf(x) ? `<button class="x" title="Loại khỏi đội" data-kick="${esc(m.username)}">×</button>`
+      : admin ? `<button class="x" title="${solo ? "Loại khỏi giải" : "Loại khỏi đội"} (quản trị viên)" data-akick="${esc(m.username)}">×</button>` : "";
     const name = `${!solo && same(m.username, x.captain) ? "★ " : ""}${m.username}${m.state === "in" ? "" : " (chờ nhận lời)"}`;
-    return `<div class="seat ${m.state === "in" ? "" : "wait"} ${self ? "me" : ""}" title="${esc(name)}">${av(m.username)}<span class="n">${esc(name)}</span>${x_}</div>`;
+    return `<div class="seat ${m.state === "in" ? "" : "wait"} ${self ? "me" : ""}" title="${esc(name)}${canDrag ? " · kéo sang ghế khác để chuyển đội" : ""}" ${canDrag ? `draggable="true" data-user="${esc(m.username)}"` : ""}>${av(m.username)}<span class="n">${esc(name)}</span>${x_}</div>`;
   };
   // 1-1: the bar is the seat. Teams: the bar is the table (name, seats taken), its seats below.
   const table = (x) => {
@@ -927,7 +944,7 @@ function renderRegistration(my, organizer) {
       : `<div class="tb none"><span class="n">Bàn trống</span></div>`;
     const seats = x ? [...x.members.map((m) => seat(x, m)), ...Array.from({ length: t.teamSize - x.members.length }, () => freeSeat(x))]
       : Array.from({ length: t.teamSize }, () => freeSeat(null));
-    return `<div class="table">${bar}<div class="seats">${seats.join("")}</div></div>`;
+    return `<div class="table" ${canDrag ? `data-team="${x?.id ?? 0}"` : ""}>${bar}<div class="seats">${seats.join("")}</div></div>`;
   };
   // Teams fill the tables in seed order, so the first ones to register sit in different halves.
   const tables = Array(t.capacity).fill(null);
@@ -952,6 +969,7 @@ function renderRegistration(my, organizer) {
     <p class="hint" style="margin:4px 0 14px">${how} ${isRR(t)
       ? "Không có lịch cố định: khi giải bắt đầu, các đội đủ người gặp nhau lúc nào cũng được. Đội chưa đủ người khi đó sẽ không được thi đấu."
       : "Vị trí bàn chỉ để xếp chỗ: cặp đấu được <b>bốc thăm ngẫu nhiên</b> lúc giải bắt đầu, đội chưa đủ người khi đó sẽ không được xếp nhánh."}</p>
+    ${admin ? `<p class="hint" style="margin:-6px 0 14px"><b>Quản trị viên</b>: bấm × để loại một người khỏi giải${canDrag ? "; kéo một người thả vào ghế trống của đội khác hoặc bàn trống để chuyển đội, thả vào một người khác để hai người đổi chỗ" : ""}.</p>` : ""}
     <div class="msg" id="regMsg" style="margin:0 0 10px"></div>
     ${isRR(t) ? `<div class="lgrid">${Array.from({ length: t.capacity }, (_, i) => table(D.teams[i] ?? null)).join("")}</div>`
       : drawBracket(rounds, `<b>${CUP}Vô địch</b><small>Đội thắng chung kết</small>`)}
@@ -981,6 +999,40 @@ function renderRegistration(my, organizer) {
   all("[data-jointeam]", (b) => act("join", { team: Number(b.dataset.jointeam) }, msg));
   all("[data-leave]", leave);
   all("[data-kick]", (b) => confirm(`Loại ${b.dataset.kick} khỏi đội?`) && act("kick", { other: b.dataset.kick }, msg));
+  all("[data-akick]", (b) => confirm(`Loại ${b.dataset.akick} khỏi ${solo ? "giải" : "đội"}?`) && adminAct("kick", { other: b.dataset.akick }));
+  if (canDrag) {
+    // Where a drop lands: a seated player (the two change places), else the table (its team; 0: a free table).
+    const target = (e) => {
+      const seat = e.target.closest?.(".seat[data-user]"), table = e.target.closest?.(".table[data-team]");
+      if (!dragging || !table || Number(table.dataset.team) === dragging.team) return null;
+      return seat && !same(seat.dataset.user, dragging.user) ? { el: seat, swap: seat.dataset.user } : { el: table, team: Number(table.dataset.team) };
+    };
+    const clear = () => body.querySelectorAll(".dropon").forEach((el) => el.classList.remove("dropon"));
+    body.ondragstart = (e) => {
+      const seat = e.target.closest?.(".seat[data-user]");
+      if (!seat) return;
+      dragging = { user: seat.dataset.user, team: Number(seat.closest(".table").dataset.team) };
+      e.dataTransfer.effectAllowed = "move";
+      e.dataTransfer.setData("text/plain", seat.dataset.user);
+      seat.classList.add("dragging");
+    };
+    body.ondragover = (e) => {
+      const to = target(e);
+      clear();
+      if (!to) return;
+      e.preventDefault();
+      e.dataTransfer.dropEffect = "move";
+      to.el.classList.add("dropon");
+    };
+    body.ondragend = () => { dragging = null; clear(); body.querySelectorAll(".dragging").forEach((el) => el.classList.remove("dragging")); };
+    body.ondrop = (e) => {
+      const to = target(e), who = dragging?.user;
+      body.ondragend();
+      if (!to || !who) return;
+      e.preventDefault();
+      adminAct("move", to.swap ? { other: who, swap: to.swap } : { other: who, team: to.team });
+    };
+  } else body.ondragstart = body.ondragover = body.ondragend = body.ondrop = null;
   all("[data-delteam]", (b) => confirm(`Xoá đội ${teamName(Number(b.dataset.delteam))}?`) && act("delteam", { team: Number(b.dataset.delteam) }, msg));
   all("[data-invite]", (b) => ask({ title: `Mời vào ${teamName(Number(b.dataset.invite))}`, hint: "Người được mời bấm Chấp nhận trên trang giải này.",
     label: "Tên người chơi", max: 24, button: "Mời", run: (other, m, done) => act("invite", { team: Number(b.dataset.invite), other }, m, done) }));
