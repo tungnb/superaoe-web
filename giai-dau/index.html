@@ -803,7 +803,7 @@ function renderTour() {
     ${t.status === "cancel" ? `<div class="empty" style="margin-bottom:20px">${esc(t.note ?? "Giải đã bị huỷ.")}</div>` : ""}
     ${champ}
     <div class="info">
-      <div><small>Thể thức</small><b>${fmtSize(t.teamSize)} · ${FORMAT[t.format] ?? FORMAT.elim}</b></div>
+      <div><small>Thể thức</small><b>${fmtSize(t.teamSize)} · ${t.opts?.free ? "đấu tự do tính điểm" : FORMAT[t.format] ?? FORMAT.elim}</b></div>
       <div><small>Số đội</small><b>${D.teams.length} / ${t.capacity}</b></div>
       <div><small>Cách vào giải</small><b>${MODE[t.mode]}${t.clan ? " · giải clan" : ""}</b></div>
       <div><small>Người tổ chức</small><b>${esc(t.organizer)}</b></div>
@@ -942,6 +942,14 @@ function renderRegistration(my, organizer) {
 }
 
 function seriesStatus(s) {
+  if (D.bracket?.free) {
+    const score = `${s.wa}-${s.wb}`, n = s.wa + s.wb;
+    if (s.status === "play") return [`${n ? score + " · " : ""}còn ${s.left} ván tính điểm${s.today ? "" : " (hôm nay đã đủ)"}`, s.today ? "live" : ""];
+    if (s.status === "late") return [`${score} · hết giờ, chờ ván đang đấu`, "bad"];
+    if (s.status === "out") return ["Chưa gặp nhau", ""];
+    return [`${score} · ${s.left ? "hết hạn thi đấu" : `đã đủ ${s.need} ván tính điểm`}`, ""];
+  }
+  if (s.final && s.status === "wait") return ["Chung kết: chờ xong vòng bảng, hạng 1 gặp hạng 2", ""];
   const left = s.deadline ? s.deadline - D.now : 0;
   switch (s.status) {
     case "wait": return ["Chờ đối thủ", ""];
@@ -994,16 +1002,20 @@ function renderBracket() {
 // Round robin: the table on top, then every pairing, the ones still to play first (the same series boxes as a bracket).
 function renderLeague() {
   const b = D.bracket, t = D.tour;
+  // free: a free league (tournament.js freeLeague: every game counts at once, a pair's games are capped);
+  // squad: a clan league, a squad too long to list under every team.
+  const free = b.free ?? null, squad = !!t.clan && (t.roster ?? 0) > t.teamSize;
   const mine = me && D.teams.find((x) => x.members.some((m) => m.state === "in" && same(m.username, me.username)))?.id;
   const side = (s, team, wins) => {
     const cls = s.winner ? (s.winner === team ? "win" : "lose") : s.status === "out" ? "lose" : "";
-    const members = t.teamSize > 1 ? membersOf(team) : [];
+    const members = t.teamSize > 1 && !squad ? membersOf(team) : [];
     return `<div class="tb ${cls}"><span class="n" title="${esc([teamName(team), ...members].join(" · "))}">${esc(teamName(team))}</span><span class="w">${wins}</span></div>
       ${members.length ? `<div class="mem">${members.map(esc).join(", ")}</div>` : ""}`;
   };
   const rows = b.table.map((r, n) => `<tr class="${n === 0 && t.status === "done" && t.champion === r.team ? "top" : ""} ${r.team === mine ? "mine" : ""}">
     <td>${n + 1}</td><td>${t.status === "done" && t.champion === r.team ? CUP : ""}${esc(teamName(r.team))}${t.teamSize > 1 ? `<div class="hint">${membersOf(r.team).map(esc).join(", ")}</div>` : ""}</td>
-    <td>${r.played}</td><td>${r.won}</td><td>${r.drawn}</td><td>${r.lost}</td><td>${r.gw}-${r.gl}</td><td>${r.gw - r.gl > 0 ? "+" : ""}${r.gw - r.gl}</td><td class="pts">${r.points}</td></tr>`).join("");
+    ${free ? `<td>${r.played}</td><td>${r.won}</td><td>${r.lost}</td><td>${r.met}/${b.table.length - 1}</td>`
+      : `<td>${r.played}</td><td>${r.won}</td><td>${r.drawn}</td><td>${r.lost}</td><td>${r.gw}-${r.gl}</td><td>${r.gw - r.gl > 0 ? "+" : ""}${r.gw - r.gl}</td>`}<td class="pts">${r.points}</td></tr>`).join("");
   const r = b.rounds[0], order = { play: 0, late: 1 };
   const pairs = `<div class="lgrid">${[...r.series].sort((x, y) => (order[x.status] ?? 2) - (order[y.status] ?? 2)).map((s) => {
       const [text, cls] = seriesStatus(s);
@@ -1011,10 +1023,18 @@ function renderLeague() {
         ${side(s, s.a, s.wa)}${side(s, s.b, s.wb)}<div class="st ${cls}">${esc(text)}</div></div>`;
     }).join("")}</div>`;
   const outside = D.teams.filter((x) => !b.table.some((r) => r.team === x.id));
+  // A league with a final: hạng 1 gặp hạng 2 once every pair is decided.
+  const fin = b.rounds[1]?.final ? b.rounds[1].series[0] : null;
+  const finHtml = fin ? `<h2>Chung kết</h2><div class="lgrid"><div class="series ${fin.status} ${openSeries === "1-0" ? "open" : ""}" tabindex="0" data-s="1-0">
+    ${fin.a ? side(fin, fin.a, fin.wa) + side(fin, fin.b, fin.wb) : ""}<div class="st">${esc(seriesStatus(fin)[0])}</div></div></div>` : "";
   $("body").innerHTML = `
+    ${finHtml}
     <h2>Bảng xếp hạng</h2>
-    <div style="overflow-x:auto"><table class="plan standings"><thead><tr><th>#</th><th>Đội</th><th title="Số cặp đấu đã xong">Trận</th><th>Thắng</th><th>Hoà</th><th>Thua</th><th title="Số ván thắng - thua">Ván</th><th title="Hiệu số ván">HS</th><th>Điểm</th></tr></thead><tbody>${rows}</tbody></table></div>
-    <p class="hint" style="margin:8px 0 0">Thắng 3 điểm, hoà 1, thua hoặc bỏ trận 0. Bằng điểm: xếp theo hiệu số ván, số ván thắng, rồi kết quả đối đầu.</p>
+    <div style="overflow-x:auto"><table class="plan standings"><thead><tr><th>#</th><th>Đội</th>${free ? `<th title="Số ván được tính điểm">Ván</th><th>Thắng</th><th>Thua</th><th title="Số đối thủ đã gặp">Đã gặp</th>`
+      : `<th title="Số cặp đấu đã xong">Trận</th><th>Thắng</th><th>Hoà</th><th>Thua</th><th title="Số ván thắng - thua">Ván</th><th title="Hiệu số ván">HS</th>`}<th>Điểm</th></tr></thead><tbody>${rows}</tbody></table></div>
+    <p class="hint" style="margin:8px 0 0">${free ? `Đấu tự do, không hẹn lịch: hai đội cùng online là rủ nhau đánh trong launcher SuperAqE, mỗi ván tính điểm ngay. Thắng ${free.win} điểm, thua ${free.loss}, lần đầu gặp một đối thủ +${free.meet} cho cả hai. Cùng hai đội chỉ tính tối đa ${free.pairCap} ván cả giải, ${free.dayCap} ván mỗi ngày. Bằng điểm: số ván thắng, hiệu số, đối đầu.`
+      : t.opts?.scoring === "vb" ? "Thắng rõ 3 điểm; thắng sát nút 2 điểm và đội thua 1 điểm; hết hạn mà đang dẫn 2 điểm; hoà 1; bỏ trận 0. Bằng điểm: hiệu số ván, số ván thắng, đối đầu."
+      : "Thắng 3 điểm, hoà 1, thua hoặc bỏ trận 0. Bằng điểm: xếp theo hiệu số ván, số ván thắng, rồi kết quả đối đầu."}</p>
     <h2 style="margin-top:28px">Các cặp đấu</h2>
     <p class="hint" style="margin-top:-8px">${bo(r.wins)} · hạn chót ${fmtTime(r.deadline)}${t.status === "run" ? ` (còn ${fmtLeft(r.deadline - D.now)})` : ""}. Không xếp lịch: hai đội vào phòng đánh với nhau lúc nào cũng được, kết quả tự vào bảng. Bấm vào một cặp để xem từng ván, replay và kết quả.</p>
     ${pairs}
@@ -1088,7 +1108,7 @@ function gameHtml(g, n, admin) {
   const m = D.matches[g.matchId] ?? {};
   return `<li class="${g.voided ? "void" : ""}"><span class="tag">Ván ${n + 1} · ${fmtTime(g.started)}${m.durationMs ? " · " + fmtDur(m.durationMs) : ""}</span>
     <span class="res grow"><b>${esc(teamName(g.win))}</b> thắng ${esc(teamName(g.lose))}</span>
-    ${g.voided ? `<span class="tag v">Admin đã xoá kết quả</span>` : g.disputed ? `<span class="tag v" title="Kết quả chỉ có từ máy một người chơi, chưa được máy đối thủ xác nhận">Chờ admin xác nhận</span>` : !g.counted ? `<span class="tag">không tính (${isRR(D.tour) ? "cặp đấu" : "nhánh"} đã có kết quả)</span>` : ""}
+    ${g.voided ? `<span class="tag v">Admin đã xoá kết quả</span>` : g.disputed ? `<span class="tag v" title="Kết quả chỉ có từ máy một người chơi, chưa được máy đối thủ xác nhận">Chờ admin xác nhận</span>` : !g.counted ? `<span class="tag">${g.why === "day" ? "không tính điểm (cặp này đã đủ số ván trong ngày)" : g.why === "cap" ? "không tính điểm (cặp này đã đủ số ván cả giải)" : `không tính (${isRR(D.tour) ? "cặp đấu" : "nhánh"} đã có kết quả)`}</span>` : ""}
     ${m.hasReplay ? `<a class="btn ghost tiny" href="/api/replays/${g.matchId}.aoerep">Tải replay</a><a class="btn ghost tiny" href="/lich-su-tran/#tran-${g.matchId}">Thống kê</a>` : `<span class="tag">không có replay</span>`}
     ${admin && g.disputed && !g.voided ? `<button class="primary tiny" data-confirm="${g.matchId}">Xác nhận</button>` : ""}
     ${admin ? `<button class="${g.voided ? "ghost" : "danger"} tiny" data-void="${g.matchId}" data-on="${g.voided ? 0 : 1}">${g.voided ? "Khôi phục" : "Xoá kết quả"}</button>` : ""}</li>`;
