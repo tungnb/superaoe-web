@@ -377,3 +377,20 @@
 - Xác nhận Tab thành tích chạy đúng khi ngồi ghế khán giả xem trực tiếp → agent sẽ thêm vào /choi-aoe-co-khan-gia/.
 - Có muốn trang so sánh SuperAqE với EGO Play / GPlay / GameTV Plus / XArena không (cần dữ kiện chính xác về họ).
 - seo-agent.md "Quy tắc sự thật" vẫn cũ (Mac Intel, x0.5–x8); ảnh /img/replay-tua.jpg vẫn thanh replay cũ; câu gợi ý /tai-khoan/ về tên trong game.
+
+## 2026-11-12 (vòng SEO 26 — tự động)
+- Chuẩn bị: `git pull --rebase` không có gì mới, `git status` sạch (HEAD 88e6883 = bản SEO hôm qua). NOTES: launcher 1.0.32 bắt buộc (2026-11-11).
+- **Trang mới /choi-de-che-bi-lag/** "Chơi Đế Chế online bị lag, giật: nguyên nhân, cách sửa" (title 54 ký tự, description 153): vì sao một người lag cả phòng chờ (đồng bộ theo lượt), bảng "chỗ xem ai gây lag" (ping ghế, Điểm mạng, Line, Kiểm tra mạng, F4, dòng [He thong], chat sau trận), mục #diem-mang, #line, #vpn, 6 bước khắc phục, #superaoe-tu-lam (kéo dài lượt, không chờ người đã thua — ghi là mới), FAQ 8 câu = JSON-LD FAQPage 8 câu + BreadcrumbList. Dữ kiện đối chiếu NOTES 9zzh/9zzm/9zzn/10e/10k + chuỗi chữ trong launcher/renderer/app.js, xtv-cf/src/lobby.js (chỉ đọc). Dựng từ CSS/header/footer của /choi-de-che-qua-mang/.
+- Liên kết nội bộ: footer trang chủ + 7 trang đích thêm "Đế Chế bị lag"; /choi-de-che-qua-mang/ thêm ở "Xem thêm", "Cập nhật lần cuối" 12/11/2026.
+- llms.txt: mục trang mới + 4 câu trả lời nhanh (lag, Điểm mạng, Line, VPN), dòng cập nhật 2026-11-12 launcher 1.0.32. Sitemap: thêm URL mới, lastmod /choi-de-che-qua-mang/ 2026-11-12.
+- Từ khóa: WebSearch "chơi đế chế online bị lag giật cách khắc phục" → không bài riêng cho AoE1 online → thêm keywords.md ưu tiên 2. facts.md: mục 2026-11-12.
+- Kiểm tra: JSON-LD parse được, FAQ hiển thị 8 = JSON-LD 8, 1 h1, link nội bộ + anchor tồn tại, html-validate chỉ còn doctype-style/no-inline-style (như các trang khác).
+- Không đo hạng (lần tới 2026-11-18). Outreach: bài gần nhất 2026-11-08 → lần tới ~2026-11-15 (gợi ý: bài "vì sao đánh 4v4 bị khựng, xem Điểm mạng ở đâu" dẫn về trang mới).
+- URL đã đổi: /choi-de-che-bi-lag/ (mới), /choi-de-che-qua-mang/, /, /llms.txt, /sitemap.xml + footer 6 trang đích.
+- Lần sau: outreach ~2026-11-15; đo hạng 2026-11-18.
+
+### Cần chủ dự án quyết định / làm
+- **Quan trọng nhất (tồn đọng từ 28/10):** superaqe.com chưa lên chỉ mục tìm kiếm kể cả tên thương hiệu → Google Search Console + Bing Webmaster Tools, gửi sitemap, "Thay đổi địa chỉ" từ superaoe.com; giữ 301 superaoe.com lâu hơn 2026-11-28.
+- Đọc lại /choi-de-che-bi-lag/: trang giải thích Line 1/2/3 bằng lời (nối thẳng / trạm trung chuyển của người chơi / máy chủ Cloudflare) và ngưỡng Điểm mạng (xanh ≥ 8, vàng ≥ 6) — nếu không muốn công khai chi tiết nào thì báo để gỡ. Chưa có ảnh chụp ghế có "Mạng 8,6 · Line 1": có ảnh thật thì trang mạnh hơn nhiều.
+- Dấu "VPN" (1.0.32) và kéo dài lượt (1.0.30) chưa thử với người thật → trang ghi "tính năng mới"; khi đã kiểm chứng thì báo để bỏ chữ dè dặt.
+- Tồn đọng: xác nhận Tab thành tích ở ghế khán giả; trang so sánh EGO Play / GPlay / GameTV Plus / XArena; seo-agent.md "Quy tắc sự thật" cũ; ảnh /img/replay-tua.jpg cũ; câu gợi ý /tai-khoan/ về tên trong game.
