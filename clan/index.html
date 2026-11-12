@@ -348,6 +348,17 @@ async function showTable(season = "") {
       </div>
     </div>`;
   $("season").onchange = () => showTable($("season").value);
+  // Lịch sử clan chiến của tháng: ai thắng ai, được / mất bao nhiêu điểm.
+  get("/api/clans/wars?season=" + encodeURIComponent(s.season)).then((h) => {
+    const pts = (n) => `<b style="color:${n > 0 ? "#248a3d" : n < 0 ? "#d70015" : "inherit"}">${n > 0 ? "+" : ""}${n}</b>`;
+    const side = (c, names, n) => `<a href="?tag=${encodeURIComponent(c.tag)}"><b>${esc(c.tag)}</b></a> <span class="hint">${esc(c.name)}</span> ${pts(n)}<br><span class="hint">${names.map(esc).join(", ")}</span>`;
+    $("main").insertAdjacentHTML("beforeend", `<h2 style="margin:26px 0 8px;font-size:20px">Lịch sử clan chiến ${esc(seasonName(h.season))}</h2>
+      <div class="panel" style="padding:6px 8px">${h.wars.length ? `<table class="ctable"><thead><tr><th>Thời gian</th><th>Trận</th><th>Clan thắng</th><th>Clan thua</th></tr></thead><tbody>
+        ${h.wars.map((w) => `<tr><td>${when(w.t)}</td><td>${w.size}-${w.size}${w.challenge ? '<br><span class="hint">thách đấu</span>' : ""}</td>
+          <td>${side(w.winner, w.winners, w.points)}</td><td>${side(w.loser, w.losers, -w.lost)}</td></tr>`).join("")}</tbody></table>`
+        : `<div class="empty">Tháng này chưa có trận clan chiến nào.</div>`}</div>`);
+    for (const a of document.querySelectorAll('#main a[href^="?tag="]')) a.onclick = (e) => { e.preventDefault(); history.pushState(null, "", a.getAttribute("href")); route(); };
+  }).catch(() => {});
   for (const tr of document.querySelectorAll("tr[data-tag]")) tr.onclick = () => { history.pushState(null, "", "?tag=" + encodeURIComponent(tr.dataset.tag)); route(); };
 }
 
