@@ -629,6 +629,8 @@ let editing = null;  // the tournament the create dialog edits
 // organiser's and the admins' to move until it is over: /api/web/tour/{times,sched} for the organiser
 // and a quản trị viên, /api/admin/tour/... for the Google admin of /admin.
 const timePrefix = (t) => !["reg", "run"].includes(t.status) ? "" : me && (same(t.organizer, me.username) || me.role === "admin") ? "/api/web/" : isAdmin ? "/api/admin/" : "";
+// "Xử thua" (tour/forfeit) is theirs too, and taking it back also once it ended the tournament.
+const forfeitPrefix = (t) => me && (same(t.organizer, me.username) || me.role === "admin") ? "/api/web/" : isAdmin ? "/api/admin/" : "";
 let timesOpen = false;
 // The player an admin is dragging to another seat of the registration tables (null: none).
 let dragging = null;
@@ -1058,10 +1060,10 @@ function seriesStatus(s) {
     case "wait": return [at ? `${at} · chờ đối thủ` : "Chờ đối thủ", ""];
     case "play": return at ? [`${s.wa + s.wb ? `${s.wa}-${s.wb} · ` : ""}${at}`, ""] : [`Đang đấu · ${s.wa}-${s.wb} · còn ${fmtLeft(left)}`, "live"];
     case "late": return ["Hết giờ · chờ kết quả ván đang đấu", "bad"];
-    case "done": return [`${teamName(s.winner)} thắng ${Math.max(s.wa, s.wb)}-${Math.min(s.wa, s.wb)}${s.ruled ? " (admin phán xử)" : s.timeout ? " (hết giờ, đội dẫn đi tiếp)" : ""}`, ""];
+    case "done": return [`${teamName(s.winner)} thắng ${Math.max(s.wa, s.wb)}-${Math.min(s.wa, s.wb)}${s.forfeit ? " (đối thủ bị xử thua: quá giờ không tham gia)" : s.ruled ? " (admin phán xử)" : s.timeout ? " (hết giờ, đội dẫn đi tiếp)" : ""}`, ""];
     case "draw": return [`Hoà ${s.wa}-${s.wb}`, ""];
     case "bye": return [s.round === 0 ? "Đi tiếp (không có đối thủ)" : "Đi tiếp (đối thủ bị xử thua)", ""];
-    case "out": return [s.ruled ? "Admin phán xử: cả hai đội thua" : isRR(D.tour) ? "Hết giờ, không đấu: cả hai 0 điểm" : "Hết giờ: cả hai đội bị xử thua", "bad"];
+    case "out": return [s.forfeit ? "Cả hai đội bị xử thua: quá giờ không tham gia" : s.ruled ? "Admin phán xử: cả hai đội thua" : isRR(D.tour) ? "Hết giờ, không đấu: cả hai 0 điểm" : "Hết giờ: cả hai đội bị xử thua", "bad"];
     default: return ["—", ""];
   }
 }
@@ -1175,7 +1177,15 @@ function renderSeries(key) {
     list = howto + list;
     // A quản trị viên decides a series the teams cannot play out: one team wins it, or both lose.
     const canRule = tourAdminPrefix() && D.tour.status === "run" && (s.status === "play" || s.status === "late");
-    if (canRule || (s.ruled && tourAdminPrefix())) list += `<div class="actions" style="margin-top:12px;align-items:center"><span class="hint">Quản trị viên phán xử:</span>
+    // "Xử thua": the organiser or an admin gives the loss to a team that did not show up, from 15 minutes
+    // after the start time set for the series (tour/forfeit; forfeitAt comes with the series).
+    if (timePrefix(D.tour) && D.tour.status === "run" && (s.status === "play" || s.status === "late") && !D.bracket.free) list += `<div class="actions" style="margin-top:12px;align-items:center"><span class="hint">Quá giờ không tham gia:</span>
+      ${s.forfeitAt && D.now >= s.forfeitAt ? `<button class="danger tiny" data-forfeit="${s.a}">Xử thua ${esc(teamName(s.a))}</button><button class="danger tiny" data-forfeit="${s.b}">Xử thua ${esc(teamName(s.b))}</button>
+      <button class="danger tiny" data-forfeit="0">Cả hai đội vắng: cùng thua</button>`
+    : `<span class="hint">${s.forfeitAt ? `nút <b>Xử thua</b> mở lúc ${fmtTime(s.forfeitAt)} (sau giờ bắt đầu 15 phút).` : "hãy đặt giờ bắt đầu cho nhánh ở trên; quá giờ đó 15 phút, đội nào không tham gia thì xử thua được."}</span>`}</div>`;
+    else if (s.forfeit && forfeitPrefix(D.tour)) list += `<div class="actions" style="margin-top:12px;align-items:center"><span class="hint">Đã xử thua vì quá giờ không tham gia:</span>
+      <button class="ghost tiny" data-forfeit="clear">Huỷ xử thua (mở lại nhánh)</button></div>`;
+    if (canRule || (s.ruled && !s.forfeit && tourAdminPrefix())) list += `<div class="actions" style="margin-top:12px;align-items:center"><span class="hint">Quản trị viên phán xử:</span>
       ${canRule ? `<button class="ghost tiny" data-rule="${s.a}">${esc(teamName(s.a))} thắng</button><button class="ghost tiny" data-rule="${s.b}">${esc(teamName(s.b))} thắng</button>
       <button class="danger tiny" data-rule="none">Kết thúc, cả hai thua</button>` : `<button class="ghost tiny" data-rule="clear">Huỷ phán xử (mở lại nhánh)</button>`}</div>`;
   }
@@ -1194,6 +1204,19 @@ function renderSeries(key) {
     sched(at, $("ssSet"));
   };
   if ($("ssClear")) $("ssClear").onclick = () => sched(null, $("ssClear"));
+  box.querySelectorAll("[data-forfeit]").forEach((btn) => btn.onclick = async () => {
+    const v = btn.dataset.forfeit;
+    const body = v === "clear" ? { clear: true } : { loser: Number(v) };
+    const what = v === "clear" ? "Huỷ xử thua? Nhánh mở lại để hai đội thi đấu tiếp."
+      : v === "0" ? "Xử thua cả hai đội vì quá giờ không tham gia?"
+        : `Xử thua ${teamName(Number(v))} vì quá giờ không tham gia? ${teamName(Number(v) === s.a ? s.b : s.a)} thắng ${isRR(D.tour) && !s.final ? "cặp" : "nhánh"} này.`;
+    if (!confirm(what)) return;
+    btn.disabled = true;
+    try {
+      await api("tour/forfeit", { id: tourId, round: s.round, idx: s.idx, ...body }, forfeitPrefix(D.tour));
+      await showTour();
+    } catch (e) { alert(e.message); btn.disabled = false; }
+  });
   box.querySelectorAll("[data-rule]").forEach((btn) => btn.onclick = async () => {
     const v = btn.dataset.rule;
     const body = v === "clear" ? { clear: true } : { winner: v === "none" ? null : Number(v) };
@@ -1265,6 +1288,7 @@ function rulesHtml(t) {
       <li><b>Kết quả lấy tự động</b> từ trận đấu (bên đầu hàng / bị diệt / thoát game trước là thua), công khai cùng replay. Trận ngắn dưới 5 phút không được tính. Kết quả mà máy đối thủ không xác nhận được sẽ chờ admin xác nhận.</li>
       ${!t || !isRR(t) ? `<li>Mỗi vòng có <b>hạn thi đấu</b>. Nhánh chưa xong khi hết hạn: <b>đội đang dẫn đi tiếp</b>; hoà hoặc chưa đánh ván nào thì <b>cả hai đội bị xử thua</b>, đối thủ vòng sau đi thẳng.</li>` : ""}
       <li>Không ai sửa được kết quả. Chỉ <b>quản trị viên</b> có quyền xoá kết quả một ván để hai đội đấu lại (ví dụ khi bị lỗi mạng), hoặc <b>phán xử</b> một nhánh không đấu được: cho một đội thắng hay kết thúc với cả hai đội thua.</li>
+      <li>Nhánh có <b>giờ bắt đầu</b> riêng: quá giờ đó 15 phút, đội nào không tham gia thì người tạo giải hoặc quản trị viên được <b>xử thua</b> đội đó.</li>
     </ul>
     ${t ? "" : `<p class="hint" style="margin:10px 0 0">Chưa có SuperAqE? <a href="/#tai-ve">Tải miễn phí cho Windows và MacBook</a>.</p>`}
   </section>`;
