@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bảng xếp hạng clan Đế Chế (AoE) – SuperAqE</title>
-<meta name="description" content="Bảng xếp hạng clan Đế Chế (AoE Rise of Rome) trên SuperAqE: điểm clan theo mùa, clan chiến, thách đấu, cấp clan và vương miện top 3 mỗi tháng.">
+<meta name="description" content="Bảng xếp hạng clan Đế Chế (AoE Rise of Rome) trên SuperAqE: điểm clan theo tháng, clan chiến, thách đấu thắng nhận thua mất điểm, cấp clan, huy chương và phòng trưng bày top 3 mỗi tháng.">
 <link rel="canonical" href="https://superaqe.com/clan/">
 <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#111113" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Bảng xếp hạng clan – SuperAqE">
-<meta property="og:description" content="Clan Đế Chế: điểm theo mùa, clan chiến, thách đấu, vương miện top 3.">
+<meta property="og:description" content="Clan Đế Chế: điểm theo tháng, clan chiến, thách đấu, huy chương top 3, phòng trưng bày.">
 <meta property="og:url" content="https://superaqe.com/clan/">
 <meta property="og:image" content="https://superaqe.com/img/spectator.jpg">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -122,7 +122,7 @@ footer a { color: var(--dim); }
    "url": "https://superaqe.com/clan/",
    "name": "Bảng xếp hạng clan Đế Chế (AoE) – SuperAqE",
    "inLanguage": "vi",
-   "description": "Bảng xếp hạng clan Đế Chế (AoE Rise of Rome) trên SuperAqE theo mùa, cách lập clan, tính điểm, clan chiến và thách đấu.",
+   "description": "Bảng xếp hạng clan Đế Chế (AoE Rise of Rome) trên SuperAqE theo tháng, cách lập clan, tính điểm, clan chiến và thách đấu.",
    "isPartOf": {
     "@id": "https://superaqe.com/#website"
    },
@@ -177,7 +177,7 @@ footer a { color: var(--dim); }
      "name": "Điểm clan được tính thế nào?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Tự động theo kết quả trận từ 10 phút có thắng thua: thắng +10, thua +2, thắng người clan khác +5, clan chiến thắng +20, đúng lời thách đấu đã nhận +40. Cùng một cặp chỉ tính 3 trận mỗi ngày, mỗi người tối đa 8 trận mỗi ngày."
+      "text": "Tự động theo kết quả trận từ 10 phút có thắng thua: thắng +10, thua +2, thắng người clan khác +5; clan đấu clan thì clan thắng +10, clan thua -10, hoặc số điểm hai clan tự đặt khi thách đấu. Cùng một cặp chỉ tính 3 trận mỗi ngày, mỗi người tối đa 8 trận mỗi ngày."
      }
     },
     {
@@ -185,15 +185,15 @@ footer a { color: var(--dim); }
      "name": "Clan chiến là gì?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Trận từ 2-2 trở lên mà cả một bên cùng một clan, bên kia cùng một clan khác. Clan thắng được thêm 20 điểm, hoặc 40 điểm nếu đó là trận thách đấu đã nhận lời."
+      "text": "Trận từ 2-2 trở lên mà cả một bên cùng một clan, bên kia cùng một clan khác. Clan thắng nhận 10 điểm, clan thua mất 10 điểm; với trận thách đấu đã nhận lời thì thắng nhận, thua mất đúng số điểm hai clan đã đặt."
      }
     },
     {
      "@type": "Question",
-     "name": "Mùa clan kéo dài bao lâu và thưởng gì?",
+     "name": "Điểm clan reset khi nào và thưởng gì?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Mỗi mùa là một tháng. Top 3 clan có từ 100 điểm nhận vương miện trên huy hiệu, thành viên đánh từ 10 trận cho clan nhận khung tên, giữ tới hết mùa sau."
+      "text": "Điểm clan về 0 lúc 00:00 ngày 1 hàng tháng. Top 3 clan của tháng (từ 100 điểm) nhận huy chương vàng, bạc, đồng, giữ mãi trong Phòng trưng bày của clan; clan hạng 1 lên 2 cấp, hạng 2-5 lên 1 cấp; thành viên đánh từ 10 trận cho clan nhận khung tên tới hết tháng sau."
      }
     }
    ]
@@ -213,7 +213,7 @@ footer a { color: var(--dim); }
 <main class="wrap" id="main"><h1>Bảng xếp hạng clan Đế Chế</h1><p class="hint">Đang tải bảng xếp hạng mùa này...</p></main>
 <section class="wrap guide" id="huong-dan" aria-labelledby="hd-title">
   <h2 id="hd-title">Clan Đế Chế trên SuperAqE là gì?</h2>
-  <p>Clan là nhóm người chơi Đế Chế (Age of Empires 1 Rise of Rome) cùng một ký hiệu <b>[TAG]</b> và huy hiệu trên SuperAqE. Mỗi trận online có thắng thua của thành viên tự động cộng điểm cho clan, bảng xếp hạng chốt theo mùa (mỗi tháng). Lập clan, xin vào clan, chat clan và thách đấu clan khác đều làm trong launcher SuperAqE, miễn phí, không có tiền tệ hay vật phẩm mua bán.</p>
+  <p>Clan là nhóm người chơi Đế Chế (Age of Empires 1 Rise of Rome) cùng một ký hiệu <b>[TAG]</b> và huy hiệu trên SuperAqE. Mỗi trận online có thắng thua của thành viên tự động cộng điểm cho clan, bảng xếp hạng chốt theo tháng, điểm về 0 lúc 00:00 ngày 1 hàng tháng. Lập clan, xin vào clan, chat clan và thách đấu clan khác đều làm trong launcher SuperAqE, miễn phí, không có tiền tệ hay vật phẩm mua bán.</p>
 
   <h2 id="lap-clan">Cách lập clan hoặc vào clan</h2>
   <ol>
@@ -232,25 +232,28 @@ footer a { color: var(--dim); }
       <tr><td>Thành viên thắng một trận</td><td class="num">+10</td></tr>
       <tr><td>Thành viên thua một trận</td><td class="num">+2</td></tr>
       <tr><td>Thắng người của clan khác (cộng thêm)</td><td class="num">+5</td></tr>
-      <tr><td>Clan chiến: clan thắng (cộng thêm)</td><td class="num">+20</td></tr>
-      <tr><td>Clan chiến đúng lời thách đấu đã nhận (thay cho +20)</td><td class="num">+40</td></tr>
+      <tr><td>Clan chiến: clan thắng</td><td class="num">+10</td></tr>
+      <tr><td>Clan chiến: clan thua</td><td class="num">-10</td></tr>
+      <tr><td>Trận thách đấu đã nhận: clan thắng / clan thua</td><td class="num">+ / - điểm hai clan đặt</td></tr>
     </tbody></table></div>
-  <p>Chống cày điểm: cùng một cặp thắng – thua chỉ tính 3 trận mỗi ngày, mỗi người tối đa 8 trận tính điểm mỗi ngày; tài khoản thử nghiệm không có điểm; người bị khóa vì gian lận mất điểm đã đóng góp trong mùa.</p>
+  <p>Chống cày điểm: cùng một cặp thắng – thua chỉ tính 3 trận mỗi ngày, mỗi người tối đa 8 trận tính điểm mỗi ngày; tài khoản thử nghiệm không có điểm; người bị khóa vì gian lận mất điểm đã đóng góp trong tháng. Điểm tháng của clan không xuống dưới 0.</p>
 
   <h2 id="clan-chien">Clan chiến và thách đấu</h2>
-  <p><b>Clan chiến</b> là trận từ 2-2 trở lên mà cả một bên là người cùng một clan, bên kia là người của một clan khác (trận 1-1 chỉ tính là clan chiến khi đúng lời thách đấu đã nhận). Trưởng hoặc phó clan có thể gửi <b>lời thách đấu</b> tới clan khác ngay trong launcher; clan kia nhận lời thì đánh cùng số người trong 24 giờ để được điểm thách đấu. Muốn đấu nhiều trận có nhánh đấu, tạo <a href="/giai-dau/">giải clan</a> (ô “Giải clan” khi tạo giải): mỗi đội chỉ gồm người cùng một clan.</p>
+  <p><b>Clan chiến</b> là trận từ 2-2 trở lên mà cả một bên là người cùng một clan, bên kia là người của một clan khác (trận 1-1 chỉ tính là clan chiến khi đúng lời thách đấu đã nhận). Trưởng hoặc phó clan có thể gửi <b>lời thách đấu</b> tới clan khác ngay trong launcher; người gửi điền <b>điểm của trận</b> (mặc định 10, tối đa bằng điểm tháng của clan ít điểm hơn), clan kia nhận lời thì đánh cùng số người trong 24 giờ: clan thắng nhận, clan thua mất đúng số điểm đó. Hai clan gặp nhau không hẹn trước cũng được tính (từ 2-2): thắng +10, thua -10, không cần tạo giải. Muốn đấu nhiều trận có nhánh đấu, tạo <a href="/giai-dau/">giải clan</a> (ô “Giải clan” khi tạo giải): mỗi đội chỉ gồm người cùng một clan.</p>
 
-  <h2 id="cap-clan">Cấp clan, mùa và phần thưởng</h2>
+  <h2 id="cap-clan">Điểm tháng, huy chương, cấp clan và phòng trưng bày</h2>
+  <p>Điểm clan tính theo tháng (giờ Việt Nam) và <b>về 0 lúc 00:00 ngày 1 hàng tháng</b>. Bảng xếp hạng của tháng vừa xong được chốt: top 3 clan có từ 100 điểm nhận <b>huy chương vàng, bạc, đồng</b> (kèm vương miện trên huy hiệu tới hết tháng sau), thành viên đánh từ 10 trận cho clan nhận <b>khung tên</b> (ngôi sao cạnh tên).</p>
+  <p><b>Cấp clan</b> không còn tính theo tổng điểm: mọi clan bắt đầu từ cấp 1 và lên cấp mỗi cuối tháng theo hạng của tháng đó (cần từ 100 điểm): hạng 1 lên 2 cấp, hạng 2 tới 5 lên 1 cấp. Có 10 cấp; cấp càng cao clan càng nhận được nhiều thành viên, huy hiệu có viền đồng, bạc, vàng.</p>
   <div class="panel" style="padding:6px 8px"><table class="ctable">
-    <thead><tr><th>Cấp clan</th><th class="num">Tổng điểm cần</th><th class="num">Số thành viên tối đa</th></tr></thead>
+    <thead><tr><th>Cấp clan</th><th class="num">Số thành viên tối đa</th></tr></thead>
     <tbody>
-      <tr><td>Cấp 1</td><td class="num">0</td><td class="num">30</td></tr>
-      <tr><td>Cấp 2</td><td class="num">300</td><td class="num">40</td></tr>
-      <tr><td>Cấp 3</td><td class="num">1.000</td><td class="num">50</td></tr>
-      <tr><td>Cấp 4</td><td class="num">3.000</td><td class="num">65</td></tr>
-      <tr><td>Cấp 5</td><td class="num">8.000</td><td class="num">80</td></tr>
+      <tr><td>Cấp 1 – 2</td><td class="num">30 – 35</td></tr>
+      <tr><td>Cấp 3 – 4</td><td class="num">40 – 45</td></tr>
+      <tr><td>Cấp 5 – 6</td><td class="num">50 – 55</td></tr>
+      <tr><td>Cấp 7 – 8</td><td class="num">60 – 65</td></tr>
+      <tr><td>Cấp 9 – 10</td><td class="num">70 – 80</td></tr>
     </tbody></table></div>
-  <p>Huy hiệu clan cấp 2 trở lên có viền đồng, bạc, vàng. Mỗi mùa là một tháng (giờ Việt Nam). Hết mùa, top 3 clan có từ 100 điểm nhận <b>vương miện</b> trên huy hiệu, thành viên đánh từ 10 trận cho clan nhận <b>khung tên</b> (ngôi sao cạnh tên), giữ tới hết mùa sau.</p>
+  <p>Mỗi clan có <b>phòng trưng bày</b> trên trang clan và trong launcher: huy chương các tháng, hạng và điểm từng tháng, lịch sử các trận clan chiến kèm số điểm được, mất.</p>
 
   <h2 id="hoi-dap">Hỏi đáp về clan Đế Chế</h2>
   <div class="faq">
@@ -261,13 +264,13 @@ footer a { color: var(--dim); }
     <h3>Một người vào được mấy clan?</h3>
     <p>Một clan. Muốn sang clan khác thì rời clan cũ trước; trưởng clan phải nhường chức rồi mới rời được.</p>
     <h3>Điểm clan được tính thế nào?</h3>
-    <p>Tự động theo kết quả trận từ 10 phút có thắng thua: thắng +10, thua +2, thắng người clan khác +5, clan chiến thắng +20, đúng lời thách đấu đã nhận +40. Cùng một cặp chỉ tính 3 trận mỗi ngày, mỗi người tối đa 8 trận mỗi ngày.</p>
+    <p>Tự động theo kết quả trận từ 10 phút có thắng thua: thắng +10, thua +2, thắng người clan khác +5; clan đấu clan thì clan thắng +10, clan thua -10, hoặc số điểm hai clan tự đặt khi thách đấu. Cùng một cặp chỉ tính 3 trận mỗi ngày, mỗi người tối đa 8 trận mỗi ngày.</p>
     <h3>Clan chiến là gì?</h3>
-    <p>Trận từ 2-2 trở lên mà cả một bên cùng một clan, bên kia cùng một clan khác. Clan thắng được thêm 20 điểm, hoặc 40 điểm nếu đó là trận thách đấu đã nhận lời.</p>
-    <h3>Mùa clan kéo dài bao lâu và thưởng gì?</h3>
-    <p>Mỗi mùa là một tháng. Top 3 clan có từ 100 điểm nhận vương miện trên huy hiệu, thành viên đánh từ 10 trận cho clan nhận khung tên, giữ tới hết mùa sau.</p>
+    <p>Trận từ 2-2 trở lên mà cả một bên cùng một clan, bên kia cùng một clan khác. Clan thắng nhận 10 điểm, clan thua mất 10 điểm; với trận thách đấu đã nhận lời thì thắng nhận, thua mất đúng số điểm hai clan đã đặt.</p>
+    <h3>Điểm clan reset khi nào và thưởng gì?</h3>
+    <p>Điểm clan về 0 lúc 00:00 ngày 1 hàng tháng. Top 3 clan của tháng (từ 100 điểm) nhận huy chương vàng, bạc, đồng, giữ mãi trong Phòng trưng bày của clan; clan hạng 1 lên 2 cấp, hạng 2-5 lên 1 cấp; thành viên đánh từ 10 trận cho clan nhận khung tên tới hết tháng sau.</p>
   </div>
-  <p class="hint">Cập nhật lần cuối: 31/10/2026 (launcher 0.3.91). Xem thêm: <a href="/giai-dau/">Giải đấu Đế Chế</a> · <a href="/lich-su-tran/">Lịch sử trận và replay</a> · <a href="/tao-phong-choi-de-che/">Tạo phòng chơi Đế Chế</a> · <a href="/choi-aoe-online-mien-phi/">Chơi AoE online miễn phí</a></p>
+  <p class="hint">Cập nhật lần cuối: 12/11/2026 (launcher 1.0.35). Xem thêm: <a href="/giai-dau/">Giải đấu Đế Chế</a> · <a href="/lich-su-tran/">Lịch sử trận và replay</a> · <a href="/tao-phong-choi-de-che/">Tạo phòng chơi Đế Chế</a> · <a href="/choi-aoe-online-mien-phi/">Chơi AoE online miễn phí</a></p>
 </section>
 
 <footer>
@@ -288,9 +291,10 @@ const ICON_AT = { shield: [8.6, 8, .95], round: [8.6, 8.6, .95], diamond: [11, 1
 let clipN = 0;
 const SHAPES = { shield: '<path d="M20 2 36 8v12c0 9-7 15-16 18C11 35 4 29 4 20V8z"/>', round: '<circle cx="20" cy="20" r="18"/>',
   diamond: '<path d="M20 1 39 20 20 39 1 20z"/>', banner: '<path d="M5 2h30v35l-15-7-15 7z"/>' };
-const RINGS = { 2: "#b87333", 3: "#c0c7d1", 4: "#e3b341", 5: "#f5c542" };
+const RINGS = { 2: "#b87333", 3: "#b87333", 4: "#c0c7d1", 5: "#c0c7d1", 6: "#e3b341", 7: "#e3b341", 8: "#f5c542", 9: "#f5c542", 10: "#f5c542" };
 const PLACES = { 1: "#f5c542", 2: "#c0c7d1", 3: "#c27c3e" };
-const PLACE_NAMES = { 1: "Vô địch", 2: "Á quân", 3: "Hạng ba" };
+const PLACE_NAMES = { 1: "Huy chương vàng", 2: "Huy chương bạc", 3: "Huy chương đồng" };
+const MEDALS = { 1: "🥇", 2: "🥈", 3: "🥉" };
 const RANKS = { leader: "Trưởng clan", officer: "Phó clan", member: "Thành viên" };
 function badge(c, px = 20) {
   const color = /^#[0-9a-f]{6}$/i.test(c?.color) ? c.color : "#334155";
@@ -299,7 +303,7 @@ function badge(c, px = 20) {
   const stroke = `stroke="${ring ?? "rgba(255,255,255,.55)"}" stroke-width="${ring ? 3.5 : 2}"`;
   const icon = CLAN_ICONS[c?.icon] ? c.icon : OLD_CLAN_ICONS[c?.icon] ?? "sao";
   const clip = "cbclip" + ++clipN;
-  return `<svg class="cbadge${c?.lv >= 5 ? " glow" : ""}" viewBox="0 0 40 40" width="${px}" height="${px}" aria-hidden="true">` +
+  return `<svg class="cbadge${c?.lv >= 8 ? " glow" : ""}" viewBox="0 0 40 40" width="${px}" height="${px}" aria-hidden="true">` +
     (c?.img && c.id ? `<clipPath id="${clip}">${shape}</clipPath><g fill="${color}">${shape}</g>` +
       `<image href="/api/clans/img/${Number(c.id)}?v=${Number(c.img)}" width="40" height="40" preserveAspectRatio="xMidYMid slice" clip-path="url(#${clip})"/><g fill="none" ${stroke}>${shape}</g>`
       : `<g fill="${color}" ${stroke}>${shape}</g><g transform="translate(${x} ${y}) scale(${s})" fill="#fff" color="${color}">${CLAN_ICONS[icon][1]}</g>`) +
@@ -307,7 +311,7 @@ function badge(c, px = 20) {
 }
 const frame = (p) => PLACES[p] ? `<svg class="frame" viewBox="0 0 24 24" aria-label="Top ${p} clan mùa trước"><path fill="${PLACES[p]}" stroke="rgba(0,0,0,.35)" d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17l-6.1 3.4 1.5-6.8L2.2 9l6.9-.7z"/></svg>` : "";
 const tagHTML = (c) => `<span class="ctag">${badge(c, 16)}${esc(c.tag)}</span>`;
-const seasonName = (s) => `Mùa ${Number(s.slice(5))}/${s.slice(0, 4)}`;
+const seasonName = (s) => `Tháng ${Number(s.slice(5))}/${s.slice(0, 4)}`;
 const day = (t) => new Date(t).toLocaleDateString("vi-VN");
 const when = (t) => new Date(t).toLocaleString("vi-VN", { hour12: false, day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
 const get = (path) => fetch(path).then((r) => r.ok ? r.json() : Promise.reject(r.status));
@@ -318,28 +322,29 @@ async function showTable(season = "") {
   const r = s.rules;
   $("main").innerHTML = `
     <h1>Bảng xếp hạng clan</h1>
-    <p class="sub">Clan Đế Chế (AoE) trên SuperAqE: mỗi trận thắng thua của thành viên đều cộng điểm cho clan, đánh clan chiến được thêm điểm. Hết mỗi tháng, top 3 clan nhận vương miện trên huy hiệu. Lập clan, xin vào clan và thách đấu ngay trong launcher (nút <b>Clan</b>).</p>
-    <div class="seasonbar"><label for="season" style="margin:0">Mùa</label>
+    <p class="sub">Clan Đế Chế (AoE) trên SuperAqE: mỗi trận thắng thua của thành viên đều cộng điểm cho clan; clan đấu clan thì thắng nhận điểm, thua mất điểm (mặc định 10, hoặc hai clan tự đặt khi thách đấu). Điểm về 0 lúc 00:00 ngày 1 hàng tháng, top 3 clan của tháng nhận huy chương vàng, bạc, đồng và clan lên cấp theo hạng. Lập clan, xin vào clan và thách đấu ngay trong launcher (nút <b>Clan</b>).</p>
+    <div class="seasonbar"><label for="season" style="margin:0">Tháng</label>
       <select id="season">${s.seasons.map((x) => `<option value="${esc(x)}" ${x === s.season ? "selected" : ""}>${esc(seasonName(x))}${x === s.current ? " (đang diễn ra)" : ""}</option>`).join("")}</select>
       <span class="hint">${s.closed ? "Đã kết thúc" : `${day(s.from)} – ${day(s.to - 1)}`}</span></div>
-    ${s.awards.length ? `<p class="hint">${s.awards.map((a) => `${PLACE_NAMES[a.place]}: <b>${esc(a.tag)}</b> ${esc(a.name)}`).join(" · ")}</p>` : ""}
+    ${s.awards.length ? `<p class="hint">${s.awards.map((a) => `${MEDALS[a.place]} ${PLACE_NAMES[a.place]}: <b>${esc(a.tag)}</b> ${esc(a.name)}`).join(" · ")}</p>` : ""}
     <div class="cols">
       <div class="panel" style="padding:6px 8px">${s.clans.length ? `<table class="ctable"><thead><tr><th>#</th><th>Clan</th><th class="num">Điểm</th>
         <th class="num hide-sm">Thắng / trận</th><th class="num hide-sm">Clan chiến</th><th class="num hide-sm">Người đánh</th></tr></thead><tbody>
         ${s.clans.map((c) => `<tr class="link" data-tag="${esc(c.tag)}"><td><span class="place p${c.place}">${c.place}</span></td>
           <td><div class="cname">${badge(c, 30)}<div><b>${esc(c.name)}</b><br><span class="hint">${esc(c.tag)} · cấp ${c.lv} · ${c.members} thành viên</span></div></div></td>
           <td class="num"><b>${c.points}</b></td><td class="num hide-sm">${c.wins}/${c.matches}</td><td class="num hide-sm">${c.wars}</td><td class="num hide-sm">${c.players}</td></tr>`).join("")}
-        </tbody></table>` : `<div class="empty">Mùa này chưa có trận nào tính điểm clan.</div>`}</div>
+        </tbody></table>` : `<div class="empty">Tháng này chưa có trận nào tính điểm clan.</div>`}</div>
       <div>
         <div class="panel"><h3>Người đóng góp nhiều nhất</h3>${s.players.length ? `<table class="ctable"><tbody>${s.players.slice(0, 12).map((p, i) =>
           `<tr><td>${i + 1}</td><td>${tagHTML(p.clan)} ${esc(p.username)}</td><td class="num">${p.points}</td></tr>`).join("")}</tbody></table>` : `<p class="hint">Chưa có.</p>`}</div>
         <div class="panel rules" style="margin-top:14px"><h3>Cách tính điểm</h3><ul>
           <li>Trận có thắng thua, từ ${r.minMinutes} phút; gặp cùng một đối thủ chỉ tính ${r.perDay} trận mỗi ngày, mỗi người tối đa ${r.perPlayerDay} trận mỗi ngày.</li>
           <li>Thắng +${r.win}, thua +${r.loss}; thắng người của clan khác +${r.rival}.</li>
-          <li>Clan chiến (từ 2-2, cả clan một bên, một clan khác bên kia): clan thắng +${r.war}, trận thách đấu đã nhận +${r.challenge}.</li>
-          <li>Cấp clan theo tổng điểm: ${s.levels.map((l) => `cấp ${l.lv}: ${l.points} điểm, ${l.members} người`).join("; ")}.</li>
-          <li>Hết mùa: top 3 clan có từ ${r.awardMinPoints} điểm nhận vương miện; thành viên đánh từ ${r.awardMinMatches} trận cho clan nhận khung tên.</li>
-          <li>Gian lận bị khóa tài khoản thì mất điểm đã đóng góp trong mùa.</li></ul></div>
+          <li>Clan chiến (từ 2-2, cả clan một bên, một clan khác bên kia): clan thắng +${r.war}, clan thua -${r.war}.</li>
+          <li>Thách đấu (cả 1-1): hai clan tự đặt điểm của trận (${r.stakeMin ?? 10}-${r.stakeMax ?? 1000}, không quá điểm tháng của clan ít điểm hơn); thắng nhận, thua mất đúng số điểm đó. Điểm tháng không xuống dưới 0.</li>
+          <li>Điểm về 0 lúc 00:00 ngày 1 hàng tháng. Top 3 clan của tháng (từ ${r.awardMinPoints} điểm) nhận huy chương vàng, bạc, đồng; thành viên đánh từ ${r.awardMinMatches} trận cho clan nhận khung tên.</li>
+          <li>Cấp clan (1-${s.levels.length}) lên theo hạng của tháng: hạng 1 lên 2 cấp, hạng 2-5 lên 1 cấp (cần từ ${r.awardMinPoints} điểm). Thành viên tối đa: ${s.levels.map((l) => `cấp ${l.lv}: ${l.members}`).join("; ")}.</li>
+          <li>Gian lận bị khóa tài khoản thì mất điểm đã đóng góp trong tháng.</li></ul></div>
       </div>
     </div>`;
   $("season").onchange = () => showTable($("season").value);
@@ -350,25 +355,42 @@ async function showClan(tag) {
   const { clan: c } = await get("/api/clans/info?tag=" + encodeURIComponent(tag));
   document.title = `Clan ${c.tag} · ${c.name} – SuperAqE`;
   const members = [...c.members].sort((a, b) => (b.season?.points ?? 0) - (a.season?.points ?? 0));
+  const g = c.gallery || { gold: 0, silver: 0, bronze: 0, medals: c.awards || [], months: [] };
+  const medalOf = new Map(g.medals.map((a) => [a.season, a.place]));
+  const pts = (n) => n == null ? "" : `<b class="${n > 0 ? "win" : n < 0 ? "loss" : ""}" style="margin-left:auto;background:none">${n > 0 ? "+" : ""}${n}</b>`;
   $("main").innerHTML = `
     <p style="margin-top:20px"><a href="/clan/">← Bảng xếp hạng clan</a></p>
     <div class="chead">${badge(c, 84)}<div><h1>${esc(c.name)}</h1><div class="hint">${esc(c.tag)} · cấp ${c.lv} · trưởng clan ${esc(c.leader)} · thành lập ${day(c.created)} · ${c.recruit ? "đang tuyển thành viên" : "ngừng tuyển"}</div>
       ${c.motto ? `<div style="margin-top:4px">“${esc(c.motto)}”</div>` : ""}</div></div>
     <div class="stats">
       <div class="stat"><small>${esc(seasonName(c.season.id))}</small><b>${c.season.points} điểm</b><small>${c.season.place ? "hạng " + c.season.place + " · " : ""}${c.season.wins}/${c.season.matches} trận thắng</small></div>
-      <div class="stat"><small>Tổng điểm</small><b>${c.points}</b><small>${c.next ? `cấp ${c.next.lv} ở ${c.next.points} điểm` : "cấp cao nhất"}</small></div>
+      <div class="stat"><small>Cấp clan</small><b>Cấp ${c.lv}</b><small>${c.next ? "lên cấp cuối tháng theo hạng" : "cấp cao nhất"}</small></div>
       <div class="stat"><small>Clan chiến</small><b>${c.wars.won} thắng · ${c.wars.lost} thua</b></div>
       <div class="stat"><small>Thành viên</small><b>${c.members.length}/${c.maxMembers}</b></div>
     </div>
     ${c.notice ? `<div class="notice">${esc(c.notice)}</div>` : ""}
-    ${c.awards.length ? `<p>${c.awards.map((a) => `🏆 ${PLACE_NAMES[a.place]} ${esc(seasonName(a.season))} (${a.points} điểm)`).join(" · ")}</p>` : ""}
+    <h2 style="margin:22px 0 8px;font-size:20px">Phòng trưng bày</h2>
+    <div class="stats">
+      <div class="stat"><small>Huy chương vàng</small><b>🥇 ${g.gold}</b></div>
+      <div class="stat"><small>Huy chương bạc</small><b>🥈 ${g.silver}</b></div>
+      <div class="stat"><small>Huy chương đồng</small><b>🥉 ${g.bronze}</b></div>
+    </div>
+    ${g.medals.length ? `<p>${g.medals.map((a) => `${MEDALS[a.place]} ${esc(seasonName(a.season))} (${a.points} điểm)`).join(" · ")}</p>`
+      : `<p class="hint">Chưa có huy chương. Top 3 bảng xếp hạng mỗi tháng (từ 100 điểm) nhận huy chương vàng, bạc, đồng.</p>`}
+    <div class="panel" style="padding:6px 8px;margin-bottom:14px"><table class="ctable"><thead><tr><th>Tháng</th><th class="num">Hạng</th><th class="num">Điểm</th>
+      <th class="num hide-sm">Thắng / trận</th><th class="num hide-sm">Clan chiến thắng</th><th class="num">Cấp</th></tr></thead><tbody>
+      <tr><td>${esc(seasonName(c.season.id))} <span class="hint">(đang diễn ra)</span></td><td class="num">${c.season.place ?? "-"}</td><td class="num"><b>${c.season.points}</b></td>
+        <td class="num hide-sm">${c.season.wins}/${c.season.matches}</td><td class="num hide-sm">${c.season.wars}</td><td class="num">${c.lv}</td></tr>
+      ${g.months.map((m) => `<tr><td>${esc(seasonName(m.season))} ${MEDALS[medalOf.get(m.season)] ?? ""}</td><td class="num">${m.place}</td><td class="num"><b>${m.points}</b></td>
+        <td class="num hide-sm">${m.wins}/${m.matches}</td><td class="num hide-sm">${m.wars}</td><td class="num">${m.lv}</td></tr>`).join("")}
+    </tbody></table></div>
     <div class="cols">
-      <div class="panel" style="padding:6px 8px"><table class="ctable"><thead><tr><th>Thành viên</th><th class="num">Điểm mùa này</th><th class="num hide-sm">Thắng / trận</th></tr></thead><tbody>
+      <div class="panel" style="padding:6px 8px"><table class="ctable"><thead><tr><th>Thành viên</th><th class="num">Điểm tháng này</th><th class="num hide-sm">Thắng / trận</th></tr></thead><tbody>
         ${members.map((m) => `<tr><td><b>${esc(m.username)}</b>${frame(m.frame)} <span class="hint">${RANKS[m.rank]}</span></td>
           <td class="num">${m.season?.points ?? 0}</td><td class="num hide-sm">${m.season ? `${m.season.wins}/${m.season.matches}` : "-"}</td></tr>`).join("")}
       </tbody></table></div>
-      <div class="panel"><h3>Clan chiến gần đây</h3>${c.wars.recent.length ? `<ul class="wars">${c.wars.recent.map((w) =>
-        `<li><span class="res ${w.won ? "win" : "loss"}">${w.won ? "Thắng" : "Thua"}</span><span>${w.size}-${w.size} với <a href="?tag=${encodeURIComponent(w.other.tag || "")}">${esc(w.other.tag || "?")}</a>${w.challenge ? " · thách đấu" : ""}<br><span class="hint">${when(w.t)}</span></span></li>`).join("")}</ul>`
+      <div class="panel"><h3>Lịch sử đấu</h3>${c.wars.recent.length ? `<ul class="wars">${c.wars.recent.map((w) =>
+        `<li><span class="res ${w.won ? "win" : "loss"}">${w.won ? "Thắng" : "Thua"}</span><span>${w.size}-${w.size} với <a href="?tag=${encodeURIComponent(w.other.tag || "")}">${esc(w.other.tag || "?")}</a>${w.challenge ? " · thách đấu" : ""}<br><span class="hint">${when(w.t)}</span></span>${pts(w.points)}</li>`).join("")}</ul>`
         : `<p class="hint">Chưa có trận clan chiến.</p>`}</div>
     </div>`;
   for (const a of document.querySelectorAll('a[href^="?tag="]')) a.onclick = (e) => { e.preventDefault(); history.pushState(null, "", a.getAttribute("href")); route(); };
