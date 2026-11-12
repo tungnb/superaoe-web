@@ -622,6 +622,49 @@ function planDeadlines() {
 // ---------------- admin: edit / delete any tournament (account role "admin", or the Google admin of /admin)
 const tourAdminPrefix = () => me?.role === "admin" ? "/api/web/" : isAdmin ? "/api/admin/" : "";
 let editing = null;  // the tournament the create dialog edits
+// The times of a tournament (its start, the hours of the rounds, the start time of each series) are its
+// organiser's and the admins' to move until it is over: /api/web/tour/{times,sched} for the organiser
+// and a quản trị viên, /api/admin/tour/... for the Google admin of /admin.
+const timePrefix = (t) => !["reg", "run"].includes(t.status) ? "" : me && (same(t.organizer, me.username) || me.role === "admin") ? "/api/web/" : isAdmin ? "/api/admin/" : "";
+let timesOpen = false;
+function renderTimes() {
+  const box = $("timesPanel");
+  if (!box) return;
+  box.classList.toggle("hidden", !timesOpen);
+  if (!timesOpen) { box.innerHTML = ""; return; }
+  const t = D.tour, reg = t.status === "reg", rounds = t.rounds ?? t.plan, unit = isRR(t) ? "cặp" : "nhánh";
+  box.innerHTML = `<h3>Sửa giờ giải đấu</h3>
+    ${reg ? `<label style="display:block;margin-bottom:10px">Hạn đăng ký và khởi tranh <input id="tmStart" type="datetime-local" value="${toLocal(t.startAt)}"></label>`
+      : `<p class="hint">Giải đã khởi tranh ${fmtTime(t.startedAt)}: sửa được thời gian từng vòng; giờ bắt đầu riêng của từng ${unit} đặt ở chính ${unit} đó (bấm vào ${unit}).</p>`}
+    <div style="overflow-x:auto"><table class="plan"><thead><tr><th>${isRR(t) ? "" : "Vòng"}</th><th>Thời gian</th><th>Hạn thi đấu</th></tr></thead><tbody id="tmPlan">
+      ${rounds.map((r, i) => `<tr><td>${isRR(t) ? "Cả giải" : roundName(i, rounds.length)}</td><td><input data-hours type="number" min="1" max="744" value="${r.hours}" style="width:90px"> giờ</td><td class="hint" data-deadline></td></tr>`).join("")}</tbody></table></div>
+    <p class="msg" id="tmMsg"></p>
+    <div class="actions"><button class="small" id="tmSave">Lưu giờ</button><button class="ghost small" id="tmCancel">Hủy</button></div>`;
+  const deadlines = () => {
+    let at = reg ? new Date($("tmStart").value).getTime() : t.startedAt;
+    for (const tr of $("tmPlan").children) {
+      at += (Number(tr.querySelector("[data-hours]").value) || 0) * H;
+      tr.querySelector("[data-deadline]").textContent = Number.isFinite(at) ? fmtTime(at) : "";
+    }
+  };
+  box.oninput = deadlines;
+  deadlines();
+  $("tmCancel").onclick = () => { timesOpen = false; renderTimes(); };
+  $("tmSave").onclick = async () => {
+    const body = { id: t.id, rounds: [...$("tmPlan").children].map((tr) => ({ hours: Number(tr.querySelector("[data-hours]").value) })) };
+    if (reg) {
+      const at = new Date($("tmStart").value).getTime();
+      if (!Number.isFinite(at)) { $("tmMsg").textContent = "Hãy chọn giờ khởi tranh."; return; }
+      if (at !== new Date(toLocal(t.startAt)).getTime()) body.startAt = at;
+    }
+    $("tmSave").disabled = true;
+    try {
+      await api("tour/times", body, timePrefix(t));
+      timesOpen = false;
+      await showTour();
+    } catch (e) { $("tmMsg").textContent = e.message; $("tmSave").disabled = false; }
+  };
+}
 const toLocal = (ms) => { const d = new Date(ms); return new Date(d - d.getTimezoneOffset() * 60000).toISOString().slice(0, 16); };
 function openEdit(t) {
   openCreate();
@@ -710,7 +753,7 @@ function schedulePoll() {
   clearTimeout(poll);
   if (D?.tour.status !== "reg") return;
   poll = setTimeout(async () => {
-    if (!document.hidden && !document.querySelector("dialog[open]") && !busy) {
+    if (!document.hidden && !document.querySelector("dialog[open]") && !busy && !timesOpen && document.activeElement?.tagName !== "INPUT") {
       try { D = await api("tour?id=" + tourId); renderTour(); return; } catch {}
     }
     schedulePoll();
@@ -798,8 +841,11 @@ function renderTour() {
     <p style="margin:20px 0 0"><a href="/giai-dau/">← Tất cả giải đấu</a></p>
     <div class="row" style="align-items:baseline"><h1 class="grow">${esc(t.name)}</h1>${badge(t.status)}</div>
     ${t.desc ? `<p class="sub">${esc(t.desc)}</p>` : ""}
-    ${tourAdminPrefix() ? `<div class="actions" style="margin:0 0 14px"><span class="hint" style="align-self:center">Quản trị viên:</span>
-      <button class="ghost small" id="btnAdminEdit">Sửa giải</button><button class="danger small" id="btnAdminDelete">Xoá giải</button></div>` : ""}
+    ${tourAdminPrefix() || timePrefix(t) ? `<div class="actions" style="margin:0 0 14px"><span class="hint" style="align-self:center">${tourAdminPrefix() ? "Quản trị viên" : "Người tạo giải"}:</span>
+      ${timePrefix(t) ? `<button class="ghost small" id="btnTimes">Sửa giờ</button>` : ""}
+      ${tourAdminPrefix() ? `<button class="ghost small" id="btnAdminEdit">Sửa giải</button><button class="danger small" id="btnAdminDelete">Xoá giải</button>` : ""}
+      ${timePrefix(t) && t.status === "run" && !t.opts?.free ? `<span class="hint" style="align-self:center">Bấm vào một ${isRR(t) ? "cặp" : "nhánh"} để đặt giờ bắt đầu riêng.</span>` : ""}</div>
+      <div class="panel hidden" id="timesPanel" style="margin:0 0 16px"></div>` : ""}
     ${t.status === "cancel" ? `<div class="empty" style="margin-bottom:20px">${esc(t.note ?? "Giải đã bị huỷ.")}</div>` : ""}
     ${champ}
     <div class="info">
@@ -820,6 +866,9 @@ function renderTour() {
     <div id="body" style="margin-top:24px"></div>
     <div id="replays"></div>
     ${rulesHtml(t)}`;
+  if (!timePrefix(t)) timesOpen = false;
+  if ($("btnTimes")) $("btnTimes").onclick = () => { timesOpen = !timesOpen; renderTimes(); };
+  renderTimes();
   if (tourAdminPrefix()) {
     $("btnAdminEdit").onclick = () => openEdit(t);
     $("btnAdminDelete").onclick = async () => {
@@ -949,11 +998,13 @@ function seriesStatus(s) {
     if (s.status === "out") return ["Chưa gặp nhau", ""];
     return [`${score} · ${s.left ? "hết hạn thi đấu" : `đã đủ ${s.need} ván tính điểm`}`, ""];
   }
-  if (s.final && s.status === "wait") return ["Chung kết: chờ xong vòng bảng, hạng 1 gặp hạng 2", ""];
+  // Its own start time, until that hour has come.
+  const at = s.startAt && s.startAt > D.now ? `Bắt đầu ${fmtTime(s.startAt)}` : "";
+  if (s.final && s.status === "wait") return [at ? `Chung kết: ${at[0].toLowerCase() + at.slice(1)} · chờ xong vòng bảng` : "Chung kết: chờ xong vòng bảng, hạng 1 gặp hạng 2", ""];
   const left = s.deadline ? s.deadline - D.now : 0;
   switch (s.status) {
-    case "wait": return ["Chờ đối thủ", ""];
-    case "play": return [`Đang đấu · ${s.wa}-${s.wb} · còn ${fmtLeft(left)}`, "live"];
+    case "wait": return [at ? `${at} · chờ đối thủ` : "Chờ đối thủ", ""];
+    case "play": return at ? [`${s.wa + s.wb ? `${s.wa}-${s.wb} · ` : ""}${at}`, ""] : [`Đang đấu · ${s.wa}-${s.wb} · còn ${fmtLeft(left)}`, "live"];
     case "late": return ["Hết giờ · chờ kết quả ván đang đấu", "bad"];
     case "done": return [`${teamName(s.winner)} thắng ${Math.max(s.wa, s.wb)}-${Math.min(s.wa, s.wb)}${s.ruled ? " (admin phán xử)" : s.timeout ? " (hết giờ, đội dẫn đi tiếp)" : ""}`, ""];
     case "draw": return [`Hoà ${s.wa}-${s.wb}`, ""];
@@ -1059,7 +1110,12 @@ function renderSeries(key) {
   const redraw = () => isRR(D.tour) ? renderLeague() : renderBracket();
   const head = `<div class="row"><h3 class="grow" style="margin:0">${isRR(D.tour) ? "Vòng tròn" : roundName(r, total)} ·${s.a ? esc(teamName(s.a)) : "?"} vs ${s.b ? esc(teamName(s.b)) : "?"}</h3>
     <button class="x" id="sclose" aria-label="Đóng">×</button></div>
-    <p class="hint" style="margin:4px 0 12px">${esc(text)}${s.readyAt ? ` · mở từ ${fmtTime(s.readyAt)} · hạn chót ${fmtTime(s.deadline)}` : ""} · cần ${s.need} trận thắng</p>`;
+    <p class="hint" style="margin:4px 0 12px">${esc(text)}${s.startAt && !text.includes(fmtTime(s.startAt)) ? ` · <b>giờ bắt đầu ${fmtTime(s.startAt)}</b>` : ""}${s.readyAt ? ` · mở từ ${fmtTime(s.readyAt)} · hạn chót ${fmtTime(s.deadline)}` : ""} · cần ${s.need} trận thắng</p>`
+    // The organiser or an admin gives the series its start time (also before its teams are known).
+    + (timePrefix(D.tour) && D.tour.status === "run" && !D.bracket.free && ["wait", "play", "late"].includes(s.status) ? `<div class="actions" style="margin:0 0 12px;align-items:center">
+      <span class="hint">Giờ bắt đầu ${isRR(D.tour) && !s.final ? "cặp" : "nhánh"} này:</span><input id="ssStart" type="datetime-local" value="${s.startAt ? toLocal(s.startAt) : ""}">
+      <button class="ghost tiny" id="ssSet">${s.startAt ? "Đổi giờ" : "Đặt giờ"}</button>${s.startAt ? `<button class="ghost tiny" id="ssClear">Bỏ giờ</button>` : ""}
+      <span class="hint">${isRR(D.tour) && !s.final ? "Giờ hẹn cho hai đội; hạn thi đấu vẫn là hạn của cả giải." : `Nhánh có đủ ${D.bracket.rounds[r].hours} giờ của vòng tính từ giờ này; hai đội đánh sớm hơn vẫn được tính.`}</span></div>` : "");
   let list = "";
   if (s.readyAt && s.a && s.b) {
     const howto = s.status === "play" || s.status === "late" ? `<p class="hint">Cách đấu: một người tạo phòng trong launcher SuperAqE. <b>${esc(teamName(s.a))}</b> ngồi bên trái (Quan Nhất–Tứ phẩm), <b>${esc(teamName(s.b))}</b> ngồi bên phải (Ngũ–Bát phẩm)${D.tour.teamSize > 1 ? ", đủ và đúng thành viên đã đăng ký" : ""}, không thêm người chơi khác (khán giả thì được). Trận dài từ 5 phút, đánh xong là kết quả tự hiện ở đây.</p>` : "";
@@ -1073,6 +1129,19 @@ function renderSeries(key) {
   }
   box.innerHTML = head + list;
   $("sclose").onclick = () => { openSeries = null; redraw(); };
+  const sched = async (startAt, btn) => {
+    btn.disabled = true;
+    try {
+      await api("tour/sched", { id: tourId, round: s.round, idx: s.idx, startAt }, timePrefix(D.tour));
+      await showTour();
+    } catch (e) { alert(e.message); btn.disabled = false; }
+  };
+  if ($("ssSet")) $("ssSet").onclick = () => {
+    const at = new Date($("ssStart").value).getTime();
+    if (!Number.isFinite(at)) return alert("Hãy chọn ngày giờ bắt đầu.");
+    sched(at, $("ssSet"));
+  };
+  if ($("ssClear")) $("ssClear").onclick = () => sched(null, $("ssClear"));
   box.querySelectorAll("[data-rule]").forEach((btn) => btn.onclick = async () => {
     const v = btn.dataset.rule;
     const body = v === "clear" ? { clear: true } : { winner: v === "none" ? null : Number(v) };
@@ -1139,6 +1208,7 @@ function rulesHtml(t) {
       ${!t || !isRR(t) ? `<li><b>Loại trực tiếp</b>: khi đến giờ bắt đầu, các đội đủ người được <b>chia nhánh ngẫu nhiên</b>; đội lẻ được đi thẳng vào vòng sau.</li>` : ""}
       ${!t || isRR(t) ? `<li><b>Vòng tròn tính điểm</b>: mỗi đội gặp tất cả các đội khác một lần, không xếp lịch: hai đội gặp nhau lúc nào cũng được trước hạn chót, kết quả tự vào bảng điểm. Thắng cặp đấu <b>3 điểm</b>, hoà 1, thua hoặc bỏ trận 0. Hết hạn mà chưa đủ số trận thắng: đội đang dẫn thắng, bằng nhau là hoà. Đội nhiều điểm nhất vô địch (bằng điểm xét hiệu số ván, số ván thắng, đối đầu).</li>` : ""}
       <li><b>Hạn đăng ký cũng là giờ khởi tranh</b>, không phải hạn thi đấu: đến giờ đó đăng ký đóng lại và các đội mới bắt đầu thi đấu. Trận đánh trước giờ khởi tranh không được tính. Mỗi ${!t || !isRR(t) ? "vòng" : "giải"} có hạn thi đấu riêng ghi trong lộ trình.</li>
+      <li><b>Giờ thi đấu</b>: người tạo giải và quản trị viên sửa được giờ khởi tranh, thời gian từng vòng, và đặt <b>giờ bắt đầu riêng cho từng nhánh</b> (hiện ngay trên nhánh đó; nhánh có đủ thời gian của vòng tính từ giờ ấy).</li>
       <li>Hai đội tự hẹn giờ (sau khởi tranh, trước hạn thi đấu) và vào một phòng trên launcher SuperAqE: một đội ngồi bên trái, đội kia bên phải, đúng thành viên đã đăng ký.</li>
       <li><b>Kết quả lấy tự động</b> từ trận đấu (bên đầu hàng / bị diệt / thoát game trước là thua), công khai cùng replay. Trận ngắn dưới 5 phút không được tính. Kết quả mà máy đối thủ không xác nhận được sẽ chờ admin xác nhận.</li>
       ${!t || !isRR(t) ? `<li>Mỗi vòng có <b>hạn thi đấu</b>. Nhánh chưa xong khi hết hạn: <b>đội đang dẫn đi tiếp</b>; hoà hoặc chưa đánh ván nào thì <b>cả hai đội bị xử thua</b>, đối thủ vòng sau đi thẳng.</li>` : ""}
