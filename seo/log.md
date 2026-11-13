@@ -394,3 +394,19 @@
 - Đọc lại /choi-de-che-bi-lag/: trang giải thích Line 1/2/3 bằng lời (nối thẳng / trạm trung chuyển của người chơi / máy chủ Cloudflare) và ngưỡng Điểm mạng (xanh ≥ 8, vàng ≥ 6) — nếu không muốn công khai chi tiết nào thì báo để gỡ. Chưa có ảnh chụp ghế có "Mạng 8,6 · Line 1": có ảnh thật thì trang mạnh hơn nhiều.
 - Dấu "VPN" (1.0.32) và kéo dài lượt (1.0.30) chưa thử với người thật → trang ghi "tính năng mới"; khi đã kiểm chứng thì báo để bỏ chữ dè dặt.
 - Tồn đọng: xác nhận Tab thành tích ở ghế khán giả; trang so sánh EGO Play / GPlay / GameTV Plus / XArena; seo-agent.md "Quy tắc sự thật" cũ; ảnh /img/replay-tua.jpg cũ; câu gợi ý /tai-khoan/ về tên trong game.
+
+## 2026-11-13 (vòng SEO 27 — tự động)
+- Chuẩn bị: `git pull --rebase` kéo về 581c241 (chủ dự án: giải đấu sửa giờ / kéo thả / xử thua, trang clan điểm tháng). `git status` sạch; live = HEAD cho /, /clan/, /giai-dau/, llms.txt, sitemap.xml, robots.txt, /choi-de-che-bi-lag/. NOTES (origin/main): launcher 1.0.41 bắt buộc (2026-11-12).
+- Kỹ thuật: robots.txt, .assetsignore, IndexNow key vẫn đúng. Sitemap: /clan/ lastmod còn 2026-10-31 dù trang đổi lớn 12/11 → 2026-11-12; /giai-dau/ → 2026-11-13.
+- **llms.txt sai dữ kiện (đã sửa):** vẫn ghi clan chiến +20, thách đấu +40, "vương miện top 3" theo luật cũ → sửa theo luật 10o (thắng +10 / thua -10, thách đấu thắng nhận thua mất điểm đặt, reset ngày 1, huy chương top 3, cấp 1–10 theo hạng tháng, phòng trưng bày). Dòng cập nhật 2026-11-13 launcher 1.0.41.
+- Nội dung: cải thiện /giai-dau/#huong-dan — đoạn về thể thức **đấu tự do tính điểm** (tạo trong launcher), mục mới **#gio-thi-dau** (Sửa giờ, giờ bắt đầu riêng từng nhánh, Xử thua sau 15 phút; ghi "tính năng mới"), +2 FAQ ("Đội đối thủ không đến thi đấu đúng giờ thì sao?", "Giải đã tạo rồi có đổi giờ được không?") hiển thị + JSON-LD (10/10), "Cập nhật lần cuối" 13/11/2026 (launcher 1.0.41). llms.txt: giải đấu thêm đấu tự do, sửa giờ, xử thua + 1 câu trả lời nhanh.
+- Kiểm tra: JSON-LD parse được, FAQ hiển thị 10 = JSON-LD 10, ul cân.
+- Không đo hạng (lần tới 2026-11-18). Outreach: bài gần nhất 2026-11-08 → lần tới ~2026-11-15.
+- URL đã đổi: /giai-dau/, /llms.txt, /sitemap.xml.
+- Lần sau: outreach ~2026-11-15 (gợi ý: lag 4v4 / Điểm mạng, hoặc clan chiến thắng nhận thua mất điểm); đo hạng 2026-11-18; cân nhắc viết avatar + xem chuột phải lên site.
+
+### Cần chủ dự án quyết định / làm
+- **Quan trọng nhất (tồn đọng từ 28/10):** superaqe.com chưa lên chỉ mục tìm kiếm kể cả tên thương hiệu → Google Search Console + Bing Webmaster Tools, gửi sitemap, "Thay đổi địa chỉ" từ superaoe.com; giữ 301 superaoe.com lâu hơn 2026-11-28.
+- Tác vụ định kỳ (SKILL.md) vẫn ghi https://superaoe.com; site thật là superaqe.com — nên sửa lời nhắc.
+- Nút Sửa giờ / Xử thua chưa thử bằng tài khoản thật → trang ghi "tính năng mới"; đã kiểm chứng thì báo để bỏ chữ dè dặt.
+- Tồn đọng: Tab thành tích ở ghế khán giả; trang so sánh EGO Play / GPlay / GameTV Plus / XArena; seo-agent.md "Quy tắc sự thật" cũ; ảnh /img/replay-tua.jpg cũ; câu gợi ý /tai-khoan/ về tên trong game; ảnh chụp ghế có Điểm mạng cho /choi-de-che-bi-lag/.

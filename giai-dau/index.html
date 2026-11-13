@@ -319,6 +319,22 @@ footer a { color: var(--dim); }
     "@type": "Answer",
     "text": "Giải clan chỉ nhận người đang ở trong một clan; mỗi đội gồm người cùng một clan và mang ký hiệu clan đó. Cách thi đấu và tính kết quả giống giải thường."
    }
+  },
+  {
+   "@type": "Question",
+   "name": "Đội đối thủ không đến thi đấu đúng giờ thì sao?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Người tạo giải hoặc quản trị viên đặt giờ bắt đầu riêng cho nhánh đó. Quá giờ hẹn 15 phút mà một đội không tham gia thì họ bấm Xử thua: đội vắng thua nhánh, đội có mặt đi tiếp; cả hai đội vắng thì cùng thua. Hệ thống không tự xử thua, và bấm nhầm thì huỷ xử thua để mở lại nhánh."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Giải đã tạo rồi có đổi giờ được không?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Được. Người tạo giải hoặc quản trị viên bấm Sửa giờ trên trang giải hoặc trong launcher: lúc còn nhận đăng ký thì đổi được giờ khởi tranh và số giờ của từng vòng; khi giải đã khởi tranh thì đổi số giờ các vòng và đặt giờ bắt đầu riêng cho từng nhánh."
+   }
   }
  ]
 }
@@ -369,6 +385,17 @@ footer a { color: var(--dim); }
       <tr><td>Vô địch</td><td>Đội thắng chung kết</td><td>Nhiều điểm nhất (thắng 3, hoà 1, thua 0; bằng điểm xét hiệu số ván, số ván thắng, đối đầu)</td></tr>
     </tbody></table></div>
 
+  <p>Ngoài hai thể thức trên, trong launcher SuperAqE còn tạo được giải <strong>đấu tự do tính điểm</strong>: không có nhánh, không hẹn lịch, hai đội cùng online là rủ nhau vào phòng đánh và ván được tính điểm ngay (thắng 3, thua 1, lần đầu gặp một đối thủ thì cả hai đội được thêm 1). Để tránh cày điểm, cùng hai đội chỉ được tính một số ván nhất định (mặc định 6 ván cả giải, 2 ván mỗi ngày). Đội vào muộn vẫn tham gia được tới hạn chót; hết hạn, đội đầu bảng vô địch. Trang này hiện bảng xếp hạng của giải đấu tự do, còn tạo giải kiểu này thì làm trong launcher.</p>
+
+  <h2 id="gio-thi-dau">Đổi giờ giải, hẹn giờ từng nhánh và xử thua đội vắng mặt</h2>
+  <p>Từ launcher 1.0.40 và 1.0.41 (tháng 11/2026), người tạo giải và quản trị viên SuperAqE có thêm ba công cụ, dùng được trên trang giải lẫn trong launcher:</p>
+  <ul>
+    <li><strong>Sửa giờ</strong>: khi giải còn nhận đăng ký, đổi được hạn đăng ký (cũng là giờ khởi tranh) và số giờ của từng vòng; khi giải đã khởi tranh thì đổi được số giờ của các vòng.</li>
+    <li><strong>Giờ bắt đầu riêng cho từng nhánh</strong>: khi giải đang đấu, bấm vào một nhánh (hoặc một cặp của giải vòng tròn) rồi bấm <em>Đặt giờ</em>. Đây là giờ hẹn, hiện ngay trên nhánh; hai đội đánh sớm hơn vẫn được tính. Ở giải loại trực tiếp, nhánh hẹn muộn thì hạn của nhánh lùi theo (giờ hẹn cộng số giờ của vòng); ở giải vòng tròn, hạn vẫn là hạn chót của cả giải.</li>
+    <li><strong>Xử thua</strong>: nhánh đã có giờ bắt đầu riêng, quá giờ đó 15 phút mà một đội không tham gia thì người tạo giải hoặc quản trị viên bấm <em>Xử thua</em> đội đó, đội kia thắng nhánh; cả hai đội vắng thì cùng thua. Hệ thống không tự xử thua, phải có người bấm; bấm nhầm thì <em>Huỷ xử thua</em> để mở lại nhánh. Kết quả ghi rõ “đối thủ bị xử thua: quá giờ không tham gia”.</li>
+  </ul>
+  <p>Giải đấu tự do tính điểm không có nhánh nên không có giờ riêng và nút Xử thua. Đây là tính năng mới: gặp lỗi, hãy báo bằng nút “Báo lỗi &amp; góp ý” trong launcher.</p>
+
   <h2 id="hoi-dap">Hỏi đáp về giải đấu Đế Chế</h2>
   <div class="faq">
     <h3>Tổ chức giải Đế Chế online trên SuperAqE có mất tiền không?</h3>
@@ -387,8 +414,12 @@ footer a { color: var(--dim); }
     <p>Loại trực tiếp: đội đang dẫn đi tiếp; hoà hoặc chưa đánh ván nào thì cả hai đội bị xử thua và đối thủ ở vòng sau đi thẳng. Vòng tròn: đội đang dẫn thắng cặp đó, bằng nhau là hoà, chưa đánh thì cả hai 0 điểm. Nhánh không đấu được thì quản trị viên có thể phán xử cho một đội thắng hoặc kết thúc với cả hai đội thua.</p>
     <h3>Giải clan khác giải thường thế nào?</h3>
     <p>Giải clan chỉ nhận người đang ở trong một clan; mỗi đội gồm người cùng một clan và mang ký hiệu clan đó. Cách thi đấu và tính kết quả giống giải thường.</p>
+    <h3>Đội đối thủ không đến thi đấu đúng giờ thì sao?</h3>
+    <p>Người tạo giải hoặc quản trị viên đặt giờ bắt đầu riêng cho nhánh đó. Quá giờ hẹn 15 phút mà một đội không tham gia thì họ bấm Xử thua: đội vắng thua nhánh, đội có mặt đi tiếp; cả hai đội vắng thì cùng thua. Hệ thống không tự xử thua, và bấm nhầm thì huỷ xử thua để mở lại nhánh.</p>
+    <h3>Giải đã tạo rồi có đổi giờ được không?</h3>
+    <p>Được. Người tạo giải hoặc quản trị viên bấm Sửa giờ trên trang giải hoặc trong launcher: lúc còn nhận đăng ký thì đổi được giờ khởi tranh và số giờ của từng vòng; khi giải đã khởi tranh thì đổi số giờ các vòng và đặt giờ bắt đầu riêng cho từng nhánh.</p>
   </div>
-  <p class="hint">Cập nhật lần cuối: 09/11/2026 (launcher 1.0.18). Xem thêm: <a href="/clan/">Bảng xếp hạng clan</a> · <a href="/lich-su-tran/">Lịch sử trận và replay</a> · <a href="/tao-phong-choi-de-che/">Tạo phòng chơi Đế Chế</a> · <a href="/choi-aoe-online-mien-phi/">Chơi AoE online miễn phí</a></p>
+  <p class="hint">Cập nhật lần cuối: 13/11/2026 (launcher 1.0.41). Xem thêm: <a href="/clan/">Bảng xếp hạng clan</a> · <a href="/lich-su-tran/">Lịch sử trận và replay</a> · <a href="/tao-phong-choi-de-che/">Tạo phòng chơi Đế Chế</a> · <a href="/choi-aoe-online-mien-phi/">Chơi AoE online miễn phí</a></p>
 </section>
 
 <footer>
