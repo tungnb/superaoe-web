@@ -128,6 +128,7 @@ button:disabled { opacity: .6; cursor: default; }
 .series[data-s]:hover, .series.open { outline: 1px solid var(--gold2); }
 .series.play { outline: 1px solid rgba(79,154,90,.8); }
 .series .st { position: absolute; top: 100%; left: 0; right: 0; margin-top: 3px; font-size: 11px; color: var(--dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: center; }
+.series.ghost { opacity: .7; }
 .series .st.live { color: #8fd69a; }
 .series .st.bad { color: #f08a7e; }
 /* a team: a gold bar (name, score or seats taken), its seats below while registering */
@@ -1121,6 +1122,32 @@ function renderBracket() {
     : `<b>${CUP}Vô địch</b><small>Đội thắng chung kết</small>`;
   const playing = new Set(b.rounds[0].series.flatMap((s) => [s.a, s.b]).filter(Boolean));
   const outside = D.teams.filter((x) => !playing.has(x.id));
+  // The Worker shrinks the bracket when teams were short of players at the start (tournament.js start):
+  // the rounds of the plan it dropped are still drawn, so the whole tournament stays on the page. Each
+  // slot of the first round played gets the leaves under it: the team itself, then the teams left out.
+  const skipped = Math.max(0, (t.plan?.length ?? total) - total);
+  if (skipped) {
+    const slots = b.rounds[0].series.flatMap((s) => [s.a, s.b]), per = 2 ** skipped;
+    let level = slots.flatMap((team) => [team ? { team } : null, ...Array(per - 1).fill(null)]);
+    outside.slice(0, level.length - slots.length).forEach((x, n) => {
+      level[(n % slots.length) * per + 1 + Math.floor(n / slots.length)] = { team: x.id, out: true };
+    });
+    const ghost = (e) => !e ? `<div class="tb none"><span class="n">—</span></div>`
+      : `<div class="tb ${e.out ? "lose" : "win"}"><span class="n" title="${esc(teamName(e.team))}">${esc(teamName(e.team))}</span></div>`;
+    const extra = [];
+    for (let g = 0; g < skipped; g++) {
+      const next = [], series = [];
+      for (let i = 0; i < level.length; i += 2) {
+        const x = level[i], y = level[i + 1], through = [x, y].find((e) => e && !e.out) ?? null;
+        const text = through ? (x && y ? "Đi tiếp (đối thủ thiếu người)" : "Đi tiếp (không có đối thủ)") : x || y ? "Bị loại: thiếu người khi khởi tranh" : "—";
+        series.push(`<div class="series ghost">${ghost(x)}${ghost(y)}<div class="st ${through ? "" : "bad"}">${text}</div></div>`);
+        next.push(through);
+      }
+      extra.push({ head: `<b>${roundName(g, total + skipped)}</b><small>Không thi đấu</small><small>nhánh thu gọn: có đội thiếu người</small>`, series });
+      level = next;
+    }
+    rounds.unshift(...extra);
+  }
   $("body").innerHTML = `
     <h2>Sơ đồ thi đấu</h2>
     <p class="hint" style="margin-top:-8px">Bấm vào một nhánh để xem từng ván, replay và kết quả.</p>
