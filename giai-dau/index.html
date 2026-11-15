@@ -327,10 +327,10 @@ footer a { color: var(--dim); }
   },
   {
    "@type": "Question",
-   "name": "Hạn đăng ký có phải hạn thi đấu không?",
+   "name": "Giải bắt đầu lúc nào?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Không. Hạn đăng ký cũng là giờ khởi tranh dự kiến: đến giờ đó đăng ký đóng lại, hệ thống bốc thăm chia nhánh (hoặc mở mọi cặp đấu với vòng tròn). Giờ khởi tranh chỉ là dự kiến: ván hai đội đánh với nhau trong 2 giờ trước đó vẫn được tính nếu hai đội được xếp thành một cặp. Giải loại trực tiếp không có hạn chót, mỗi vòng chỉ có giờ bắt đầu dự kiến; giải vòng tròn có một hạn chót cho cả giải."
+    "text": "Không. Giờ khởi tranh chỉ là dự kiến và giải không tự bắt đầu: người vào giải ngồi chờ, đăng ký mở tới khi người tạo giải hoặc quản trị viên bấm Bắt đầu, lúc đó hệ thống mới bốc thăm chia nhánh ngẫu nhiên (hoặc mở mọi cặp đấu với vòng tròn). Ván hai đội đánh với nhau trong 2 giờ trước lúc bắt đầu vẫn được tính nếu hai đội được xếp thành một cặp. Giải loại trực tiếp không có hạn chót, mỗi vòng chỉ có giờ bắt đầu dự kiến; giải vòng tròn có một hạn chót cho cả giải."
    }
   },
   {
@@ -438,8 +438,8 @@ footer a { color: var(--dim); }
     <p>Như mọi trận online trên SuperAqE: trận tạm dừng, cả phòng chờ người rớt tối đa 30 phút, mạng có lại thì game tự nối, lỡ tắt game thì bấm “Vào lại trận” trong launcher. Người rớt đã vắng quá 2 phút thì phía còn lại có thể bấm “Không chờ” (phím K) để người đó rời trận.</p>
     <h3>Người chơi MacBook vào giải được không?</h3>
     <p>Được. Bản Windows, MacBook và Linux chơi chung phòng, nên vào chung một giải.</p>
-    <h3>Hạn đăng ký có phải hạn thi đấu không?</h3>
-    <p>Không. Hạn đăng ký cũng là giờ khởi tranh dự kiến: đến giờ đó đăng ký đóng lại, hệ thống bốc thăm chia nhánh (hoặc mở mọi cặp đấu với vòng tròn). Giờ khởi tranh chỉ là dự kiến: ván hai đội đánh với nhau trong 2 giờ trước đó vẫn được tính nếu hai đội được xếp thành một cặp. Giải loại trực tiếp không có hạn chót, mỗi vòng chỉ có giờ bắt đầu dự kiến; giải vòng tròn có một hạn chót cho cả giải.</p>
+    <h3>Giải bắt đầu lúc nào?</h3>
+    <p>Không. Giờ khởi tranh chỉ là dự kiến và giải không tự bắt đầu: người vào giải ngồi chờ, đăng ký mở tới khi người tạo giải hoặc quản trị viên bấm Bắt đầu, lúc đó hệ thống mới bốc thăm chia nhánh ngẫu nhiên (hoặc mở mọi cặp đấu với vòng tròn). Ván hai đội đánh với nhau trong 2 giờ trước lúc bắt đầu vẫn được tính nếu hai đội được xếp thành một cặp. Giải loại trực tiếp không có hạn chót, mỗi vòng chỉ có giờ bắt đầu dự kiến; giải vòng tròn có một hạn chót cho cả giải.</p>
     <h3>Nhánh đấu mãi chưa xong thì sao?</h3>
     <p>Loại trực tiếp không có hạn chót: nhánh mở cho tới khi một đội thắng đủ số trận, đánh sớm hay muộn hơn giờ dự kiến đều được tính. Nhánh không đấu được thì người tạo giải đặt giờ bắt đầu rồi xử thua đội vắng mặt, hoặc quản trị viên phán xử cho một đội thắng hay kết thúc với cả hai đội thua. Vòng tròn: hết hạn chót của giải, đội đang dẫn thắng cặp đó, bằng nhau là hoà, chưa đánh thì cả hai 0 điểm.</p>
     <h3>Giải clan khác giải thường thế nào?</h3>
@@ -506,7 +506,7 @@ footer a { color: var(--dim); }
     </div>
     <p class="hint" id="cModeHint" style="margin:6px 0 0"></p>
     <label class="clanchk"><input type="checkbox" id="cClan"> <span><b>Giải clan</b>: mỗi đội chỉ gồm người cùng một clan, tên đội là ký hiệu clan (<a href="/clan/">bảng xếp hạng clan</a>)</span></label>
-    <label for="cStart">Hạn đăng ký = giờ khởi tranh dự kiến (đến giờ này đóng đăng ký và bốc thăm; ván hai đội đánh trong 2 giờ trước đó vẫn tính nếu hai đội thành một cặp)</label>
+    <label for="cStart">Giờ khởi tranh dự kiến (giải không tự bắt đầu: bạn hoặc quản trị viên bấm Bắt đầu mới bốc thăm; ván hai đội đánh trong 2 giờ trước lúc đó vẫn tính nếu hai đội thành một cặp)</label>
     <input id="cStart" type="datetime-local" required>
     <label>Lộ trình thi đấu</label>
     <table class="plan"><thead><tr><th id="cPlanHead">Vòng</th><th>Số trận</th><th>Thời gian</th><th id="cPlanWhen">Bắt đầu dự kiến</th></tr></thead><tbody id="cPlan"></tbody></table>
@@ -613,7 +613,7 @@ async function showList() {
 function card(t) {
   const plan = t.rounds ?? t.plan;
   const wins = [...new Set(plan.map((r) => r.wins))];
-  const when = t.status === "reg" ? `Hạn đăng ký và khởi tranh ${fmtTime(t.startAt)}` : t.status === "run" ? `Khởi tranh ${fmtTime(t.startedAt)}` : t.finishedAt ? `Kết thúc ${fmtTime(t.finishedAt)}` : "";
+  const when = t.status === "reg" ? `Khởi tranh dự kiến ${fmtTime(t.startAt)}` : t.status === "run" ? `Khởi tranh ${fmtTime(t.startedAt)}` : t.finishedAt ? `Kết thúc ${fmtTime(t.finishedAt)}` : "";
   return `<a class="card" href="?id=${t.id}">
     <div class="row"><b class="grow">${esc(t.name)}</b>${badge(t.status)}</div>
     <div class="meta">${fmtSize(t.teamSize)} · ${isRR(t) ? "Vòng tròn" : "Loại trực tiếp"} · ${t.teams}/${t.capacity} đội · ${wins.length === 1 ? bo(wins[0]) : "Chạm " + wins.join("/")} · ${MODE[t.mode]}${t.clan ? " · Giải clan" : ""}</div>
@@ -710,7 +710,7 @@ function renderTimes() {
   if (!timesOpen) { box.innerHTML = ""; return; }
   const t = D.tour, reg = t.status === "reg", rounds = t.rounds ?? t.plan, unit = isRR(t) ? "cặp" : "nhánh";
   box.innerHTML = `<h3>Sửa giờ giải đấu</h3>
-    ${reg ? `<label style="display:block;margin-bottom:10px">Hạn đăng ký và khởi tranh <input id="tmStart" type="datetime-local" value="${toLocal(t.startAt)}"></label>`
+    ${reg ? `<label style="display:block;margin-bottom:10px">Khởi tranh dự kiến <input id="tmStart" type="datetime-local" value="${toLocal(t.startAt)}"></label>`
       : `<p class="hint">Giải đã khởi tranh ${fmtTime(t.startedAt)}: sửa được thời gian từng vòng; giờ bắt đầu riêng của từng ${unit} đặt ở chính ${unit} đó (bấm vào ${unit}).</p>`}
     <div style="overflow-x:auto"><table class="plan"><thead><tr><th>${isRR(t) ? "" : "Vòng"}</th><th>Thời gian</th><th>${isRR(t) ? "Hạn thi đấu" : "Bắt đầu dự kiến"}</th></tr></thead><tbody id="tmPlan">
       ${rounds.map((r, i) => `<tr><td>${isRR(t) ? "Cả giải" : roundName(i, rounds.length)}</td><td><input data-hours type="number" min="1" max="744" value="${r.hours}" style="width:90px"> giờ</td><td class="hint" data-deadline></td></tr>`).join("")}</tbody></table></div>
@@ -931,8 +931,8 @@ function renderTour() {
       <div><small>Số đội</small><b>${D.teams.length} / ${t.capacity}${reserveOf(t) ? ` (+${reserveOf(t)} dự bị)` : ""}</b></div>
       <div><small>Cách vào giải</small><b>${MODE[t.mode]}${t.clan ? " · giải clan" : ""}</b></div>
       <div><small>Người tổ chức</small><b>${esc(t.organizer)}</b></div>
-      ${t.status === "reg" ? `<div><small>Hạn đăng ký</small><b>${fmtTime(t.startAt)}</b><small>còn ${fmtLeft(t.startAt - D.now)}</small></div>
-      <div><small>Khởi tranh dự kiến</small><b>${fmtTime(t.startAt)}</b><small>${isRR(t) ? "mở mọi cặp đấu" : "bốc thăm chia nhánh"} ngay khi hết hạn đăng ký</small></div>
+      ${t.status === "reg" ? `<div><small>Khởi tranh dự kiến</small><b>${fmtTime(t.startAt)}</b><small>${t.startAt > D.now ? "còn " + fmtLeft(t.startAt - D.now) : "đã tới giờ, chờ bấm Bắt đầu"}</small></div>
+      <div><small>Bắt đầu</small><b>Người tạo giải bấm</b><small>đăng ký mở tới lúc đó; bấm Bắt đầu mới ${isRR(t) ? "mở mọi cặp đấu" : "bốc thăm chia nhánh"}</small></div>
       ${isRR(t) ? `<div><small>Hạn thi đấu cả giải</small><b>${fmtTime(t.startAt + rounds[0].hours * H)}</b><small>${rounds[0].hours} giờ sau khởi tranh</small></div>` : ""}`
       : `<div><small>${t.startedAt ? "Đã khởi tranh" : "Khởi tranh"}</small><b>${fmtTime(t.startedAt ?? t.startAt)}</b></div>
       ${t.status === "run" && isRR(t) ? `<div><small>Hạn thi đấu cả giải</small><b>${fmtTime(t.startedAt + rounds[0].hours * H)}</b></div>` : ""}
@@ -1052,10 +1052,11 @@ function renderRegistration(my, organizer) {
       ${my?.state === "in" ? `<button class="ghost" id="btnLeave">Rời giải</button>` : ""}
       ${!me ? `<button class="primary" id="btnSignin">Đăng nhập để tham gia</button>` : ""}
     </div>
-    ${organizer ? `<div class="actions" style="border-top:1px solid var(--line);padding-top:16px">
-      <button class="primary" id="btnStart">Bắt đầu ngay (${Math.min(ready, t.capacity)} đội)</button>
-      <button class="danger" id="btnCancel">Huỷ giải</button>
-      <span class="hint" style="align-self:center">Nếu không bấm, giải tự khởi tranh lúc ${fmtTime(t.startAt)} (hết hạn đăng ký).</span></div>` : ""}`;
+    ${organizer || me?.role === "admin" ? `<div class="actions" style="border-top:1px solid var(--line);padding-top:16px">
+      <button class="primary" id="btnStart">Bắt đầu (${Math.min(ready, t.capacity)} đội)</button>
+      ${organizer ? `<button class="danger" id="btnCancel">Huỷ giải</button>` : ""}
+      <span class="hint" style="align-self:center">Giải không tự bắt đầu: chờ ${organizer ? "bạn" : "người tạo giải"} hoặc quản trị viên bấm Bắt đầu.</span></div>`
+      : t.status === "reg" ? `<p class="hint">Giải không tự bắt đầu: chờ người tạo giải hoặc quản trị viên bấm Bắt đầu.</p>` : ""}`;
   const msg = $("regMsg");
   const on = (id, fn) => { if ($(id)) $(id).onclick = fn; };
   const all = (sel, fn) => body.querySelectorAll(sel).forEach((el) => el.onclick = () => fn(el));
@@ -1384,7 +1385,7 @@ function rulesHtml(t) {
       ${!t || isRR(t) ? `<li><b>Vòng tròn tính điểm</b>: mỗi đội gặp tất cả các đội khác một lần, không xếp lịch: hai đội gặp nhau lúc nào cũng được trước hạn chót, kết quả tự vào bảng điểm. Thắng cặp đấu <b>3 điểm</b>, hoà 1, thua hoặc bỏ trận 0. Hết hạn mà chưa đủ số trận thắng: đội đang dẫn thắng, bằng nhau là hoà. Đội nhiều điểm nhất vô địch (bằng điểm xét hiệu số ván, số ván thắng, đối đầu).</li>` : ""}
       ${!t || benchOf(t) ? `<li><b>Người dự bị</b>: mỗi đội đăng ký thêm được người dự bị bằng nửa số người ra sân (2-2: 1 dự bị, 3-3: 1, 4-4: 2). Đội đủ số người ra sân là thi đấu được; mỗi ván ra sân đúng số người của thể thức, bất kỳ ai trong đội, đổi người giữa các ván thoải mái.</li>` : ""}
       ${!t || reserveOf(t) ? `<li><b>Đội dự bị</b>: giải nhận thêm 25% số đội (ít nhất 1 đội) làm đội dự bị để mọi người có chỗ ngồi chờ sắp xếp. Lúc khởi tranh, các đội đủ người <b>đăng ký sớm nhất</b> được thi đấu, tối đa bằng số đội của giải: đội dự bị đủ người vào thay đội còn thiếu người.</li>` : ""}
-      <li><b>Hạn đăng ký cũng là giờ khởi tranh dự kiến</b>: đến giờ đó đăng ký đóng lại và ${!t || !isRR(t) ? "hệ thống bốc thăm chia nhánh" : "mọi cặp đấu mở"}. Giờ chỉ là dự kiến: ván hai đội đánh với nhau trong <b>2 giờ trước</b> giờ khởi tranh vẫn được tính nếu hai đội là một cặp của giải.</li>
+      <li><b>Người tạo giải hoặc quản trị viên bấm Bắt đầu</b>: người vào giải ngồi chờ, giải không tự bắt đầu kể cả khi tới giờ khởi tranh dự kiến; bấm Bắt đầu thì đăng ký đóng lại và ${!t || !isRR(t) ? "hệ thống bốc thăm chia nhánh ngẫu nhiên" : "mọi cặp đấu mở"}. Ván hai đội đánh với nhau trong <b>2 giờ trước</b> lúc bắt đầu vẫn được tính nếu hai đội là một cặp của giải.</li>
       ${!t || !isRR(t) ? `<li><b>Loại trực tiếp không có hạn chót</b>: mỗi vòng chỉ có giờ bắt đầu dự kiến trong lộ trình, hai đội đánh sớm hay muộn hơn đều được tính, nhánh mở tới khi một đội thắng đủ số trận.</li>` : ""}
       <li><b>Giờ thi đấu</b>: người tạo giải và quản trị viên sửa được giờ khởi tranh, thời gian từng vòng, và đặt <b>giờ bắt đầu riêng cho từng nhánh</b> (giờ hẹn, hiện ngay trên nhánh đó).</li>
       <li>Hai đội tự hẹn giờ và vào một phòng trên launcher SuperAqE: một đội ngồi bên trái, đội kia bên phải, đúng thành viên đã đăng ký.</li>
