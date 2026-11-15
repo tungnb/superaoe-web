@@ -410,3 +410,19 @@
 - Tác vụ định kỳ (SKILL.md) vẫn ghi https://superaoe.com; site thật là superaqe.com — nên sửa lời nhắc.
 - Nút Sửa giờ / Xử thua chưa thử bằng tài khoản thật → trang ghi "tính năng mới"; đã kiểm chứng thì báo để bỏ chữ dè dặt.
 - Tồn đọng: Tab thành tích ở ghế khán giả; trang so sánh EGO Play / GPlay / GameTV Plus / XArena; seo-agent.md "Quy tắc sự thật" cũ; ảnh /img/replay-tua.jpg cũ; câu gợi ý /tai-khoan/ về tên trong game; ảnh chụp ghế có Điểm mạng cho /choi-de-che-bi-lag/.
+
+## 2026-11-15 (vòng SEO 28 — tự động)
+- Chuẩn bị: `git pull --rebase` kéo về 4 commit giải đấu của chủ dự án (1c4a2d0 → afe1600: không hạn chót cho loại trực tiếp, ván 2 giờ trước khởi tranh vẫn tính, ghế/đội dự bị, đăng ký hiện bàn ghế). `git status` sạch; live = HEAD cho /, /giai-dau/, llms.txt, sitemap.xml. NOTES: launcher 1.0.42 bắt buộc (2026-11-13). Không có mục log 2026-11-14 (vòng đó không chạy).
+- **llms.txt sai dữ kiện (đã sửa):** vẫn ghi "trận trước giờ khởi tranh không tính" và "hết hạn vòng thì đội dẫn đi tiếp, hoà/chưa đánh cả hai bị xử thua" → sửa theo luật mới (loại trực tiếp không hạn chót, 2 giờ trước khởi tranh vẫn tính, vòng tròn một hạn chót) + ghế dự bị / đội dự bị. Dòng cập nhật 2026-11-15 launcher 1.0.42.
+- Nội dung (cải thiện nhỏ, vì chủ dự án đã tự sửa FAQ/bảng thể thức của /giai-dau/): bước 4 "Cách tạo giải" bỏ ý "bao nhiêu giờ để đánh xong" (số giờ chỉ để tính giờ dự kiến vòng sau); "Tham gia và thi đấu" thêm mục **Ghế dự bị** + đội dự bị + đăng ký chỉ hiện bàn ghế; "Cập nhật lần cuối" 15/11/2026 (launcher 1.0.42). Sitemap /giai-dau/ lastmod 2026-11-15.
+- Kiểm tra: 2 khối JSON-LD parse được, li/ul cân. (Trang có nhiều `<h1` vì nằm trong chuỗi template JS của app — trang của chủ dự án, không đổi.)
+- **Outreach:** seo/outreach/2026-11-15-facebook-group.md — bài "4v4 bị khựng, xem ai lag ở đâu" (ping, Điểm mạng, Line, F4, [He thong], chat sau trận) dẫn về /choi-de-che-bi-lag/.
+- Không đo hạng (lần tới 2026-11-18).
+- URL đã đổi: /giai-dau/, /llms.txt, /sitemap.xml.
+- Lần sau: **đo hạng 2026-11-18**; cân nhắc viết avatar + xem chuột phải lên site; outreach ~2026-11-22.
+
+### Cần chủ dự án quyết định / làm
+- **Quan trọng nhất (tồn đọng từ 28/10):** superaqe.com chưa lên chỉ mục tìm kiếm kể cả tên thương hiệu → Google Search Console + Bing Webmaster Tools, gửi sitemap, "Thay đổi địa chỉ" từ superaoe.com; giữ 301 superaoe.com lâu hơn 2026-11-28 (còn 13 ngày).
+- Đăng tay bài outreach 2026-11-15 (kèm ảnh phòng có "Mạng x,x · Line 1" nếu có).
+- Tác vụ định kỳ (SKILL.md) vẫn ghi https://superaoe.com; site thật là superaqe.com.
+- Tồn đọng: Tab thành tích ở ghế khán giả; trang so sánh EGO Play / GPlay / GameTV Plus / XArena; seo-agent.md "Quy tắc sự thật" cũ; ảnh /img/replay-tua.jpg cũ; câu gợi ý /tai-khoan/ về tên trong game.
