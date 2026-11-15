@@ -157,6 +157,30 @@ button:disabled { opacity: .6; cursor: default; }
 .seat .n { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .seat.wait { color: var(--dim); font-style: italic; }
 .seat.sub { border-style: dashed; }
+/* registration: a team is a round table (.top: its name and count) with its seats around it */
+.table.round { position: relative; width: 100%; max-width: 250px; aspect-ratio: 1; margin: 0 auto; }
+.table.round .top { position: absolute; inset: 29%; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+  padding: 8px; text-align: center; background: var(--surface); box-shadow: var(--shadow), inset 0 0 0 2px var(--line2); }
+.table.round .top .n { max-width: 100%; font-size: 13px; font-weight: 700; line-height: 1.2; overflow: hidden; overflow-wrap: anywhere;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.table.round .top .w { font-size: 12px; font-weight: 700; color: var(--muted); font-variant-numeric: tabular-nums; }
+.table.round .top .w.ok { color: var(--ok-ink); }
+.table.round .top .x { position: absolute; top: -2px; right: -2px; width: 22px; height: 22px; padding: 0; border-radius: 50%; background: var(--surface); box-shadow: var(--shadow); }
+.table.round.mine .top { box-shadow: var(--shadow), inset 0 0 0 2px var(--accent); background: var(--accent-soft); }
+.table.round.none .top { background: transparent; box-shadow: inset 0 0 0 1px var(--line2); }
+.table.round.none .top .n { font-weight: 500; font-style: italic; color: var(--faint); }
+.table.round .seat { position: absolute; transform: translate(-50%, -50%); width: 80px; height: auto; flex-direction: column; gap: 2px; padding: 0;
+  border: 0; border-radius: 8px; background: none; font-size: 11px; line-height: 1.25; }
+.table.round .seat .av { width: 34px; height: 34px; font-size: 14px; border: 2px solid transparent; }
+.table.round .seat .n { flex: none; max-width: 100%; text-align: center; }
+.table.round .seat.me .av { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+.table.round .seat.sub .av { border: 2px dashed var(--line2); }
+.table.round .seat.free > span, .table.round .seat .sit { flex: none; width: 100%; height: auto; flex-direction: column; justify-content: center; align-items: center; gap: 2px; padding: 0; font-size: 11px; }
+.table.round .seat.free .av { border: 2px dashed currentColor; }
+.table.round .seat .sit:hover { background: none; }
+.table.round .seat .sit:hover .av { background: var(--accent-soft); }
+.table.round .seat .x { position: absolute; top: -7px; left: calc(50% + 9px); width: 18px; height: 18px; padding: 0; border-radius: 50%; font-size: 13px; background: var(--surface); box-shadow: var(--shadow); }
+.table.round .seat .inv { height: 18px; margin: 1px 0 0; }
 .reserve { margin-top: 26px; }
 .reserve h3 { margin: 0 0 4px; }
 .seat[draggable=true] { cursor: grab; }
@@ -212,6 +236,7 @@ dialog h2 { margin-bottom: 4px; }
 .standings tr.mine td:nth-child(2) { color: var(--gold); }
 .lgrid { display: grid; gap: 30px 16px; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); margin: 8px 0 34px; }
 .lgrid > .table + .table { margin-top: 0; }
+.lgrid.tables { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 26px 20px; }
 .guide { margin-top: 48px; padding-bottom: 20px; max-width: 900px; }
 .guide h2 { margin: 36px 0 12px; }
 .guide h3 { margin: 18px 0 4px; }
@@ -936,8 +961,8 @@ function renderTour() {
   schedulePoll();
 }
 
-// Registration: the bracket is drawn already, each team a table ("bàn") with one seat per player.
-// Tables are only places to sit: the pairings are drawn at random when the tournament starts.
+// Registration: no bracket yet, only tables ("bàn"): each team a table with one seat per player. Who
+// meets whom is drawn at random when the tournament starts; the bracket is shown from then on.
 function renderRegistration(my, organizer) {
   const t = D.tour;
   const body = $("body");
@@ -991,45 +1016,37 @@ function renderRegistration(my, organizer) {
     const mine = my && x && my.team === x.id;
     if (solo) return `<div class="table">${x ? seat(x, x.members[0] ?? { username: x.name, state: "in" }) : freeSeat(null, false, locked)}</div>`;
     const n = x ? inCount(x) : 0;
-    const bar = x
-      ? `<div class="tb ${mine ? "mine" : ""}"><span class="n" title="${esc(x.name)}">${esc(x.name)}</span>${organizer ? `<button class="x" title="Xoá đội" data-delteam="${x.id}">×</button>` : ""}<span class="w ${n >= t.teamSize ? "ok" : ""}" title="${bench ? `Số người đã vào: cần ${t.teamSize} để thi đấu, thêm tối đa ${bench} dự bị` : "Số người đã vào"}">${Math.min(n, t.teamSize)}/${t.teamSize}${n > t.teamSize ? ` +${n - t.teamSize}` : ""}</span></div>`
-      : `<div class="tb none"><span class="n">${locked ? "Bàn dự bị" : "Bàn trống"}</span></div>`;
+    // A round table: the name and the count in the middle, the seats around it (the first one on top, clockwise).
+    const top = x
+      ? `<div class="top"><span class="n" title="${esc(x.name)}">${esc(x.name)}</span><span class="w ${n >= t.teamSize ? "ok" : ""}" title="${bench ? `Số người đã vào: cần ${t.teamSize} để thi đấu, thêm tối đa ${bench} dự bị` : "Số người đã vào"}">${Math.min(n, t.teamSize)}/${t.teamSize}${n > t.teamSize ? ` +${n - t.teamSize}` : ""}</span>${organizer ? `<button class="x" title="Xoá đội" data-delteam="${x.id}">×</button>` : ""}</div>`
+      : `<div class="top"><span class="n">${locked ? "Bàn dự bị" : "Bàn trống"}</span></div>`;
     const seats = x ? [...x.members.map((m, i) => seat(x, m, i >= t.teamSize)),
         ...Array.from({ length: Math.max(0, t.teamSize + bench - x.members.length) }, (_, i) => freeSeat(x, x.members.length + i >= t.teamSize))]
       : Array.from({ length: t.teamSize }, () => freeSeat(null, false, locked));
-    return `<div class="table" ${canDrag && !locked ? `data-team="${x?.id ?? 0}"` : ""}>${bar}<div class="seats">${seats.join("")}</div></div>`;
+    const around = seats.map((html, i) => {
+      const a = (i / seats.length - 0.25) * 2 * Math.PI;
+      return html.replace('<div class="seat', `<div style="left:${(50 + 37 * Math.cos(a)).toFixed(1)}%;top:${(50 + 37 * Math.sin(a)).toFixed(1)}%" class="seat`);
+    });
+    return `<div class="table round ${x ? "" : "none"} ${mine ? "mine" : ""}" ${canDrag && !locked ? `data-team="${x?.id ?? 0}"` : ""}>${top}${around.join("")}</div>`;
   };
-  // Teams fill the tables in seed order, so the first ones to register sit in different halves.
-  const tables = Array(t.capacity).fill(null);
-  seedOrder(t.capacity).forEach((seed, slot) => { tables[slot] = D.teams[seed - 1] ?? null; });
-  const total = t.plan.length;
-  let deadline = t.startAt;
-  const rounds = t.plan.map((r, ri) => {
-    const start = deadline;
-    deadline += r.hours * H;
-    const wait = `<div class="series"><div class="tb none"><span class="n">Chờ đội thắng</span></div><div class="tb none"><span class="n">Chờ đội thắng</span></div></div>`;
-    return { head: `<b>${roundName(ri, total)}</b><small>${bo(r.wins)}</small><small>bắt đầu dự kiến ${fmtTime(start)}</small>`,
-      series: Array.from({ length: t.capacity >> (ri + 1) }, (_, k) => ri ? wait : `<div class="series">${table(tables[2 * k])}${table(tables[2 * k + 1])}</div>`) };
-  });
   const how = (t.clan ? "<b>Giải clan</b>: chỉ người đang ở trong một clan được tham gia, mỗi đội gồm người cùng một clan và mang ký hiệu clan. " : "") + (t.mode === "open"
     ? (solo ? "Bấm <b>Ngồi vào</b> ở một ghế trống để tham gia giải." : t.clan
-      ? `Mỗi bàn là một đội ${t.teamSize} ghế${bench ? ` và ${bench} ghế dự bị` : ""}. Bấm <b>Ngồi vào</b> ở bàn của clan bạn để làm đồng đội, hoặc ở bàn trống để lập đội mới cho clan (bạn làm đội trưởng ★ và mời người cùng clan).`
-      : `Mỗi bàn là một đội ${t.teamSize} ghế${bench ? ` và ${bench} ghế dự bị (đội đủ ${t.teamSize} người là thi đấu được; mỗi ván ra sân ${t.teamSize} người bất kỳ trong đội)` : ""}. Bấm <b>Ngồi vào</b> ở bàn đã có đội để làm đồng đội, hoặc ở bàn trống để lập đội mới (bạn làm đội trưởng ★, đặt tên đội và mời bạn bè).`)
+      ? `Mỗi bàn tròn là một đội ${t.teamSize} ghế${bench ? ` và ${bench} ghế dự bị` : ""}. Bấm <b>Ngồi vào</b> ở bàn của clan bạn để làm đồng đội, hoặc ở bàn trống để lập đội mới cho clan (bạn làm đội trưởng ★ và mời người cùng clan).`
+      : `Mỗi bàn tròn là một đội ${t.teamSize} ghế${bench ? ` và ${bench} ghế dự bị (đội đủ ${t.teamSize} người là thi đấu được; mỗi ván ra sân ${t.teamSize} người bất kỳ trong đội)` : ""}. Bấm <b>Ngồi vào</b> ở bàn đã có đội để làm đồng đội, hoặc ở bàn trống để lập đội mới (bạn làm đội trưởng ★, đặt tên đội và mời bạn bè).`)
     : "Giải chỉ dành cho người được mời: người tổ chức xếp đội và mời người chơi vào từng ghế.");
   body.innerHTML = `
     ${my?.state === "invited" ? `<div class="invite" style="margin-bottom:16px"><span class="grow">Bạn được mời vào đội <b>${esc(teamName(my.team))}</b>.</span>
       <button class="primary small" id="btnAccept">Chấp nhận</button><button class="ghost small" id="btnDecline">Từ chối</button></div>` : ""}
-    <div class="row"><h2 class="grow" style="margin:0">${isRR(t) ? "Các đội" : "Sơ đồ thi đấu"}</h2><span class="hint">${Math.min(D.teams.length, t.capacity)}/${t.capacity} đội${reserve ? ` · ${Math.max(0, D.teams.length - t.capacity)}/${reserve} đội dự bị` : ""} · ${ready} đội đủ người</span></div>
+    <div class="row"><h2 class="grow" style="margin:0">Các đội</h2><span class="hint">${Math.min(D.teams.length, t.capacity)}/${t.capacity} đội${reserve ? ` · ${Math.max(0, D.teams.length - t.capacity)}/${reserve} đội dự bị` : ""} · ${ready} đội đủ người</span></div>
     <p class="hint" style="margin:4px 0 14px">${how} ${isRR(t)
       ? "Không có lịch cố định: khi giải bắt đầu, các đội đủ người gặp nhau lúc nào cũng được. Đội chưa đủ người khi đó sẽ không được thi đấu."
-      : "Vị trí bàn chỉ để xếp chỗ: cặp đấu được <b>bốc thăm ngẫu nhiên</b> lúc giải bắt đầu, đội chưa đủ người khi đó sẽ không được xếp nhánh."}</p>
+      : "Mọi người chỉ ngồi theo ghế: đội nào gặp đội nào được <b>bốc thăm ngẫu nhiên lúc giải bắt đầu</b>, khi đó mới có sơ đồ nhánh. Đội chưa đủ người lúc đó không được xếp nhánh."}</p>
     ${admin ? `<p class="hint" style="margin:-6px 0 14px"><b>Quản trị viên</b>: bấm × để loại một người khỏi giải${canDrag ? "; kéo một người thả vào ghế trống của đội khác hoặc bàn trống để chuyển đội, thả vào một người khác để hai người đổi chỗ" : ""}.</p>` : ""}
     <div class="msg" id="regMsg" style="margin:0 0 10px"></div>
-    ${isRR(t) ? `<div class="lgrid">${Array.from({ length: t.capacity }, (_, i) => table(D.teams[i] ?? null)).join("")}</div>`
-      : drawBracket(rounds, `<b>${CUP}Vô địch</b><small>Đội thắng chung kết</small>`)}
+    <div class="lgrid ${solo ? "" : "tables"}">${Array.from({ length: t.capacity }, (_, i) => table(D.teams[i] ?? null)).join("")}</div>
     ${reserve ? `<div class="reserve"><h3>Đội dự bị (${Math.max(0, D.teams.length - t.capacity)}/${reserve})</h3>
       <p class="hint" style="margin:0 0 12px">Giải nhận thêm ${reserve} đội dự bị để mọi người có chỗ ngồi chờ sắp xếp. Lúc khởi tranh, ${t.capacity} đội <b>đủ người đăng ký sớm nhất</b> được thi đấu: đội dự bị đủ người sẽ vào thay đội còn thiếu người.${D.teams.length < t.capacity ? " Bàn dự bị mở khi các bàn phía trên đã có đội." : ""}</p>
-      <div class="lgrid">${Array.from({ length: reserve }, (_, i) => table(D.teams[t.capacity + i] ?? null, D.teams.length < t.capacity)).join("")}</div></div>` : ""}
+      <div class="lgrid ${solo ? "" : "tables"}">${Array.from({ length: reserve }, (_, i) => table(D.teams[t.capacity + i] ?? null, D.teams.length < t.capacity)).join("")}</div></div>` : ""}
     <div class="actions">
       ${my?.state === "in" ? `<button class="ghost" id="btnLeave">Rời giải</button>` : ""}
       ${!me ? `<button class="primary" id="btnSignin">Đăng nhập để tham gia</button>` : ""}
