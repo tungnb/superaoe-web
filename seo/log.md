@@ -426,3 +426,18 @@
 - Đăng tay bài outreach 2026-11-15 (kèm ảnh phòng có "Mạng x,x · Line 1" nếu có).
 - Tác vụ định kỳ (SKILL.md) vẫn ghi https://superaoe.com; site thật là superaqe.com.
 - Tồn đọng: Tab thành tích ở ghế khán giả; trang so sánh EGO Play / GPlay / GameTV Plus / XArena; seo-agent.md "Quy tắc sự thật" cũ; ảnh /img/replay-tua.jpg cũ; câu gợi ý /tai-khoan/ về tên trong game.
+
+## 2026-11-16 (vòng SEO 29 — tự động)
+- Chuẩn bị: `git pull --rebase` kéo về 3c61e5b (chủ dự án: giải không tự bắt đầu, bấm Bắt đầu mới bốc thăm) — đã live (so /giai-dau/, llms.txt). `git status` sạch. NOTES: launcher 1.0.46 bắt buộc (2026-11-15).
+- **Sai dữ kiện (đã sửa):** /choi-aoe-co-khan-gia/, /xem-lai-tran-aoe-replay/ (hiển thị + JSON-LD FAQ) và llms.txt còn ghi "vòng tròn chỗ bấm: trắng chuột trái, màu chuột phải"; spec.cpp hiện tại không vẽ gì cho chuột trái, chuột phải = hình thoi màu người chơi trên đất co dần (1.0.39). Replay thêm gạch đầu dòng "Dấu chuột phải". Trang khán giả: "Áp dụng cho launcher 1.0.39 trở lên".
+- Nội dung: /choi-aoe-online-mien-phi/ +2 FAQ (hiển thị + JSON-LD, 9 = 9): #avatar "Đổi avatar (ảnh đại diện) được không?" và #thanh-tich "Xem số trận thắng, thua và thời gian lên Đời 3 của mình ở đâu?" (link /lich-su-tran/). llms.txt: avatar + bảng người chơi trong mục Tài khoản, 1 câu trả lời nhanh về avatar, dòng cập nhật 2026-11-16 launcher 1.0.46.
+- "Cập nhật lần cuối" 16/11/2026 trên 3 trang; sitemap lastmod 3 trang → 2026-11-16.
+- Kiểm tra: JSON-LD parse được, FAQ hiển thị = JSON-LD (9/9/10), 1 h1, html-validate chỉ còn doctype-style/no-inline-style như cũ.
+- Không đo hạng (lần tới 2026-11-18). Outreach: bài gần nhất 2026-11-15 → lần tới ~2026-11-22.
+- URL đã đổi: /choi-aoe-online-mien-phi/, /choi-aoe-co-khan-gia/, /xem-lai-tran-aoe-replay/, /llms.txt, /sitemap.xml.
+- Lần sau: **đo hạng 2026-11-18**; outreach ~2026-11-22; cân nhắc /giai-dau/ "Bắt đầu" thủ công nếu chủ dự án chưa viết đủ; điều kiện tham gia giải (tuổi TK / số trận / giờ online) khi đã phát hành.
+
+### Cần chủ dự án quyết định / làm
+- **Quan trọng nhất (tồn đọng từ 28/10):** superaqe.com chưa lên chỉ mục tìm kiếm kể cả tên thương hiệu → Google Search Console + Bing Webmaster Tools, gửi sitemap, "Thay đổi địa chỉ" từ superaoe.com; giữ 301 superaoe.com lâu hơn 2026-11-28 (còn 12 ngày).
+- Avatar: trang ghi "chỉ đổi trong launcher, chưa đổi trên website" — nếu sau này thêm vào /tai-khoan/ thì báo. Ảnh chụp thật dấu chuột phải trên replay sẽ làm trang replay mạnh hơn.
+- Tác vụ định kỳ (SKILL.md) vẫn ghi https://superaoe.com; seo-agent.md "Quy tắc sự thật" cũ (Mac Intel, x0.5–x8); ảnh /img/replay-tua.jpg cũ; Tab thành tích ở ghế khán giả; trang so sánh EGO Play / GPlay / GameTV Plus / XArena.

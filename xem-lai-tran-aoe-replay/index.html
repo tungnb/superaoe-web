@@ -135,7 +135,7 @@
    "name": "Replay có thấy thao tác chuột của người chơi không?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Có, với trận lưu từ ngày 25/10/2026 (launcher 0.3.27 trở lên): replay vẽ con trỏ chuột của người chơi, vòng tròn chỗ họ bấm, khung kéo chọn quân và chân nhà họ đang định đặt kèm tên nhà; từ launcher 0.3.30 còn thấy khung quanh quân họ đang chọn. Phím M đổi giữa chỉ người đang xem, tất cả người chơi, hoặc tắt. Khán giả xem trực tiếp cũng thấy như vậy."
+    "text": "Có, với trận lưu từ ngày 25/10/2026 (launcher 0.3.27 trở lên): replay vẽ con trỏ chuột của người chơi, dấu chỗ họ bấm chuột phải (hình thoi màu người chơi trên mặt đất), khung kéo chọn quân và chân nhà họ đang định đặt kèm tên nhà; từ launcher 0.3.30 còn thấy khung quanh quân họ đang chọn. Phím M đổi giữa chỉ người đang xem, tất cả người chơi, hoặc tắt. Khán giả xem trực tiếp cũng thấy như vậy."
    }
   },
   {
@@ -375,7 +375,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
       </a>
     </div>
     <p class="win-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M12 8v4M12 16h.01"/></svg><span>Nếu Windows hiện “Windows protected your PC”, bấm <b>More info</b> → <b>Run anyway</b>.</span></p>
-    <p class="meta">Cập nhật lần cuối: <time datetime="2026-11-11">11/11/2026</time> · Miễn phí</p>
+    <p class="meta">Cập nhật lần cuối: <time datetime="2026-11-16">16/11/2026</time> · Miễn phí</p>
   </div>
 </section>
 
@@ -444,7 +444,8 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
     <h3 id="thao-tac" style="margin-top:32px">Xem thao tác chuột của người chơi</h3>
     <p>Từ launcher 0.3.27, replay của các trận lưu từ ngày 25/10/2026 ghi lại cả thao tác chuột. Khi xem, trên bản đồ hiện:</p>
     <ul class="ticks">
-      <li><b>Con trỏ chuột</b> của người chơi (đúng con trỏ của game) và <b>vòng tròn</b> chỗ họ bấm: trắng là chuột trái, màu người chơi là chuột phải.</li>
+      <li><b>Con trỏ chuột</b> của người chơi (đúng con trỏ của game) .</li>
+      <li><b>Dấu chuột phải</b>: chỗ người chơi bấm chuột phải trên đất (đưa quân đi, ra lệnh đánh, cho dân đi làm) hiện thành hình thoi màu người chơi, co dần rồi mất sau chưa tới 1 giây, vẫn thấy cả khi con trỏ đã đi chỗ khác. Bấm chuột trái thì không có dấu, giống như người chơi thấy trong game.</li>
       <li><b>Khung kéo chọn quân</b> khi họ quét chuột chọn nhiều quân.</li>
       <li><b>Chân nhà đang định đặt</b> kèm tên nhà, trước cả khi nhà được xây.</li>
       <li><b>Quân đang chọn</b> (từ launcher 0.3.30; từ 0.3.91 vẽ bằng khung chọn của chính game, xem <a href="#nhu-nguoi-choi">nhìn như người chơi</a>).</li>
@@ -496,7 +497,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
       <details><summary>Xem replay có tua nhanh, tua lùi được không?</summary><p>Được. Thanh điều khiển có nút về đầu, lùi 30 và 10 giây, dừng/chạy, tới 10 và 30 giây, tốc độ x1 đến x4, và bấm vào thanh tiến trình để nhảy tới thời điểm bất kỳ. Phím tắt: Space hoặc K dừng/chạy, J/L lùi/tới, - và + đổi tốc độ, Home về đầu, H ẩn/hiện thanh.</p></details>
       <details><summary>Replay SuperAqE có phải là video quay lại không?</summary><p>Không. Replay được chạy lại bằng chính game Age of Empires Rise of Rome theo đúng từng lệnh của người chơi, nên hình ảnh là đồ họa gốc và bạn thấy toàn bản đồ như một khán giả, không phải đoạn video quay màn hình.</p></details>
       <details><summary>Replay có đi theo màn hình của từng người chơi không?</summary><p>Có, với trận lưu từ ngày 24/10/2026 (launcher 0.3.15 trở lên): replay ghi lại chỗ mỗi người chơi nhìn trên bản đồ. Chọn người chơi bằng phím 1–8 thì camera đi đúng màn hình người đó trong trận; bấm F để chuyển sang xem tự do. Replay cũ hơn không có dữ liệu này nên chỉ xem tự do.</p></details>
-      <details><summary>Replay có thấy thao tác chuột của người chơi không?</summary><p>Có, với trận lưu từ ngày 25/10/2026 (launcher 0.3.27 trở lên): replay vẽ con trỏ chuột của người chơi, vòng tròn chỗ họ bấm, khung kéo chọn quân và chân nhà họ đang định đặt kèm tên nhà; từ launcher 0.3.30 còn thấy khung quanh quân họ đang chọn. Phím M đổi giữa chỉ người đang xem, tất cả người chơi, hoặc tắt. Khán giả xem trực tiếp cũng thấy như vậy.</p></details>
+      <details><summary>Replay có thấy thao tác chuột của người chơi không?</summary><p>Có, với trận lưu từ ngày 25/10/2026 (launcher 0.3.27 trở lên): replay vẽ con trỏ chuột của người chơi, dấu chỗ họ bấm chuột phải (hình thoi màu người chơi trên mặt đất), khung kéo chọn quân và chân nhà họ đang định đặt kèm tên nhà; từ launcher 0.3.30 còn thấy khung quanh quân họ đang chọn. Phím M đổi giữa chỉ người đang xem, tất cả người chơi, hoặc tắt. Khán giả xem trực tiếp cũng thấy như vậy.</p></details>
       <details><summary>Xem replay có xem được bảng điểm, thành tích giữa trận không?</summary><p>Có, từ launcher 1.0.28: đang xem replay bấm Tab là mở màn Thành tích (Achievements) của chính game với điểm của mọi người chơi tính tới thời điểm đang xem; bấm Tab lần nữa hoặc Esc để về bản đồ. Bảng điểm cuối trận còn có trên trang Lịch sử trận của superaqe.com.</p></details>
       <details><summary>Có mở file replay .aoerep được không?</summary><p>Được. Trong launcher SuperAqE chọn Mở file replay rồi chọn file .aoerep. File .aoerep của mọi trận có replay tải được ở trang <a href="/lich-su-tran/">Lịch sử trận</a> trên superaqe.com (superaqe.com/lich-su-tran/), không cần đăng nhập.</p></details>
       <details><summary>Người giữ trận tắt máy giữa chừng thì còn replay không?</summary><p>Thường vẫn còn. Trận chạy P2P thì máy người ngồi ghế đầu giữ trận và tải replay lên máy chủ; người đó thoát launcher giữa chừng thì launcher tải replay lên trước khi đóng. Nếu máy giữ trận vẫn không gửi được replay, launcher của người chơi khác trong trận tải bản của họ lên thay.</p></details>

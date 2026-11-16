@@ -74,3 +74,8 @@ Chưa kiểm chứng (không viết là có):
 
 ## 2026-11-15
 - Giải đấu (website afe1600/6cffe35/ef8a0fb, live): loại trực tiếp không có hạn chót, số giờ mỗi vòng chỉ để tính giờ bắt đầu dự kiến vòng sau; ván đánh trong 2 giờ trước giờ khởi tranh vẫn tính nếu hai đội thành một cặp; vòng tròn giữ một hạn chót cả giải. Ghế dự bị mỗi đội (2-2/3-3: 1, 4-4: 2; trừ giải clan và đấu tự do) + đội dự bị ~25% số đội (ít nhất 1). Khi đăng ký trang chỉ hiện bàn ghế, sơ đồ nhánh có khi bốc thăm. Phần launcher của bàn ghế (d7d9afa) chưa phát hành (latest 1.0.42).
+
+## 2026-11-16
+- Launcher mới nhất 1.0.46 (Win + Mac + Linux bắt buộc, 2026-11-15; spec_launcher không còn tiêm DLL vì Defender báo nhầm Wacatac). Mac 1.0.44 lỗi → 1.0.45 rollback, nay mọi nền tảng 1.0.46.
+- Thao tác chuột khi xem (spec.cpp hiện tại): KHÔNG có vòng ở chỗ bấm chuột trái; chuột phải trên đất = hình thoi màu người chơi co dần trong ~0,7 s (dấu chuột phải 87fe913, phát hành 1.0.39). Câu cũ "vòng tròn chỗ bấm: trắng chuột trái, màu chuột phải" đã SAI → đã sửa trên site.
+- Avatar (1.0.33): đổi trong launcher (bấm tên mình góc phải → Đổi avatar… / Bỏ avatar), tự cắt vuông 128x128; chưa có trên website. Bảng người chơi: thắng–thua, % thắng, 12 trận gần nhất, Lên Đời 3, Điểm mạng, số trận (NOTES 10l).
