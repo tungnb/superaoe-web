@@ -441,3 +441,18 @@
 - **Quan trọng nhất (tồn đọng từ 28/10):** superaqe.com chưa lên chỉ mục tìm kiếm kể cả tên thương hiệu → Google Search Console + Bing Webmaster Tools, gửi sitemap, "Thay đổi địa chỉ" từ superaoe.com; giữ 301 superaoe.com lâu hơn 2026-11-28 (còn 12 ngày).
 - Avatar: trang ghi "chỉ đổi trong launcher, chưa đổi trên website" — nếu sau này thêm vào /tai-khoan/ thì báo. Ảnh chụp thật dấu chuột phải trên replay sẽ làm trang replay mạnh hơn.
 - Tác vụ định kỳ (SKILL.md) vẫn ghi https://superaoe.com; seo-agent.md "Quy tắc sự thật" cũ (Mac Intel, x0.5–x8); ảnh /img/replay-tua.jpg cũ; Tab thành tích ở ghế khán giả; trang so sánh EGO Play / GPlay / GameTV Plus / XArena.
+
+## 2026-11-17 (vòng SEO 30 — tự động)
+- Chuẩn bị: `git pull --rebase` không có gì mới; `git status` sạch; live = HEAD cho /, /giai-dau/, llms.txt. NOTES (origin/main): launcher 1.0.48 bắt buộc (2026-11-16) — 1.0.47 có phím delete trên Mac + sửa văng chat lúc tải trận, 1.0.47/1.0.48 có biểu tượng cảm xúc kiểu Yahoo trong chat launcher.
+- Kỹ thuật: robots.txt (đủ bot AI + Sitemap), .assetsignore, IndexNow key vẫn đúng.
+- Nội dung: /choi-aoe-tren-macbook/#phim-tren-mac — h2 thêm "Delete", câu mở "ba chỗ", bảng phím thêm hàng **Xoá quân, nhà** (phím delete từ launcher 1.0.47, ghi "tính năng mới"; fn + delete là cách của macOS luôn dùng được), +1 FAQ "MacBook không có phím Delete thì xoá quân, nhà trong Đế Chế thế nào?" (hiển thị + JSON-LD, 9 = 9). "Cập nhật lần cuối" 17/11/2026; sitemap lastmod → 2026-11-17.
+- llms.txt: mô tả trang Mac + câu trả lời nhanh phím Mac thêm delete; bullet mới chat launcher đổi mã Yahoo thành emoji (1.0.48); dòng cập nhật 2026-11-17 launcher 1.0.48.
+- Kiểm tra: 3 khối JSON-LD parse được, 1 h1, tr cân, html-validate chỉ còn doctype-style/no-inline-style như cũ.
+- Không đo hạng (lần tới 2026-11-18). Outreach: bài gần nhất 2026-11-15 → lần tới ~2026-11-22.
+- URL đã đổi: /choi-aoe-tren-macbook/, /llms.txt, /sitemap.xml.
+- Lần sau: **đo hạng 2026-11-18**; outreach ~2026-11-22; điều kiện tham gia giải khi đã phát hành.
+
+### Cần chủ dự án quyết định / làm
+- **Quan trọng nhất (tồn đọng từ 28/10):** superaqe.com chưa lên chỉ mục tìm kiếm kể cả tên thương hiệu → Google Search Console + Bing Webmaster Tools, gửi sitemap, "Thay đổi địa chỉ" từ superaoe.com; giữ 301 superaoe.com lâu hơn 2026-11-28 (còn 11 ngày).
+- Phím delete trên Mac chưa thử trên Mac thật (NOTES) → trang ghi "tính năng mới" + cách fn + delete; thử xong thì báo để bỏ chữ dè dặt (hoặc gỡ nếu không chạy).
+- Tác vụ định kỳ (SKILL.md) vẫn ghi https://superaoe.com; seo-agent.md "Quy tắc sự thật" cũ (Mac Intel, x0.5–x8); ảnh /img/replay-tua.jpg cũ; Tab thành tích ở ghế khán giả; trang so sánh EGO Play / GPlay / GameTV Plus / XArena.

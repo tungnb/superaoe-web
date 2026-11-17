@@ -134,6 +134,14 @@
   },
   {
    "@type": "Question",
+   "name": "MacBook không có phím Delete thì xoá quân, nhà trong Đế Chế thế nào?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Chọn quân hoặc nhà rồi bấm phím delete (phím xoá chữ của MacBook): từ launcher 1.0.47, SuperAqE cho phím này xoá như Delete trên Windows khi đang ở màn hình game; lúc gõ chat nó vẫn xoá chữ. Cách của macOS luôn dùng được là giữ fn rồi bấm delete (fn + delete = Delete)."
+   }
+  },
+  {
+   "@type": "Question",
    "name": "Có dùng Boot Camp để chơi Đế Chế được không?",
    "acceptedAnswer": {
     "@type": "Answer",
@@ -372,7 +380,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
       <div class="quick-or">hoặc</div>
       <div class="btns"><a class="btn ghost" href="#tai-zip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg><span>Tải file zip về<small>khoảng 300 MB</small></span></a><a class="more" href="#cai-dat">Xem hướng dẫn chi tiết ↓</a></div>
     </div>
-    <p class="meta">Cập nhật lần cuối: <time datetime="2026-11-06">06/11/2026</time></p>
+    <p class="meta">Cập nhật lần cuối: <time datetime="2026-11-17">17/11/2026</time></p>
   </div>
 </section>
 
@@ -422,14 +430,15 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
 <section id="phim-tren-mac">
   <div class="wrap narrow">
     <div class="kicker">Phím trên Mac</div>
-    <h2>Phím Ctrl, F1–F12 khi chơi Đế Chế trên MacBook</h2>
-    <p>Bàn phím MacBook khác laptop Windows ở hai chỗ: gán nhóm quân (Ctrl + số) và hàng phím F (macOS dùng cho độ sáng, âm lượng). Cách xử lý dưới đây cũng có trong app: <b>Cài đặt → Phím trên Mac</b>.</p>
+    <h2>Phím Ctrl, F1–F12, Delete khi chơi Đế Chế trên MacBook</h2>
+    <p>Bàn phím MacBook khác laptop Windows ở ba chỗ: gán nhóm quân (Ctrl + số), hàng phím F (macOS dùng cho độ sáng, âm lượng) và không có phím Delete để xoá quân, nhà. Cách xử lý dưới đây cũng có trong app: <b>Cài đặt → Phím trên Mac</b>.</p>
     <div class="tbl">
       <table>
         <thead><tr><th scope="col">Việc cần làm</th><th scope="col">Trên Windows</th><th scope="col">Trên Mac (SuperAqE)</th></tr></thead>
         <tbody>
           <tr><th scope="row">Gán nhóm quân</th><td>Ctrl + số</td><td><b>control + số</b> (ví dụ control 1 gán nhóm 1, bấm 1 để chọn lại). Phím <b>⌘</b> + số cũng dùng được.</td></tr>
           <tr><th scope="row">Tạm dừng (F3), điểm (F4), menu (F10), giờ/dân số (F11)</th><td>Bấm thẳng phím F</td><td>Giữ <b>fn</b> rồi bấm, ví dụ fn + F3; hoặc bật phím chức năng chuẩn để bấm thẳng</td></tr>
+          <tr><th scope="row">Xoá quân, nhà đang chọn</th><td>Delete</td><td>Bấm phím <b>delete</b> (phím xoá chữ) khi đang ở màn hình game, từ launcher 1.0.47 (tính năng mới). Đang gõ chat thì delete vẫn xoá chữ. Cách của macOS luôn dùng được: <b>fn + delete</b> = Delete.</td></tr>
         </tbody>
       </table>
     </div>
@@ -471,6 +480,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
       <details><summary>Mac báo “Apple không thể xác minh” khi mở file cài thì làm sao?</summary><p>File cài chưa ký với Apple nên macOS cảnh báo, không phải virus. Cách dễ nhất là cài bằng lệnh: mở Terminal, dán <code>curl -fsSL https://superaqe.com/mac.sh | bash</code> rồi bấm Enter. Nếu đã tải file zip: mở Terminal, gõ <code>bash</code> và một dấu cách, kéo file Mo Terminal - go bash - keo file nay vao - Enter.command vào cửa sổ Terminal rồi bấm Enter.</p></details>
       <details><summary>Trên Mac gán nhóm quân (Ctrl + số) bằng phím nào?</summary><p>Bấm control + số như Ctrl + số trên Windows, ví dụ control 1 gán nhóm 1; phím ⌘ + số cũng dùng được. Nếu control + số làm đổi màn hình Desktop, vào System Settings → Keyboard → Keyboard Shortcuts… → Mission Control và bỏ chọn “Switch to Desktop 1…9”.</p></details>
       <details><summary>Sao bấm F3, F4 trên MacBook game không nhận?</summary><p>macOS dùng hàng phím F cho độ sáng, âm lượng. Giữ fn khi bấm (ví dụ fn + F3 để tạm dừng), hoặc bật “Use F1, F2, etc. keys as standard function keys” trong System Settings → Keyboard → Keyboard Shortcuts… → Function Keys.</p></details>
+      <details><summary>MacBook không có phím Delete thì xoá quân, nhà trong Đế Chế thế nào?</summary><p>Chọn quân hoặc nhà rồi bấm phím delete (phím xoá chữ của MacBook): từ launcher 1.0.47, SuperAqE cho phím này xoá như Delete trên Windows khi đang ở màn hình game; lúc gõ chat nó vẫn xoá chữ. Cách của macOS luôn dùng được là giữ fn rồi bấm delete (fn + delete = Delete).</p></details>
       <details><summary>Có dùng Boot Camp để chơi Đế Chế được không?</summary><p>Chỉ trên Mac chip Intel đời cũ. Mac chip Apple (M1 trở lên) không hỗ trợ Boot Camp.</p></details>
       <details><summary>Mac chip Intel có dùng được SuperAqE không?</summary><p>Có. Lệnh cài curl -fsSL https://superaqe.com/mac.sh | bash tự nhận máy chip Intel và tải đúng bản; cần macOS 11 (Big Sur) trở lên. Máy đã cài Windows qua Boot Camp thì cũng có thể dùng bản Windows của SuperAqE.</p></details>
     </div>
