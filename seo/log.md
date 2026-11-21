@@ -456,3 +456,18 @@
 - **Quan trọng nhất (tồn đọng từ 28/10):** superaqe.com chưa lên chỉ mục tìm kiếm kể cả tên thương hiệu → Google Search Console + Bing Webmaster Tools, gửi sitemap, "Thay đổi địa chỉ" từ superaoe.com; giữ 301 superaoe.com lâu hơn 2026-11-28 (còn 11 ngày).
 - Phím delete trên Mac chưa thử trên Mac thật (NOTES) → trang ghi "tính năng mới" + cách fn + delete; thử xong thì báo để bỏ chữ dè dặt (hoặc gỡ nếu không chạy).
 - Tác vụ định kỳ (SKILL.md) vẫn ghi https://superaoe.com; seo-agent.md "Quy tắc sự thật" cũ (Mac Intel, x0.5–x8); ảnh /img/replay-tua.jpg cũ; Tab thành tích ở ghế khán giả; trang so sánh EGO Play / GPlay / GameTV Plus / XArena.
+
+## 2026-11-21 (vòng SEO 31 — tự động)
+- Chuẩn bị: `git pull --rebase` không có gì mới; `git status` sạch. NOTES (origin/main) không có thay đổi sản phẩm sau 2026-11-17 (launcher 1.0.48 vẫn mới nhất). Không có mục log 18–20/11 (các vòng đó không chạy).
+- Kỹ thuật: robots.txt (đủ bot AI + Sitemap), .assetsignore, IndexNow key, 301 superaoe.com → superaqe.com vẫn đúng; /, llms.txt, sitemap.xml, robots.txt trả 200.
+- **Sai dữ kiện (đã sửa):** /giai-dau/ mục "Cách tạo giải" bước 4–5 vẫn ghi giờ khởi tranh là lúc "đóng đăng ký, bốc thăm và bắt đầu thi đấu" và "Đến giờ khởi tranh, hệ thống bốc thăm" — trái với luật mới (giải không tự bắt đầu). Sửa: "giờ khởi tranh dự kiến", đăng ký mở tới khi người tạo giải / quản trị viên bấm Bắt đầu, đội chưa đủ người lúc đó không được xếp nhánh. "Cập nhật lần cuối" 21/11/2026 (launcher 1.0.48); sitemap lastmod → 2026-11-21. llms.txt đã đúng, không đổi.
+- Kiểm tra: 2 khối JSON-LD parse được, ol/li cân.
+- **Đo hạng** (WebSearch, 8 truy vấn, seo/rankings.md): lần thứ 4 liên tiếp không thấy superaqe.com, kể cả truy vấn thương hiệu → vẫn chưa được lập chỉ mục.
+- **Outreach:** seo/outreach/2026-11-21-facebook-group.md — "Tự tổ chức giải Đế Chế online, không cần nhập tỉ số tay" dẫn về /giai-dau/#huong-dan.
+- URL đã đổi: /giai-dau/, /sitemap.xml.
+- Lần sau: đo hạng ~2026-11-28; outreach ~2026-11-28; điều kiện tham gia giải (tuổi TK / số trận / giờ online) khi đã phát hành.
+
+### Cần chủ dự án quyết định / làm
+- **Quan trọng nhất (tồn đọng từ 28/10):** superaqe.com chưa lên chỉ mục tìm kiếm kể cả tên thương hiệu (4 lần đo) → Google Search Console + Bing Webmaster Tools, gửi sitemap, "Thay đổi địa chỉ" từ superaoe.com; **giữ 301 superaoe.com sau 2026-11-28 (còn 7 ngày)**.
+- Đăng tay bài outreach 2026-11-21 (và bài 2026-11-15 nếu chưa đăng).
+- Tác vụ định kỳ (SKILL.md) vẫn ghi https://superaoe.com; seo-agent.md "Quy tắc sự thật" cũ (Mac Intel, x0.5–x8); phím delete Mac chưa thử trên Mac thật; ảnh /img/replay-tua.jpg cũ; trang so sánh EGO Play / GPlay / GameTV Plus / XArena.

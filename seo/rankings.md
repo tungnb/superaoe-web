@@ -48,3 +48,18 @@ Ghi chú: công cụ WebSearch không phải Google VN; superaqe.com chưa xuấ
 | chơi đế chế trên ubuntu linux (mới đo) | không thấy | bài 0 A.D. (linuxadictos, ubunlog), hướng dẫn Wine game khác; không có bài tiếng Việt về AoE1 |
 
 Ghi chú: 3 lần đo liên tiếp sau khi đổi tên miền (28/10, 04/11, 11/11) đều không thấy superaqe.com kể cả truy vấn thương hiệu → gần như chắc chắn chưa được lập chỉ mục; nội dung không phải nút thắt, việc cần là Google Search Console + Bing Webmaster Tools.
+
+## 2026-11-21 (ước lượng WebSearch, 24 ngày sau khi đổi tên miền)
+
+| Từ khóa | 2026-11-21 | Đối thủ top (2026-11-21) |
+|---|---|---|
+| chơi aoe online miễn phí | không thấy | hoanghamobile (nhiều bài), ai-hay.vn (EGO Play, GPlay), cellphones, bluestacks/topuplist (AoE Mobile), fptshop |
+| chơi đế chế trên macbook m1 | không thấy | mumuplayer/bluestacks (game mobile), macrumors (AoE4), codeweavers, fragster, forums.ageofempires.com; vẫn không có trang tiếng Việt về AoE1 |
+| xem lại trận đế chế / replay aoe rise of rome | không thấy | aoe2insights (trận Return of Rome), Steam (Return of Rome), fandom; không có bài replay AoE1 tiếng Việt |
+| xem trực tiếp trận đế chế khán giả aoe | không thấy | hoanghamobile, Google Docs (GTV Plus), vnreview, escharts, liquipedia, tinhte |
+| chơi đế chế online không cần vpn | không thấy | trang VPN (windscribe, veepn, protonvpn, expressvpn), mytour (GameRanger), tinhte (UPnP) |
+| SuperAqE đế chế superaqe.com (thương hiệu) | không thấy | esportsearnings ("Siêu Sao Đế Chế"), trang rác cá cược AE888 → superaqe.com vẫn chưa có trong chỉ mục |
+| tổ chức giải đấu đế chế online | không thấy | LMHT/Supercell/Valorant, Google Docs (GTV Plus), redbull |
+| chơi đế chế trên ubuntu linux | không thấy | itsfoss/linuxtoday (0 A.D.), addictivetips (AoE2 Steam), itch.io |
+
+Ghi chú: lần đo thứ 4 liên tiếp không thấy superaqe.com kể cả truy vấn thương hiệu → chưa được lập chỉ mục. Nút thắt vẫn là Google Search Console + Bing Webmaster Tools, không phải nội dung.
