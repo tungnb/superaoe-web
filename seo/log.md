@@ -471,3 +471,18 @@
 - **Quan trọng nhất (tồn đọng từ 28/10):** superaqe.com chưa lên chỉ mục tìm kiếm kể cả tên thương hiệu (4 lần đo) → Google Search Console + Bing Webmaster Tools, gửi sitemap, "Thay đổi địa chỉ" từ superaoe.com; **giữ 301 superaoe.com sau 2026-11-28 (còn 7 ngày)**.
 - Đăng tay bài outreach 2026-11-21 (và bài 2026-11-15 nếu chưa đăng).
 - Tác vụ định kỳ (SKILL.md) vẫn ghi https://superaoe.com; seo-agent.md "Quy tắc sự thật" cũ (Mac Intel, x0.5–x8); phím delete Mac chưa thử trên Mac thật; ảnh /img/replay-tua.jpg cũ; trang so sánh EGO Play / GPlay / GameTV Plus / XArena.
+
+## 2026-11-23 (vòng SEO 32 — tự động)
+- Chuẩn bị: `git pull --rebase` không có gì mới; `git status` sạch. NOTES (origin/main) không có thay đổi sản phẩm sau 2026-11-16; `/api/version` = 1.0.48 (min 1.0.48).
+- Kỹ thuật: robots.txt, sitemap, llms.txt, / trả 200; 301 superaoe.com → superaqe.com còn chạy. Quét 14 trang (title/desc/h1/canonical/JSON-LD/ảnh/link nội bộ): JSON-LD parse được hết, không link hỏng. Lỗi tìm thấy: **/clan/ meta description 186 ký tự** → rút còn 137. (h1 thừa ở /clan/, /giai-dau/ chỉ nằm trong template JS thay `main`, mỗi lúc chỉ 1 h1 — để nguyên.)
+- **Nội dung (thiếu sót đã sửa):** trang khán giả chưa nói phím **Tab = màn Thành tích (Achievements) của game** cho khán giả (phát hành 1.0.28, trang replay đã có). Thêm dòng Tab vào bảng phím, mục `#bang-thanh-tich`, 1 câu FAQ (hiển thị + JSON-LD 10/10). Viết đúng NOTES §10c: bảng gốc của game, Tab/Esc để về, trận vẫn chạy. "Cập nhật lần cuối" 23/11/2026; sitemap lastmod /choi-aoe-co-khan-gia/ và /clan/ → 2026-11-23.
+- Không làm trang so sánh EGO Play / GPlay / GameTV Plus / XArena: WebSearch 2026-11-23 không ra dữ kiện kiểm chứng được về các nền tảng này (XArena không có kết quả, GameRanger/Voobly cho RoR không rõ tình trạng 2025) → viết sẽ dễ sai; bảng so sánh hiện có ở /choi-aoe-online-mien-phi/#so-sanh đã ghi "xem trên trang của họ".
+- Không đo hạng (lần tới ~2026-11-28), không outreach (bài gần nhất 2026-11-21, lần tới ~2026-11-28).
+- URL đã đổi: /choi-aoe-co-khan-gia/, /clan/, /sitemap.xml.
+- Lần sau: **đo hạng + outreach ~2026-11-28**; điều kiện tham gia giải (tuổi TK / số trận / giờ online) khi đã phát hành.
+
+### Cần chủ dự án quyết định / làm
+- **Quan trọng nhất (tồn đọng từ 28/10):** superaqe.com chưa lên chỉ mục kể cả tên thương hiệu (4 lần đo) → Google Search Console + Bing Webmaster Tools, gửi sitemap, "Thay đổi địa chỉ" từ superaoe.com; **giữ 301 superaoe.com sau 2026-11-28 (còn 5 ngày)**.
+- Đăng tay bài outreach 2026-11-21 nếu chưa đăng.
+- Tab thành tích mới thử trên replay, chưa thử trong trận trực tiếp (NOTES/ghi nhớ) — nếu khán giả báo Tab không mở được thì báo để sửa trang.
+- Tác vụ định kỳ (SKILL.md) vẫn ghi https://superaoe.com; seo-agent.md "Quy tắc sự thật" cũ (Mac Intel, x0.5–x8); muốn có trang so sánh nền tảng thì cần chủ dự án cung cấp dữ kiện đối thủ đã kiểm chứng.
