@@ -62,7 +62,7 @@
  "description": "Launcher chơi Đế Chế (Age of Empires 1 Rise of Rome) online cho Windows 10/11 và MacBook: tài khoản, danh sách phòng, phòng chờ 8 người chơi + 4 khán giả xem trực tiếp, mọi trận tự lưu replay để xem lại, không cần VPN hay mở cổng.",
  "url": "https://superaqe.com/",
  "downloadUrl": ["https://superaqe.com/download/setup", "https://superaqe.com/download/mac", "https://superaqe.com/download/mac-intel", "https://superaqe.com/download/linux"],
- "softwareVersion": "0.3.95",
+ "softwareVersion": "1.0.48",
  "featureList": [
   "Chơi Đế Chế online tới 8 người, không cần VPN hay mở cổng",
   "4 ghế khán giả xem trực tiếp bằng đồ họa gốc",
@@ -133,7 +133,7 @@
    "name": "SuperAqE có bản cho MacBook chưa?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Có. SuperAqE có bản cài riêng, chạy mượt trên MacBook, cài bằng 1 lệnh Terminal: curl -fsSL https://superaqe.com/mac.sh | bash. Gói đã kèm Wine và game, cài thành ứng dụng SuperAqE trong thư mục Applications và tự cập nhật trong app. Bản Mac chơi chung phòng với bản Windows. Mac chip Intel không được hỗ trợ."
+    "text": "Có. SuperAqE có bản cài riêng, chạy mượt trên MacBook, cài bằng 1 lệnh Terminal: curl -fsSL https://superaqe.com/mac.sh | bash. Gói đã kèm Wine và game, cài thành ứng dụng SuperAqE trong thư mục Applications và tự cập nhật trong app. Có bản cho cả Mac chip Apple (M1, M2, M3, M4…) và Mac chip Intel, cần macOS 11 trở lên; lệnh cài tự nhận loại chip và tải đúng bản. Bản Mac chơi chung phòng với bản Windows."
    }
   },
   {
@@ -439,7 +439,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
         <p style="margin-top:10px"><b>Linux: cài bằng 1 lệnh</b> (không cần sudo). Bấm Ctrl + Alt + T, dán lệnh rồi bấm Enter:</p>
         <div class="cmdline"><code>curl -fsSL https://superaqe.com/linux.sh | bash</code><button type="button" class="copy" data-copy="curl -fsSL https://superaqe.com/linux.sh | bash">Sao chép</button></div>
       </div>
-      <p class="meta">Miễn phí · Không cần VPN hay mở cổng · <a href="/xem-lai-tran-aoe-replay/">Xem lại trận bằng replay</a> · <a href="/lich-su-tran/">Lịch sử thi đấu</a> · <a href="/giai-dau/">Giải đấu</a> · <a href="/choi-aoe-tren-macbook/">Cài trên Mac</a> · <a href="/choi-aoe-tren-linux/">Cài trên Linux</a></p>
+      <p class="meta">Miễn phí · Không cần VPN hay mở cổng · <a href="/xem-lai-tran-aoe-replay/">Xem lại trận bằng replay</a> · <a href="/lich-su-tran/">Lịch sử thi đấu</a> · <a href="/giai-dau/">Giải đấu</a> · <a href="/clan/">Clan</a> · <a href="/choi-aoe-tren-macbook/">Cài trên Mac</a> · <a href="/choi-aoe-tren-linux/">Cài trên Linux</a></p>
     </div>
 
     <figure class="screen">
@@ -710,7 +710,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
       <details><summary>Khán giả có thấy được sương mù của người chơi không?</summary><p>Khán giả thấy toàn bản đồ và có thể chuyển sang góc nhìn của từng người chơi bằng phím 1–8. Khán giả xem gần như cùng lúc với người chơi, nên chủ phòng nên mời khán giả mình tin tưởng.</p></details>
       <details><summary>Có cần VPN, Hamachi hay mở cổng không?</summary><p>Không. Launcher tự nối các máy trong trận với nhau (P2P qua WebRTC), không nối thẳng được thì chạy qua máy chủ SuperAqE trên Cloudflare; chỉ cần có Internet là vào phòng được.</p></details>
       <details><summary>Có cần cài Age of Empires trước không?</summary><p>Không. Bộ cài SuperAoE-Setup.exe đã có sẵn Age of Empires 1 Rise of Rome, cài là chạy.</p></details>
-      <details><summary>SuperAqE có bản cho MacBook chưa?</summary><p>Có. SuperAqE có bản cài riêng, chạy mượt trên MacBook, cài bằng 1 lệnh Terminal (<a href="/choi-aoe-tren-macbook/#cai-dat">xem cách cài</a>). Gói đã kèm Wine và game, cài thành ứng dụng SuperAqE trong thư mục Applications và tự cập nhật trong app. Bản Mac chơi chung phòng với bản Windows. Mac chip Intel không được hỗ trợ.</p></details>
+      <details><summary>SuperAqE có bản cho MacBook chưa?</summary><p>Có. SuperAqE có bản cài riêng, chạy mượt trên MacBook, cài bằng 1 lệnh Terminal (<a href="/choi-aoe-tren-macbook/#cai-dat">xem cách cài</a>). Gói đã kèm Wine và game, cài thành ứng dụng SuperAqE trong thư mục Applications và tự cập nhật trong app. Có bản cho cả Mac chip Apple (M1, M2, M3, M4…) và Mac chip Intel, cần macOS 11 trở lên; lệnh cài tự nhận loại chip và tải đúng bản. Bản Mac chơi chung phòng với bản Windows.</p></details>
       <details><summary>SuperAqE có bản cho Linux chưa?</summary><p>Có. SuperAqE có bản cho Linux 64-bit Intel/AMD (x86_64) có giao diện đồ họa: Ubuntu 22.04 trở lên, Linux Mint, Debian, Fedora…, tải tại <a href="https://superaqe.com/download/linux">superaqe.com/download/linux</a>. Gói đã kèm Wine và game, không cần cài Wine, không cần sudo, tự cập nhật. Cách cài dễ nhất: mở Terminal (Ctrl + Alt + T), dán <code>curl -fsSL https://superaqe.com/linux.sh | bash</code> rồi bấm Enter (<a href="/choi-aoe-tren-linux/">hướng dẫn chi tiết</a>). Bản Linux chơi chung phòng với bản Windows và Mac. Linux ARM không được hỗ trợ.</p></details>
       <details><summary>SuperAqE có lưu replay để xem lại trận không?</summary><p>Có. Mọi trận online trên SuperAqE được tự động lưu replay (.aoerep) trên máy chủ, để bạn xem lại trận đấu cũ, rút kinh nghiệm và học hỏi từ đối thủ. Trong launcher, vào menu Lịch sử trận / Xem lại, bấm vào trận để xem lại bằng chính game gốc, tua lùi/tới 10 hoặc 30 giây, chỉnh tốc độ x1 đến x4. Miễn phí. <a href="/xem-lai-tran-aoe-replay/">Xem hướng dẫn replay</a>.</p></details>
       <details><summary>Một phòng chơi được bao nhiêu người?</summary><p>Tối đa 8 người chơi và 4 khán giả. Mỗi phòng nhận tối đa 15 thành viên.</p></details>
@@ -723,7 +723,7 @@ code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 14px; b
 
 <footer>
   <div class="wrap">
-    <span>© <span id="yr">2026</span> SuperAqE · Dự án cộng đồng của người chơi Đế Chế Việt Nam · <a href="/choi-aoe-online-mien-phi/" style="color:inherit">Chơi AoE online miễn phí</a> · <a href="/tao-phong-choi-de-che/" style="color:inherit">Tạo phòng chơi Đế Chế</a> · <a href="/choi-aoe-co-khan-gia/" style="color:inherit">Chơi AoE có khán giả</a> · <a href="/xem-lai-tran-aoe-replay/" style="color:inherit">Xem lại trận AoE (replay)</a> · <a href="/choi-aoe-tren-macbook/" style="color:inherit">AoE trên MacBook</a> · <a href="/choi-aoe-tren-linux/" style="color:inherit">AoE trên Linux</a> · <a href="/choi-de-che-bi-lag/" style="color:inherit">Đế Chế bị lag</a> ·<a href="/tai-aoe-rise-of-rome/" style="color:inherit">Tải AoE 1 Rise of Rome</a> · <a href="/choi-de-che-qua-mang/" style="color:inherit">Chơi Đế Chế qua mạng</a> · <a href="https://www.facebook.com/profile.php?id=61595397195188" target="_blank" rel="noopener" style="color:inherit">Facebook SuperAqE</a> · <a href="https://www.facebook.com/groups/1496567506003702" target="_blank" rel="noopener" style="color:inherit">Nhóm Facebook</a></span>
+    <span>© <span id="yr">2026</span> SuperAqE · Dự án cộng đồng của người chơi Đế Chế Việt Nam · <a href="/choi-aoe-online-mien-phi/" style="color:inherit">Chơi AoE online miễn phí</a> · <a href="/tao-phong-choi-de-che/" style="color:inherit">Tạo phòng chơi Đế Chế</a> · <a href="/choi-aoe-co-khan-gia/" style="color:inherit">Chơi AoE có khán giả</a> · <a href="/xem-lai-tran-aoe-replay/" style="color:inherit">Xem lại trận AoE (replay)</a> · <a href="/choi-aoe-tren-macbook/" style="color:inherit">AoE trên MacBook</a> · <a href="/choi-aoe-tren-linux/" style="color:inherit">AoE trên Linux</a> · <a href="/choi-de-che-bi-lag/" style="color:inherit">Đế Chế bị lag</a> ·<a href="/tai-aoe-rise-of-rome/" style="color:inherit">Tải AoE 1 Rise of Rome</a> · <a href="/giai-dau/" style="color:inherit">Tổ chức giải đấu Đế Chế</a> · <a href="/clan/" style="color:inherit">Clan Đế Chế</a> · <a href="/choi-de-che-qua-mang/" style="color:inherit">Chơi Đế Chế qua mạng</a> · <a href="https://www.facebook.com/profile.php?id=61595397195188" target="_blank" rel="noopener" style="color:inherit">Facebook SuperAqE</a> · <a href="https://www.facebook.com/groups/1496567506003702" target="_blank" rel="noopener" style="color:inherit">Nhóm Facebook</a></span>
     <span>Age of Empires là thương hiệu của Microsoft. SuperAqE không liên kết với Microsoft.</span>
   </div>
 </footer>

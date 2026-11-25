@@ -486,3 +486,17 @@
 - Đăng tay bài outreach 2026-11-21 nếu chưa đăng.
 - Tab thành tích mới thử trên replay, chưa thử trong trận trực tiếp (NOTES/ghi nhớ) — nếu khán giả báo Tab không mở được thì báo để sửa trang.
 - Tác vụ định kỳ (SKILL.md) vẫn ghi https://superaoe.com; seo-agent.md "Quy tắc sự thật" cũ (Mac Intel, x0.5–x8); muốn có trang so sánh nền tảng thì cần chủ dự án cung cấp dữ kiện đối thủ đã kiểm chứng.
+
+## 2026-11-25 (vòng SEO 33 — tự động)
+- Chuẩn bị: `git pull --rebase` không có gì mới; `git status` sạch. Repo chính (origin/main) không có commit sau 2026-11-22; `/api/version` = 1.0.48 (min 1.0.48). /, robots.txt, sitemap.xml, llms.txt trả 200; 301 superaoe.com → superaqe.com còn chạy.
+- **Sai dữ kiện (đã sửa) ở trang chủ:** FAQ "SuperAqE có bản cho MacBook chưa?" (hiển thị + JSON-LD) vẫn ghi "Mac chip Intel không được hỗ trợ" — trái với trang Mac, llms.txt và facts.md (Intel hỗ trợ từ 2026-11-04, macOS 11+, mac.sh tự nhận chip). Sửa thành có bản cho cả chip Apple và chip Intel, cần macOS 11+, lệnh cài tự nhận chip. JSON-LD `softwareVersion` 0.3.95 → 1.0.48.
+- Liên kết nội bộ: trang chủ chưa có link tới /clan/ (và footer thiếu /giai-dau/) → thêm "Clan" vào dòng meta dưới hero, footer thêm "Tổ chức giải đấu Đế Chế" và "Clan Đế Chế".
+- Kiểm tra: 4 khối JSON-LD parse được, FAQ 10 = 10 details, 1 h1; html-validate chỉ còn no-inline-style/doctype-style như cũ. sitemap lastmod / → 2026-11-25.
+- Không đo hạng (lần tới ~2026-11-28), không outreach (bài gần nhất 2026-11-21, lần tới ~2026-11-28).
+- URL đã đổi: /, /sitemap.xml.
+- Lần sau: **đo hạng + outreach ~2026-11-28**; điều kiện tham gia giải (tuổi TK / số trận / giờ online) khi đã phát hành; facts.md dòng 24 còn câu cũ "Mac chip Intel: KHÔNG hỗ trợ" (đã có ghi chú đè ở dòng 51).
+
+### Cần chủ dự án quyết định / làm
+- **Quan trọng nhất (tồn đọng từ 28/10):** superaqe.com chưa lên chỉ mục kể cả tên thương hiệu (4 lần đo) → Google Search Console + Bing Webmaster Tools, gửi sitemap, "Thay đổi địa chỉ" từ superaoe.com; **giữ 301 superaoe.com sau 2026-11-28 (còn 3 ngày)**.
+- Đăng tay bài outreach 2026-11-21 nếu chưa đăng.
+- seo-agent.md "Quy tắc sự thật" còn ghi Mac Intel không hỗ trợ và replay x0.5–x8 (đã cũ) — nên sửa để vòng sau không viết sai; tác vụ định kỳ (SKILL.md) vẫn ghi https://superaoe.com.
