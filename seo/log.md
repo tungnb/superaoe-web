@@ -500,3 +500,19 @@
 - **Quan trọng nhất (tồn đọng từ 28/10):** superaqe.com chưa lên chỉ mục kể cả tên thương hiệu (4 lần đo) → Google Search Console + Bing Webmaster Tools, gửi sitemap, "Thay đổi địa chỉ" từ superaoe.com; **giữ 301 superaoe.com sau 2026-11-28 (còn 3 ngày)**.
 - Đăng tay bài outreach 2026-11-21 nếu chưa đăng.
 - seo-agent.md "Quy tắc sự thật" còn ghi Mac Intel không hỗ trợ và replay x0.5–x8 (đã cũ) — nên sửa để vòng sau không viết sai; tác vụ định kỳ (SKILL.md) vẫn ghi https://superaoe.com.
+
+## 2026-11-26 (vòng SEO 34 — tự động)
+- Chuẩn bị: `git pull --rebase` không có gì mới; `git status` sạch. Repo chính (origin/main) không có commit mới; `/api/version` = 1.0.48 (min 1.0.48). /, robots.txt, sitemap.xml, llms.txt trả 200; 301 superaoe.com → superaqe.com còn chạy. robots.txt, .assetsignore đúng.
+- **Sai dữ kiện (đã sửa) ở /tao-phong-choi-de-che/:** mục "Kết nối" + FAQ "Nên để ai ngồi ghế đầu?" vẫn tả luật cũ (máy người ngồi ghế đầu là "chủ trận", đổi người ngồi ghế đầu thì chủ trận đổi theo). Từ launcher 1.0.0 (NOTES §9zu, §10f): chủ phòng = máy giữ ván, luôn ghế Nhất phẩm + màu 1; phòng tự đo máy/mạng và tự chuyển chủ phòng khi chưa vào ván (báo trong chat); chủ phòng nhường tay cho người ngồi ghế người chơi (giữ tới khi người đó đứng lên/rời phòng); ghế tự dời (chủ phòng về Nhất phẩm, ở cột phải thì hai cột đổi chỗ, không ai đổi đội). Viết lại mục `#ket-noi` (thêm neo `#chu-phong`), FAQ mới "Máy nào giữ ván đấu, và ai nên làm chủ phòng?" (hiển thị + JSON-LD 9 = 9), HowTo bước 4, bỏ hết chữ "chủ trận" (launcher giờ chỉ dùng "chủ phòng"). "Cập nhật lần cuối" 26/11/2026, launcher 1.0.48 (Windows, Mac, Linux). sitemap lastmod → 2026-11-26.
+- llms.txt: dòng Mạng viết lại theo luật chủ phòng mới; dòng cập nhật 2026-11-26.
+- Câu "máy chủ phòng tắt launcher/mất mạng hẳn thì ván dừng cho cả phòng" đổi thành "ván không chạy tiếp được cho tới khi máy đó quay lại" (đúng với cả luật cũ lẫn tính năng giữ trận chờ chủ phòng §9zza). CHƯA viết chi tiết giữ trận 10 phút / "Vào lại trận đang chơi" vì NOTES §9zza còn ghi "chưa phát hành" và không có mục xác nhận đã bật trên máy chủ.
+- Kiểm tra: 3 khối JSON-LD parse được, 1 h1, li cân (23/23).
+- Không đo hạng, không outreach (cả hai ~2026-11-28).
+- URL đã đổi: /tao-phong-choi-de-che/, /llms.txt, /sitemap.xml.
+- Lần sau: **đo hạng + outreach ~2026-11-28**; còn câu "máy người ngồi ghế đầu giữ trận" ở /choi-de-che-qua-mang/ (dòng ~292–293), /choi-de-che-bi-lag/ (bước 5, đã có ý phòng tự chuyển chủ phòng) và FAQ /xem-lai-tran-aoe-replay/ — không sai hẳn (chủ phòng ngồi ghế đầu) nhưng nên đổi sang "máy chủ phòng" cho thống nhất.
+
+### Cần chủ dự án quyết định / làm
+- **Quan trọng nhất (tồn đọng từ 28/10):** superaqe.com chưa lên chỉ mục kể cả tên thương hiệu (4 lần đo) → Google Search Console + Bing Webmaster Tools, gửi sitemap, "Thay đổi địa chỉ" từ superaoe.com; **giữ 301 superaoe.com sau 2026-11-28 (còn 2 ngày)**.
+- Xác nhận: tính năng giữ trận khi chủ phòng rớt (chờ tối đa 10 phút, chủ phòng mở lại launcher → "Vào lại trận đang chơi", NOTES §9zza) đã bật thật chưa? Nếu rồi thì vòng sau viết lên /tao-phong-choi-de-che/ và /choi-de-che-qua-mang/.
+- Đăng tay bài outreach 2026-11-21 nếu chưa đăng.
+- seo-agent.md "Quy tắc sự thật" còn ghi Mac Intel không hỗ trợ, replay x0.5–x8, "người ngồi ghế đầu giữ trận" (đã cũ); tác vụ định kỳ (SKILL.md) vẫn ghi https://superaoe.com.
